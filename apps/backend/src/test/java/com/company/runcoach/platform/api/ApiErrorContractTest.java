@@ -1,5 +1,6 @@
 package com.company.runcoach.platform.api;
 
+import com.company.runcoach.common.api.ApiErrorEnvelope;
 import jakarta.servlet.http.HttpServletRequest;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpMethod;
@@ -7,13 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 
-import java.util.List;
-import java.util.Map;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ApiErrorContractTest {
 
@@ -23,22 +20,13 @@ class ApiErrorContractTest {
         HttpServletRequest request = new MockHttpServletRequest("GET", "/v1/unknown-route");
 
         NoResourceFoundException ex = new NoResourceFoundException(HttpMethod.GET, "/v1/unknown-route");
-        ResponseEntity<Map<String, Object>> response = handler.handleNoResourceFound(ex, request);
+        ResponseEntity<ApiErrorEnvelope> response = handler.handleNoResourceFound(ex, request);
 
         assertEquals(404, response.getStatusCode().value());
         assertNotNull(response.getBody());
-        assertTrue(response.getBody().containsKey("error"));
-
-        Map<String, Object> error = castMap(response.getBody().get("error"));
-        assertEquals("NOT_FOUND", error.get("code"));
-        assertEquals(ex.getMessage(), error.get("message"));
-        assertTrue(error.get("details") instanceof List<?>);
-        assertTrue(error.get("correlationId") instanceof String);
-        assertFalse(((String) error.get("correlationId")).isBlank());
-    }
-
-    @SuppressWarnings("unchecked")
-    private static Map<String, Object> castMap(Object value) {
-        return (Map<String, Object>) value;
+        assertEquals("NOT_FOUND", response.getBody().error().code());
+        assertEquals(ex.getMessage(), response.getBody().error().message());
+        assertNotNull(response.getBody().error().details());
+        assertFalse(response.getBody().error().correlationId().isBlank());
     }
 }

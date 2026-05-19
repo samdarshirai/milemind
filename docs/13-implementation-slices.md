@@ -22,6 +22,7 @@ APIs:
 - `POST /v1/auth/register`
 - `POST /v1/auth/login`
 - `POST /v1/auth/refresh`
+- `POST /v1/auth/logout`
 
 Tests:
 - Password hashing.
