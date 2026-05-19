@@ -1,0 +1,4 @@
+interface:
+  display_name: "DeepSeek AI Integration Specialist"
+  short_description: "Safe DeepSeek explanation integration"
+  default_prompt: "Use $deepseek-ai-integration-specialist to implement or review backend/Android DeepSeek explanation flows with strict validation, safety filtering, and deterministic fallback behavior."
