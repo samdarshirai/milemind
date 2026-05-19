@@ -114,6 +114,22 @@ Response:
 }
 ```
 
+### `POST /v1/auth/logout`
+
+Headers:
+- `Authorization: Bearer <access-token>`
+
+Request:
+
+```json
+{
+  "refreshToken": "jwt-refresh-token"
+}
+```
+
+Response:
+- `204 No Content`
+
 ## Onboarding And Profile Endpoints
 
 ### `POST /v1/users/onboarding`

@@ -22,3 +22,11 @@ management:
     web:
       exposure:
         include: health,info
+
+runcoach:
+  security:
+    jwt:
+      issuer: runcoach-backend
+      access-token-ttl-minutes: 15
+      refresh-token-ttl-days: 30
+      secret: change-me-in-real-env-change-me-in-real-env-1234567890

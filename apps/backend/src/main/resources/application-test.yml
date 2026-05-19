@@ -12,3 +12,11 @@ spring:
       ddl-auto: none
   flyway:
     enabled: true
+
+runcoach:
+  security:
+    jwt:
+      issuer: runcoach-backend-test
+      access-token-ttl-minutes: 15
+      refresh-token-ttl-days: 30
+      secret: test-secret-change-me-test-secret-change-me-1234567890

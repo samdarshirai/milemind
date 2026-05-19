@@ -22,7 +22,7 @@ class ApiErrorEnvelopeIntegrationTest {
 
     @Test
     void unknownRoutesShouldReturnDocumentedErrorEnvelope() throws Exception {
-        mockMvc.perform(get("/v1/unknown-route"))
+        mockMvc.perform(get("/v1/auth/unknown-route"))
             .andExpect(status().isNotFound())
             .andExpect(jsonPath("$.error.code").value("NOT_FOUND"))
             .andExpect(jsonPath("$.error.message").isString())

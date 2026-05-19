@@ -1,14 +1,19 @@
 package com.company.runcoach.core.network
 
-import kotlinx.serialization.Serializable
+import com.company.runcoach.core.network.auth.AuthInterceptor
+import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import retrofit2.Retrofit
+import javax.inject.Inject
+import javax.inject.Singleton
 
-object ApiClient {
+@Singleton
+class ApiClient @Inject constructor(
+    authInterceptor: AuthInterceptor
+) {
     private val json = Json {
         ignoreUnknownKeys = true
         explicitNulls = false
@@ -23,6 +28,7 @@ object ApiClient {
     }
 
     private val okHttpClient = OkHttpClient.Builder()
+        .addInterceptor(authInterceptor)
         .addInterceptor(loggingInterceptor)
         .build()
 
@@ -32,10 +38,3 @@ object ApiClient {
         .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
         .build()
 }
-
-@Serializable
-data class HealthResponse(
-    val status: String,
-    val service: String,
-    val timestamp: String
-)
