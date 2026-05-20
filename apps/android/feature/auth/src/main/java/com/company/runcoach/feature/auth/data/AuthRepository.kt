@@ -7,6 +7,7 @@ import com.company.runcoach.feature.auth.data.remote.RefreshRequest
 import com.company.runcoach.feature.auth.data.remote.RegisterRequest
 import com.company.runcoach.feature.auth.domain.AuthFailure
 import com.company.runcoach.feature.auth.domain.AuthSession
+import com.company.runcoach.feature.onboarding.data.OnboardingRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -19,6 +20,7 @@ class AuthRepository @Inject constructor(
     private val authApiService: AuthApiService,
     private val sessionStore: SessionStore,
     private val errorMapper: AuthErrorMapper,
+    private val onboardingRepository: OnboardingRepository,
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) {
     suspend fun signIn(email: String, password: String): Result<AuthSession> = withContext(ioDispatcher) {
@@ -50,7 +52,11 @@ class AuthRepository @Inject constructor(
         val result = runCatching {
             val response = authApiService.refresh(RefreshRequest(refreshToken))
             sessionStore.save(response.accessToken, response.refreshToken)
-            AuthSession(onboardingRequired = false)
+            // Session restore should not fail if profile/onboarding lookup is transiently unavailable.
+            val needsOnboarding = onboardingRepository.isOnboardingComplete()
+                .map { complete -> !complete }
+                .getOrDefault(false)
+            AuthSession(onboardingRequired = needsOnboarding)
         }.mapFailure()
 
         if (result.exceptionOrNull() is AuthFailure.Unauthorized) {

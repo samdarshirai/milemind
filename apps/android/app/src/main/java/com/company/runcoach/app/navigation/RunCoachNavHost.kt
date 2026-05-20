@@ -12,9 +12,12 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.company.runcoach.feature.auth.ui.navigation.AuthRoutes
 import com.company.runcoach.feature.auth.ui.navigation.authGraph
+import com.company.runcoach.feature.onboarding.ui.navigation.OnboardingRoutes
+import com.company.runcoach.feature.onboarding.ui.navigation.onboardingGraph
+import com.company.runcoach.feature.profile.ui.navigation.ProfileRoutes
+import com.company.runcoach.feature.profile.ui.navigation.profileGraph
 
 private object AppRoutes {
-    const val OnboardingHome = "onboarding_home"
     const val SessionHome = "session_home"
 }
 
@@ -25,36 +28,54 @@ fun RunCoachNavHost() {
     NavHost(navController = navController, startDestination = AuthRoutes.Splash) {
         authGraph(
             navController = navController,
-            onboardingRoute = AppRoutes.OnboardingHome,
+            onboardingRoute = OnboardingRoutes.Intro,
             mainRoute = AppRoutes.SessionHome
         )
-        composable(AppRoutes.OnboardingHome) {
-            OnboardingHomePlaceholder()
+
+        onboardingGraph(
+            onComplete = {
+                navController.navigate(OnboardingRoutes.RaceGoalPlaceholder) {
+                    popUpTo(OnboardingRoutes.Intro) { inclusive = true }
+                }
+            }
+        )
+
+        composable(OnboardingRoutes.RaceGoalPlaceholder) {
+            RaceGoalPlaceholderScreen(onContinue = {
+                navController.navigate(AppRoutes.SessionHome) {
+                    popUpTo(OnboardingRoutes.RaceGoalPlaceholder) { inclusive = true }
+                }
+            })
         }
+
         composable(AppRoutes.SessionHome) {
-            SessionHomePlaceholder()
+            SessionHomePlaceholder(onEditProfile = { navController.navigate(ProfileRoutes.Edit) })
         }
+
+        profileGraph()
     }
 }
 
 @Composable
-private fun OnboardingHomePlaceholder() {
+private fun RaceGoalPlaceholderScreen(onContinue: () -> Unit) {
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text("Onboarding is required")
+        Text("Race goal setup comes in Slice 3")
+        androidx.compose.material3.Button(onClick = onContinue) { Text("Continue") }
     }
 }
 
 @Composable
-private fun SessionHomePlaceholder() {
+private fun SessionHomePlaceholder(onEditProfile: () -> Unit) {
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text("Session is active")
+        androidx.compose.material3.Button(onClick = onEditProfile) { Text("Edit profile") }
     }
 }

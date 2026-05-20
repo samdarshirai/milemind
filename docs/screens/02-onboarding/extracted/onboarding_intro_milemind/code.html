@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Milemind - Onboarding</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        @font-face {
+            font-family: 'The Future';
+            src: url('https://fonts.cdnfonts.com/css/the-future') format('woff2');
+        }
+        @font-face {
+            font-family: 'PP Neue Montreal Mono';
+            src: url('https://fonts.cdnfonts.com/css/pp-neue-montreal') format('woff2');
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .together-gradient {
+            background: linear-gradient(90deg, #ef2cc1 0%, #fc4c02 50%, #c8f6f9 100%);
+            height: 4px;
+            width: 100%;
+        }
+
+        .canvas-dark-hero {
+            background-color: #131313;
+        }
+
+        .canvas-white-content {
+            background-color: #ffffff;
+        }
+
+        /* Micro-interactions */
+        .btn-hover-effect:active {
+            transform: scale(0.96);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#2a2a2a",
+                        "error": "#ffb4ab",
+                        "outline-variant": "#4c4546",
+                        "on-tertiary": "#303030",
+                        "on-surface-variant": "#cfc4c5",
+                        "inverse-primary": "#5e5e5e",
+                        "on-primary-container": "#757575",
+                        "tertiary": "#c6c6c6",
+                        "outline": "#988e90",
+                        "surface-container-low": "#1b1b1b",
+                        "on-secondary": "#2c2d4e",
+                        "on-error": "#690005",
+                        "secondary-container": "#454668",
+                        "on-primary-fixed-variant": "#474747",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "primary-container": "#000000",
+                        "accent-magenta": "#ef2cc1",
+                        "tertiary-fixed": "#e2e2e2",
+                        "on-secondary-container": "#b4b5de",
+                        "secondary-fixed-dim": "#c3c3ec",
+                        "secondary-fixed": "#e1e0ff",
+                        "body-gray": "#959494",
+                        "surface-tint": "#c6c6c6",
+                        "surface-container-highest": "#353535",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "accent-mint": "#c8f6f9",
+                        "surface-dark-soft": "#313641",
+                        "on-tertiary-container": "#757575",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "secondary": "#c3c3ec",
+                        "surface-container": "#1f1f1f",
+                        "inverse-surface": "#e2e2e2",
+                        "ink": "#000000",
+                        "surface-variant": "#353535",
+                        "on-primary": "#ffffff",
+                        "on-background": "#e2e2e2",
+                        "surface-bright": "#393939",
+                        "tertiary-container": "#000000",
+                        "on-secondary-fixed-variant": "#424466",
+                        "error-container": "#93000a",
+                        "on-secondary-fixed": "#171838",
+                        "surface": "#131313",
+                        "accent-orange": "#fc4c02",
+                        "accent-periwinkle": "#bdbbff",
+                        "background": "#131313",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-lowest": "#0e0e0e",
+                        "primary-fixed": "#e2e2e2",
+                        "hairline": "rgba(0, 0, 0, 0.08)",
+                        "inverse-on-surface": "#303030",
+                        "on-tertiary-fixed": "#1b1b1b",
+                        "surface-dim": "#131313",
+                        "on-primary-fixed": "#1b1b1b",
+                        "on-surface": "#e2e2e2",
+                        "primary": "#c6c6c6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "2xl": "24px",
+                        "section": "80px",
+                        "sm": "8px",
+                        "3xl": "32px",
+                        "xs": "4px",
+                        "xxs": "2px",
+                        "xl": "20px",
+                        "6xl": "55.2px",
+                        "lg": "16px",
+                        "md": "12px",
+                        "5xl": "48px",
+                        "4xl": "44px"
+                    },
+                    "fontFamily": {
+                        "body-md-strong": ["The Future", "sans-serif"],
+                        "mono-caption": ["PP Neue Montreal Mono", "monospace"],
+                        "body-lg-strong": ["The Future", "sans-serif"],
+                        "body-md": ["The Future", "sans-serif"],
+                        "body-lg": ["The Future", "sans-serif"],
+                        "caption-strong": ["The Future", "sans-serif"],
+                        "display-md": ["The Future", "sans-serif"],
+                        "mono-caps-button": ["PP Neue Montreal Mono", "monospace"],
+                        "display-xl": ["The Future", "sans-serif"],
+                        "mono-caps-eyebrow": ["PP Neue Montreal Mono", "monospace"],
+                        "display-lg": ["The Future", "sans-serif"],
+                        "caption": ["The Future", "sans-serif"],
+                        "mono-caps-label": ["PP Neue Montreal Mono", "monospace"],
+                        "display-xxl": ["The Future", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "body-md-strong": ["16px", {"lineHeight": "20.8px", "letterSpacing": "-0.16px", "fontWeight": "500"}],
+                        "mono-caption": ["10px", {"lineHeight": "14px", "letterSpacing": "0.05px", "fontWeight": "400"}],
+                        "body-lg-strong": ["18px", {"lineHeight": "23.4px", "letterSpacing": "-0.18px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "20.8px", "letterSpacing": "-0.16px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "23.4px", "letterSpacing": "-0.18px", "fontWeight": "400"}],
+                        "caption-strong": ["14px", {"lineHeight": "19.6px", "fontWeight": "500"}],
+                        "display-md": ["22px", {"lineHeight": "25.3px", "letterSpacing": "-0.22px", "fontWeight": "500"}],
+                        "mono-caps-button": ["16px", {"lineHeight": "16px", "letterSpacing": "0.08px", "fontWeight": "500"}],
+                        "display-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.8px", "fontWeight": "500"}],
+                        "mono-caps-eyebrow": ["11px", {"lineHeight": "11px", "letterSpacing": "0.55px", "fontWeight": "500"}],
+                        "display-lg": ["28px", {"lineHeight": "32.2px", "letterSpacing": "-0.42px", "fontWeight": "500"}],
+                        "caption": ["14px", {"lineHeight": "19.6px", "fontWeight": "400"}],
+                        "mono-caps-label": ["11px", {"lineHeight": "15.4px", "letterSpacing": "0.055px", "fontWeight": "500"}],
+                        "display-xxl": ["64px", {"lineHeight": "70.4px", "letterSpacing": "-1.92px", "fontWeight": "500"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col overflow-x-hidden">
+<!-- Top App Bar -->
+<header class="flex justify-between items-center px-lg py-md w-full top-0 z-50 canvas-dark-hero">
+<div class="font-mono-caps-eyebrow text-mono-caps-eyebrow tracking-widest text-on-surface uppercase">MILEMIND</div>
+<div class="material-symbols-outlined text-on-surface cursor-pointer" data-icon="close">close</div>
+</header>
+<!-- Hero Area (Canvas Dark) -->
+<div class="canvas-dark-hero flex-1 flex flex-col items-center justify-center pt-5xl pb-section px-lg text-center">
+<div class="relative w-full max-w-xl mx-auto h-64 md:h-80 mb-3xl overflow-hidden rounded-[4px] border border-white/10 group">
+<img alt="Professional Runner" class="w-full h-full object-cover grayscale opacity-60 group-hover:opacity-80 transition-opacity duration-700" data-alt="A moody, high-contrast black and white photograph of an elite runner in mid-stride on a quiet coastal road during dawn. The lighting is low-key and dramatic, casting long shadows and highlighting the athlete's focused expression and powerful form. The atmosphere is calm, trustworthy, and premium, avoiding aggressive gym aesthetics in favor of professional endurance sports clarity. Subtle lens flare from the rising sun adds a touch of optimistic warmth to the cool, dark tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIaIaudTo6OkfhrgDy-RlmM6Vz52vx4yep_gEV5zSBGjfG2wzJavGi5dHe7cJWTQwMDgdU7oh6OUFOwni1kCpoZe2iMlzCUL4dFSO3Y3oFeIYfSDJsqUAlU8eiJF4g5lQgoyDxJT5ishzxnM_bKoulWSB4_xH0mfpdOVRcDmLjOWfJuk43VdVmkCgH9eA3MWIbh97DFIRpNJur5Y_m4nJoDZoOiwWyFrfWRI9QrWvnLaqHYLEiWu_XpYJ7DT2-1YbzP84r4kJ3Big"/>
+<!-- Together AI Ribbon -->
+<div class="absolute bottom-0 left-0 together-gradient shadow-2xl"></div>
+</div>
+<h1 class="font-display-xl text-display-xl text-on-surface mb-xl max-w-2xl">
+        Let’s build your running profile
+    </h1>
+</div>
+<!-- Content Area (Canvas White) -->
+<div class="canvas-white-content flex-none pt-section pb-3xl px-lg rounded-t-[32px] -mt-xl relative z-10 shadow-[0_-20px_50px_-12px_rgba(0,0,0,0.5)]">
+<div class="max-w-xl mx-auto space-y-3xl">
+<!-- Description -->
+<div class="space-y-lg">
+<p class="font-body-lg text-body-lg text-ink">
+                We’ll ask about your recent running, weekly availability, and training preferences so your plan starts at a safe level.
+            </p>
+<div class="flex gap-md items-start p-lg bg-surface-container-lowest/5 rounded-[4px] border border-hairline">
+<span class="material-symbols-outlined text-ink mt-xs" data-icon="info">info</span>
+<p class="font-caption text-caption text-body-gray">
+                    Your plan is created by coaching rules. AI is used only to explain workouts and changes.
+                </p>
+</div>
+</div>
+<!-- Call to Action Cluster -->
+<div class="flex flex-col items-center space-y-md">
+<button class="w-full py-xl px-5xl bg-ink text-on-primary font-mono-caps-button text-mono-caps-button uppercase tracking-widest rounded-full btn-hover-effect transition-all shadow-lg hover:shadow-xl">
+                Start setup
+            </button>
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-body-gray text-sm" data-icon="schedule">schedule</span>
+<span class="font-mono-caps-label text-mono-caps-label text-body-gray uppercase">Takes about 3 minutes</span>
+</div>
+</div>
+<!-- Visual Decorative Grid (Blueprint feel) -->
+<div class="grid grid-cols-2 gap-md pt-2xl">
+<div class="border-t border-hairline pt-md">
+<div class="font-mono-caps-eyebrow text-body-gray mb-xs uppercase">PRECISION</div>
+<div class="font-body-md text-ink">Rule-based architecture</div>
+</div>
+<div class="border-t border-hairline pt-md">
+<div class="font-mono-caps-eyebrow text-body-gray mb-xs uppercase">ADAPTIVE</div>
+<div class="font-body-md text-ink">Availability-first logic</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Background Atmospheric Effect -->
+<div class="fixed inset-0 pointer-events-none z-[-1] opacity-5">
+<svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<pattern height="40" id="grid" patternunits="userSpaceOnUse" width="40">
+<path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" stroke-width="0.5"></path>
+</pattern>
+</defs>
+<rect fill="url(#grid)" height="100%" width="100%"></rect>
+</svg>
+</div>
+<script>
+    // Simple Interaction logic
+    document.querySelector('button').addEventListener('click', function() {
+        this.classList.add('scale-95');
+        setTimeout(() => {
+            this.classList.remove('scale-95');
+        }, 100);
+    });
+
+    // Initialize Material Icons Weight
+    document.querySelectorAll('.material-symbols-outlined').forEach(icon => {
+        if (icon.getAttribute('data-weight') === 'fill') {
+            icon.style.fontVariationSettings = "'FILL' 1";
+        }
+    });
+</script>
+</body></html>

@@ -170,12 +170,13 @@ Response:
 ```json
 {
   "userId": "a0fc10b5-4b7e-49b7-985e-d4b29cb499dd",
-  "profileId": "13d2ebee-fcd5-4e55-b7e8-6cf9173659fa",
-  "raceGoalId": "5bf19182-62d9-4127-b349-2fab89a80f6d",
-  "trainingPlanId": "06cfb0f4-2f0e-4f22-b6c0-60ab7ea1b0cb",
-  "planVersion": 1
+  "profileId": "13d2ebee-fcd5-4e55-b7e8-6cf9173659fa"
 }
 ```
+
+Note:
+- Slice 2 onboarding currently persists the runner profile only.
+- Race goal and training plan identifiers are returned by their dedicated endpoints when those slices are enabled.
 
 Validation:
 - Adult only.
@@ -216,12 +217,17 @@ Request:
   "preferredLongRunDay": "SUNDAY",
   "strengthDaysPerWeek": 1,
   "units": "KM",
-  "timezone": "Europe/Berlin"
+  "timezone": "Europe/Berlin",
+  "injuryHistory": {
+    "hadRunningInjuryLast12Months": false,
+    "summary": "No current injury, mild right knee pain last winter."
+  }
 }
 ```
 
 Behavior:
 - Changes affecting future workouts may trigger plan regeneration.
+- `typicalWeeklyDistanceKm` and `longestRecentRunKm` are onboarding fields and are not mutable via profile update.
 
 ## Race Goal Endpoints
 

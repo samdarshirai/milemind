@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Edit Profile - MILEMIND</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2a2a2a;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed": "#e2e2e2",
+                      "inverse-primary": "#5e5e5e",
+                      "tertiary": "#c6c6c6",
+                      "on-primary": "#ffffff",
+                      "on-surface-variant": "#cfc4c5",
+                      "surface-container-high": "#2a2a2a",
+                      "surface-container-highest": "#353535",
+                      "on-secondary-fixed-variant": "#424466",
+                      "on-tertiary-fixed": "#1b1b1b",
+                      "ink": "#000000",
+                      "on-tertiary-fixed-variant": "#474747",
+                      "on-primary-container": "#757575",
+                      "tertiary-fixed-dim": "#c6c6c6",
+                      "secondary-fixed-dim": "#c3c3ec",
+                      "error": "#ffb4ab",
+                      "primary": "#c6c6c6",
+                      "surface": "#131313",
+                      "accent-periwinkle": "#bdbbff",
+                      "on-primary-fixed": "#1b1b1b",
+                      "secondary": "#c3c3ec",
+                      "primary-fixed-dim": "#c6c6c6",
+                      "hairline": "rgba(0, 0, 0, 0.08)",
+                      "on-secondary-fixed": "#171838",
+                      "tertiary-container": "#000000",
+                      "surface-dark-soft": "#313641",
+                      "accent-orange": "#fc4c02",
+                      "surface-dim": "#131313",
+                      "on-surface": "#e2e2e2",
+                      "inverse-on-surface": "#303030",
+                      "inverse-surface": "#e2e2e2",
+                      "accent-mint": "#c8f6f9",
+                      "on-background": "#e2e2e2",
+                      "outline": "#988e90",
+                      "on-secondary": "#2c2d4e",
+                      "error-container": "#93000a",
+                      "surface-bright": "#393939",
+                      "surface-container-low": "#1b1b1b",
+                      "secondary-container": "#454668",
+                      "accent-magenta": "#ef2cc1",
+                      "primary-fixed": "#e2e2e2",
+                      "primary-container": "#000000",
+                      "on-error": "#690005",
+                      "on-tertiary-container": "#757575",
+                      "surface-tint": "#c6c6c6",
+                      "outline-variant": "#4c4546",
+                      "body-gray": "#959494",
+                      "background": "#131313",
+                      "surface-variant": "#353535",
+                      "surface-container": "#1f1f1f",
+                      "on-tertiary": "#303030",
+                      "on-secondary-container": "#b4b5de",
+                      "surface-container-lowest": "#0e0e0e",
+                      "secondary-fixed": "#e1e0ff",
+                      "on-primary-fixed-variant": "#474747",
+                      "on-error-container": "#ffdad6"
+              },
+              "borderRadius": {
+                      "DEFAULT": "4px",
+                      "lg": "8px",
+                      "xl": "12px",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "md": "12px",
+                      "xl": "20px",
+                      "6xl": "55.2px",
+                      "xxs": "2px",
+                      "sm": "8px",
+                      "4xl": "44px",
+                      "section": "80px",
+                      "lg": "16px",
+                      "xs": "4px",
+                      "2xl": "24px",
+                      "3xl": "32px",
+                      "5xl": "48px"
+              },
+              "fontFamily": {
+                      "display-xl": ["The Future, Inter, Helvetica Neue, Arial, sans-serif"],
+                      "display-xxl": ["The Future, Inter, Helvetica Neue, Arial, sans-serif"],
+                      "body-md-strong": ["The Future, Inter, Helvetica Neue, Arial, sans-serif"],
+                      "mono-caps-button": ["PP Neue Montreal Mono, ui-monospace, SF Mono, Menlo, monospace"],
+                      "body-lg-strong": ["The Future, Inter, Helvetica Neue, Arial, sans-serif"],
+                      "display-md": ["The Future, Inter, Helvetica Neue, Arial, sans-serif"],
+                      "display-lg": ["The Future, Inter, Helvetica Neue, Arial, sans-serif"],
+                      "body-lg": ["The Future, Inter, Helvetica Neue, Arial, sans-serif"],
+                      "body-md": ["The Future, Inter, Helvetica Neue, Arial, sans-serif"],
+                      "caption": ["The Future, Inter, Helvetica Neue, Arial, sans-serif"],
+                      "mono-caps-eyebrow": ["PP Neue Montreal Mono, ui-monospace, SF Mono, Menlo, monospace"],
+                      "mono-caps-label": ["PP Neue Montreal Mono, ui-monospace, SF Mono, Menlo, monospace"],
+                      "mono-caption": ["PP Neue Montreal Mono, ui-monospace, SF Mono, Menlo, monospace"],
+                      "caption-strong": ["The Future, Inter, Helvetica Neue, Arial, sans-serif"]
+              },
+              "fontSize": {
+                      "display-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.8px", "fontWeight": "500"}],
+                      "display-xxl": ["64px", {"lineHeight": "70.4px", "letterSpacing": "-1.92px", "fontWeight": "500"}],
+                      "body-md-strong": ["16px", {"lineHeight": "20.8px", "letterSpacing": "-0.16px", "fontWeight": "500"}],
+                      "mono-caps-button": ["16px", {"lineHeight": "16px", "letterSpacing": "0.08px", "fontWeight": "500"}],
+                      "body-lg-strong": ["18px", {"lineHeight": "23.4px", "letterSpacing": "-0.18px", "fontWeight": "500"}],
+                      "display-md": ["22px", {"lineHeight": "25.3px", "letterSpacing": "-0.22px", "fontWeight": "500"}],
+                      "display-lg": ["28px", {"lineHeight": "32.2px", "letterSpacing": "-0.42px", "fontWeight": "500"}],
+                      "body-lg": ["18px", {"lineHeight": "23.4px", "letterSpacing": "-0.18px", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "20.8px", "letterSpacing": "-0.16px", "fontWeight": "400"}],
+                      "caption": ["14px", {"lineHeight": "19.6px", "fontWeight": "400"}],
+                      "mono-caps-eyebrow": ["11px", {"lineHeight": "11px", "letterSpacing": "0.55px", "fontWeight": "500"}],
+                      "mono-caps-label": ["11px", {"lineHeight": "15.4px", "letterSpacing": "0.055px", "fontWeight": "500"}],
+                      "mono-caption": ["10px", {"lineHeight": "14px", "letterSpacing": "0.05px", "fontWeight": "400"}],
+                      "caption-strong": ["14px", {"lineHeight": "19.6px", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface min-h-screen font-body-md selection:bg-accent-mint selection:text-ink">
+<!-- Top App Bar -->
+<header class="bg-surface text-primary font-display-md text-display-md full-width top-0 border-b border-white/10 flex justify-between items-center px-lg py-md w-full sticky z-50">
+<div class="flex items-center gap-md">
+<button aria-label="Close" class="hover:opacity-80 transition-opacity active:scale-95 duration-100">
+<span class="material-symbols-outlined">close</span>
+</button>
+<span class="font-mono-caps-eyebrow text-mono-caps-eyebrow tracking-widest text-on-surface">MILEMIND</span>
+</div>
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container-high border border-white/10 flex items-center justify-center overflow-hidden">
+<img alt="User" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBd351BHfZPrnohgz5P7z23v3nizYKbUHS4CsNjz-hPOK3Ek647nEaWCGB8mRf0aNY38_6eYgZeL5X86Gady5d_oYEIgt92X3XS2G1MmHrQly34kZjhw9mmZDzI3FC46FiDtNeLoUNwP5UJGimJEbAxI9IxMgsaQkONC0CPFKvy9RrY1173rh430AhJvx3f82MhDX24QyBmI_u42hZafcTZU-EQDHTl9XJsMtbVdMJtu5gHE7u0pyckTrgaj81SKb-d0F96YiErhzk"/>
+</div>
+</div>
+</header>
+<main class="max-w-2xl mx-auto px-lg py-3xl pb-32">
+<!-- Header -->
+<section class="mb-2xl">
+<h1 class="font-display-lg text-display-lg mb-md">Edit profile</h1>
+<!-- Info Banner -->
+<div class="bg-surface-container-low border border-white/5 rounded-[4px] p-lg flex gap-md items-start">
+<span class="material-symbols-outlined text-accent-mint" style="font-variation-settings: 'FILL' 1;">info</span>
+<p class="font-body-md text-body-gray">Some changes may update your future workouts, but completed workouts will not be changed.</p>
+</div>
+</section>
+<!-- Form Sections -->
+<div class="space-y-3xl">
+<!-- Running Profile -->
+<section>
+<h2 class="font-mono-caps-eyebrow text-mono-caps-eyebrow text-body-gray mb-lg uppercase">Running Profile</h2>
+<div class="bg-surface-container rounded-[4px] border border-white/5 divide-y divide-white/5 overflow-hidden">
+<div class="p-lg flex justify-between items-center hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div>
+<p class="font-body-md-strong text-on-surface">Experience Level</p>
+<p class="font-caption text-body-gray">5 years training</p>
+</div>
+<span class="material-symbols-outlined text-body-gray group-hover:text-on-surface transition-colors">chevron_right</span>
+</div>
+<div class="p-lg flex justify-between items-center hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div>
+<p class="font-body-md-strong text-on-surface">Biological Sex</p>
+<p class="font-caption text-body-gray">Male</p>
+</div>
+<span class="material-symbols-outlined text-body-gray group-hover:text-on-surface transition-colors">chevron_right</span>
+</div>
+<div class="p-lg flex justify-between items-center hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div>
+<p class="font-body-md-strong text-on-surface">Preferred Distance</p>
+<p class="font-caption text-body-gray">Half Marathon</p>
+</div>
+<span class="material-symbols-outlined text-body-gray group-hover:text-on-surface transition-colors">chevron_right</span>
+</div>
+</div>
+</section>
+<!-- Training Availability -->
+<section>
+<h2 class="font-mono-caps-eyebrow text-mono-caps-eyebrow text-body-gray mb-lg uppercase">Training Availability</h2>
+<div class="bg-surface-container rounded-[4px] border border-white/5 p-lg">
+<p class="font-body-md-strong text-on-surface mb-md">Active Days</p>
+<div class="flex flex-wrap gap-sm">
+<button class="px-lg py-md border border-white/10 rounded-full font-mono-caps-label bg-surface-container-high text-on-surface">MON</button>
+<button class="px-lg py-md border border-white/10 rounded-full font-mono-caps-label bg-surface-container-high text-on-surface">TUE</button>
+<button class="px-lg py-md border border-accent-mint rounded-full font-mono-caps-label bg-accent-mint text-ink">WED</button>
+<button class="px-lg py-md border border-white/10 rounded-full font-mono-caps-label bg-surface-container-high text-on-surface">THU</button>
+<button class="px-lg py-md border border-accent-mint rounded-full font-mono-caps-label bg-accent-mint text-ink">FRI</button>
+<button class="px-lg py-md border border-white/10 rounded-full font-mono-caps-label bg-surface-container-low text-body-gray opacity-50">SAT</button>
+<button class="px-lg py-md border border-white/10 rounded-full font-mono-caps-label bg-surface-container-high text-on-surface">SUN</button>
+</div>
+</div>
+</section>
+<!-- Units and Timezone -->
+<section>
+<h2 class="font-mono-caps-eyebrow text-mono-caps-eyebrow text-body-gray mb-lg uppercase">Units &amp; Localization</h2>
+<div class="bg-surface-container rounded-[4px] border border-white/5 divide-y divide-white/5 overflow-hidden">
+<div class="p-lg flex justify-between items-center">
+<div>
+<p class="font-body-md-strong text-on-surface">System</p>
+<p class="font-caption text-body-gray">Metric (km, kg)</p>
+</div>
+<div class="flex bg-surface-container-low p-xs rounded-[4px]">
+<button class="px-md py-xs bg-surface-container-high text-on-surface rounded-[2px] font-mono-caption">METRIC</button>
+<button class="px-md py-xs text-body-gray font-mono-caption">IMP</button>
+</div>
+</div>
+<div class="p-lg flex justify-between items-center hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div>
+<p class="font-body-md-strong text-on-surface">Timezone</p>
+<p class="font-caption text-body-gray">PST (UTC -08:00)</p>
+</div>
+<span class="material-symbols-outlined text-body-gray group-hover:text-on-surface transition-colors">language</span>
+</div>
+</div>
+</section>
+<!-- Injury History -->
+<section>
+<div class="flex justify-between items-center mb-lg">
+<h2 class="font-mono-caps-eyebrow text-mono-caps-eyebrow text-body-gray uppercase">Injury History</h2>
+<button class="text-accent-mint font-mono-caps-label hover:underline">+ ADD NEW</button>
+</div>
+<div class="bg-surface-container rounded-[4px] border border-white/5 p-lg">
+<div class="flex items-center gap-lg">
+<div class="w-10 h-10 rounded-full bg-error/10 flex items-center justify-center text-error">
+<span class="material-symbols-outlined">warning</span>
+</div>
+<div class="flex-1">
+<p class="font-body-md-strong text-on-surface">Left Knee Tendonitis</p>
+<p class="font-caption text-body-gray">Active • Low Intensity Impact</p>
+</div>
+<button class="text-body-gray hover:text-on-surface">
+<span class="material-symbols-outlined">edit</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Bottom Action Area -->
+<div class="fixed bottom-0 left-0 w-full bg-surface/80 backdrop-blur-md border-t border-white/5 p-lg z-40">
+<div class="max-w-2xl mx-auto flex gap-lg">
+<button class="flex-1 bg-on-surface text-surface py-lg rounded-[4px] font-mono-caps-button uppercase tracking-wider hover:opacity-90 active:scale-[0.98] transition-all" onclick="showToast()">
+    Save changes
+</button>
+</div>
+</div>
+<!-- Success Snackbar -->
+<div class="fixed bottom-24 left-1/2 -translate-x-1/2 bg-surface-container-highest border border-white/10 px-2xl py-md rounded-full shadow-2xl flex items-center gap-md transform translate-y-32 opacity-0 transition-all duration-500 z-[100]" id="successSnackbar">
+<span class="material-symbols-outlined text-accent-mint" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-md-strong text-on-surface">Profile updated</span>
+</div>
+<script>
+    function showToast() {
+        const toast = document.getElementById('successSnackbar');
+        toast.classList.remove('translate-y-32', 'opacity-0');
+        toast.classList.add('translate-y-0', 'opacity-100');
+        
+        setTimeout(() => {
+            toast.classList.add('translate-y-32', 'opacity-0');
+            toast.classList.remove('translate-y-0', 'opacity-100');
+        }, 3000);
+    }
+</script>
+</body></html>
