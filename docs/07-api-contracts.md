@@ -334,6 +334,29 @@ Response:
 }
 ```
 
+### `GET /v1/plans/{planId}`
+
+Response:
+
+```json
+{
+  "planId": "06cfb0f4-2f0e-4f22-b6c0-60ab7ea1b0cb",
+  "status": "ACTIVE",
+  "startDate": "2026-05-20",
+  "endDate": "2026-09-20",
+  "raceGoalId": "de885ad0-cbc8-499d-a99e-9b9112ae3330",
+  "weeks": [
+    {
+      "weekNumber": 1,
+      "startDate": "2026-05-20",
+      "endDate": "2026-05-26",
+      "totalPlannedDistanceKm": 24.0,
+      "workouts": []
+    }
+  ]
+}
+```
+
 ### `POST /v1/planned-workouts/{plannedWorkoutId}/skip`
 
 Request:
