@@ -16,6 +16,8 @@ import com.company.runcoach.feature.onboarding.ui.navigation.OnboardingRoutes
 import com.company.runcoach.feature.onboarding.ui.navigation.onboardingGraph
 import com.company.runcoach.feature.profile.ui.navigation.ProfileRoutes
 import com.company.runcoach.feature.profile.ui.navigation.profileGraph
+import com.company.runcoach.feature.racegoal.ui.navigation.RaceGoalRoutes
+import com.company.runcoach.feature.racegoal.ui.navigation.raceGoalGraph
 
 private object AppRoutes {
     const val SessionHome = "session_home"
@@ -34,37 +36,25 @@ fun RunCoachNavHost() {
 
         onboardingGraph(
             onComplete = {
-                navController.navigate(OnboardingRoutes.RaceGoalPlaceholder) {
+                navController.navigate(RaceGoalRoutes.Setup) {
                     popUpTo(OnboardingRoutes.Intro) { inclusive = true }
                 }
             }
         )
 
-        composable(OnboardingRoutes.RaceGoalPlaceholder) {
-            RaceGoalPlaceholderScreen(onContinue = {
+        raceGoalGraph(
+            onComplete = {
                 navController.navigate(AppRoutes.SessionHome) {
-                    popUpTo(OnboardingRoutes.RaceGoalPlaceholder) { inclusive = true }
+                    popUpTo(RaceGoalRoutes.Setup) { inclusive = true }
                 }
-            })
-        }
+            }
+        )
 
         composable(AppRoutes.SessionHome) {
             SessionHomePlaceholder(onEditProfile = { navController.navigate(ProfileRoutes.Edit) })
         }
 
         profileGraph()
-    }
-}
-
-@Composable
-private fun RaceGoalPlaceholderScreen(onContinue: () -> Unit) {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text("Race goal setup comes in Slice 3")
-        androidx.compose.material3.Button(onClick = onContinue) { Text("Continue") }
     }
 }
 

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Review your race goal | Milemind</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;family=Inter:wght@400;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed": "#bdebee",
+                      "surface-container-highest": "#e4e2e2",
+                      "on-secondary-container": "#406b6e",
+                      "secondary": "#3a6568",
+                      "primary-container": "#1b1b1b",
+                      "inverse-surface": "#303031",
+                      "primary-fixed": "#e2e2e2",
+                      "hairline-dark": "rgba(255, 255, 255, 0.12)",
+                      "on-secondary-fixed-variant": "#204d50",
+                      "outline-variant": "#cfc4c5",
+                      "on-primary": "#ffffff",
+                      "on-background": "#1b1c1c",
+                      "surface-dim": "#dbd9d9",
+                      "surface-container": "#f0eded",
+                      "on-secondary": "#ffffff",
+                      "on-primary-fixed-variant": "#474747",
+                      "on-tertiary": "#ffffff",
+                      "outline": "#7e7576",
+                      "tertiary-fixed-dim": "#c3c3ec",
+                      "hairline-light": "rgba(0, 0, 0, 0.08)",
+                      "secondary-fixed-dim": "#a2cfd2",
+                      "surface-container-high": "#eae8e7",
+                      "tertiary-fixed": "#e1e0ff",
+                      "surface-variant": "#e4e2e2",
+                      "inverse-on-surface": "#f2f0f0",
+                      "on-error-container": "#93000a",
+                      "vibe-magenta": "#ef2cc1",
+                      "surface-soft": "#313641",
+                      "error": "#ba1a1a",
+                      "on-tertiary-container": "#8081a7",
+                      "surface-tint": "#5e5e5e",
+                      "tertiary-container": "#171838",
+                      "data-periwinkle": "#bdbbff",
+                      "energy-orange": "#fc4c02",
+                      "on-surface-variant": "#4c4546",
+                      "on-secondary-fixed": "#002022",
+                      "on-tertiary-fixed-variant": "#424466",
+                      "error-container": "#ffdad6",
+                      "primary-fixed-dim": "#c6c6c6",
+                      "on-primary-fixed": "#1b1b1b",
+                      "inverse-primary": "#c6c6c6",
+                      "secondary-container": "#bdebee",
+                      "on-surface": "#1b1c1c",
+                      "on-error": "#ffffff",
+                      "mint-accent": "#c8f6f9",
+                      "deep-canvas": "#010120",
+                      "on-primary-container": "#848484",
+                      "primary": "#000000",
+                      "on-tertiary-fixed": "#171838",
+                      "tertiary": "#000000",
+                      "background": "#fbf9f8",
+                      "surface": "#fbf9f8",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-low": "#f5f3f3",
+                      "surface-bright": "#fbf9f8"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "md": "12px",
+                      "xs": "4px",
+                      "2xl": "24px",
+                      "section-gap": "48px",
+                      "xl": "20px",
+                      "3xl": "32px",
+                      "lg": "16px",
+                      "base": "4px",
+                      "sm": "8px"
+              },
+              "fontFamily": {
+                      "display-lg": ["Sora"],
+                      "button-mono": ["JetBrains Mono"],
+                      "display-xl": ["Sora"],
+                      "eyebrow-mono": ["JetBrains Mono"],
+                      "body-md": ["Inter"],
+                      "display-md": ["Sora"],
+                      "body-lg": ["Inter"],
+                      "caption-mono": ["JetBrains Mono"]
+              },
+              "fontSize": {
+                      "display-lg": ["28px", {"lineHeight": "32px", "letterSpacing": "-0.4px", "fontWeight": "500"}],
+                      "button-mono": ["16px", {"lineHeight": "16px", "letterSpacing": "0.08px", "fontWeight": "500"}],
+                      "display-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.8px", "fontWeight": "500"}],
+                      "eyebrow-mono": ["11px", {"lineHeight": "11px", "letterSpacing": "0.55px", "fontWeight": "500"}],
+                      "body-md": ["16px", {"lineHeight": "21px", "letterSpacing": "-0.16px", "fontWeight": "400"}],
+                      "display-md": ["22px", {"lineHeight": "26px", "letterSpacing": "-0.2px", "fontWeight": "500"}],
+                      "body-lg": ["18px", {"lineHeight": "24px", "letterSpacing": "-0.18px", "fontWeight": "400"}],
+                      "caption-mono": ["10px", {"lineHeight": "14px", "letterSpacing": "0.05px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col font-body-md">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-lg h-16 bg-surface dark:bg-deep-canvas border-b border-hairline-light dark:border-hairline-dark">
+<button class="flex items-center justify-center w-10 h-10 transition-colors duration-200 ease-in-out hover:bg-surface-container dark:hover:bg-surface-soft rounded-full">
+<span class="material-symbols-outlined text-primary dark:text-on-primary">arrow_back</span>
+</button>
+<h1 class="font-display-md text-display-md font-bold text-primary dark:text-on-primary">Milemind</h1>
+<button class="flex items-center justify-center w-10 h-10 transition-colors duration-200 ease-in-out hover:bg-surface-container dark:hover:bg-surface-soft rounded-full">
+<span class="material-symbols-outlined text-primary dark:text-on-primary">account_circle</span>
+</button>
+</header>
+<main class="flex-1 mt-16 px-lg pt-3xl pb-32 max-w-lg mx-auto w-full">
+<!-- Screen Title -->
+<header class="mb-section-gap">
+<h2 class="font-display-lg text-display-lg text-primary mb-sm">Review your race goal</h2>
+<p class="font-body-lg text-on-surface-variant">Confirm the details of your upcoming performance challenge.</p>
+</header>
+<!-- Summary Bento Card -->
+<section class="mb-xl">
+<div class="bg-surface-container-lowest border border-hairline-light rounded-xl overflow-hidden">
+<!-- Primary Identity Band -->
+<div class="p-3xl bg-primary text-on-primary">
+<span class="font-eyebrow-mono text-eyebrow-mono uppercase opacity-70 tracking-widest block mb-xs">Race distance</span>
+<h3 class="font-display-xl text-display-xl font-bold">21.1 KM</h3>
+<p class="font-body-lg mt-sm opacity-90">Berlin Half Marathon</p>
+</div>
+<!-- Secondary Data Grid -->
+<div class="grid grid-cols-2 border-t border-hairline-light">
+<div class="p-lg border-r border-hairline-light">
+<span class="font-eyebrow-mono text-eyebrow-mono text-on-surface-variant block mb-base uppercase">Race date</span>
+<p class="font-body-md font-bold text-primary">April 07, 2024</p>
+</div>
+<div class="p-lg">
+<span class="font-eyebrow-mono text-eyebrow-mono text-on-surface-variant block mb-base uppercase">Timeline</span>
+<p class="font-body-md font-bold text-primary">14 Weeks left</p>
+</div>
+</div>
+<div class="grid grid-cols-2 border-t border-hairline-light">
+<div class="p-lg border-r border-hairline-light">
+<span class="font-eyebrow-mono text-eyebrow-mono text-on-surface-variant block mb-base uppercase">Goal style</span>
+<p class="font-body-md font-bold text-primary">Performance</p>
+</div>
+<div class="p-lg">
+<span class="font-eyebrow-mono text-eyebrow-mono text-on-surface-variant block mb-base uppercase">Target time</span>
+<p class="font-body-md font-bold text-primary">01:45:00</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Dynamic Visualization (Momentum Bar) -->
+<section class="mb-section-gap">
+<div class="h-1 bg-surface-container-highest rounded-full overflow-hidden w-full relative">
+<div class="absolute inset-0 bg-gradient-to-r from-primary to-energy-orange w-2/3"></div>
+</div>
+<div class="flex justify-between mt-sm">
+<span class="font-caption-mono text-caption-mono text-on-surface-variant">PLANNING START</span>
+<span class="font-caption-mono text-caption-mono text-primary font-bold">RACE DAY</span>
+</div>
+</section>
+<!-- Info Banner -->
+<section class="mb-section-gap">
+<div class="flex gap-md p-lg bg-surface-container-low border border-hairline-light rounded-lg">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0" style="font-variation-settings: 'FILL' 1;">info</span>
+<p class="font-body-md text-on-surface-variant leading-tight">
+                    Your plan will be generated from your running history, availability, and this goal. If the date is too soon, we’ll ask you to choose a safer timeline.
+                </p>
+</div>
+</section>
+<!-- Performance Banner (Hero Image Context) -->
+<section class="rounded-xl overflow-hidden mb-section-gap relative aspect-video flex items-end">
+<img alt="Running visual" class="absolute inset-0 w-full h-full object-cover grayscale brightness-50" data-alt="A focused high-contrast photograph of an elite runner's legs mid-stride on a dark, wet urban asphalt road at dusk. The lighting is dramatic and moody, highlighting the muscular definition and the technical texture of professional athletic gear. The color palette is dominated by deep blacks and cool grays, with a single sharp glint of light reflecting off the pavement to create a sense of momentum and engineering-chic precision. The overall mood is serious, urgent, and focused on high-performance athletics." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAA6rT3OU7oMbBvugLAYYGMgiSUEZyQVFYXFPqHadmnvATjErL2pGfa2EHmPLMmez32Cp97cv0_PtbXvJjwNghMvW_Qzg2Nr_XmLo_gy6I-TJJaIh1hk25idq50RGz3fxRehfcV0uyaKcmzhf82T9U0fx_lm3BjtBFulAH955ZsYHRwW-ctJKfLZMqqi7quuKb17YwzIt-RejXspebTKYBmT0-tvcNInQK-x-rYsjhGmgdSYasb4qvOfQ9h3sZ1PFOBAtl5fXe6BdLY"/>
+<div class="relative z-10 p-xl w-full bg-gradient-to-t from-primary/80 to-transparent">
+<p class="font-display-md text-on-primary">Precision training begins now.</p>
+</div>
+</section>
+<!-- Footer Wordmark -->
+<footer class="mt-section-gap border-t border-hairline-light pt-3xl pb-12 flex flex-col items-center">
+<div class="font-display-xl text-[64px] font-extrabold text-surface-container-highest opacity-50 tracking-tighter leading-none mb-4">MILEMIND</div>
+<p class="font-caption-mono text-caption-mono text-outline uppercase tracking-widest">Engineering Peak Performance</p>
+</footer>
+</main>
+<!-- Bottom Actions Layer (Floating on mobile) -->
+<div class="fixed bottom-0 left-0 w-full p-lg bg-surface/90 backdrop-blur-md border-t border-hairline-light flex flex-col gap-sm md:relative md:bg-transparent md:border-none md:p-0 md:max-w-lg md:mx-auto md:mb-12">
+<button class="w-full bg-primary text-on-primary font-button-mono text-button-mono py-md rounded-full transition-transform duration-150 active:scale-95 flex items-center justify-center gap-sm">
+            Save goal
+            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<button class="w-full bg-transparent border border-outline text-primary font-button-mono text-button-mono py-md rounded-full transition-colors duration-200 hover:bg-surface-container active:scale-95">
+            Edit
+        </button>
+</div>
+<!-- Script for micro-interactions -->
+<script>
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Micro-interaction feedback
+                console.log('Action triggered');
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;family=Inter:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "secondary-fixed": "#bdebee",
+                  "surface-container-highest": "#e4e2e2",
+                  "on-secondary-container": "#406b6e",
+                  "secondary": "#3a6568",
+                  "primary-container": "#1b1b1b",
+                  "inverse-surface": "#303031",
+                  "primary-fixed": "#e2e2e2",
+                  "hairline-dark": "rgba(255, 255, 255, 0.12)",
+                  "on-secondary-fixed-variant": "#204d50",
+                  "outline-variant": "#cfc4c5",
+                  "on-primary": "#ffffff",
+                  "on-background": "#1b1c1c",
+                  "surface-dim": "#dbd9d9",
+                  "surface-container": "#f0eded",
+                  "on-secondary": "#ffffff",
+                  "on-primary-fixed-variant": "#474747",
+                  "on-tertiary": "#ffffff",
+                  "outline": "#7e7576",
+                  "tertiary-fixed-dim": "#c3c3ec",
+                  "hairline-light": "rgba(0, 0, 0, 0.08)",
+                  "secondary-fixed-dim": "#a2cfd2",
+                  "surface-container-high": "#eae8e7",
+                  "tertiary-fixed": "#e1e0ff",
+                  "surface-variant": "#e4e2e2",
+                  "inverse-on-surface": "#f2f0f0",
+                  "on-error-container": "#93000a",
+                  "vibe-magenta": "#ef2cc1",
+                  "surface-soft": "#313641",
+                  "error": "#ba1a1a",
+                  "on-tertiary-container": "#8081a7",
+                  "surface-tint": "#5e5e5e",
+                  "tertiary-container": "#171838",
+                  "data-periwinkle": "#bdbbff",
+                  "energy-orange": "#fc4c02",
+                  "on-surface-variant": "#4c4546",
+                  "on-secondary-fixed": "#002022",
+                  "on-tertiary-fixed-variant": "#424466",
+                  "error-container": "#ffdad6",
+                  "primary-fixed-dim": "#c6c6c6",
+                  "on-primary-fixed": "#1b1b1b",
+                  "inverse-primary": "#c6c6c6",
+                  "secondary-container": "#bdebee",
+                  "on-surface": "#1b1c1c",
+                  "on-error": "#ffffff",
+                  "mint-accent": "#c8f6f9",
+                  "deep-canvas": "#010120",
+                  "on-primary-container": "#848484",
+                  "primary": "#000000",
+                  "on-tertiary-fixed": "#171838",
+                  "tertiary": "#000000",
+                  "background": "#fbf9f8",
+                  "surface": "#fbf9f8",
+                  "surface-container-lowest": "#ffffff",
+                  "surface-container-low": "#f5f3f3",
+                  "surface-bright": "#fbf9f8"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.125rem",
+                  "lg": "0.25rem",
+                  "xl": "0.5rem",
+                  "full": "0.75rem"
+          },
+          "spacing": {
+                  "md": "12px",
+                  "xs": "4px",
+                  "2xl": "24px",
+                  "section-gap": "48px",
+                  "xl": "20px",
+                  "3xl": "32px",
+                  "lg": "16px",
+                  "base": "4px",
+                  "sm": "8px"
+          },
+          "fontFamily": {
+                  "display-lg": ["Sora"],
+                  "button-mono": ["JetBrains Mono"],
+                  "display-xl": ["Sora"],
+                  "eyebrow-mono": ["JetBrains Mono"],
+                  "body-md": ["Inter"],
+                  "display-md": ["Sora"],
+                  "body-lg": ["Inter"],
+                  "caption-mono": ["JetBrains Mono"]
+          },
+          "fontSize": {
+                  "display-lg": ["28px", {"lineHeight": "32px", "letterSpacing": "-0.4px", "fontWeight": "500"}],
+                  "button-mono": ["16px", {"lineHeight": "16px", "letterSpacing": "0.08px", "fontWeight": "500"}],
+                  "display-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.8px", "fontWeight": "500"}],
+                  "eyebrow-mono": ["11px", {"lineHeight": "11px", "letterSpacing": "0.55px", "fontWeight": "500"}],
+                  "body-md": ["16px", {"lineHeight": "21px", "letterSpacing": "-0.16px", "fontWeight": "400"}],
+                  "display-md": ["22px", {"lineHeight": "26px", "letterSpacing": "-0.2px", "fontWeight": "500"}],
+                  "body-lg": ["18px", {"lineHeight": "24px", "letterSpacing": "-0.18px", "fontWeight": "400"}],
+                  "caption-mono": ["10px", {"lineHeight": "14px", "letterSpacing": "0.05px", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      background-color: #fbf9f8;
+      color: #1b1c1c;
+      -webkit-font-smoothing: antialiased;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .success-gradient {
+      background: linear-gradient(180deg, rgba(200, 246, 249, 0.4) 0%, rgba(251, 249, 248, 0) 100%);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex flex-col min-h-screen">
+<!-- TopAppBar from JSON -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-lg h-16 bg-surface dark:bg-deep-canvas border-b border-hairline-light dark:border-hairline-dark">
+<div class="flex items-center gap-md">
+<button class="p-sm rounded-full hover:bg-surface-container transition-colors duration-200">
+<span class="material-symbols-outlined text-primary dark:text-on-primary">arrow_back</span>
+</button>
+<h1 class="font-display-md text-display-md font-bold text-primary dark:text-on-primary">Milemind</h1>
+</div>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-primary dark:text-on-primary">account_circle</span>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-grow flex flex-col pt-16 pb-20 overflow-hidden">
+<!-- Hero Success Section -->
+<section class="success-gradient flex-grow flex flex-col items-center justify-center px-lg text-center">
+<div class="relative mb-3xl">
+<!-- Abstract Success Ring Interaction -->
+<div class="absolute inset-0 scale-150 bg-mint-accent opacity-20 blur-3xl rounded-full"></div>
+<div class="relative w-20 h-20 bg-primary rounded-full flex items-center justify-center animate-bounce duration-[2000ms]">
+<span class="material-symbols-outlined text-on-primary text-[40px]" style="font-variation-settings: 'wght' 600;">check</span>
+</div>
+</div>
+<div class="max-w-[320px] space-y-md">
+<h2 class="font-display-xl text-display-xl tracking-tight">Race goal saved</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Next, we’ll generate your training plan using your profile, availability, and race goal.</p>
+</div>
+</section>
+<!-- Technical Details Band -->
+<section class="bg-primary text-on-primary py-3xl px-lg">
+<div class="space-y-lg">
+<div class="flex items-center gap-md opacity-60">
+<span class="font-eyebrow-mono text-eyebrow-mono uppercase tracking-widest">Initialization Sequence</span>
+<div class="flex-grow h-px bg-hairline-dark"></div>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<div class="p-lg border border-hairline-dark rounded-lg flex flex-col gap-xs">
+<span class="font-caption-mono text-caption-mono text-mint-accent">METRIC PROFILE</span>
+<span class="font-body-md text-body-md">Optimized</span>
+</div>
+<div class="p-lg border border-hairline-dark rounded-lg flex flex-col gap-xs">
+<span class="font-caption-mono text-caption-mono text-mint-accent">ALGORITHM</span>
+<span class="font-body-md text-body-md">V02 Max Sync</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-lg bg-surface-soft rounded-lg">
+<div class="flex items-center gap-md">
+<div class="w-2 h-2 rounded-full bg-mint-accent animate-pulse"></div>
+<span class="font-button-mono text-button-mono text-on-primary">Ready to synthesize...</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Fixed Action Section -->
+<div class="px-lg pb-3xl pt-xl bg-surface">
+<button class="w-full bg-primary text-on-primary py-xl rounded-full font-button-mono text-button-mono active:scale-95 transition-transform duration-150">
+        Continue
+      </button>
+</div>
+</main>
+<!-- Wordmark Banner Footer -->
+<footer class="bg-surface flex justify-center pb-section-gap overflow-hidden pointer-events-none">
+<span class="text-[120px] font-display-xl text-surface-container-highest font-extrabold select-none leading-none -mb-12">MILEMIND</span>
+</footer>
+<!-- No Bottom Nav on Success Screen per "Destination Rule" & Suppression Logic -->
+<script>
+    // Micro-interaction for the synthesis text
+    const textElement = document.querySelector('.font-button-mono.text-on-primary');
+    const messages = ["Ready to synthesize...", "Calculating taper periods...", "Mapping hill repeats...", "Finalizing your plan..."];
+    let index = 0;
+    
+    if (textElement) {
+      setInterval(() => {
+        index = (index + 1) % messages.length;
+        textElement.style.opacity = 0;
+        setTimeout(() => {
+          textElement.textContent = messages[index];
+          textElement.style.opacity = 1;
+        }, 300);
+      }, 3000);
+    }
+  </script>
+</body></html>

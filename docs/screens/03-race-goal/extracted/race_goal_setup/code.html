@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Milemind | Race Goal Setup</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;family=Inter:wght@400;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#bdebee",
+                    "surface-container-highest": "#e4e2e2",
+                    "on-secondary-container": "#406b6e",
+                    "secondary": "#3a6568",
+                    "primary-container": "#1b1b1b",
+                    "inverse-surface": "#303031",
+                    "primary-fixed": "#e2e2e2",
+                    "hairline-dark": "rgba(255, 255, 255, 0.12)",
+                    "on-secondary-fixed-variant": "#204d50",
+                    "outline-variant": "#cfc4c5",
+                    "on-primary": "#ffffff",
+                    "on-background": "#1b1c1c",
+                    "surface-dim": "#dbd9d9",
+                    "surface-container": "#f0eded",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed-variant": "#474747",
+                    "on-tertiary": "#ffffff",
+                    "outline": "#7e7576",
+                    "tertiary-fixed-dim": "#c3c3ec",
+                    "hairline-light": "rgba(0, 0, 0, 0.08)",
+                    "secondary-fixed-dim": "#a2cfd2",
+                    "surface-container-high": "#eae8e7",
+                    "tertiary-fixed": "#e1e0ff",
+                    "surface-variant": "#e4e2e2",
+                    "inverse-on-surface": "#f2f0f0",
+                    "on-error-container": "#93000a",
+                    "vibe-magenta": "#ef2cc1",
+                    "surface-soft": "#313641",
+                    "error": "#ba1a1a",
+                    "on-tertiary-container": "#8081a7",
+                    "surface-tint": "#5e5e5e",
+                    "tertiary-container": "#171838",
+                    "data-periwinkle": "#bdbbff",
+                    "energy-orange": "#fc4c02",
+                    "on-surface-variant": "#4c4546",
+                    "on-secondary-fixed": "#002022",
+                    "on-tertiary-fixed-variant": "#424466",
+                    "error-container": "#ffdad6",
+                    "primary-fixed-dim": "#c6c6c6",
+                    "on-primary-fixed": "#1b1b1b",
+                    "inverse-primary": "#c6c6c6",
+                    "secondary-container": "#bdebee",
+                    "on-surface": "#1b1c1c",
+                    "on-error": "#ffffff",
+                    "mint-accent": "#c8f6f9",
+                    "deep-canvas": "#010120",
+                    "on-primary-container": "#848484",
+                    "primary": "#000000",
+                    "on-tertiary-fixed": "#171838",
+                    "tertiary": "#000000",
+                    "background": "#fbf9f8",
+                    "surface": "#fbf9f8",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-low": "#f5f3f3",
+                    "surface-bright": "#fbf9f8"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "md": "12px",
+                    "xs": "4px",
+                    "2xl": "24px",
+                    "section-gap": "48px",
+                    "xl": "20px",
+                    "3xl": "32px",
+                    "lg": "16px",
+                    "base": "4px",
+                    "sm": "8px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Sora"],
+                    "button-mono": ["JetBrains Mono"],
+                    "display-xl": ["Sora"],
+                    "eyebrow-mono": ["JetBrains Mono"],
+                    "body-md": ["Inter"],
+                    "display-md": ["Sora"],
+                    "body-lg": ["Inter"],
+                    "caption-mono": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "display-lg": ["28px", {"lineHeight": "32px", "letterSpacing": "-0.4px", "fontWeight": "500"}],
+                    "button-mono": ["16px", {"lineHeight": "16px", "letterSpacing": "0.08px", "fontWeight": "500"}],
+                    "display-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.8px", "fontWeight": "500"}],
+                    "eyebrow-mono": ["11px", {"lineHeight": "11px", "letterSpacing": "0.55px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "21px", "letterSpacing": "-0.16px", "fontWeight": "400"}],
+                    "display-md": ["22px", {"lineHeight": "26px", "letterSpacing": "-0.2px", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "24px", "letterSpacing": "-0.18px", "fontWeight": "400"}],
+                    "caption-mono": ["10px", {"lineHeight": "14px", "letterSpacing": "0.05px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        input:focus {
+            outline: none !important;
+            border-color: #000000 !important;
+            box-shadow: none !important;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-mint-accent">
+<!-- Top App Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-lg h-16 bg-surface border-b border-hairline-light">
+<button class="flex items-center justify-center w-10 h-10 transition-colors duration-200 ease-in-out hover:bg-surface-container">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<span class="font-display-md text-display-md font-bold text-primary">Milemind</span>
+<button class="flex items-center justify-center w-10 h-10 transition-colors duration-200 ease-in-out hover:bg-surface-container">
+<span class="material-symbols-outlined text-primary">account_circle</span>
+</button>
+</header>
+<!-- Content Canvas -->
+<main class="pt-24 pb-32 px-lg max-w-lg mx-auto">
+<!-- Title & Subtitle Section -->
+<section class="mb-3xl">
+<h1 class="font-display-lg text-display-lg text-primary mb-sm">What are you training for?</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Choose one race goal so your plan can stay focused.</p>
+</section>
+<form class="space-y-3xl" id="goal-form">
+<!-- Goal Type Cards -->
+<div class="grid grid-cols-2 gap-md">
+<label class="relative block cursor-pointer group">
+<input checked="" class="sr-only peer" name="race_type" type="radio" value="half"/>
+<div class="h-40 p-lg flex flex-col justify-between border border-hairline-light rounded-xl bg-surface-container-lowest transition-all duration-200 peer-checked:bg-mint-accent peer-checked:border-primary">
+<span class="material-symbols-outlined text-primary text-3xl">directions_run</span>
+<span class="font-display-md text-display-md font-bold leading-tight">Half marathon</span>
+</div>
+</label>
+<label class="relative block cursor-pointer group">
+<input class="sr-only peer" name="race_type" type="radio" value="full"/>
+<div class="h-40 p-lg flex flex-col justify-between border border-hairline-light rounded-xl bg-surface-container-lowest transition-all duration-200 peer-checked:bg-mint-accent peer-checked:border-primary">
+<div class="flex">
+<span class="material-symbols-outlined text-primary text-3xl">directions_run</span>
+<span class="material-symbols-outlined text-primary text-3xl -ml-4">directions_run</span>
+</div>
+<span class="font-display-md text-display-md font-bold leading-tight">Marathon</span>
+</div>
+</label>
+</div>
+<!-- Basic Info Fields -->
+<div class="space-y-xl">
+<div class="flex flex-col gap-xs">
+<label class="font-eyebrow-mono text-eyebrow-mono text-on-surface-variant uppercase tracking-wider">Race Name (Optional)</label>
+<input class="w-full h-14 px-lg bg-surface-container-lowest border border-hairline-light rounded-lg font-body-md text-on-surface focus:ring-0" placeholder="e.g. London Marathon 2024" type="text"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-eyebrow-mono text-eyebrow-mono text-on-surface-variant uppercase tracking-wider">Race Date</label>
+<div class="relative">
+<input class="w-full h-14 px-lg bg-surface-container-lowest border border-hairline-light rounded-lg font-body-md text-on-surface focus:ring-0 appearance-none" type="date"/>
+</div>
+</div>
+</div>
+<!-- Goal Style Selector -->
+<div class="space-y-md">
+<label class="font-eyebrow-mono text-eyebrow-mono text-on-surface-variant uppercase tracking-wider">Goal Style</label>
+<div class="flex flex-wrap gap-sm">
+<label class="cursor-pointer">
+<input checked="" class="sr-only peer" name="goal_style" type="radio" value="finish"/>
+<div class="px-xl py-md border border-hairline-light rounded-full font-button-mono text-button-mono peer-checked:bg-primary peer-checked:text-on-primary transition-colors duration-150">
+                            Finish
+                        </div>
+</label>
+<label class="cursor-pointer">
+<input class="sr-only peer" name="goal_style" type="radio" value="improve"/>
+<div class="px-xl py-md border border-hairline-light rounded-full font-button-mono text-button-mono peer-checked:bg-primary peer-checked:text-on-primary transition-colors duration-150">
+                            Improve
+                        </div>
+</label>
+<label class="cursor-pointer">
+<input class="sr-only peer" name="goal_style" type="radio" value="personal_best"/>
+<div class="px-xl py-md border border-hairline-light rounded-full font-button-mono text-button-mono peer-checked:bg-primary peer-checked:text-on-primary transition-colors duration-150">
+                            Personal best
+                        </div>
+</label>
+</div>
+<p class="font-caption-mono text-caption-mono text-on-surface-variant flex items-start gap-xs mt-sm">
+<span class="material-symbols-outlined text-[14px]">info</span>
+                    Choose Finish if this is your first race or you want a conservative plan.
+                </p>
+</div>
+<!-- Target Time Field -->
+<div class="flex flex-col gap-xs">
+<label class="font-eyebrow-mono text-eyebrow-mono text-on-surface-variant uppercase tracking-wider">Target Time (Optional)</label>
+<div class="flex items-center gap-md">
+<input class="w-full h-14 px-lg bg-surface-container-lowest border border-hairline-light rounded-lg font-body-md text-on-surface focus:ring-0 text-center tracking-widest" maxlength="8" placeholder="HH:MM:SS" type="text"/>
+</div>
+</div>
+<!-- Footer Warning -->
+<div class="p-lg bg-surface-container-low rounded-lg border border-hairline-light">
+<p class="font-caption-mono text-caption-mono text-on-surface-variant">
+                    You can change this later, but Milemind MVP supports one active goal at a time for maximum plan fidelity.
+                </p>
+</div>
+<!-- Fixed Bottom CTA -->
+<div class="fixed bottom-0 left-0 w-full bg-surface/90 backdrop-blur-md px-lg py-xl flex flex-col items-center">
+<button class="w-full max-w-sm h-14 bg-primary text-on-primary rounded-full font-button-mono text-button-mono flex items-center justify-center gap-sm active:scale-[0.98] transition-transform duration-150" type="submit">
+                    Review goal
+                    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</form>
+</main>
+<!-- Global Decoration / Visual Rhythm -->
+<div class="fixed bottom-24 right-0 pointer-events-none opacity-10 select-none overflow-hidden h-32 flex items-end">
+<span class="font-display-xl text-[120px] font-black text-primary leading-none uppercase tracking-tighter transform translate-y-8">MILEMIND</span>
+</div>
+<script>
+        // Simple Interaction: Date input today as default
+        const dateInput = document.querySelector('input[type="date"]');
+        if (dateInput) {
+            const today = new Date();
+            const future = new Date(today);
+            future.setDate(future.getDate() + 90); // Default to 3 months away
+            dateInput.value = future.toISOString().split('T')[0];
+        }
+
+        // Target time formatting micro-interaction
+        const timeInput = document.querySelector('input[placeholder="HH:MM:SS"]');
+        if (timeInput) {
+            timeInput.addEventListener('input', (e) => {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length > 6) value = value.slice(0, 6);
+                
+                let formatted = '';
+                if (value.length > 0) formatted += value.slice(0, 2);
+                if (value.length > 2) formatted += ':' + value.slice(2, 4);
+                if (value.length > 4) formatted += ':' + value.slice(4, 6);
+                
+                e.target.value = formatted;
+            });
+        }
+    </script>
+</body></html>
