@@ -16,6 +16,9 @@ spring:
   flyway:
     enabled: true
     locations: classpath:db/migration
+    placeholders:
+      race_goal_active_unique_columns: "user_id"
+      race_goal_active_unique_predicate: "WHERE status = 'ACTIVE'"
 
 management:
   endpoints:
