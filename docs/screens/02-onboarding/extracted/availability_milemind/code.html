@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#e2e2e2",
+                        "inverse-primary": "#5e5e5e",
+                        "tertiary": "#c6c6c6",
+                        "on-primary": "#ffffff",
+                        "on-surface-variant": "#cfc4c5",
+                        "surface-container-high": "#2a2a2a",
+                        "surface-container-highest": "#353535",
+                        "on-secondary-fixed-variant": "#424466",
+                        "on-tertiary-fixed": "#1b1b1b",
+                        "ink": "#000000",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "on-primary-container": "#757575",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "secondary-fixed-dim": "#c3c3ec",
+                        "error": "#ffb4ab",
+                        "primary": "#000000",
+                        "surface": "#ffffff",
+                        "accent-periwinkle": "#bdbbff",
+                        "on-primary-fixed": "#1b1b1b",
+                        "secondary": "#c3c3ec",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "hairline": "rgba(0, 0, 0, 0.08)",
+                        "on-secondary-fixed": "#171838",
+                        "tertiary-container": "#000000",
+                        "surface-dark-soft": "#313641",
+                        "accent-orange": "#fc4c02",
+                        "surface-dim": "#f4f4f4",
+                        "on-surface": "#000000",
+                        "inverse-on-surface": "#ffffff",
+                        "inverse-surface": "#000000",
+                        "accent-mint": "#c8f6f9",
+                        "on-background": "#000000",
+                        "outline": "#e2e2e2",
+                        "on-secondary": "#2c2d4e",
+                        "error-container": "#93000a",
+                        "surface-bright": "#ffffff",
+                        "surface-container-low": "#f9f9f9",
+                        "secondary-container": "#454668",
+                        "accent-magenta": "#ef2cc1",
+                        "primary-fixed": "#e2e2e2",
+                        "primary-container": "#f0f0f0",
+                        "on-error": "#690005",
+                        "on-tertiary-container": "#757575",
+                        "surface-tint": "#c6c6c6",
+                        "outline-variant": "#eeeeee",
+                        "body-gray": "#666666",
+                        "background": "#ffffff",
+                        "surface-variant": "#f4f4f4",
+                        "surface-container": "#f4f4f4",
+                        "on-tertiary": "#303030",
+                        "on-secondary-container": "#b4b5de",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed": "#e1e0ff",
+                        "on-primary-fixed-variant": "#474747",
+                        "on-error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "4px",
+                        "lg": "4px",
+                        "xl": "4px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "12px",
+                        "xl": "20px",
+                        "6xl": "55.2px",
+                        "xxs": "2px",
+                        "sm": "8px",
+                        "4xl": "44px",
+                        "section": "80px",
+                        "lg": "16px",
+                        "xs": "4px",
+                        "2xl": "24px",
+                        "3xl": "32px",
+                        "5xl": "48px"
+                    },
+                    "fontFamily": {
+                        "display-xl": ["The Future", "Inter", "Helvetica Neue", "Arial", "sans-serif"],
+                        "display-xxl": ["The Future", "Inter", "Helvetica Neue", "Arial", "sans-serif"],
+                        "body-md-strong": ["The Future", "Inter", "Helvetica Neue", "Arial", "sans-serif"],
+                        "mono-caps-button": ["PP Neue Montreal Mono", "ui-monospace", "SF Mono", "Menlo", "monospace"],
+                        "body-lg-strong": ["The Future", "Inter", "Helvetica Neue", "Arial", "sans-serif"],
+                        "display-md": ["The Future", "Inter", "Helvetica Neue", "Arial", "sans-serif"],
+                        "display-lg": ["The Future", "Inter", "Helvetica Neue", "Arial", "sans-serif"],
+                        "body-lg": ["The Future", "Inter", "Helvetica Neue", "Arial", "sans-serif"],
+                        "body-md": ["The Future", "Inter", "Helvetica Neue", "Arial", "sans-serif"],
+                        "caption": ["The Future", "Inter", "Helvetica Neue", "Arial", "sans-serif"],
+                        "mono-caps-eyebrow": ["PP Neue Montreal Mono", "ui-monospace", "SF Mono", "Menlo", "monospace"],
+                        "mono-caps-label": ["PP Neue Montreal Mono", "ui-monospace", "SF Mono", "Menlo", "monospace"],
+                        "mono-caption": ["PP Neue Montreal Mono", "ui-monospace", "SF Mono", "Menlo", "monospace"],
+                        "caption-strong": ["The Future", "Inter", "Helvetica Neue", "Arial", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "display-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.8px", "fontWeight": "500"}],
+                        "display-xxl": ["64px", {"lineHeight": "70.4px", "letterSpacing": "-1.92px", "fontWeight": "500"}],
+                        "body-md-strong": ["16px", {"lineHeight": "20.8px", "letterSpacing": "-0.16px", "fontWeight": "500"}],
+                        "mono-caps-button": ["16px", {"lineHeight": "16px", "letterSpacing": "0.08px", "fontWeight": "500"}],
+                        "body-lg-strong": ["18px", {"lineHeight": "23.4px", "letterSpacing": "-0.18px", "fontWeight": "500"}],
+                        "display-md": ["22px", {"lineHeight": "25.3px", "letterSpacing": "-0.22px", "fontWeight": "500"}],
+                        "display-lg": ["28px", {"lineHeight": "32.2px", "letterSpacing": "-0.42px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "23.4px", "letterSpacing": "-0.18px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "20.8px", "letterSpacing": "-0.16px", "fontWeight": "400"}],
+                        "caption": ["14px", {"lineHeight": "19.6px", "fontWeight": "400"}],
+                        "mono-caps-eyebrow": ["11px", {"lineHeight": "11px", "letterSpacing": "0.55px", "fontWeight": "500"}],
+                        "mono-caps-label": ["11px", {"lineHeight": "15.4px", "letterSpacing": "0.055px", "fontWeight": "500"}],
+                        "mono-caption": ["10px", {"lineHeight": "14px", "letterSpacing": "0.05px", "fontWeight": "400"}],
+                        "caption-strong": ["14px", {"lineHeight": "19.6px", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .day-chip.active {
+            background-color: #000000;
+            color: #ffffff;
+            border-color: #000000;
+        }
+        .long-run-chip.active {
+            background-color: #000000;
+            color: #ffffff;
+            border-color: #000000;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen font-body-md overflow-x-hidden">
+<!-- Header Navigation -->
+<header class="fixed top-0 left-0 w-full z-50 bg-surface flex justify-between items-center px-lg py-md border-b border-black/5">
+<button class="p-xs hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+</button>
+<span class="font-mono-caps-eyebrow text-mono-caps-eyebrow tracking-[0.2em] text-on-surface uppercase">MILEMIND</span>
+<div class="w-10"></div>
+</header>
+<main class="pt-6xl pb-32 max-w-xl mx-auto px-lg">
+<!-- Step Indicator -->
+<div class="mb-lg">
+<p class="font-mono-caps-eyebrow text-mono-caps-eyebrow text-body-gray uppercase">Step 2 of 3</p>
+<div class="flex gap-xxs mt-sm">
+<div class="h-1 flex-1 bg-on-surface"></div>
+<div class="h-1 flex-1 bg-on-surface"></div>
+<div class="h-1 flex-1 bg-outline-variant"></div>
+</div>
+</div>
+<!-- Title Section -->
+<section class="mb-3xl">
+<h1 class="font-display-lg text-display-lg mb-sm">When can you train?</h1>
+<p class="font-body-md text-body-md text-body-gray">Choose the days that are realistic most weeks.</p>
+</section>
+<!-- Day Selection Grid -->
+<section class="mb-5xl">
+<h2 class="font-mono-caps-eyebrow text-mono-caps-eyebrow text-body-gray mb-lg uppercase tracking-wider">Weekly Run Availability</h2>
+<div class="grid grid-cols-4 sm:grid-cols-7 gap-sm" id="run-days-grid">
+<button class="day-chip h-16 flex flex-col items-center justify-center border border-black/10 rounded-lg transition-all duration-200" data-day="Mon" onclick="toggleDay(this)">
+<span class="font-mono-caps-label text-mono-caps-label">MON</span>
+</button>
+<button class="day-chip active h-16 flex flex-col items-center justify-center border border-black/10 rounded-lg transition-all duration-200" data-day="Tue" onclick="toggleDay(this)">
+<span class="font-mono-caps-label text-mono-caps-label">TUE</span>
+</button>
+<button class="day-chip active h-16 flex flex-col items-center justify-center border border-black/10 rounded-lg transition-all duration-200" data-day="Wed" onclick="toggleDay(this)">
+<span class="font-mono-caps-label text-mono-caps-label">WED</span>
+</button>
+<button class="day-chip h-16 flex flex-col items-center justify-center border border-black/10 rounded-lg transition-all duration-200" data-day="Thu" onclick="toggleDay(this)">
+<span class="font-mono-caps-label text-mono-caps-label">THU</span>
+</button>
+<button class="day-chip active h-16 flex flex-col items-center justify-center border border-black/10 rounded-lg transition-all duration-200" data-day="Fri" onclick="toggleDay(this)">
+<span class="font-mono-caps-label text-mono-caps-label">FRI</span>
+</button>
+<button class="day-chip h-16 flex flex-col items-center justify-center border border-black/10 rounded-lg transition-all duration-200" data-day="Sat" onclick="toggleDay(this)">
+<span class="font-mono-caps-label text-mono-caps-label">SAT</span>
+</button>
+<button class="day-chip active h-16 flex flex-col items-center justify-center border border-black/10 rounded-lg transition-all duration-200" data-day="Sun" onclick="toggleDay(this)">
+<span class="font-mono-caps-label text-mono-caps-label">SUN</span>
+</button>
+</div>
+<!-- Validation Warning -->
+<div class="mt-md flex items-center gap-sm p-md bg-error/10 border border-error/20 rounded-lg hidden" id="validation-warning">
+<span class="material-symbols-outlined text-error text-[20px]">warning</span>
+<p class="font-caption text-error">Marathon training needs at least 4 run days for safety.</p>
+</div>
+</section>
+<!-- Long Run Day Selector -->
+<section class="mb-5xl">
+<div class="p-2xl bg-surface-container-low border border-black/5 rounded-xl">
+<div class="flex items-start justify-between mb-md">
+<div>
+<h2 class="font-body-lg-strong text-body-lg-strong mb-xs">Long Run Day</h2>
+<p class="font-caption text-body-gray max-w-[280px]">Your long run usually needs the most time, so choose a day you can protect.</p>
+</div>
+<span class="material-symbols-outlined text-on-surface/40" style="font-variation-settings: 'FILL' 1;">calendar_today</span>
+</div>
+<div class="flex gap-sm overflow-x-auto pb-xs scrollbar-hide">
+<button class="long-run-chip shrink-0 px-xl py-sm border border-black/10 rounded-full font-mono-caps-label text-mono-caps-label transition-all" onclick="selectLongRun(this)">MON</button>
+<button class="long-run-chip shrink-0 px-xl py-sm border border-black/10 rounded-full font-mono-caps-label text-mono-caps-label transition-all" onclick="selectLongRun(this)">TUE</button>
+<button class="long-run-chip shrink-0 px-xl py-sm border border-black/10 rounded-full font-mono-caps-label text-mono-caps-label transition-all" onclick="selectLongRun(this)">WED</button>
+<button class="long-run-chip shrink-0 px-xl py-sm border border-black/10 rounded-full font-mono-caps-label text-mono-caps-label transition-all" onclick="selectLongRun(this)">THU</button>
+<button class="long-run-chip shrink-0 px-xl py-sm border border-black/10 rounded-full font-mono-caps-label text-mono-caps-label transition-all" onclick="selectLongRun(this)">FRI</button>
+<button class="long-run-chip shrink-0 px-xl py-sm border border-black/10 rounded-full font-mono-caps-label text-mono-caps-label transition-all" onclick="selectLongRun(this)">SAT</button>
+<button class="long-run-chip active shrink-0 px-xl py-sm border border-black/10 rounded-full font-mono-caps-label text-mono-caps-label transition-all" onclick="selectLongRun(this)">SUN</button>
+</div>
+</div>
+</section>
+<!-- Strength Training & Units -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-2xl mb-5xl">
+<!-- Strength Picker -->
+<div class="p-lg bg-surface-container border border-black/5 rounded-xl">
+<h3 class="font-mono-caps-eyebrow text-mono-caps-eyebrow text-body-gray uppercase mb-md">Strength Days / Week</h3>
+<div class="flex gap-sm">
+<button class="strength-btn flex-1 h-12 flex items-center justify-center bg-white border border-black/10 rounded font-body-md-strong text-on-surface" onclick="setStrength(this, 0)">0</button>
+<button class="strength-btn flex-1 h-12 flex items-center justify-center bg-on-surface text-surface border border-on-surface rounded font-body-md-strong" onclick="setStrength(this, 1)">1</button>
+<button class="strength-btn flex-1 h-12 flex items-center justify-center bg-white border border-black/10 rounded font-body-md-strong text-on-surface" onclick="setStrength(this, 2)">2</button>
+</div>
+</div>
+<!-- Unit Toggle -->
+<div class="p-lg bg-surface-container border border-black/5 rounded-xl">
+<h3 class="font-mono-caps-eyebrow text-mono-caps-eyebrow text-body-gray uppercase mb-md">Distance Units</h3>
+<div class="flex p-xs bg-black/5 rounded-lg">
+<button class="unit-btn flex-1 py-xs rounded bg-on-surface text-surface font-mono-caps-label text-mono-caps-label" onclick="setUnits(this, 'km')">KM</button>
+<button class="unit-btn flex-1 py-xs rounded text-body-gray font-mono-caps-label text-mono-caps-label" onclick="setUnits(this, 'miles')">MILES</button>
+</div>
+</div>
+</div>
+<!-- Timezone Info -->
+<section class="flex items-center justify-between p-lg border-t border-black/5">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-body-gray" style="font-size: 18px;">public</span>
+<p class="font-caption text-body-gray">Timezone: <span class="text-on-surface">Europe/London (GMT+1)</span></p>
+</div>
+<button class="font-mono-caps-label text-mono-caps-label text-on-surface hover:underline">EDIT</button>
+</section>
+</main>
+<!-- Fixed Footer CTA -->
+<div class="fixed bottom-0 left-0 w-full p-lg bg-surface/90 backdrop-blur-md border-t border-black/5">
+<div class="max-w-xl mx-auto">
+<button class="w-full bg-on-surface text-surface h-14 rounded-full font-mono-caps-button text-mono-caps-button uppercase tracking-widest hover:opacity-90 active:scale-95 transition-all" id="cta-continue">
+            Continue
+        </button>
+</div>
+</div>
+<script>
+    function toggleDay(el) {
+        el.classList.toggle('active');
+        checkValidation();
+    }
+
+    function selectLongRun(el) {
+        document.querySelectorAll('.long-run-chip').forEach(chip => {
+            chip.classList.remove('active');
+        });
+        el.classList.add('active');
+    }
+
+    function setStrength(el, val) {
+        document.querySelectorAll('.strength-btn').forEach(btn => {
+            btn.classList.remove('bg-on-surface', 'text-surface', 'border-on-surface');
+            btn.classList.add('bg-white', 'text-on-surface', 'border-black/10');
+        });
+        el.classList.remove('bg-white', 'text-on-surface', 'border-black/10');
+        el.classList.add('bg-on-surface', 'text-surface', 'border-on-surface');
+    }
+
+    function setUnits(el, unit) {
+        document.querySelectorAll('.unit-btn').forEach(btn => {
+            btn.classList.remove('bg-on-surface', 'text-surface');
+            btn.classList.add('text-body-gray');
+        });
+        el.classList.remove('text-body-gray');
+        el.classList.add('bg-on-surface', 'text-surface');
+    }
+
+    function checkValidation() {
+        const activeDays = document.querySelectorAll('.day-chip.active').length;
+        const warning = document.getElementById('validation-warning');
+        const cta = document.getElementById('cta-continue');
+        
+        if (activeDays < 4) {
+            warning.classList.remove('hidden');
+            cta.classList.add('opacity-50', 'pointer-events-none');
+        } else {
+            warning.classList.add('hidden');
+            cta.classList.remove('opacity-50', 'pointer-events-none');
+        }
+    }
+
+    checkValidation();
+</script>
+</body></html>

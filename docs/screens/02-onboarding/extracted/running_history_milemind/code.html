@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Stride Architect - Onboarding</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#e2e2e2",
+                        "inverse-primary": "#5e5e5e",
+                        "tertiary": "#c6c6c6",
+                        "on-primary": "#ffffff",
+                        "on-surface-variant": "#cfc4c5",
+                        "surface-container-high": "#f0f0f0",
+                        "surface-container-highest": "#e5e5e5",
+                        "on-secondary-fixed-variant": "#424466",
+                        "on-tertiary-fixed": "#1b1b1b",
+                        "ink": "#000000",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "on-primary-container": "#757575",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "secondary-fixed-dim": "#c3c3ec",
+                        "error": "#ffb4ab",
+                        "primary": "#000000",
+                        "surface": "#ffffff",
+                        "accent-periwinkle": "#bdbbff",
+                        "on-primary-fixed": "#1b1b1b",
+                        "secondary": "#c3c3ec",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "hairline": "rgba(0, 0, 0, 0.08)",
+                        "on-secondary-fixed": "#171838",
+                        "tertiary-container": "#f5f5f5",
+                        "surface-dark-soft": "#313641",
+                        "accent-orange": "#fc4c02",
+                        "surface-dim": "#f5f5f5",
+                        "on-surface": "#1b1b1b",
+                        "inverse-on-surface": "#ffffff",
+                        "inverse-surface": "#303030",
+                        "accent-mint": "#c8f6f9",
+                        "on-background": "#1b1b1b",
+                        "outline": "#988e90",
+                        "on-secondary": "#2c2d4e",
+                        "error-container": "#93000a",
+                        "surface-bright": "#ffffff",
+                        "surface-container-low": "#fafafa",
+                        "secondary-container": "#454668",
+                        "accent-magenta": "#ef2cc1",
+                        "primary-fixed": "#e2e2e2",
+                        "primary-container": "#ffffff",
+                        "on-error": "#690005",
+                        "on-tertiary-container": "#757575",
+                        "surface-tint": "#000000",
+                        "outline-variant": "#e0e0e0",
+                        "body-gray": "#666666",
+                        "background": "#ffffff",
+                        "surface-variant": "#f0f0f0",
+                        "surface-container": "#ffffff",
+                        "on-tertiary": "#303030",
+                        "on-secondary-container": "#b4b5de",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed": "#e1e0ff",
+                        "on-primary-fixed-variant": "#474747",
+                        "on-error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "4px",
+                        "lg": "4px",
+                        "xl": "4px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "2xl": "24px",
+                        "section": "80px",
+                        "sm": "8px",
+                        "3xl": "32px",
+                        "xs": "4px",
+                        "xxs": "2px",
+                        "xl": "20px",
+                        "6xl": "55.2px",
+                        "lg": "16px",
+                        "md": "12px",
+                        "5xl": "48px",
+                        "4xl": "44px"
+                    },
+                    "fontFamily": {
+                        "display-xl": ["The Future", "Inter", "sans-serif"],
+                        "display-xxl": ["The Future", "Inter", "sans-serif"],
+                        "body-md-strong": ["The Future", "Inter", "sans-serif"],
+                        "mono-caps-button": ["PP Neue Montreal Mono", "monospace"],
+                        "body-lg-strong": ["The Future", "Inter", "sans-serif"],
+                        "display-md": ["The Future", "Inter", "sans-serif"],
+                        "display-lg": ["The Future", "Inter", "sans-serif"],
+                        "body-lg": ["The Future", "Inter", "sans-serif"],
+                        "body-md": ["The Future", "Inter", "sans-serif"],
+                        "caption": ["The Future", "Inter", "sans-serif"],
+                        "mono-caps-eyebrow": ["PP Neue Montreal Mono", "monospace"],
+                        "mono-caps-label": ["PP Neue Montreal Mono", "monospace"],
+                        "mono-caption": ["PP Neue Montreal Mono", "monospace"],
+                        "caption-strong": ["The Future", "Inter", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "display-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.8px", "fontWeight": "500"}],
+                        "display-xxl": ["64px", {"lineHeight": "70.4px", "letterSpacing": "-1.92px", "fontWeight": "500"}],
+                        "body-md-strong": ["16px", {"lineHeight": "20.8px", "letterSpacing": "-0.16px", "fontWeight": "500"}],
+                        "mono-caps-button": ["16px", {"lineHeight": "16px", "letterSpacing": "0.08px", "fontWeight": "500"}],
+                        "body-lg-strong": ["18px", {"lineHeight": "23.4px", "letterSpacing": "-0.18px", "fontWeight": "500"}],
+                        "display-md": ["22px", {"lineHeight": "25.3px", "letterSpacing": "-0.22px", "fontWeight": "500"}],
+                        "display-lg": ["28px", {"lineHeight": "32.2px", "letterSpacing": "-0.42px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "23.4px", "letterSpacing": "-0.18px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "20.8px", "letterSpacing": "-0.16px", "fontWeight": "400"}],
+                        "caption": ["14px", {"lineHeight": "19.6px", "fontWeight": "400"}],
+                        "mono-caps-eyebrow": ["11px", {"lineHeight": "11px", "letterSpacing": "0.55px", "fontWeight": "500"}],
+                        "mono-caps-label": ["11px", {"lineHeight": "15.4px", "letterSpacing": "0.055px", "fontWeight": "500"}],
+                        "mono-caption": ["10px", {"lineHeight": "14px", "letterSpacing": "0.05px", "fontWeight": "400"}],
+                        "caption-strong": ["14px", {"lineHeight": "19.6px", "fontWeight": "500"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+        
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #1b1b1b;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .glass-card {
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 4px;
+        }
+
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md">
+<!-- Top Navigation Shell -->
+<header class="flex justify-between items-center px-lg py-md w-full bg-surface sticky top-0 z-50 border-b border-hairline">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface" data-icon="menu">menu</span>
+<span class="font-mono-caps-eyebrow text-mono-caps-eyebrow tracking-widest text-on-surface uppercase">MILEMIND</span>
+</div>
+<div class="h-8 w-8 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden">
+<img alt="User profile avatar" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFY6Yd8RDfRPEwoqQ18mXKIztZry_-UiJWjf8kKvPaPnHuhTfuDgJf_PlObzfSqpAf_r0txzefDwbxwD-WnFHEyIzE0LPTtFwkEA3HvRsgt-uF8x-RjzaWGCH7z_7ietGmBHPJ6efyrzxT7-GrYGdbaKyjX52ujyr4mkz_salEWk3qqo3d4YRqB3J_rlCWLqbth-PSmVVPWgt52QuDBY8T_307bxmACfV7l9A02PybKPIj-sYjykadLuyuljX0XwjoDoNUa5Lm1Ls"/>
+</div>
+</header>
+<main class="max-w-2xl mx-auto px-lg pt-2xl pb-section">
+<!-- Progress Header -->
+<div class="mb-3xl">
+<p class="font-mono-caps-eyebrow text-mono-caps-eyebrow text-body-gray mb-sm uppercase">Step 1 of 3</p>
+<div class="h-1 w-full bg-surface-container-high rounded-full overflow-hidden mb-xl">
+<div class="h-full bg-primary w-1/3 transition-all duration-700 ease-out"></div>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-surface mb-xs">Your recent running</h1>
+<p class="font-body-md text-body-md text-body-gray">This helps us avoid starting too hard.</p>
+</div>
+<form class="flex flex-col gap-2xl" onsubmit="return false;">
+<!-- Basic Profile Group -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<!-- Birth Year -->
+<div class="glass-card p-lg group focus-within:border-primary transition-colors">
+<label class="font-mono-caps-eyebrow text-mono-caps-eyebrow text-body-gray mb-md block uppercase">Birth year</label>
+<input class="w-full bg-transparent border-none p-0 text-display-md font-display-md text-on-surface placeholder:text-outline-variant focus:ring-0" placeholder="1990" type="number"/>
+</div>
+<!-- Sex Selection -->
+<div class="glass-card p-lg">
+<label class="font-mono-caps-eyebrow text-mono-caps-eyebrow text-body-gray mb-md block uppercase">Sex</label>
+<div class="flex p-xxs bg-surface-container-low rounded border border-hairline">
+<button class="flex-1 py-sm rounded-sm text-mono-caps-label bg-on-surface text-inverse-on-surface transition-all uppercase" onclick="toggleSegment(this)" type="button">Male</button>
+<button class="flex-1 py-sm rounded-sm text-mono-caps-label text-body-gray hover:text-on-surface transition-all uppercase" onclick="toggleSegment(this)" type="button">Female</button>
+<button class="flex-1 py-sm rounded-sm text-mono-caps-label text-body-gray hover:text-on-surface transition-all uppercase" onclick="toggleSegment(this)" type="button">Other</button>
+</div>
+</div>
+</section>
+<!-- Experience Level -->
+<section class="glass-card p-lg">
+<label class="font-mono-caps-eyebrow text-mono-caps-eyebrow text-body-gray mb-lg block uppercase">Experience level</label>
+<div class="flex flex-wrap gap-md">
+<button class="px-lg py-md rounded-full border border-hairline bg-surface-container-low text-body-gray hover:border-primary transition-all font-mono-caps-button text-mono-caps-button" onclick="toggleChip(this)" type="button">Beginner</button>
+<button class="px-lg py-md rounded-full border border-primary bg-on-surface text-inverse-on-surface transition-all font-mono-caps-button text-mono-caps-button" onclick="toggleChip(this)" type="button">Intermediate</button>
+<button class="px-lg py-md rounded-full border border-hairline bg-surface-container-low text-body-gray hover:border-primary transition-all font-mono-caps-button text-mono-caps-button" onclick="toggleChip(this)" type="button">Advanced</button>
+</div>
+</section>
+<!-- Weekly Distance -->
+<section class="glass-card p-lg">
+<div class="flex justify-between items-start mb-md">
+<label class="font-mono-caps-eyebrow text-mono-caps-eyebrow text-body-gray uppercase">Weekly distance (km)</label>
+<span class="material-symbols-outlined text-body-gray text-lg cursor-help" data-icon="info">info</span>
+</div>
+<input class="w-full bg-transparent border-none p-0 text-display-xl font-display-xl text-on-surface placeholder:text-outline-variant focus:ring-0 mb-sm" placeholder="0" type="number"/>
+<p class="font-caption text-caption text-body-gray italic">Use your average over the last 4–6 weeks.</p>
+</section>
+<!-- Longest Run -->
+<section class="glass-card p-lg">
+<label class="font-mono-caps-eyebrow text-mono-caps-eyebrow text-body-gray mb-md block uppercase">Longest recent run (km)</label>
+<input class="w-full bg-transparent border-none p-0 text-display-xl font-display-xl text-on-surface placeholder:text-outline-variant focus:ring-0 mb-sm" placeholder="0" type="number"/>
+<p class="font-caption text-caption text-body-gray italic">Your longest run helps set safe long-run progression.</p>
+</section>
+<!-- Injury History -->
+<section class="glass-card p-lg">
+<label class="font-mono-caps-eyebrow text-mono-caps-eyebrow text-body-gray mb-lg block uppercase">Injury history</label>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-sm">
+<button class="flex items-center gap-md px-lg py-md rounded border border-hairline bg-surface-container-low text-body-gray hover:border-primary transition-all text-left" onclick="toggleChip(this)" type="button">
+<span class="material-symbols-outlined text-lg" data-icon="check_circle">check_circle</span>
+<span class="font-body-md text-body-md">No recent injury</span>
+</button>
+<button class="flex items-center gap-md px-lg py-md rounded border border-hairline bg-surface-container-low text-body-gray hover:border-primary transition-all text-left" onclick="toggleChip(this)" type="button">
+<span class="material-symbols-outlined text-lg" data-icon="warning">warning</span>
+<span class="font-body-md text-body-md">Minor issue &lt; 12m</span>
+</button>
+<button class="flex items-center gap-md px-lg py-md rounded border border-hairline bg-surface-container-low text-body-gray hover:border-primary transition-all text-left" onclick="toggleChip(this)" type="button">
+<span class="material-symbols-outlined text-lg" data-icon="emergency">emergency</span>
+<span class="font-body-md text-body-md">Significant issue &lt; 12m</span>
+</button>
+<button class="flex items-center gap-md px-lg py-md rounded border border-hairline bg-surface-container-low text-body-gray hover:border-primary transition-all text-left" onclick="toggleChip(this)" type="button">
+<span class="material-symbols-outlined text-lg" data-icon="visibility_off">visibility_off</span>
+<span class="font-body-md text-body-md">Prefer not to say</span>
+</button>
+</div>
+</section>
+<!-- Action Area -->
+<div class="mt-xl">
+<button class="w-full bg-ink text-inverse-on-surface py-lg rounded font-mono-caps-button text-mono-caps-button uppercase tracking-wider hover:opacity-90 transition-all active:scale-[0.98]" type="submit">
+                    Continue
+                </button>
+<p class="text-center mt-lg font-caption text-caption text-body-gray">
+                    All data is processed locally to generate your custom plan.
+                </p>
+</div>
+</form>
+</main>
+<!-- Bottom Navigation Shell (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center pt-sm pb-safe bg-surface border-t border-hairline">
+<a class="flex flex-col items-center justify-center text-on-surface font-bold py-md" href="#">
+<span class="material-symbols-outlined" data-icon="directions_run" style="font-variation-settings: 'FILL' 1;">directions_run</span>
+<span class="font-mono-caps-label text-mono-caps-label">TRAINING</span>
+</a>
+<a class="flex flex-col items-center justify-center text-body-gray py-md" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-mono-caps-label text-mono-caps-label">INSIGHTS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-body-gray py-md" href="#">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+<span class="font-mono-caps-label text-mono-caps-label">RECOVERY</span>
+</a>
+<a class="flex flex-col items-center justify-center text-body-gray py-md" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-mono-caps-label text-mono-caps-label">PROFILE</span>
+</a>
+</nav>
+<script>
+        function toggleChip(el) {
+            const parent = el.parentElement;
+            parent.querySelectorAll('button').forEach(btn => {
+                btn.classList.remove('border-primary', 'bg-on-surface', 'text-inverse-on-surface');
+                btn.classList.add('border-hairline', 'bg-surface-container-low', 'text-body-gray');
+            });
+            
+            el.classList.add('border-primary', 'bg-on-surface', 'text-inverse-on-surface');
+            el.classList.remove('border-hairline', 'bg-surface-container-low', 'text-body-gray');
+        }
+
+        function toggleSegment(el) {
+            const parent = el.parentElement;
+            parent.querySelectorAll('button').forEach(btn => {
+                btn.classList.remove('bg-on-surface', 'text-inverse-on-surface');
+                btn.classList.add('text-body-gray');
+            });
+            el.classList.add('bg-on-surface', 'text-inverse-on-surface');
+            el.classList.remove('text-body-gray');
+        }
+    </script>
+</body></html>

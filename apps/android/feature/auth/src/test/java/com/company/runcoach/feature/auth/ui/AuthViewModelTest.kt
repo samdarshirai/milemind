@@ -12,6 +12,13 @@ import com.company.runcoach.feature.auth.data.remote.RefreshResponse
 import com.company.runcoach.feature.auth.data.remote.RegisterRequest
 import com.company.runcoach.feature.auth.domain.AuthFailure
 import com.company.runcoach.feature.auth.ui.model.SplashDestination
+import com.company.runcoach.feature.onboarding.data.OnboardingRepository
+import com.company.runcoach.feature.onboarding.data.remote.OnboardingApiService
+import com.company.runcoach.feature.onboarding.data.remote.OnboardingRequest
+import com.company.runcoach.feature.onboarding.data.remote.OnboardingResponse
+import com.company.runcoach.feature.onboarding.data.remote.ProfileData
+import com.company.runcoach.feature.onboarding.data.remote.ProfileResponse
+import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.StandardTestDispatcher
@@ -25,6 +32,10 @@ import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 import java.io.IOException
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.ResponseBody.Companion.toResponseBody
+import retrofit2.HttpException
+import retrofit2.Response
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class AuthViewModelTest {
@@ -108,6 +119,20 @@ class AuthViewModelTest {
     }
 
     @Test
+    fun sessionRestore_succeedsWhenProfileContainsBooleanInjuryFlag() = runTest(dispatcher) {
+        val repository = repositoryWithResponse(
+            refresh = RefreshResponse("newA", "newR"),
+            initialRefresh = "oldR",
+            onboardingApi = BooleanInjuryOnboardingApi()
+        )
+
+        val result = repository.restoreSession()
+
+        assertTrue(result.isSuccess)
+        assertEquals(false, result.getOrThrow().onboardingRequired)
+    }
+
+    @Test
     fun splashViewModel_routesToMainOnSessionRestoreSuccess() = runTest(dispatcher) {
         val repository = repositoryWithResponse(refresh = RefreshResponse("newA", "newR"), initialRefresh = "oldR")
         val viewModel = SplashViewModel(repository)
@@ -115,6 +140,20 @@ class AuthViewModelTest {
         advanceUntilIdle()
 
         assertEquals(SplashDestination.MAIN, viewModel.uiState.value.destination)
+    }
+
+    @Test
+    fun splashViewModel_routesToOnboardingWhenProfileIsMissing() = runTest(dispatcher) {
+        val repository = repositoryWithResponse(
+            refresh = RefreshResponse("newA", "newR"),
+            initialRefresh = "oldR",
+            onboardingApi = MissingProfileOnboardingApi()
+        )
+        val viewModel = SplashViewModel(repository)
+
+        advanceUntilIdle()
+
+        assertEquals(SplashDestination.ONBOARDING, viewModel.uiState.value.destination)
     }
 
     @Test
@@ -151,6 +190,7 @@ class AuthViewModelTest {
             },
             sessionStore = SessionStore(tokenStorage),
             errorMapper = AuthErrorMapper(),
+            onboardingRepository = OnboardingRepository(SuccessfulOnboardingApi()),
             ioDispatcher = dispatcher
         )
 
@@ -173,6 +213,7 @@ class AuthViewModelTest {
             },
             sessionStore = SessionStore(tokenStorage),
             errorMapper = AuthErrorMapper(),
+            onboardingRepository = OnboardingRepository(SuccessfulOnboardingApi()),
             ioDispatcher = dispatcher
         )
 
@@ -182,11 +223,27 @@ class AuthViewModelTest {
         assertEquals(null, tokenStorage.readRefreshToken())
     }
 
+    @Test
+    fun splashViewModel_routesToMainOnTransientProfileFetchFailure() = runTest(dispatcher) {
+        val repository = repositoryWithResponse(
+            refresh = RefreshResponse("newA", "newR"),
+            initialRefresh = "oldR",
+            onboardingApi = FailingOnboardingApi()
+        )
+        val viewModel = SplashViewModel(repository)
+
+        advanceUntilIdle()
+
+        assertEquals(SplashDestination.MAIN, viewModel.uiState.value.destination)
+        assertEquals(null, viewModel.uiState.value.errorMessage)
+    }
+
     private fun repositoryWithResponse(
         login: AuthResponse = AuthResponse("a", "r"),
         register: AuthResponse = AuthResponse("a", "r"),
         refresh: RefreshResponse = RefreshResponse("a", "r"),
-        initialRefresh: String? = null
+        initialRefresh: String? = null,
+        onboardingApi: OnboardingApiService = SuccessfulOnboardingApi()
     ): AuthRepository {
         val tokenStorage = InMemoryTokenStorage(refreshToken = initialRefresh)
         return AuthRepository(
@@ -197,6 +254,7 @@ class AuthViewModelTest {
             },
             sessionStore = SessionStore(tokenStorage),
             errorMapper = AuthErrorMapper(),
+            onboardingRepository = OnboardingRepository(onboardingApi),
             ioDispatcher = dispatcher
         )
     }
@@ -213,8 +271,65 @@ class AuthViewModelTest {
             },
             sessionStore = SessionStore(tokenStorage),
             errorMapper = AuthErrorMapper(),
+            onboardingRepository = OnboardingRepository(SuccessfulOnboardingApi()),
             ioDispatcher = dispatcher
         )
+    }
+}
+
+private class BooleanInjuryOnboardingApi : OnboardingApiService {
+    override suspend fun submitOnboarding(request: OnboardingRequest): OnboardingResponse = OnboardingResponse("u", "p")
+    override suspend fun getProfile(): ProfileResponse = ProfileResponse(
+        "u",
+        "u@example.com",
+        "Europe/Berlin",
+        ProfileData(
+            experienceLevel = "BEGINNER",
+            typicalWeeklyDistanceKm = 20.0,
+            longestRecentRunKm = 10.0,
+            preferredRunDays = listOf("MONDAY", "WEDNESDAY", "SATURDAY"),
+            preferredLongRunDay = "SATURDAY",
+            goalStyle = "FINISH",
+            strengthDaysPerWeek = 1,
+            units = "KM",
+            injuryHistory = mapOf(
+                "hadRunningInjuryLast12Months" to JsonPrimitive(true),
+                "summary" to JsonPrimitive("Recovered calf strain")
+            )
+        )
+    )
+}
+
+private class SuccessfulOnboardingApi : OnboardingApiService {
+    override suspend fun submitOnboarding(request: OnboardingRequest): OnboardingResponse = OnboardingResponse("u", "p")
+    override suspend fun getProfile(): ProfileResponse = ProfileResponse(
+        "u",
+        "u@example.com",
+        "Europe/Berlin",
+        ProfileData(
+            experienceLevel = "BEGINNER",
+            typicalWeeklyDistanceKm = 20.0,
+            longestRecentRunKm = 10.0,
+            preferredRunDays = listOf("MONDAY", "WEDNESDAY", "SATURDAY"),
+            preferredLongRunDay = "SATURDAY",
+            goalStyle = "FINISH",
+            strengthDaysPerWeek = 1,
+            units = "KM"
+        )
+    )
+}
+
+private class MissingProfileOnboardingApi : OnboardingApiService {
+    override suspend fun submitOnboarding(request: OnboardingRequest): OnboardingResponse = OnboardingResponse("u", "p")
+    override suspend fun getProfile(): ProfileResponse {
+        throw HttpException(Response.error<ProfileResponse>(404, "{}".toResponseBody("application/json".toMediaType())))
+    }
+}
+
+private class FailingOnboardingApi : OnboardingApiService {
+    override suspend fun submitOnboarding(request: OnboardingRequest): OnboardingResponse = OnboardingResponse("u", "p")
+    override suspend fun getProfile(): ProfileResponse {
+        throw IOException("network")
     }
 }
 

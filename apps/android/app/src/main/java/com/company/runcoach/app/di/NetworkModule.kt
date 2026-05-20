@@ -5,6 +5,8 @@ import com.company.runcoach.core.datastore.session.TokenStorage
 import com.company.runcoach.core.network.ApiClient
 import com.company.runcoach.feature.auth.data.AuthErrorMapper
 import com.company.runcoach.feature.auth.data.remote.AuthApiService
+import com.company.runcoach.feature.onboarding.data.remote.OnboardingApiService
+import com.company.runcoach.feature.profile.data.remote.ProfileApiService
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -24,6 +26,16 @@ object NetworkModule {
     @Singleton
     fun provideAuthApiService(retrofit: Retrofit): AuthApiService =
         retrofit.create(AuthApiService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideOnboardingApiService(retrofit: Retrofit): OnboardingApiService =
+        retrofit.create(OnboardingApiService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideProfileApiService(retrofit: Retrofit): ProfileApiService =
+        retrofit.create(ProfileApiService::class.java)
 
     @Provides
     @Singleton
