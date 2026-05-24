@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MileMind | Pain Check-In</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;family=Geist:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #10131b;
+            color: #e0e2ed;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            background: #aec6ff;
+            cursor: pointer;
+            border-radius: 2px;
+        }
+        .severity-gradient {
+            background: linear-gradient(90deg, #00DFD8 0%, #aec6ff 50%, #ffb4ab 100%);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary": "#aec6ff",
+                      "secondary": "#dbb8ff",
+                      "surface-container-lowest": "#0b0e15",
+                      "on-error": "#690005",
+                      "success-green": "#00DFD8",
+                      "tertiary-container": "#ca4e00",
+                      "surface-variant": "#32353d",
+                      "on-secondary-container": "#d0a6ff",
+                      "on-secondary-fixed": "#2b0052",
+                      "on-tertiary-container": "#fffeff",
+                      "on-primary-container": "#ffffff",
+                      "primary-fixed": "#d8e2ff",
+                      "on-secondary-fixed-variant": "#6600b7",
+                      "secondary-fixed": "#efdbff",
+                      "surface-overlay": "#1A1A1A",
+                      "tertiary-fixed-dim": "#ffb596",
+                      "surface-container-low": "#181b23",
+                      "tertiary": "#ffb596",
+                      "on-background": "#e0e2ed",
+                      "on-error-container": "#ffdad6",
+                      "on-surface": "#e0e2ed",
+                      "surface-base": "#000000",
+                      "on-primary": "#002e6b",
+                      "outline": "#8b90a0",
+                      "text-primary": "#EDEDED",
+                      "on-primary-fixed": "#001a43",
+                      "surface-raised": "#111111",
+                      "inverse-surface": "#e0e2ed",
+                      "background": "#10131b",
+                      "inverse-on-surface": "#2d3039",
+                      "on-tertiary-fixed": "#360f00",
+                      "surface-dim": "#10131b",
+                      "surface-bright": "#363942",
+                      "surface-container-highest": "#32353d",
+                      "surface": "#10131b",
+                      "inverse-primary": "#0059c5",
+                      "primary-container": "#0070f3",
+                      "secondary-container": "#6807ba",
+                      "outline-variant": "#414754",
+                      "secondary-fixed-dim": "#dbb8ff",
+                      "surface-tint": "#aec6ff",
+                      "on-tertiary": "#581e00",
+                      "primary-fixed-dim": "#aec6ff",
+                      "on-secondary": "#470083",
+                      "error": "#ffb4ab",
+                      "surface-container": "#1c1f27",
+                      "tertiary-fixed": "#ffdbcd",
+                      "surface-container-high": "#272a32",
+                      "on-primary-fixed-variant": "#004397",
+                      "border-subtle": "#333333",
+                      "on-surface-variant": "#c1c6d7",
+                      "text-secondary": "#A1A1A1",
+                      "on-tertiary-fixed-variant": "#7d2d00",
+                      "error-container": "#93000a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "base-unit": "4px",
+                      "column-gap": "24px",
+                      "margin-mobile": "16px",
+                      "gutter": "16px",
+                      "section-padding": "64px",
+                      "margin-desktop": "32px"
+              },
+              "fontFamily": {
+                      "body-sm": ["Geist"],
+                      "label-mono": ["JetBrains Mono"],
+                      "headline-lg-mobile": ["Geist"],
+                      "label-caps": ["Geist"],
+                      "headline-lg": ["Geist"],
+                      "display-lg": ["Geist"],
+                      "body-md": ["Geist"]
+              },
+              "fontSize": {
+                      "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "label-mono": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "label-caps": ["11px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex flex-col min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="bg-surface dark:bg-surface border-b border-border-subtle flex justify-between items-center w-full px-margin-mobile py-2 docked full-width top-0 z-50">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="directions_run">directions_run</span>
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold tracking-tight text-primary">MileMind</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center border border-border-subtle overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A professional close-up portrait of a focused athlete with subtle dramatic lighting. The background is a blurred dark gym environment, maintaining a technical and sophisticated aesthetic. The color palette features deep blacks and cool tones, aligning with a high-performance sports application design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEP_5NRyw7LNupfJPxm0IyXVPAXzf70gLRpZrTQI0kQFXa3UFUrjgJ3y9lIjewWWsgOJ9nb0gXskjVpLSpRov1GjsjDd65ZfRbOfXi5T7n-J7r3eBzQxnPAIQXP0kZ4iwCU63p_YwdjzG6fr5nvq_YW1OWvLICxEtjOAoFpyhDQDcr37aPuDKvu1QROwCQOyEwzZHnMkRzLfqXbgMCEUZ0AOJ0j3IdcEodE761HO0-Xg52C4goToKi_u9Uc9WRUuIW6Z4tm6peqxzz"/>
+</div>
+</header>
+<main class="flex-grow flex flex-col px-margin-mobile pt-8 pb-32 max-w-2xl mx-auto w-full">
+<!-- Progress Header -->
+<div class="mb-8">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-mono text-label-mono text-primary uppercase tracking-widest">Step 2 of 2</span>
+<div class="h-1 flex-grow mx-4 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary w-full transition-all duration-500"></div>
+</div>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface font-bold">Check-In</h1>
+<h2 class="font-label-caps text-label-caps text-outline uppercase mt-1">Pain Signals</h2>
+</div>
+<!-- Hero Visualization -->
+<div class="mb-8 relative rounded-lg overflow-hidden border border-border-subtle bg-surface-raised h-48 flex items-center justify-center">
+<div class="absolute inset-0 opacity-20">
+<img alt="Anatomy Visualization" class="w-full h-full object-cover" data-alt="A high-contrast, technical medical visualization of a human muscular system in a deep space setting. The aesthetic is futuristic and clinical, featuring ethereal blue and cyan light streaks that highlight anatomical precision. The atmosphere is calm and authoritative, utilizing a minimalist dark-mode palette with subtle glowing data points." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBngat0cp8HjnUrOQoIbned4F1IbdXOE8gP3K9zRU5J7BlGHwoE6sz1a1pfOKGGglvsaeXp6rZcze9LIj7bEaNr9MYRPiA2-B2yU09TuPKibFwjugOk0irsiMRdCeOcNfoD3WriQn9W_z30y1qPPX-lCX9ccG4jizamRo64_SloB3RzOF9KKNEovfXCNoWjA0-1FE-T6i76e1N4fUBgnwK-cS1AAQwpQ5b0jOZiSeyBczJ2kI32_1KoWpGTHE2s6LCi8BJTN_42az2f"/>
+</div>
+<div class="relative z-10 text-center px-4">
+<span class="material-symbols-outlined text-primary text-4xl mb-2" data-icon="monitor_heart">monitor_heart</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-xs mx-auto">
+                    We use pain signals to keep your training safe. This is not a diagnosis.
+                </p>
+</div>
+</div>
+<!-- Interaction Area -->
+<div class="space-y-8">
+<!-- Question Toggle -->
+<div class="flex flex-col space-y-4">
+<label class="font-label-caps text-label-caps text-outline uppercase">Question</label>
+<div class="flex items-center justify-between">
+<p class="font-body-md text-body-md text-on-surface">Are you feeling any pain or discomfort?</p>
+<div class="flex bg-surface-variant p-1 rounded-lg border border-border-subtle">
+<button class="px-6 py-2 rounded font-label-mono text-label-mono transition-all duration-200 bg-surface-container-low text-outline" id="toggleNo" onclick="handlePainToggle(false)">NO</button>
+<button class="px-6 py-2 rounded font-label-mono text-label-mono transition-all duration-200 text-on-primary-container" id="toggleYes" onclick="handlePainToggle(true)">YES</button>
+</div>
+</div>
+</div>
+<!-- Conditional Content (Pain Details) -->
+<div class="space-y-8 transition-all duration-300 opacity-100 block" id="painDetails">
+<!-- Location -->
+<div class="flex flex-col space-y-3">
+<label class="font-label-caps text-label-caps text-outline uppercase">Location</label>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+<button class="location-chip border border-border-subtle bg-surface-raised py-3 px-2 rounded font-label-mono text-label-mono hover:border-primary transition-colors text-on-surface">Lower Back</button>
+<button class="location-chip border border-border-subtle bg-surface-raised py-3 px-2 rounded font-label-mono text-label-mono hover:border-primary transition-colors text-on-surface">Knee (L/R)</button>
+<button class="location-chip border border-border-subtle bg-surface-raised py-3 px-2 rounded font-label-mono text-label-mono hover:border-primary transition-colors text-on-surface">Shoulder</button>
+<button class="location-chip border border-border-subtle bg-surface-raised py-3 px-2 rounded font-label-mono text-label-mono hover:border-primary transition-colors text-on-surface">Neck</button>
+<button class="location-chip border border-border-subtle bg-surface-raised py-3 px-2 rounded font-label-mono text-label-mono hover:border-primary transition-colors text-on-surface">Ankle</button>
+<button class="location-chip border border-primary bg-primary/10 py-3 px-2 rounded font-label-mono text-label-mono text-primary flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span> Other
+                        </button>
+</div>
+</div>
+<!-- Severity -->
+<div class="flex flex-col space-y-4">
+<div class="flex justify-between items-end">
+<label class="font-label-caps text-label-caps text-outline uppercase">Severity</label>
+<span class="font-display-lg text-primary" id="severityVal">5</span>
+</div>
+<div class="relative pt-4 pb-2">
+<div class="absolute top-0 w-full h-1.5 severity-gradient rounded-full opacity-30"></div>
+<input class="w-full h-1.5 bg-transparent appearance-none cursor-pointer relative z-10" id="severitySlider" max="10" min="1" oninput="updateSeverity(this.value)" type="range" value="5"/>
+<div class="flex justify-between mt-2 font-label-mono text-[10px] text-outline">
+<span>MILD</span>
+<span>MODERATE</span>
+<span>SEVERE</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="mt-auto pt-12 flex flex-col gap-3">
+<button class="w-full bg-primary text-on-primary-fixed font-label-caps text-label-caps py-4 rounded-lg font-bold tracking-widest hover:brightness-110 active:scale-[0.98] transition-all">
+                SAVE CHECK-IN
+            </button>
+<button class="w-full border border-border-subtle text-on-surface-variant font-label-caps text-label-caps py-4 rounded-lg hover:bg-surface-variant/20 transition-all active:scale-[0.98]">
+                BACK
+            </button>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="bg-surface-container-low dark:bg-surface-container-low border-t border-border-subtle fixed bottom-0 w-full z-50 flex justify-around items-center px-4 py-2 docked full-width bottom-0">
+<a class="flex flex-col items-center justify-center text-outline hover:bg-surface-variant/50 transition-all px-2 py-1 rounded" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-label-caps text-label-caps mt-1">Today</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline hover:bg-surface-variant/50 transition-all px-2 py-1 rounded" href="#">
+<span class="material-symbols-outlined" data-icon="event_note">event_note</span>
+<span class="font-label-caps text-label-caps mt-1">Plan</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline hover:bg-surface-variant/50 transition-all px-2 py-1 rounded" href="#">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span class="font-label-caps text-label-caps mt-1">Progress</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline hover:bg-surface-variant/50 transition-all px-2 py-1 rounded" href="#">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+<span class="font-label-caps text-label-caps mt-1">Coach</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-bold hover:bg-surface-variant/50 transition-all px-2 py-1 rounded" href="#">
+<span class="material-symbols-outlined" data-icon="person" data-weight="fill">person</span>
+<span class="font-label-caps text-label-caps mt-1">Profile</span>
+</a>
+</nav>
+<script>
+        function handlePainToggle(isYes) {
+            const painDetails = document.getElementById('painDetails');
+            const btnYes = document.getElementById('toggleYes');
+            const btnNo = document.getElementById('toggleNo');
+
+            if (isYes) {
+                painDetails.style.display = 'block';
+                setTimeout(() => painDetails.style.opacity = '1', 10);
+                btnYes.className = 'px-6 py-2 rounded font-label-mono text-label-mono transition-all duration-200 bg-primary text-on-primary-fixed';
+                btnNo.className = 'px-6 py-2 rounded font-label-mono text-label-mono transition-all duration-200 bg-surface-container-low text-outline';
+            } else {
+                painDetails.style.opacity = '0';
+                setTimeout(() => painDetails.style.display = 'none', 300);
+                btnNo.className = 'px-6 py-2 rounded font-label-mono text-label-mono transition-all duration-200 bg-primary text-on-primary-fixed';
+                btnYes.className = 'px-6 py-2 rounded font-label-mono text-label-mono transition-all duration-200 bg-surface-container-low text-outline';
+            }
+        }
+
+        function updateSeverity(val) {
+            document.getElementById('severityVal').innerText = val;
+            const slider = document.getElementById('severitySlider');
+            // Visual feedback logic if needed
+        }
+
+        // Location chip selection logic
+        const chips = document.querySelectorAll('.location-chip');
+        chips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                chips.forEach(c => {
+                    c.classList.remove('border-primary', 'bg-primary/10', 'text-primary');
+                    c.classList.add('border-border-subtle', 'bg-surface-raised', 'text-on-surface');
+                });
+                chip.classList.remove('border-border-subtle', 'bg-surface-raised', 'text-on-surface');
+                chip.classList.add('border-primary', 'bg-primary/10', 'text-primary');
+            });
+        });
+
+        // Initialize state
+        handlePainToggle(true);
+    </script>
+</body></html>

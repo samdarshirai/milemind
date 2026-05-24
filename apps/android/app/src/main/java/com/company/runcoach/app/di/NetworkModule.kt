@@ -5,10 +5,12 @@ import com.company.runcoach.core.datastore.session.TokenStorage
 import com.company.runcoach.core.network.ApiClient
 import com.company.runcoach.feature.auth.data.AuthErrorMapper
 import com.company.runcoach.feature.auth.data.remote.AuthApiService
+import com.company.runcoach.feature.checkin.data.remote.CheckInApiService
 import com.company.runcoach.feature.onboarding.data.remote.OnboardingApiService
 import com.company.runcoach.feature.plan.data.remote.PlanApiService
 import com.company.runcoach.feature.profile.data.remote.ProfileApiService
 import com.company.runcoach.feature.racegoal.data.remote.RaceGoalApiService
+import com.company.runcoach.feature.today.data.remote.TodayApiService
 import com.company.runcoach.feature.workout.data.remote.WorkoutApiService
 import dagger.Binds
 import dagger.Module
@@ -61,6 +63,16 @@ object NetworkModule {
 
     @Provides
     @Singleton
+    fun provideCheckInApiService(retrofit: Retrofit): CheckInApiService =
+        retrofit.create(CheckInApiService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideTodayApiService(retrofit: Retrofit): TodayApiService =
+        retrofit.create(TodayApiService::class.java)
+
+    @Provides
+    @Singleton
     fun provideAuthErrorMapper(json: Json): AuthErrorMapper = AuthErrorMapper(json)
 
     @Provides
@@ -76,7 +88,7 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideClock(): Clock = Clock.systemDefaultZone()
+    fun provideClock(): Clock = Clock.systemUTC()
 }
 
 @Module

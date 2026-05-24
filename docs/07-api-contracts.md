@@ -481,9 +481,7 @@ Response:
 ```json
 {
   "fatigueSignalId": "4f5e76eb-e590-4cd1-9f95-dc70a8d30930",
-  "readinessState": "ORANGE",
-  "adaptationTriggered": true,
-  "decisionId": "5904545d-7f74-41c0-b48c-b91a27504df1"
+  "readinessState": "CAUTION"
 }
 ```
 
@@ -494,6 +492,7 @@ Request:
 ```json
 {
   "reportedAt": "2026-06-15T08:00:00Z",
+  "hasPain": true,
   "bodyRegion": "LEFT_CALF",
   "painType": "SHARP",
   "severity": 7,
@@ -503,37 +502,72 @@ Request:
 }
 ```
 
+No-pain request (supported):
+
+```json
+{
+  "reportedAt": "2026-06-15T08:00:00Z",
+  "hasPain": false,
+  "freeText": "No pain today."
+}
+```
+
+Behavior:
+- Canonical request: include `hasPain` explicitly.
+- If `hasPain=false`, pain detail fields must be omitted.
+- If `hasPain=true`, `bodyRegion`, `painType`, `severity`, and `onsetContext` are required.
+- Backward compatibility: if `hasPain` is omitted and pain detail fields are all omitted, backend treats it as a no-pain check-in.
+- If `hasPain` is omitted and only risk fields are provided (`canRun` and/or `redFlag`) without pain details, backend rejects the request with `VALIDATION_ERROR`.
+- If any of those pain fields are provided, all pain fields are required and `severity` must be 0 to 10.
+- Allowed `bodyRegion`: `LEFT_CALF`, `RIGHT_CALF`, `KNEE`, `ANKLE`, `HIP`, `LOWER_BACK`.
+- Allowed `painType`: `SHARP`, `DULL`, `ACHING`, `TIGHTNESS`.
+- Allowed `onsetContext`: `DURING_RUN`, `AFTER_RUN`, `ALL_DAY`, `OTHER`.
+
 Response:
 
 ```json
 {
   "injuryFeedbackId": "b6dd69f6-7b05-4973-b66a-f17973a7fa19",
-  "readinessState": "RED",
-  "safetyAction": "REMOVE_INTENSITY_7_DAYS",
-  "adaptationTriggered": true,
-  "decisionId": "035964d4-ca68-4b0c-997a-f6693d52f02d"
+  "readinessState": "HIGH_RISK"
 }
 ```
 
 ### `GET /v1/insights/today`
+
+Behavior:
+- `date` and `hasCheckInToday` are evaluated using the runner's profile timezone calendar-day boundaries.
+- `readinessState` is computed from check-ins submitted within that same local calendar day only.
+- If no check-in exists for the runner's local day, readiness defaults to `READY`.
 
 Response:
 
 ```json
 {
   "date": "2026-06-15",
-  "readinessState": "ORANGE",
-  "todayWorkout": {
-    "plannedWorkoutId": "5c5a3b24-d8f2-448d-a6de-a3c0f6a825dd",
-    "workoutType": "EASY",
-    "headline": "45 min easy run"
+  "readinessState": "CAUTION",
+  "readinessLabel": "Caution",
+  "readinessMessage": "Some readiness signals suggest a conservative effort today.",
+  "latestFatigueSignal": {
+    "signalDate": "2026-06-15",
+    "sleepScore": 2,
+    "stressScore": 4,
+    "sorenessScore": 4,
+    "motivationScore": 2,
+    "illnessFlag": false,
+    "tooBusyFlag": false,
+    "travellingFlag": false,
+    "notes": "Hard week"
   },
-  "latestAdaptation": {
-    "decisionId": "5904545d-7f74-41c0-b48c-b91a27504df1",
-    "headline": "This week has been lightened to protect recovery."
-  }
+  "latestInjuryFeedback": null,
+  "hasCheckInToday": true,
+  "recommendedTone": "supportive"
 }
 ```
+
+Readiness states:
+- `READY`
+- `CAUTION`
+- `HIGH_RISK`
 
 ### `GET /v1/progress/summary`
 
@@ -764,8 +798,9 @@ Response:
 - Reject race date too soon for minimum training block.
 - Reject plan generation if no active goal exists.
 - Reject reschedule if it creates unsafe spacing.
-- Reject duplicate same-day fatigue signal from same source.
+- Same-day fatigue signal submissions from the same source are idempotent and update the existing record.
 - Reject injury feedback with severity outside 0 to 10.
+- Reject partial pain payloads for injury feedback when pain is being reported.
 - Reject AI chat questions that attempt plan creation or medical diagnosis.
 
 ## Conflict Rules

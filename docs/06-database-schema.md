@@ -216,17 +216,19 @@ Columns:
 - `id uuid primary key`
 - `user_id uuid not null references app_user(id)`
 - `reported_at timestamptz not null`
-- `body_region varchar(50) not null`
-- `pain_type varchar(20) not null`
-- `severity int not null`
-- `onset_context varchar(20) not null`
+- `has_pain boolean not null default true`
+- `body_region varchar(50)`
+- `pain_type varchar(20)`
+- `severity int`
+- `onset_context varchar(20)`
 - `can_run boolean`
 - `red_flag boolean not null default false`
 - `free_text text`
 - `created_at timestamptz not null`
 
 Constraints:
-- Severity limited to 0 to 10.
+- Severity limited to 0 to 10 when present.
+- API normalization rule: no-pain defaulting applies only when `hasPain` and all pain fields are omitted; risk-only payloads (`canRun`/`redFlag`) without `hasPain` are rejected.
 
 ### `adaptation_decision`
 

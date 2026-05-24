@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#aec6ff",
+                    "secondary": "#dbb8ff",
+                    "surface-container-lowest": "#0b0e15",
+                    "on-error": "#690005",
+                    "success-green": "#00DFD8",
+                    "tertiary-container": "#ca4e00",
+                    "surface-variant": "#32353d",
+                    "on-secondary-container": "#d0a6ff",
+                    "on-secondary-fixed": "#2b0052",
+                    "on-tertiary-container": "#fffeff",
+                    "on-primary-container": "#ffffff",
+                    "primary-fixed": "#d8e2ff",
+                    "on-secondary-fixed-variant": "#6600b7",
+                    "secondary-fixed": "#efdbff",
+                    "surface-overlay": "#1A1A1A",
+                    "tertiary-fixed-dim": "#ffb596",
+                    "surface-container-low": "#181b23",
+                    "tertiary": "#ffb596",
+                    "on-background": "#e0e2ed",
+                    "on-error-container": "#ffdad6",
+                    "on-surface": "#e0e2ed",
+                    "surface-base": "#000000",
+                    "on-primary": "#002e6b",
+                    "outline": "#8b90a0",
+                    "text-primary": "#EDEDED",
+                    "on-primary-fixed": "#001a43",
+                    "surface-raised": "#111111",
+                    "inverse-surface": "#e0e2ed",
+                    "background": "#10131b",
+                    "inverse-on-surface": "#2d3039",
+                    "on-tertiary-fixed": "#360f00",
+                    "surface-dim": "#10131b",
+                    "surface-bright": "#363942",
+                    "surface-container-highest": "#32353d",
+                    "surface": "#10131b",
+                    "inverse-primary": "#0059c5",
+                    "primary-container": "#0070f3",
+                    "secondary-container": "#6807ba",
+                    "outline-variant": "#414754",
+                    "secondary-fixed-dim": "#dbb8ff",
+                    "surface-tint": "#aec6ff",
+                    "on-tertiary": "#581e00",
+                    "primary-fixed-dim": "#aec6ff",
+                    "on-secondary": "#470083",
+                    "error": "#ffb4ab",
+                    "surface-container": "#1c1f27",
+                    "tertiary-fixed": "#ffdbcd",
+                    "surface-container-high": "#272a32",
+                    "on-primary-fixed-variant": "#004397",
+                    "border-subtle": "#333333",
+                    "on-surface-variant": "#c1c6d7",
+                    "text-secondary": "#A1A1A1",
+                    "on-tertiary-fixed-variant": "#7d2d00",
+                    "error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "base-unit": "4px",
+                    "column-gap": "24px",
+                    "margin-mobile": "16px",
+                    "gutter": "16px",
+                    "section-padding": "64px",
+                    "margin-desktop": "32px"
+            },
+            "fontFamily": {
+                    "body-sm": ["Geist"],
+                    "label-mono": ["JetBrains Mono"],
+                    "headline-lg-mobile": ["Geist"],
+                    "label-caps": ["Geist"],
+                    "headline-lg": ["Geist"],
+                    "display-lg": ["Geist"],
+                    "body-md": ["Geist"]
+            },
+            "fontSize": {
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "label-mono": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "label-caps": ["11px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #10131b;
+            color: #e0e2ed;
+            font-family: 'Geist', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .selection-active {
+            background-color: #aec6ff !important;
+            color: #001a43 !important;
+            border-color: #aec6ff !important;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen flex flex-col items-center">
+<!-- Top App Bar -->
+<header class="bg-surface docked full-width top-0 border-b border-border-subtle flex justify-between items-center w-full px-margin-mobile py-2 z-40 fixed">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">directions_run</span>
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold tracking-tight text-primary">MileMind</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container-high border border-border-subtle flex items-center justify-center overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDijlcbvqVTQi2VwjkaaTZj1LR2w-87v4V_ZtmxXnxsoTDMjSRCXsIwhWXipNAIqGpmCO2qSpRK3sTZiT_LSPcoAVb0Pp5Z06N8aH6aPFPKCmS36fBIyo2hIn1h8Be2kus9Po4zlLNSWwNuc8GqD1KAr9aPet2vvWz64MAKxwpCTbm2v9cRCRWzdKzzT1JRFdrVITzf9dZbGgaXxQCIahZKv-ID1TavKidnOLc9YeWork_PDuOZ_PKtNaMLbRIgQRBhK57Zz8fk4Ry6"/>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="w-full max-w-lg mt-16 px-margin-mobile pt-8 pb-32 flex flex-col gap-8">
+<!-- Header Section -->
+<section>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-mono text-label-mono text-primary uppercase">Step 1 of 2</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface font-bold">Check-In</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Fatigue &amp; Readiness</p>
+</section>
+<!-- Progress Indicator (Atmospheric) -->
+<div class="w-full h-1 bg-surface-container-highest flex">
+<div class="w-1/2 h-full bg-primary shadow-[0_0_8px_rgba(174,198,255,0.4)]"></div>
+</div>
+<!-- Inputs Section -->
+<div class="flex flex-col gap-10">
+<!-- Energy Level -->
+<div class="group">
+<label class="font-label-caps text-label-caps text-outline uppercase block mb-4">ENERGY LEVEL</label>
+<div class="flex justify-between gap-2">
+<button class="flex-1 py-3 border border-border-subtle bg-surface-raised rounded text-on-surface-variant font-label-mono transition-all active:scale-95" onclick="selectChip(this, 'energy')">1</button>
+<button class="flex-1 py-3 border border-border-subtle bg-surface-raised rounded text-on-surface-variant font-label-mono transition-all active:scale-95" onclick="selectChip(this, 'energy')">2</button>
+<button class="flex-1 py-3 border border-border-subtle bg-surface-raised rounded text-on-surface-variant font-label-mono transition-all active:scale-95 selection-active" onclick="selectChip(this, 'energy')">3</button>
+<button class="flex-1 py-3 border border-border-subtle bg-surface-raised rounded text-on-surface-variant font-label-mono transition-all active:scale-95" onclick="selectChip(this, 'energy')">4</button>
+<button class="flex-1 py-3 border border-border-subtle bg-surface-raised rounded text-on-surface-variant font-label-mono transition-all active:scale-95" onclick="selectChip(this, 'energy')">5</button>
+</div>
+</div>
+<!-- Sleep Quality -->
+<div class="group">
+<label class="font-label-caps text-label-caps text-outline uppercase block mb-4">SLEEP QUALITY</label>
+<div class="flex justify-between gap-2">
+<button class="flex-1 py-3 border border-border-subtle bg-surface-raised rounded text-on-surface-variant font-label-mono transition-all active:scale-95" onclick="selectChip(this, 'sleep')">1</button>
+<button class="flex-1 py-3 border border-border-subtle bg-surface-raised rounded text-on-surface-variant font-label-mono transition-all active:scale-95" onclick="selectChip(this, 'sleep')">2</button>
+<button class="flex-1 py-3 border border-border-subtle bg-surface-raised rounded text-on-surface-variant font-label-mono transition-all active:scale-95" onclick="selectChip(this, 'sleep')">3</button>
+<button class="flex-1 py-3 border border-border-subtle bg-surface-raised rounded text-on-surface-variant font-label-mono transition-all active:scale-95 selection-active" onclick="selectChip(this, 'sleep')">4</button>
+<button class="flex-1 py-3 border border-border-subtle bg-surface-raised rounded text-on-surface-variant font-label-mono transition-all active:scale-95" onclick="selectChip(this, 'sleep')">5</button>
+</div>
+</div>
+<!-- Muscle Soreness -->
+<div class="group">
+<label class="font-label-caps text-label-caps text-outline uppercase block mb-4">MUSCLE SORENESS</label>
+<div class="flex justify-between gap-2">
+<button class="flex-1 py-3 border border-border-subtle bg-surface-raised rounded text-on-surface-variant font-label-mono transition-all active:scale-95 selection-active" onclick="selectChip(this, 'muscle')">1</button>
+<button class="flex-1 py-3 border border-border-subtle bg-surface-raised rounded text-on-surface-variant font-label-mono transition-all active:scale-95" onclick="selectChip(this, 'muscle')">2</button>
+<button class="flex-1 py-3 border border-border-subtle bg-surface-raised rounded text-on-surface-variant font-label-mono transition-all active:scale-95" onclick="selectChip(this, 'muscle')">3</button>
+<button class="flex-1 py-3 border border-border-subtle bg-surface-raised rounded text-on-surface-variant font-label-mono transition-all active:scale-95" onclick="selectChip(this, 'muscle')">4</button>
+<button class="flex-1 py-3 border border-border-subtle bg-surface-raised rounded text-on-surface-variant font-label-mono transition-all active:scale-95" onclick="selectChip(this, 'muscle')">5</button>
+</div>
+</div>
+<!-- Stress Level -->
+<div class="group">
+<label class="font-label-caps text-label-caps text-outline uppercase block mb-4">STRESS LEVEL</label>
+<div class="flex justify-between gap-2">
+<button class="flex-1 py-3 border border-border-subtle bg-surface-raised rounded text-on-surface-variant font-label-mono transition-all active:scale-95" onclick="selectChip(this, 'stress')">1</button>
+<button class="flex-1 py-3 border border-border-subtle bg-surface-raised rounded text-on-surface-variant font-label-mono transition-all active:scale-95 selection-active" onclick="selectChip(this, 'stress')">2</button>
+<button class="flex-1 py-3 border border-border-subtle bg-surface-raised rounded text-on-surface-variant font-label-mono transition-all active:scale-95" onclick="selectChip(this, 'stress')">3</button>
+<button class="flex-1 py-3 border border-border-subtle bg-surface-raised rounded text-on-surface-variant font-label-mono transition-all active:scale-95" onclick="selectChip(this, 'stress')">4</button>
+<button class="flex-1 py-3 border border-border-subtle bg-surface-raised rounded text-on-surface-variant font-label-mono transition-all active:scale-95" onclick="selectChip(this, 'stress')">5</button>
+</div>
+</div>
+</div>
+<!-- Supporting Copy -->
+<div class="mt-4 p-4 border-l-2 border-primary bg-surface-container-low">
+<p class="font-body-sm text-body-sm text-on-surface-variant italic">
+                "Listen to your body. There are no wrong answers."
+            </p>
+</div>
+<!-- Actions -->
+<div class="flex flex-col gap-3 mt-4">
+<button class="w-full py-4 bg-primary text-on-primary font-bold rounded hover:brightness-110 active:scale-[0.98] transition-all shadow-[0_4px_12px_rgba(174,198,255,0.2)]">
+                NEXT: PAIN CHECK-IN
+            </button>
+<button class="w-full py-3 border border-slate-700 text-outline font-medium rounded hover:text-on-surface hover:border-outline transition-all">
+                Cancel
+            </button>
+</div>
+</main>
+<!-- Navigation suppressed per "Task-Focused" rule in System Instructions -->
+<script>
+        function selectChip(element, category) {
+            // Find all siblings in the same container
+            const siblings = element.parentElement.querySelectorAll('button');
+            siblings.forEach(sib => {
+                sib.classList.remove('selection-active');
+                sib.classList.remove('text-on-primary-container');
+            });
+            // Add active class to clicked element
+            element.classList.add('selection-active');
+        }
+
+        // Add a subtle scanline effect for technical aesthetic
+        const canvas = document.createElement('div');
+        canvas.style.position = 'fixed';
+        canvas.style.top = '0';
+        canvas.style.left = '0';
+        canvas.style.width = '100%';
+        canvas.style.height = '100%';
+        canvas.style.pointerEvents = 'none';
+        canvas.style.zIndex = '100';
+        canvas.style.background = 'linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.05) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.01), rgba(0, 255, 0, 0.005), rgba(0, 0, 255, 0.01))';
+        canvas.style.backgroundSize = '100% 2px, 3px 100%';
+        document.body.appendChild(canvas);
+    </script>
+</body></html>

@@ -6,5 +6,7 @@ CREATE TABLE IF NOT EXISTS flyway_bootstrap_marker (
 );
 
 INSERT INTO flyway_bootstrap_marker (id)
-VALUES (1)
-    ON CONFLICT (id) DO NOTHING;
+SELECT 1
+WHERE NOT EXISTS (
+    SELECT 1 FROM flyway_bootstrap_marker WHERE id = 1
+);
