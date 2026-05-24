@@ -1,27 +1,20 @@
 package com.company.runcoach.app.navigation
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.material3.Text
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.company.runcoach.feature.auth.ui.navigation.AuthRoutes
 import com.company.runcoach.feature.auth.ui.navigation.authGraph
 import com.company.runcoach.feature.onboarding.ui.navigation.OnboardingRoutes
 import com.company.runcoach.feature.onboarding.ui.navigation.onboardingGraph
-import com.company.runcoach.feature.profile.ui.navigation.ProfileRoutes
+import com.company.runcoach.feature.plan.ui.navigation.planGraph
 import com.company.runcoach.feature.profile.ui.navigation.profileGraph
 import com.company.runcoach.feature.racegoal.ui.navigation.RaceGoalRoutes
 import com.company.runcoach.feature.racegoal.ui.navigation.raceGoalGraph
-
-private object AppRoutes {
-    const val SessionHome = "session_home"
-}
+import com.company.runcoach.feature.today.ui.navigation.TodayRoutes
+import com.company.runcoach.feature.today.ui.navigation.todayGraph
+import com.company.runcoach.feature.workout.ui.navigation.WorkoutRoutes
+import com.company.runcoach.feature.workout.ui.navigation.workoutGraph
 
 @Composable
 fun RunCoachNavHost() {
@@ -31,7 +24,7 @@ fun RunCoachNavHost() {
         authGraph(
             navController = navController,
             onboardingRoute = OnboardingRoutes.Intro,
-            mainRoute = AppRoutes.SessionHome
+            mainRoute = TodayRoutes.Home
         )
 
         onboardingGraph(
@@ -44,28 +37,18 @@ fun RunCoachNavHost() {
 
         raceGoalGraph(
             onComplete = {
-                navController.navigate(AppRoutes.SessionHome) {
+                navController.navigate(TodayRoutes.Home) {
                     popUpTo(RaceGoalRoutes.Setup) { inclusive = true }
                 }
             }
         )
 
-        composable(AppRoutes.SessionHome) {
-            SessionHomePlaceholder(onEditProfile = { navController.navigate(ProfileRoutes.Edit) })
-        }
+        todayGraph()
+        planGraph(onOpenWorkout = { plannedWorkoutId, status ->
+            navController.navigate(WorkoutRoutes.detailRoute(plannedWorkoutId, status))
+        })
+        workoutGraph()
 
         profileGraph()
-    }
-}
-
-@Composable
-private fun SessionHomePlaceholder(onEditProfile: () -> Unit) {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text("Session is active")
-        androidx.compose.material3.Button(onClick = onEditProfile) { Text("Edit profile") }
     }
 }

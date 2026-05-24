@@ -5,4 +5,6 @@ CREATE TABLE IF NOT EXISTS flyway_bootstrap_marker (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-MERGE INTO flyway_bootstrap_marker (id) KEY (id) VALUES (1);
+INSERT INTO flyway_bootstrap_marker (id)
+VALUES (1)
+    ON CONFLICT (id) DO NOTHING;

@@ -1,6 +1,6 @@
 package com.company.runcoach.planning.api;
 
-import com.company.runcoach.app.RunCoachApplication;
+import com.company.runcoach.RunCoachApplication;
 import com.company.runcoach.identity.repo.AppUserRepository;
 import com.company.runcoach.identity.repo.RefreshTokenRepository;
 import com.company.runcoach.goals.repo.RaceGoalRepository;

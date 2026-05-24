@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#c6c6c6",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed-variant": "#41407b",
+                    "on-surface-variant": "#4c4546",
+                    "on-secondary-fixed": "#171838",
+                    "on-primary-fixed": "#1b1b1b",
+                    "accent-magenta": "#ef2cc1",
+                    "accent-periwinkle": "#bdbbff",
+                    "inverse-primary": "#c6c6c6",
+                    "secondary-container": "#d4d4fe",
+                    "hairline-on-dark": "rgba(255, 255, 255, 0.12)",
+                    "on-error-container": "#93000a",
+                    "inverse-on-surface": "#f2f0f0",
+                    "surface-variant": "#e4e2e2",
+                    "on-tertiary-container": "#7f7dbd",
+                    "error": "#ba1a1a",
+                    "surface-tint": "#5e5e5e",
+                    "tertiary-container": "#15124d",
+                    "ink": "#000000",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-low": "#f5f3f3",
+                    "hairline": "rgba(0, 0, 0, 0.08)",
+                    "surface-bright": "#fbf9f8",
+                    "on-surface": "#1b1c1c",
+                    "on-error": "#ffffff",
+                    "on-primary-container": "#848484",
+                    "accent-orange": "#fc4c02",
+                    "tertiary": "#000000",
+                    "on-tertiary-fixed": "#15124d",
+                    "primary": "#000000",
+                    "background": "#fbf9f8",
+                    "surface": "#fbf9f8",
+                    "on-secondary-fixed-variant": "#424466",
+                    "outline-variant": "#cfc4c5",
+                    "surface-dim": "#dbd9d9",
+                    "on-background": "#1b1c1c",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed": "#e1e0ff",
+                    "surface-container-highest": "#e4e2e2",
+                    "on-secondary-container": "#595a7e",
+                    "secondary": "#5a5b7f",
+                    "primary-container": "#1b1b1b",
+                    "mint-surface": "#c8f6f9",
+                    "primary-fixed": "#e2e2e2",
+                    "inverse-surface": "#303031",
+                    "tertiary-fixed-dim": "#c3c0ff",
+                    "secondary-fixed-dim": "#c3c3ec",
+                    "surface-container-high": "#eae8e7",
+                    "tertiary-fixed": "#e2dfff",
+                    "canvas-dark": "#010120",
+                    "surface-container": "#f0eded",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed-variant": "#474747",
+                    "on-tertiary": "#ffffff",
+                    "outline": "#7e7576"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "sm": "8px",
+                    "base": "4px",
+                    "section": "48px",
+                    "2xl": "32px",
+                    "lg": "16px",
+                    "md": "12px",
+                    "xs": "4px",
+                    "xl": "24px"
+            },
+            "fontFamily": {
+                    "mono-eyebrow": ["JetBrains Mono"],
+                    "mono-metric": ["JetBrains Mono"],
+                    "display-xl": ["Inter"],
+                    "mono-button": ["JetBrains Mono"],
+                    "display-lg": ["Inter"],
+                    "display-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "mono-eyebrow": ["11px", {"lineHeight": "11px", "letterSpacing": "0.55px", "fontWeight": "500"}],
+                    "mono-metric": ["10px", {"lineHeight": "14px", "letterSpacing": "0.05px", "fontWeight": "400"}],
+                    "display-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.8px", "fontWeight": "500"}],
+                    "mono-button": ["16px", {"lineHeight": "16px", "letterSpacing": "0.08px", "fontWeight": "500"}],
+                    "display-lg": ["28px", {"lineHeight": "32px", "letterSpacing": "-0.42px", "fontWeight": "500"}],
+                    "display-md": ["22px", {"lineHeight": "25px", "letterSpacing": "-0.22px", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "23px", "letterSpacing": "-0.18px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "21px", "letterSpacing": "-0.16px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .gradient-momentum {
+            background: linear-gradient(90deg, #fc4c02 0%, #ef2cc1 50%, #bdbbff 100%);
+        }
+        body {
+            background-color: #fbf9f8;
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-canvas-dark dark:bg-canvas-dark border-b border-hairline-on-dark flex justify-between items-center h-16 px-xl w-full">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-primary" data-icon="analytics">analytics</span>
+<span class="font-mono-button text-mono-button text-on-primary tracking-widest">PLAN</span>
+</div>
+<button class="hover:opacity-80 transition-opacity active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-on-primary" data-icon="settings">settings</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col items-center justify-center px-xl pt-16 pb-20 bg-surface-container-lowest">
+<!-- Error State Visual -->
+<div class="w-full max-w-md flex flex-col items-center text-center">
+<!-- Icon Placeholder with Technical Background -->
+<div class="relative w-32 h-32 mb-2xl flex items-center justify-center">
+<div class="absolute inset-0 bg-surface-container-high rounded-xl rotate-3 border border-hairline"></div>
+<div class="absolute inset-0 bg-surface-container-low rounded-xl -rotate-3 border border-hairline"></div>
+<div class="relative z-10 w-24 h-24 bg-white border border-hairline rounded-lg flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover opacity-60" data-alt="A macro close-up of a high-tech athletic circuit board with broken digital connections and static noise. The color palette is clinical white and deep navy black, with subtle orange light leaks suggesting a technical error. The lighting is harsh and sterile, maintaining a high-contrast minimalist research-led aesthetic for MileMind." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOMkRX-B2xt9EjLB2_KhThG3OFfhUmxmMksuE8RFiTo1JpDxLHHXkYzRh2xG5PZokRQ-QsSPRfNpxC1RFSaxvEM-fIt6U9zXZhUCZtCY6FzN_CBIWKbIzdRNiUFN2Ax0N_rHyGeHnpnQZ72G1Ruks1h6s-fNrsyHb_CyytjERDYkaFxJr4ELfTr_3Pm99Y1wfdW1Mjse4HO9U7SZQJDvQqYpLMks01CoSIefUKDzUZbJM7_yLvL4kFjfYyWLjG4VSfOZdZJG1A1se1"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[48px]" data-icon="cloud_off">cloud_off</span>
+</div>
+</div>
+</div>
+<!-- Typography Content -->
+<h1 class="font-display-lg text-display-lg text-on-surface mb-lg">
+                Couldn’t load your plan
+            </h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-[280px] mb-2xl">
+                We’re having trouble connecting to the server. Please check your internet connection and try again.
+            </p>
+<!-- CTA -->
+<button class="w-full bg-ink text-on-primary rounded-full h-14 font-mono-button text-mono-button uppercase tracking-widest active:scale-95 transition-transform">
+                Try again
+            </button>
+<!-- Secondary Action -->
+<button class="mt-xl font-mono-eyebrow text-mono-eyebrow text-on-surface-variant uppercase border-b border-hairline pb-xs hover:text-primary transition-colors">
+                Contact Support
+            </button>
+</div>
+<!-- Atmospheric Micro-interaction Decoration -->
+<div class="fixed top-1/4 -right-16 w-64 h-64 bg-accent-periwinkle/5 rounded-full blur-3xl pointer-events-none"></div>
+<div class="fixed bottom-1/4 -left-16 w-64 h-64 bg-accent-orange/5 rounded-full blur-3xl pointer-events-none"></div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-20 bg-surface px-xl pb-safe border-t border-hairline z-50">
+<!-- Today Tab -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined mb-1" data-icon="calendar_today">calendar_today</span>
+<span class="font-mono-eyebrow text-mono-eyebrow uppercase">Today</span>
+</button>
+<!-- Plan Tab (ACTIVE) -->
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined mb-1" data-icon="event_note">event_note</span>
+<span class="font-mono-eyebrow text-mono-eyebrow uppercase">Plan</span>
+</button>
+<!-- Progress Tab -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined mb-1" data-icon="query_stats">query_stats</span>
+<span class="font-mono-eyebrow text-mono-eyebrow uppercase">Progress</span>
+</button>
+<!-- Profile Tab -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-mono-eyebrow text-mono-eyebrow uppercase">Profile</span>
+</button>
+</nav>
+<script>
+        // Simple micro-interaction for the 'Try again' button
+        document.querySelector('button.bg-ink').addEventListener('click', function() {
+            const btn = this;
+            const originalText = btn.innerText;
+            btn.innerText = 'Retrying...';
+            btn.classList.add('opacity-70');
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.innerText = originalText;
+                btn.classList.remove('opacity-70');
+                btn.disabled = false;
+            }, 1500);
+        });
+    </script>
+</body></html>
