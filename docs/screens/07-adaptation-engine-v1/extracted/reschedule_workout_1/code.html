@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        @font-face {
+            font-family: 'hankenGrotesk';
+            src: url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;900&display=swap');
+        }
+        @font-face {
+            font-family: 'jetbrainsMono';
+            src: url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#e2e2e2",
+                        "hairline": "rgba(0, 0, 0, 0.08)",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#002022",
+                        "secondary-fixed": "#bdebee",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "inverse-primary": "#c6c6c6",
+                        "on-primary-container": "#848484",
+                        "tertiary": "#000000",
+                        "on-error-container": "#93000a",
+                        "on-surface": "#1b1b1b",
+                        "ink": "#000000",
+                        "surface-container-high": "#e8e8e8",
+                        "on-secondary-fixed-variant": "#204d50",
+                        "on-background": "#1b1b1b",
+                        "outline": "#7e7576",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "inverse-surface": "#303030",
+                        "surface": "#f9f9f9",
+                        "surface-tint": "#5e5e5e",
+                        "primary": "#000000",
+                        "surface-variant": "#e2e2e2",
+                        "on-surface-variant": "#4c4546",
+                        "surface-dark-soft": "#313641",
+                        "inverse-on-surface": "#f1f1f1",
+                        "on-secondary-container": "#406b6e",
+                        "on-primary-fixed": "#1b1b1b",
+                        "outline-variant": "#cfc4c5",
+                        "on-tertiary-fixed": "#1b1b1b",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#f9f9f9",
+                        "canvas-dark": "#010120",
+                        "accent-magenta": "#ef2cc1",
+                        "surface-dim": "#dadada",
+                        "surface-container": "#eeeeee",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "secondary": "#3a6568",
+                        "surface-container-low": "#f3f3f3",
+                        "accent-orange": "#fc4c02",
+                        "on-tertiary-container": "#848484",
+                        "error-container": "#ffdad6",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#e2e2e2",
+                        "tertiary-container": "#1b1b1b",
+                        "on-primary-fixed-variant": "#474747",
+                        "primary-container": "#1b1b1b",
+                        "secondary-container": "#bdebee",
+                        "secondary-fixed-dim": "#a2cfd2",
+                        "accent-periwinkle": "#bdbbff",
+                        "body-text": "#959494",
+                        "background": "#f9f9f9",
+                        "tertiary-fixed": "#e2e2e2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "4xl": "44px",
+                        "3xl": "32px",
+                        "xs": "4px",
+                        "lg": "16px",
+                        "sm": "8px",
+                        "xxs": "2px",
+                        "md": "12px",
+                        "xl": "20px",
+                        "6xl": "55.2px",
+                        "5xl": "48px",
+                        "2xl": "24px",
+                        "section": "80px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["hankenGrotesk"],
+                        "body-md": ["Inter", "Helvetica Neue", "Arial", "sans-serif"],
+                        "display-md": ["hankenGrotesk"],
+                        "body-lg": ["Inter", "Helvetica Neue", "Arial", "sans-serif"],
+                        "body-md-strong": ["Inter", "Helvetica Neue", "Arial", "sans-serif"],
+                        "body-lg-strong": ["Inter", "Helvetica Neue", "Arial", "sans-serif"],
+                        "mono-caps-label": ["PP Neue Montreal Mono", "ui-monospace", "SF Mono", "Menlo", "monospace"],
+                        "display-xl": ["hankenGrotesk"],
+                        "caption-strong": ["Inter", "Helvetica Neue", "Arial", "sans-serif"],
+                        "headline-lg": ["hankenGrotesk"],
+                        "caption": ["Inter", "Helvetica Neue", "Arial", "sans-serif"],
+                        "display-lg": ["hankenGrotesk"],
+                        "mono-caption": ["PP Neue Montreal Mono", "ui-monospace", "SF Mono", "Menlo", "monospace"],
+                        "headline-xxl": ["hankenGrotesk"],
+                        "mono-eyebrow": ["jetbrainsMono"],
+                        "mono-button": ["jetbrainsMono"],
+                        "display-xxl": ["hankenGrotesk"],
+                        "mono-caps-eyebrow": ["PP Neue Montreal Mono", "ui-monospace", "SF Mono", "Menlo", "monospace"],
+                        "mono-caps-button": ["PP Neue Montreal Mono", "ui-monospace", "SF Mono", "Menlo", "monospace"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.8px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "20.8px", "letterSpacing": "-0.16px", "fontWeight": "400"}],
+                        "display-md": ["22px", {"lineHeight": "25.3px", "letterSpacing": "-0.22px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "23.4px", "letterSpacing": "-0.18px", "fontWeight": "400"}],
+                        "body-md-strong": ["16px", {"lineHeight": "20.8px", "letterSpacing": "-0.16px", "fontWeight": "500"}],
+                        "body-lg-strong": ["18px", {"lineHeight": "23.4px", "letterSpacing": "-0.18px", "fontWeight": "500"}],
+                        "mono-caps-label": ["11px", {"lineHeight": "15.4px", "letterSpacing": "0.055px", "fontWeight": "500"}],
+                        "display-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.8px", "fontWeight": "500"}],
+                        "caption-strong": ["14px", {"lineHeight": "19.6px", "fontWeight": "500"}],
+                        "headline-lg": ["28px", {"lineHeight": "32.2px", "letterSpacing": "-0.42px", "fontWeight": "500"}],
+                        "caption": ["14px", {"lineHeight": "19.6px", "fontWeight": "400"}],
+                        "display-lg": ["28px", {"lineHeight": "32.2px", "letterSpacing": "-0.42px", "fontWeight": "500"}],
+                        "mono-caption": ["10px", {"lineHeight": "14px", "letterSpacing": "0.05px", "fontWeight": "400"}],
+                        "headline-xxl": ["64px", {"lineHeight": "70.4px", "letterSpacing": "-1.92px", "fontWeight": "500"}],
+                        "mono-eyebrow": ["11px", {"lineHeight": "11px", "letterSpacing": "0.55px", "fontWeight": "500"}],
+                        "mono-button": ["16px", {"lineHeight": "16px", "letterSpacing": "0.08px", "fontWeight": "500"}],
+                        "display-xxl": ["64px", {"lineHeight": "70.4px", "letterSpacing": "-1.92px", "fontWeight": "500"}],
+                        "mono-caps-eyebrow": ["11px", {"lineHeight": "11px", "letterSpacing": "0.55px", "fontWeight": "500"}],
+                        "mono-caps-button": ["16px", {"lineHeight": "16px", "letterSpacing": "0.08px", "fontWeight": "500"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md text-body-md">
+<!-- TopAppBar -->
+<header class="bg-canvas-dark border-b border-hairline fixed top-0 w-full z-50 flex justify-between items-center px-lg h-16 w-full">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-primary" data-icon="speed">speed</span>
+<span class="font-headline-lg text-headline-lg font-black tracking-tighter text-on-primary">MILEMIND</span>
+</div>
+<div class="flex items-center">
+<button class="material-symbols-outlined text-on-primary hover:opacity-80 transition-opacity active:scale-95" data-icon="settings">settings</button>
+</div>
+</header>
+<main class="flex-grow pt-24 pb-32 px-lg max-w-2xl mx-auto w-full">
+<!-- Header Section -->
+<section class="mb-3xl">
+<p class="font-mono-caps-eyebrow text-mono-caps-eyebrow text-on-surface-variant mb-sm">SCHEDULING ENGINE V2.0</p>
+<h1 class="font-display-xl text-display-xl tracking-tight text-ink mb-md">Reschedule Workout</h1>
+<div class="p-lg bg-surface border border-hairline rounded-xl flex items-center gap-md">
+<div class="h-12 w-12 rounded bg-canvas-dark flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary" data-icon="fitness_center">fitness_center</span>
+</div>
+<div>
+<h3 class="font-body-md-strong text-body-md-strong text-ink">Heavy Lower Body</h3>
+<p class="font-caption text-caption text-on-surface-variant">Originally: Wednesday, Oct 23</p>
+</div>
+</div>
+</section>
+<!-- Calendar Component -->
+<section class="mb-section">
+<div class="flex items-center justify-between mb-xl">
+<h2 class="font-display-md text-display-md text-ink">October 2024</h2>
+<div class="flex gap-sm">
+<button class="h-8 w-8 rounded-lg border border-hairline flex items-center justify-center hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-body-md" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="h-8 w-8 rounded-lg border border-hairline flex items-center justify-center hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-body-md" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Calendar Labels -->
+<div class="calendar-grid mb-md">
+<div class="text-center font-mono-caps-label text-mono-caps-label text-on-surface-variant">MON</div>
+<div class="text-center font-mono-caps-label text-mono-caps-label text-on-surface-variant">TUE</div>
+<div class="text-center font-mono-caps-label text-mono-caps-label text-on-surface-variant">WED</div>
+<div class="text-center font-mono-caps-label text-mono-caps-label text-on-surface-variant">THU</div>
+<div class="text-center font-mono-caps-label text-mono-caps-label text-on-surface-variant">FRI</div>
+<div class="text-center font-mono-caps-label text-mono-caps-label text-on-surface-variant">SAT</div>
+<div class="text-center font-mono-caps-label text-mono-caps-label text-on-surface-variant">SUN</div>
+</div>
+<!-- Calendar Days -->
+<div class="calendar-grid gap-xs">
+<!-- Row 1 -->
+<div class="aspect-square flex items-center justify-center font-display-md text-surface-variant">30</div>
+<div class="aspect-square flex items-center justify-center font-display-md text-ink hover:bg-surface-container-high rounded-lg cursor-pointer border border-hairline transition-all">1</div>
+<div class="aspect-square flex items-center justify-center font-display-md text-ink hover:bg-surface-container-high rounded-lg cursor-pointer border border-hairline transition-all">2</div>
+<div class="aspect-square flex items-center justify-center font-display-md text-ink hover:bg-surface-container-high rounded-lg cursor-pointer border border-hairline transition-all">3</div>
+<div class="aspect-square flex items-center justify-center font-display-md text-ink hover:bg-surface-container-high rounded-lg cursor-pointer border border-hairline transition-all">4</div>
+<div class="aspect-square flex items-center justify-center font-display-md text-ink hover:bg-surface-container-high rounded-lg cursor-pointer border border-hairline transition-all">5</div>
+<div class="aspect-square flex items-center justify-center font-display-md text-ink hover:bg-surface-container-high rounded-lg cursor-pointer border border-hairline transition-all">6</div>
+<!-- Row 2 -->
+<div class="aspect-square flex items-center justify-center font-display-md text-ink hover:bg-surface-container-high rounded-lg cursor-pointer border border-hairline transition-all">7</div>
+<div class="aspect-square flex items-center justify-center font-display-md text-ink hover:bg-surface-container-high rounded-lg cursor-pointer border border-hairline transition-all">8</div>
+<div class="aspect-square flex items-center justify-center font-display-md text-ink hover:bg-surface-container-high rounded-lg cursor-pointer border border-hairline transition-all">9</div>
+<div class="aspect-square flex items-center justify-center font-display-md text-ink hover:bg-surface-container-high rounded-lg cursor-pointer border border-hairline transition-all">10</div>
+<div class="aspect-square flex items-center justify-center font-display-md text-ink hover:bg-surface-container-high rounded-lg cursor-pointer border border-hairline transition-all">11</div>
+<div class="aspect-square flex items-center justify-center font-display-md text-ink hover:bg-surface-container-high rounded-lg cursor-pointer border border-hairline transition-all">12</div>
+<div class="aspect-square flex items-center justify-center font-display-md text-ink hover:bg-surface-container-high rounded-lg cursor-pointer border border-hairline transition-all">13</div>
+<!-- Row 3 -->
+<div class="aspect-square flex items-center justify-center font-display-md text-ink hover:bg-surface-container-high rounded-lg cursor-pointer border border-hairline transition-all">14</div>
+<div class="aspect-square flex items-center justify-center font-display-md text-ink hover:bg-surface-container-high rounded-lg cursor-pointer border border-hairline transition-all">15</div>
+<div class="aspect-square flex items-center justify-center font-display-md text-ink hover:bg-surface-container-high rounded-lg cursor-pointer border border-hairline transition-all">16</div>
+<div class="aspect-square flex items-center justify-center font-display-md text-ink hover:bg-surface-container-high rounded-lg cursor-pointer border border-hairline transition-all">17</div>
+<div class="aspect-square flex items-center justify-center font-display-md text-ink hover:bg-surface-container-high rounded-lg cursor-pointer border border-hairline transition-all">18</div>
+<div class="aspect-square flex items-center justify-center font-display-md text-ink hover:bg-surface-container-high rounded-lg cursor-pointer border border-hairline transition-all">19</div>
+<div class="aspect-square flex items-center justify-center font-display-md text-ink hover:bg-surface-container-high rounded-lg cursor-pointer border border-hairline transition-all">20</div>
+<!-- Row 4 -->
+<div class="aspect-square flex items-center justify-center font-display-md text-ink hover:bg-surface-container-high rounded-lg cursor-pointer border border-hairline transition-all">21</div>
+<div class="aspect-square flex items-center justify-center font-display-md text-ink hover:bg-surface-container-high rounded-lg cursor-pointer border border-hairline transition-all">22</div>
+<div class="aspect-square flex flex-col items-center justify-center font-display-md bg-canvas-dark text-on-primary rounded-lg cursor-pointer transition-all">
+<span>23</span>
+<span class="text-[8px] font-mono-caps-label text-on-primary opacity-60">ACTIVE</span>
+</div>
+<div class="aspect-square flex items-center justify-center font-display-md text-ink hover:bg-surface-container-high rounded-lg cursor-pointer border border-hairline transition-all">24</div>
+<div class="aspect-square flex flex-col items-center justify-center font-display-md text-ink bg-surface-container-low rounded-lg cursor-pointer border border-hairline transition-all relative group overflow-hidden">
+<span>25</span>
+<div class="absolute inset-0 border-2 border-accent-orange opacity-10"></div>
+<div class="mt-xxs flex items-center gap-[2px] text-accent-orange">
+<span class="material-symbols-outlined text-[10px]" data-icon="warning">warning</span>
+</div>
+<div class="absolute bottom-0 left-0 right-0 py-[2px] bg-accent-orange flex justify-center translate-y-full group-hover:translate-y-0 transition-transform">
+<span class="font-mono-caption text-[8px] text-white tracking-widest">OVERLOAD</span>
+</div>
+</div>
+<div class="aspect-square flex items-center justify-center font-display-md text-ink hover:bg-surface-container-high rounded-lg cursor-pointer border border-hairline transition-all">26</div>
+<div class="aspect-square flex items-center justify-center font-display-md text-ink hover:bg-surface-container-high rounded-lg cursor-pointer border border-hairline transition-all">27</div>
+</div>
+<!-- Overload Warning Label -->
+<div class="mt-lg flex items-start gap-md p-md bg-surface-container rounded-lg border border-hairline">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="report_problem">report_problem</span>
+<div>
+<p class="font-mono-caps-label text-mono-caps-label text-on-surface-variant uppercase mb-[2px]">MAY OVERLOAD WEEK</p>
+<p class="font-caption text-caption text-on-surface-variant leading-tight">Moving this session to Oct 25 results in 4 consecutive high-intensity days. Physiological recovery may be compromised.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Action Area -->
+<div class="fixed bottom-0 left-0 w-full bg-surface border-t border-hairline p-lg z-50">
+<div class="max-w-2xl mx-auto">
+<button class="w-full bg-primary text-on-primary h-14 rounded-full font-mono-button text-mono-button hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center gap-sm">
+                CONFIRM RESCHEDULE
+                <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<button class="w-full mt-md text-on-surface-variant font-mono-caps-label text-mono-caps-label hover:text-ink transition-colors">
+                CANCEL AND KEEP ORIGINAL
+            </button>
+</div>
+</div>
+<!-- Atmospheric Effect: Subtle Noise/Texture Overlay -->
+<div class="fixed inset-0 pointer-events-none opacity-[0.03] z-[100]" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAmcr9rYlZNBqzhUGGTJ9w3968LQZayXEaSSEpZMocJSoO-g4yJ8eYHpgA-H4p-18WdtEq7RlmUM1pjaiF0nLZN1w16a_Dk2zc0zew39YoZK8ygRpH7gJEa22W7JYnfLZV5WWUupNt6lxtCoxXbaflnSzCGmH0c2XMsO5UR8XJdMUdsiz2oFbEGiZMP0WGd2gJVXIoZTTglIHa4E8sWIjz-36MyhR1C6lKvczYCk8GU9c0OrOmTYWbB-zMcGDQdCS4AXAXE8g4ix0s');"></div>
+<script>
+        // Simple Interaction Logic
+        document.querySelectorAll('.calendar-grid div[cursor-pointer]').forEach(day => {
+            day.addEventListener('click', function() {
+                // Remove active from all
+                document.querySelectorAll('.calendar-grid div').forEach(d => {
+                    if (d.classList.contains('bg-canvas-dark')) {
+                        d.classList.remove('bg-canvas-dark', 'text-on-primary');
+                        d.classList.add('text-ink', 'border-hairline');
+                        const label = d.querySelector('span:last-child');
+                        if (label && label.innerText === 'ACTIVE') label.remove();
+                    }
+                });
+                
+                // Add active to clicked
+                this.classList.add('bg-canvas-dark', 'text-on-primary');
+                this.classList.remove('text-ink', 'border-hairline');
+                
+                const span = document.createElement('span');
+                span.className = 'text-[8px] font-mono-caps-label text-on-primary opacity-60';
+                span.innerText = 'NEW DATE';
+                this.appendChild(span);
+            });
+        });
+    </script>
+</body></html>

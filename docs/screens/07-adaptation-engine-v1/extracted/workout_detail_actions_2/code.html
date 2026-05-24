@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MileMind - Workout Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "terminal-green": "#00FF41",
+                      "on-secondary-fixed-variant": "#004f58",
+                      "surface-container-low": "#141e12",
+                      "outline": "#84967e",
+                      "on-tertiary-container": "#7a5b3c",
+                      "primary-container": "#00ff41",
+                      "tertiary": "#fff8f4",
+                      "inverse-on-surface": "#283326",
+                      "surface-elevated": "#121212",
+                      "on-tertiary-fixed-variant": "#5d4124",
+                      "inverse-primary": "#006e16",
+                      "on-error-container": "#ffdad6",
+                      "on-background": "#dae6d2",
+                      "surface-container-highest": "#2d382a",
+                      "tertiary-container": "#ffd5ae",
+                      "on-secondary": "#00363d",
+                      "outline-variant": "#3b4b37",
+                      "background": "#0c160a",
+                      "on-primary-container": "#007117",
+                      "on-tertiary": "#442b10",
+                      "on-surface-variant": "#b9ccb2",
+                      "secondary-fixed": "#9cf0ff",
+                      "surface": "#0c160a",
+                      "secondary-container": "#00e3fd",
+                      "border-subtle": "#262626",
+                      "surface-container-high": "#222d20",
+                      "surface-container-lowest": "#071106",
+                      "on-tertiary-fixed": "#2c1701",
+                      "surface-bright": "#313c2e",
+                      "on-surface": "#dae6d2",
+                      "on-error": "#690005",
+                      "inverse-surface": "#dae6d2",
+                      "surface-container": "#182216",
+                      "surface-base": "#0A0A0A",
+                      "on-primary": "#003907",
+                      "error": "#ffb4ab",
+                      "surface-dim": "#0c160a",
+                      "tertiary-fixed-dim": "#e7bf99",
+                      "on-primary-fixed-variant": "#00530e",
+                      "primary-fixed": "#72ff70",
+                      "data-cyan": "#00E5FF",
+                      "error-red": "#FF5252",
+                      "primary": "#ebffe2",
+                      "tertiary-fixed": "#ffdcbd",
+                      "secondary": "#bdf4ff",
+                      "error-container": "#93000a",
+                      "surface-tint": "#00e639",
+                      "on-secondary-fixed": "#001f24",
+                      "warning-amber": "#FFB300",
+                      "on-primary-fixed": "#002203",
+                      "on-secondary-container": "#00616d",
+                      "secondary-fixed-dim": "#00daf3",
+                      "primary-fixed-dim": "#00e639",
+                      "surface-variant": "#2d382a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter-md": "16px",
+                      "container-max": "1440px",
+                      "margin-lg": "32px",
+                      "unit": "4px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Geist"],
+                      "headline-md": ["Geist"],
+                      "label-sm": ["JetBrains Mono"],
+                      "body-md": ["Geist"],
+                      "code-md": ["JetBrains Mono"],
+                      "headline-lg": ["Geist"]
+              },
+              "fontSize": {
+                      "body-lg": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "label-sm": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "body-md": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "code-md": ["14px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0c160a;
+            color: #dae6d2;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .terminal-grid {
+            background-image: linear-gradient(#182216 1px, transparent 1px), linear-gradient(90deg, #182216 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: rgba(0, 255, 65, 0.1);
+            position: absolute;
+            animation: scan 4s linear infinite;
+            z-index: 10;
+        }
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md overflow-x-hidden min-h-screen selection:bg-terminal-green selection:text-black">
+<!-- Top App Bar -->
+<nav class="w-full top-0 sticky z-[100] bg-background border-b border-outline-variant flex justify-between items-center px-gutter-md py-unit">
+<div class="flex items-center gap-2 cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined text-terminal-green">speed</span>
+<span class="font-headline-md text-headline-md uppercase tracking-tighter font-bold text-terminal-green">MILEMIND</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant hover:bg-surface-elevated transition-colors p-2 cursor-pointer">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:bg-surface-elevated transition-colors p-2 cursor-pointer">menu</span>
+</div>
+</nav>
+<main class="relative pb-32">
+<!-- Hero Decorative Section -->
+<div class="relative h-48 w-full bg-surface-container-low overflow-hidden border-b border-outline-variant">
+<div class="scanline"></div>
+<div class="absolute inset-0 terminal-grid opacity-30"></div>
+<img class="w-full h-full object-cover mix-blend-overlay grayscale opacity-50" data-alt="A cinematic, high-contrast shot of a lone runner silhouetted against a futuristic urban dawn. The scene is dominated by deep blacks and vibrant terminal green accents from digital overlays. Sharp geometric lines and a grid-like structure provide a technical, data-driven aesthetic. The lighting is moody and low-key, emphasizing speed and focus in a minimal, tech-noir style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNcOjgU7WWONkWyvsj8-cDRj-d3cGS7iuU-fG2iu_x2Y15Kz9DEF-3H8Mvsr6cgjvyYTFjEXz32Ri2_72VJOvhukY1g5pvZnMfrS8gVzFgWulkkQeDcfsJPZBahKtYVt3gHBAsanWzTmX0YmCpmLMJTVH3cRXqj-NzbmQPquRIk3GbmozxD4m70OitUMqK3YR4QuxpoEAj60QVIUSjSWtK-vX0J3TprepR9LMqnDVIlLj_X3SPxzcmu004OQfUdQPCAqySfyQcOOE"/>
+<div class="absolute bottom-4 left-4">
+<div class="bg-terminal-green text-black px-2 py-1 font-label-sm text-label-sm mb-1 inline-block">INTENSITY: HIGH</div>
+<h1 class="font-headline-lg text-headline-lg font-extrabold text-terminal-green uppercase">Interval Run</h1>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-gutter-md mt-margin-lg">
+<!-- Bento Stats Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-unit mb-margin-lg">
+<div class="md:col-span-1 p-gutter-md border border-outline-variant bg-surface-container-low">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-unit uppercase">DETAILS</p>
+<div class="flex items-baseline gap-2">
+<span class="text-4xl font-bold font-headline-md text-terminal-green">45</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">MIN</span>
+</div>
+</div>
+<div class="md:col-span-1 p-gutter-md border border-outline-variant bg-surface-container-low">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-unit uppercase opacity-0">D</p> <!-- Space filler -->
+<div class="flex items-baseline gap-2">
+<span class="text-4xl font-bold font-headline-md text-terminal-green">6.2</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">KM</span>
+</div>
+</div>
+<div class="md:col-span-2 p-gutter-md border border-outline-variant bg-surface-container-low">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-unit uppercase tracking-widest">PHASE BREAKDOWN</p>
+<div class="flex h-4 w-full bg-surface-container-highest gap-0.5 mt-2">
+<div class="h-full bg-terminal-green/40 w-[20%]" title="Warmup"></div>
+<div class="h-full bg-terminal-green w-[60%]" title="Intervals"></div>
+<div class="h-full bg-terminal-green/40 w-[20%]" title="Cooldown"></div>
+</div>
+<div class="flex justify-between mt-2 font-label-sm text-label-sm text-on-surface-variant">
+<span>WARM</span>
+<span>WORK</span>
+<span>COOL</span>
+</div>
+</div>
+</div>
+<!-- Structured Workflow Section -->
+<div class="border border-outline-variant bg-surface-container mb-margin-lg overflow-hidden">
+<div class="bg-surface-container-high px-gutter-md py-3 border-b border-outline-variant flex justify-between items-center">
+<h2 class="font-label-sm text-label-sm text-terminal-green uppercase tracking-[0.2em]">Workflow Logic</h2>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">terminal</span>
+</div>
+<div class="p-0">
+<!-- Workflow Step 1 -->
+<div class="flex border-b border-outline-variant hover:bg-surface-elevated transition-colors">
+<div class="w-16 border-r border-outline-variant flex items-center justify-center font-code-md text-on-surface-variant text-xs">01</div>
+<div class="flex-1 p-4">
+<h3 class="text-terminal-green font-label-sm text-label-sm mb-1 uppercase">Warm Up</h3>
+<p class="text-on-surface-variant text-body-md font-body-md">10:00 @ Zone 2 heart rate. Focus on mobility.</p>
+</div>
+</div>
+<!-- Workflow Step 2 -->
+<div class="flex border-b border-outline-variant hover:bg-surface-elevated transition-colors">
+<div class="w-16 border-r border-outline-variant flex items-center justify-center font-code-md text-on-surface-variant text-xs">02</div>
+<div class="flex-1 p-4">
+<h3 class="text-terminal-green font-label-sm text-label-sm mb-1 uppercase">Main Set (x6)</h3>
+<p class="text-on-surface-variant text-body-md font-body-md">3:00 @ 10k pace. 1:30 active recovery jog.</p>
+</div>
+</div>
+<!-- Workflow Step 3 -->
+<div class="flex border-b border-outline-variant hover:bg-surface-elevated transition-colors">
+<div class="w-16 border-r border-outline-variant flex items-center justify-center font-code-md text-on-surface-variant text-xs">03</div>
+<div class="flex-1 p-4">
+<h3 class="text-terminal-green font-label-sm text-label-sm mb-1 uppercase">Cool Down</h3>
+<p class="text-on-surface-variant text-body-md font-body-md">10:00 easy walk. Heart rate recovery tracking.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Code/Meta Details -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter-md">
+<div class="p-gutter-md border border-subtle bg-black font-code-md text-xs">
+<div class="flex justify-between mb-2">
+<span class="text-on-surface-variant">// ENVIRONMENT_DATA</span>
+<span class="text-terminal-green">OK</span>
+</div>
+<div class="space-y-1">
+<p><span class="text-data-cyan">TEMP:</span> 18°C</p>
+<p><span class="text-data-cyan">HUMIDITY:</span> 45%</p>
+<p><span class="text-data-cyan">SURFACE:</span> ASPHALT</p>
+</div>
+</div>
+<div class="p-gutter-md border border-subtle bg-black font-code-md text-xs">
+<div class="flex justify-between mb-2">
+<span class="text-on-surface-variant">// COACH_ADAPTATION</span>
+<span class="text-warning-amber">ACTIVE</span>
+</div>
+<p class="text-on-surface-variant leading-relaxed">
+                        Session generated based on 72h recovery score. Aim for cadence &gt; 175 spm.
+                    </p>
+</div>
+</div>
+</div>
+<!-- Sticky Footer Actions -->
+<div class="fixed bottom-[64px] left-0 w-full bg-surface-container border-t border-outline-variant z-40 p-gutter-md md:px-margin-lg">
+<div class="max-w-container-max mx-auto">
+<div class="flex flex-col md:flex-row gap-4">
+<button class="flex-1 bg-terminal-green text-black font-label-sm text-label-sm py-4 uppercase font-bold tracking-widest active:scale-[0.98] transition-all hover:bg-primary-container">
+                        START WORKOUT
+                    </button>
+<div class="flex flex-1 gap-2">
+<button class="flex-1 border border-terminal-green text-terminal-green font-label-sm text-label-sm py-4 uppercase tracking-widest hover:bg-terminal-green/10 transition-colors">
+                            RESCHEDULE
+                        </button>
+<button class="flex-1 border border-error-red/50 text-error-red font-label-sm text-label-sm py-4 uppercase tracking-widest hover:bg-error-red/10 transition-colors">
+                            SKIP WORKOUT
+                        </button>
+</div>
+</div>
+<p class="text-center md:text-left mt-3 font-label-sm text-[10px] text-on-surface-variant tracking-wider uppercase">
+                    Your plan may adapt based on these changes.
+                </p>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface-container border-t border-outline-variant flex justify-around items-center h-16">
+<div class="flex flex-col items-center justify-center text-on-surface-variant pt-2 pb-1 cursor-pointer active:scale-95 transition-transform">
+<span class="material-symbols-outlined">today</span>
+<span class="font-label-sm text-label-sm uppercase mt-1">TODAY</span>
+</div>
+<div class="flex flex-col items-center justify-center text-terminal-green border-t-2 border-terminal-green pt-2 pb-1 cursor-pointer active:scale-95 transition-transform">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-label-sm text-label-sm uppercase mt-1">PLAN</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant pt-2 pb-1 cursor-pointer active:scale-95 transition-transform">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-label-sm text-label-sm uppercase mt-1">COACH</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant pt-2 pb-1 cursor-pointer active:scale-95 transition-transform">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm uppercase mt-1">PROFILE</span>
+</div>
+</nav>
+<script>
+        // Simple interactive feedback for buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                console.log('Action registered: ' + btn.innerText);
+            });
+        });
+
+        // Horizontal scroll animation for steps on mobile (if needed)
+        // Add subtle parallax to hero if scrollable
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('img[data-alt]');
+            if(hero) {
+                hero.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+    </script>
+</body></html>

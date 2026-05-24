@@ -11,11 +11,13 @@ public record PlannedWorkoutDetailResponse(
     LocalDate scheduledDate,
     String workoutType,
     String workoutSubtype,
+    String status,
     BigDecimal plannedDistanceKm,
     Integer plannedDurationMin,
     String intensityZone,
     List<Map<String, Object>> structure,
     String whyThisWorkout,
-    List<String> changeReasonCodes
+    List<String> changeReasonCodes,
+    int planVersion
 ) {
 }

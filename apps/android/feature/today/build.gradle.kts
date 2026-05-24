@@ -26,6 +26,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:common"))
     implementation(project(":core:designsystem"))
     implementation(project(":core:network"))
     implementation("com.google.dagger:hilt-android:2.52")

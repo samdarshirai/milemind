@@ -8,7 +8,9 @@ data class TodayUiState(
     val workoutErrorMessage: String? = null,
     val workoutLoadFailed: Boolean = false,
     val readinessBanner: ReadinessBannerUiModel = ReadinessBannerUiModel.loading(),
-    val todayWorkout: TodayWorkoutUiModel? = null
+    val todayWorkout: TodayWorkoutUiModel? = null,
+    val latestAdaptation: LatestAdaptationUiModel? = null,
+    val showWhatChanged: Boolean = false
 )
 
 data class ReadinessBannerUiModel(
@@ -42,4 +44,11 @@ data class TodayWorkoutUiModel(
     val status: String,
     val detail: String,
     val intensity: String
+)
+
+data class LatestAdaptationUiModel(
+    val summary: String,
+    val affectedFromDate: String,
+    val affectedToDate: String,
+    val changedWorkoutIds: List<String>
 )

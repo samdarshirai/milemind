@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Skip Workout Confirmation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600&amp;family=JetBrains+Mono:wght@400;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "terminal-green": "#00FF41",
+                        "on-secondary-fixed-variant": "#004f58",
+                        "surface-container-low": "#141e12",
+                        "outline": "#84967e",
+                        "on-tertiary-container": "#7a5b3c",
+                        "primary-container": "#00ff41",
+                        "tertiary": "#fff8f4",
+                        "inverse-on-surface": "#283326",
+                        "surface-elevated": "#121212",
+                        "on-tertiary-fixed-variant": "#5d4124",
+                        "inverse-primary": "#006e16",
+                        "on-error-container": "#ffdad6",
+                        "on-background": "#dae6d2",
+                        "surface-container-highest": "#2d382a",
+                        "tertiary-container": "#ffd5ae",
+                        "on-secondary": "#00363d",
+                        "outline-variant": "#3b4b37",
+                        "background": "#0c160a",
+                        "on-primary-container": "#007117",
+                        "on-tertiary": "#442b10",
+                        "on-surface-variant": "#b9ccb2",
+                        "secondary-fixed": "#9cf0ff",
+                        "surface": "#0c160a",
+                        "secondary-container": "#00e3fd",
+                        "border-subtle": "#262626",
+                        "surface-container-high": "#222d20",
+                        "surface-container-lowest": "#071106",
+                        "on-tertiary-fixed": "#2c1701",
+                        "surface-bright": "#313c2e",
+                        "on-surface": "#dae6d2",
+                        "on-error": "#690005",
+                        "inverse-surface": "#dae6d2",
+                        "surface-container": "#182216",
+                        "surface-base": "#0A0A0A",
+                        "on-primary": "#003907",
+                        "error": "#ffb4ab",
+                        "surface-dim": "#0c160a",
+                        "tertiary-fixed-dim": "#e7bf99",
+                        "on-primary-fixed-variant": "#00530e",
+                        "primary-fixed": "#72ff70",
+                        "data-cyan": "#00E5FF",
+                        "error-red": "#FF5252",
+                        "primary": "#ebffe2",
+                        "tertiary-fixed": "#ffdcbd",
+                        "secondary": "#bdf4ff",
+                        "error-container": "#93000a",
+                        "surface-tint": "#00e639",
+                        "on-secondary-fixed": "#001f24",
+                        "warning-amber": "#FFB300",
+                        "on-primary-fixed": "#002203",
+                        "on-secondary-container": "#00616d",
+                        "secondary-fixed-dim": "#00daf3",
+                        "primary-fixed-dim": "#00e639",
+                        "surface-variant": "#2d382a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter-md": "16px",
+                        "container-max": "1440px",
+                        "margin-lg": "32px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Geist"],
+                        "headline-md": ["Geist"],
+                        "label-sm": ["JetBrains Mono"],
+                        "body-md": ["Geist"],
+                        "code-md": ["JetBrains Mono"],
+                        "headline-lg": ["Geist"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "body-md": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "code-md": ["14px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            vertical-align: middle;
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #0c160a; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #3b4b37; }
+        .active-reason {
+            border-color: #00FF41 !important;
+            background-color: rgba(0, 255, 65, 0.05);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col overflow-hidden">
+<!-- Top App Bar (Shared Component) -->
+<header class="w-full top-0 sticky border-b border-outline-variant dark:border-outline-variant bg-background dark:bg-background z-40">
+<div class="flex justify-between items-center px-gutter-md py-unit w-full">
+<div class="flex items-center gap-2 cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined text-terminal-green" data-icon="speed">speed</span>
+<span class="font-headline-md text-headline-md font-bold text-terminal-green uppercase tracking-tighter">MILEMIND</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer active:opacity-80 hover:bg-surface-elevated transition-colors p-2" data-icon="notifications">notifications</span>
+</div>
+</div>
+</header>
+<!-- Main Content Area (Background Screen) -->
+<main class="flex-grow p-gutter-md overflow-y-auto custom-scrollbar">
+<div class="max-w-md mx-auto space-y-6 opacity-40 pointer-events-none">
+<div class="p-6 border border-outline-variant bg-surface-container rounded-lg">
+<div class="flex justify-between items-center mb-4">
+<span class="font-label-sm text-label-sm uppercase text-terminal-green">PHASE 04</span>
+<span class="font-code-md text-code-md text-on-surface-variant">00:45:12</span>
+</div>
+<h2 class="font-headline-md text-headline-md mb-2">THRESHOLD SPRINTS</h2>
+<p class="text-on-surface-variant font-body-md">Maintaining 85% HR Max for 400m intervals.</p>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-4 border border-outline-variant bg-surface-container">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase mb-1">DISTANCE</p>
+<p class="font-headline-md text-headline-md">5.24 KM</p>
+</div>
+<div class="p-4 border border-outline-variant bg-surface-container">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase mb-1">AVG PACE</p>
+<p class="font-headline-md text-headline-md">4'22" /KM</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Sheet Backdrop -->
+<div class="fixed inset-0 bg-black/80 z-50 transition-opacity duration-300 backdrop-blur-sm" id="sheet-backdrop"></div>
+<!-- Confirmation Bottom Sheet -->
+<div class="fixed bottom-0 left-0 right-0 z-50 transform transition-transform duration-300 translate-y-0 flex justify-center items-end" id="bottom-sheet">
+<div class="w-full max-w-lg bg-surface-container-low border-t border-terminal-green/30 rounded-t-xl overflow-hidden shadow-2xl">
+<!-- Drag Handle / Visual Anchor -->
+<div class="w-full flex justify-center py-3">
+<div class="w-12 h-1 bg-outline-variant rounded-full opacity-50"></div>
+</div>
+<!-- Content -->
+<div class="px-6 pb-8 pt-2">
+<div class="flex items-center justify-between mb-8">
+<h1 class="font-headline-md text-headline-md uppercase tracking-tight text-on-surface">Skip Workout?</h1>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-terminal-green transition-colors" data-icon="close" onclick="toggleSheet()">close</button>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase mb-4">REASON FOR CANCELLATION</p>
+<!-- Reason Options -->
+<div class="grid grid-cols-1 gap-3 mb-10" id="reason-container">
+<button class="reason-card flex items-center justify-between p-4 border border-outline-variant bg-surface-container hover:border-terminal-green transition-all group" onclick="selectReason(this)">
+<span class="font-label-sm text-label-sm uppercase">Too tired</span>
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-[.active-reason]:opacity-100 group-[.active-reason]:text-terminal-green" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</button>
+<button class="reason-card flex items-center justify-between p-4 border border-outline-variant bg-surface-container hover:border-terminal-green transition-all group" onclick="selectReason(this)">
+<span class="font-label-sm text-label-sm uppercase">Pain/discomfort</span>
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-[.active-reason]:opacity-100 group-[.active-reason]:text-terminal-green" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</button>
+<button class="reason-card flex items-center justify-between p-4 border border-outline-variant bg-surface-container hover:border-terminal-green transition-all group" onclick="selectReason(this)">
+<span class="font-label-sm text-label-sm uppercase">No time</span>
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-[.active-reason]:opacity-100 group-[.active-reason]:text-terminal-green" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</button>
+<button class="reason-card flex items-center justify-between p-4 border border-outline-variant bg-surface-container hover:border-terminal-green transition-all group" onclick="selectReason(this)">
+<span class="font-label-sm text-label-sm uppercase">Other</span>
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-[.active-reason]:opacity-100 group-[.active-reason]:text-terminal-green" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</button>
+</div>
+<!-- Primary Action -->
+<button class="w-full bg-terminal-green text-surface-container-lowest font-label-sm text-label-sm py-5 uppercase font-bold tracking-widest active:scale-[0.98] transition-transform hover:brightness-110">
+                    CONFIRM SKIP
+                </button>
+<button class="w-full mt-4 text-on-surface-variant font-label-sm text-label-sm py-2 uppercase hover:text-on-surface transition-colors" onclick="toggleSheet()">
+                    Keep Training
+                </button>
+</div>
+</div>
+</div>
+<!-- Bottom Nav Bar (Shared Component - Conditional Visibility) -->
+<nav class="fixed bottom-0 w-full z-50 border-t border-outline-variant dark:border-outline-variant bg-surface-container dark:bg-surface-container md:hidden">
+<div class="flex justify-around items-center w-full bg-surface-container">
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 pb-1 hover:text-primary transition-colors active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="today">today</span>
+<span class="font-label-sm text-label-sm uppercase">TODAY</span>
+</a>
+<a class="flex flex-col items-center justify-center text-terminal-green border-t-2 border-terminal-green pt-2 pb-1 hover:text-primary transition-colors active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-label-sm text-label-sm uppercase">PLAN</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 pb-1 hover:text-primary transition-colors active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+<span class="font-label-sm text-label-sm uppercase">COACH</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 pb-1 hover:text-primary transition-colors active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm uppercase">PROFILE</span>
+</a>
+</div>
+</nav>
+<script>
+        function selectReason(element) {
+            document.querySelectorAll('.reason-card').forEach(card => {
+                card.classList.remove('active-reason');
+            });
+            element.classList.add('active-reason');
+        }
+
+        function toggleSheet() {
+            const sheet = document.getElementById('bottom-sheet');
+            const backdrop = document.getElementById('sheet-backdrop');
+            
+            if (sheet.classList.contains('translate-y-0')) {
+                sheet.classList.replace('translate-y-0', 'translate-y-full');
+                backdrop.classList.add('opacity-0');
+                backdrop.classList.add('pointer-events-none');
+            } else {
+                sheet.classList.replace('translate-y-full', 'translate-y-0');
+                backdrop.classList.remove('opacity-0');
+                backdrop.classList.remove('pointer-events-none');
+            }
+        }
+    </script>
+</body></html>

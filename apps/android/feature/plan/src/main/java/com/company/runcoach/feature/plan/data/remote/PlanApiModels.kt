@@ -9,7 +9,8 @@ data class CurrentPlanResponse(
     val methodologyCode: String,
     val raceGoal: RaceGoalSummary,
     val currentWeekIndex: Int,
-    val weeks: List<WeekSummary>
+    val weeks: List<WeekSummary>,
+    val latestAdaptation: LatestAdaptationSummary? = null
 )
 
 @Serializable
@@ -36,5 +37,11 @@ data class WorkoutSummary(
     val plannedDistanceKm: Double? = null,
     val plannedDurationMin: Int? = null,
     val intensityZone: String? = null,
-    val changeReasonCodes: List<String> = emptyList()
+    val changeReasonCodes: List<String> = emptyList(),
+    val adaptedFromWorkoutId: String? = null
+)
+
+@Serializable
+data class LatestAdaptationSummary(
+    val changedWorkoutIds: List<String> = emptyList()
 )

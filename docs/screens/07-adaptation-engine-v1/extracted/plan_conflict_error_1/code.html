@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Plan Conflict | MILEMIND</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600&amp;family=JetBrains+Mono:wght@400;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0c160a;
+            color: #dae6d2;
+            -webkit-font-smoothing: antialiased;
+        }
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: rgba(0, 255, 65, 0.1);
+            position: absolute;
+            top: 0;
+            z-index: 10;
+            pointer-events: none;
+            animation: scan 8s linear infinite;
+        }
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
+        .glitch-container:hover .glitch-icon {
+            animation: glitch 0.3s cubic-bezier(.25,.46,.45,.94) both infinite;
+        }
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "terminal-green": "#00FF41",
+                        "on-secondary-fixed-variant": "#004f58",
+                        "surface-container-low": "#141e12",
+                        "outline": "#84967e",
+                        "on-tertiary-container": "#7a5b3c",
+                        "primary-container": "#00ff41",
+                        "tertiary": "#fff8f4",
+                        "inverse-on-surface": "#283326",
+                        "surface-elevated": "#121212",
+                        "on-tertiary-fixed-variant": "#5d4124",
+                        "inverse-primary": "#006e16",
+                        "on-error-container": "#ffdad6",
+                        "on-background": "#dae6d2",
+                        "surface-container-highest": "#2d382a",
+                        "tertiary-container": "#ffd5ae",
+                        "on-secondary": "#00363d",
+                        "outline-variant": "#3b4b37",
+                        "background": "#0c160a",
+                        "on-primary-container": "#007117",
+                        "on-tertiary": "#442b10",
+                        "on-surface-variant": "#b9ccb2",
+                        "secondary-fixed": "#9cf0ff",
+                        "surface": "#0c160a",
+                        "secondary-container": "#00e3fd",
+                        "border-subtle": "#262626",
+                        "surface-container-high": "#222d20",
+                        "surface-container-lowest": "#071106",
+                        "on-tertiary-fixed": "#2c1701",
+                        "surface-bright": "#313c2e",
+                        "on-surface": "#dae6d2",
+                        "on-error": "#690005",
+                        "inverse-surface": "#dae6d2",
+                        "surface-container": "#182216",
+                        "surface-base": "#0A0A0A",
+                        "on-primary": "#003907",
+                        "error": "#ffb4ab",
+                        "surface-dim": "#0c160a",
+                        "tertiary-fixed-dim": "#e7bf99",
+                        "on-primary-fixed-variant": "#00530e",
+                        "primary-fixed": "#72ff70",
+                        "data-cyan": "#00E5FF",
+                        "error-red": "#FF5252",
+                        "primary": "#ebffe2",
+                        "tertiary-fixed": "#ffdcbd",
+                        "secondary": "#bdf4ff",
+                        "error-container": "#93000a",
+                        "surface-tint": "#00e639",
+                        "on-secondary-fixed": "#001f24",
+                        "warning-amber": "#FFB300",
+                        "on-primary-fixed": "#002203",
+                        "on-secondary-container": "#00616d",
+                        "secondary-fixed-dim": "#00daf3",
+                        "primary-fixed-dim": "#00e639",
+                        "surface-variant": "#2d382a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter-md": "16px",
+                        "container-max": "1440px",
+                        "margin-lg": "32px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Geist"],
+                        "headline-md": ["Geist"],
+                        "label-sm": ["JetBrains Mono"],
+                        "body-md": ["Geist"],
+                        "code-md": ["JetBrains Mono"],
+                        "headline-lg": ["Geist"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "body-md": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "code-md": ["14px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md overflow-hidden">
+<div class="scanline"></div>
+<!-- Top Navigation (Shell Invisible for Transactional/Linear state as per guidance, but here used for Branding) -->
+<header class="w-full top-0 sticky bg-background dark:bg-background border-b border-outline-variant dark:border-outline-variant flex justify-between items-center px-gutter-md py-4 z-50">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-terminal-green" data-icon="speed">speed</span>
+<span class="font-headline-md text-headline-md font-bold text-terminal-green uppercase tracking-tighter">MILEMIND</span>
+</div>
+<div class="hidden md:flex items-center gap-6">
+<span class="font-label-sm text-label-sm text-on-surface-variant cursor-pointer hover:text-terminal-green transition-colors">STATUS: OUT_OF_SYNC</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant cursor-pointer hover:text-terminal-green transition-colors">v.4.0.2-patch</span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex items-center justify-center relative p-gutter-md">
+<!-- Abstract Technical Background Pattern -->
+<div class="absolute inset-0 pointer-events-none opacity-5">
+<div class="h-full w-full" style="background-image: radial-gradient(#00FF41 1px, transparent 1px); background-size: 32px 32px;"></div>
+</div>
+<!-- Conflict State Container -->
+<div class="max-w-lg w-full flex flex-col items-center text-center z-20">
+<!-- Icon Display with Glitch Effect -->
+<div class="glitch-container mb-8 p-6 bg-surface-container border border-outline-variant rounded-lg relative overflow-hidden group">
+<div class="absolute inset-0 bg-terminal-green opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
+<span class="material-symbols-outlined text-terminal-green text-[64px] glitch-icon inline-block" data-icon="sync_problem" style="font-variation-settings: 'FILL' 0;">sync_problem</span>
+<!-- Binary Decoration -->
+<div class="absolute top-2 right-2 font-label-sm text-[8px] opacity-20 text-terminal-green select-none">
+                    01100101 01110010 01110010 01101111 01110010
+                </div>
+</div>
+<!-- Typography Hierarchy -->
+<h1 class="font-headline-lg text-headline-lg text-terminal-green mb-4 tracking-tighter uppercase">Plan Out of Date</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-sm">
+                Your plan changed recently on another device. Refresh to continue.
+            </p>
+<!-- Technical Detail Card -->
+<div class="w-full bg-surface-elevated border border-outline-variant p-4 mb-10 text-left rounded-sm font-code-md text-code-md">
+<div class="flex items-center justify-between border-b border-outline-variant pb-2 mb-2 text-on-surface-variant opacity-60">
+<span class="uppercase tracking-widest text-[10px]">Conflict Metadata</span>
+<span class="material-symbols-outlined text-xs" data-icon="terminal">terminal</span>
+</div>
+<div class="space-y-1">
+<p class="flex justify-between">
+<span class="text-on-surface-variant">NODE_ID:</span>
+<span class="text-terminal-green">CLIENT_77_DX</span>
+</p>
+<p class="flex justify-between">
+<span class="text-on-surface-variant">TIMESTAMP:</span>
+<span class="text-terminal-green">2023-11-24T10:14:22Z</span>
+</p>
+<p class="flex justify-between">
+<span class="text-on-surface-variant">REASON:</span>
+<span class="text-terminal-green">CRC_CHECKSUM_MISMATCH</span>
+</p>
+</div>
+</div>
+<!-- Primary Action -->
+<button class="w-full md:w-auto px-10 py-4 bg-terminal-green text-surface-container-lowest font-label-sm text-label-sm font-bold uppercase tracking-widest transition-all hover:scale-[1.02] active:scale-95 hover:shadow-[0_0_20px_rgba(0,255,65,0.4)] flex items-center justify-center gap-3 rounded-sm">
+<span class="material-symbols-outlined text-lg" data-icon="refresh">refresh</span>
+                REFRESH PLAN
+            </button>
+<button class="mt-4 font-label-sm text-label-sm text-on-surface-variant hover:text-terminal-green transition-colors uppercase tracking-widest py-2">
+                IGNORE AND SYNC LATER
+            </button>
+</div>
+</main>
+<!-- UI Backdrop Ornamentation -->
+<div class="fixed bottom-0 left-0 p-gutter-md opacity-20 pointer-events-none">
+<div class="font-label-sm text-[10px] text-terminal-green uppercase vertical-text transform -rotate-180" style="writing-mode: vertical-rl;">
+            SYSTEM_INTEGRITY_CHECK_FAILED // ERROR_CODE: 0xCF4
+        </div>
+</div>
+<div class="fixed bottom-0 right-0 p-gutter-md opacity-20 pointer-events-none">
+<div class="font-label-sm text-[10px] text-terminal-green uppercase">
+            SECURE_ENCLAVE_ACTIVE
+        </div>
+</div>
+<!-- Interaction Script -->
+<script>
+        document.querySelector('button').addEventListener('click', function() {
+            this.innerHTML = '<span class="material-symbols-outlined animate-spin" data-icon="sync">sync</span> SYNCING...';
+            this.classList.add('opacity-80');
+            setTimeout(() => {
+                window.location.reload();
+            }, 1500);
+        });
+
+        // Simulating focus ring/keyboard navigation for technical accessibility
+        window.addEventListener('keydown', (e) => {
+            if(e.key === 'r' || e.key === 'R') {
+                document.querySelector('button').click();
+            }
+        });
+    </script>
+</body></html>

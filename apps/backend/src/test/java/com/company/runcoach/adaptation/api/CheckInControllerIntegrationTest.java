@@ -4,8 +4,13 @@ import com.company.runcoach.RunCoachApplication;
 import com.company.runcoach.adaptation.domain.InjuryFeedback;
 import com.company.runcoach.adaptation.repo.FatigueSignalRepository;
 import com.company.runcoach.adaptation.repo.InjuryFeedbackRepository;
+import com.company.runcoach.goals.repo.RaceGoalRepository;
 import com.company.runcoach.identity.repo.AppUserRepository;
 import com.company.runcoach.identity.repo.RefreshTokenRepository;
+import com.company.runcoach.planning.repo.PlannedWorkoutRepository;
+import com.company.runcoach.planning.repo.TrainingPlanRepository;
+import com.company.runcoach.planning.repo.TrainingPlanWeekRepository;
+import com.company.runcoach.profile.repo.RunnerProfileRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -46,11 +51,26 @@ class CheckInControllerIntegrationTest {
 
     @Autowired
     private AppUserRepository appUserRepository;
+    @Autowired
+    private PlannedWorkoutRepository plannedWorkoutRepository;
+    @Autowired
+    private TrainingPlanWeekRepository trainingPlanWeekRepository;
+    @Autowired
+    private TrainingPlanRepository trainingPlanRepository;
+    @Autowired
+    private RaceGoalRepository raceGoalRepository;
+    @Autowired
+    private RunnerProfileRepository runnerProfileRepository;
 
     @BeforeEach
     void setUp() {
         injuryFeedbackRepository.deleteAll();
         fatigueSignalRepository.deleteAll();
+        plannedWorkoutRepository.deleteAll();
+        trainingPlanWeekRepository.deleteAll();
+        trainingPlanRepository.deleteAll();
+        raceGoalRepository.deleteAll();
+        runnerProfileRepository.deleteAll();
         refreshTokenRepository.deleteAll();
         appUserRepository.deleteAll();
     }

@@ -11,7 +11,8 @@ public record CurrentTrainingPlanResponse(
     String methodologyCode,
     RaceGoalSummary raceGoal,
     int currentWeekIndex,
-    List<WeekSummary> weeks
+    List<WeekSummary> weeks,
+    LatestAdaptationSummary latestAdaptation
 ) {
     public record RaceGoalSummary(
         String raceDistanceType,
@@ -36,7 +37,13 @@ public record CurrentTrainingPlanResponse(
         BigDecimal plannedDistanceKm,
         Integer plannedDurationMin,
         String intensityZone,
-        List<String> changeReasonCodes
+        List<String> changeReasonCodes,
+        UUID adaptedFromWorkoutId
+    ) {
+    }
+
+    public record LatestAdaptationSummary(
+        List<UUID> changedWorkoutIds
     ) {
     }
 }

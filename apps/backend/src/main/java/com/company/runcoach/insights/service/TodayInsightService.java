@@ -1,8 +1,10 @@
 package com.company.runcoach.insights.service;
 
+import com.company.runcoach.adaptation.domain.AdaptationDecision;
 import com.company.runcoach.adaptation.domain.FatigueSignal;
 import com.company.runcoach.adaptation.domain.InjuryFeedback;
 import com.company.runcoach.adaptation.domain.ReadinessState;
+import com.company.runcoach.adaptation.repo.AdaptationDecisionRepository;
 import com.company.runcoach.adaptation.repo.FatigueSignalRepository;
 import com.company.runcoach.adaptation.repo.InjuryFeedbackRepository;
 import com.company.runcoach.adaptation.service.ReadinessService;
@@ -11,6 +13,8 @@ import com.company.runcoach.common.api.ApiException;
 import com.company.runcoach.identity.domain.AppUser;
 import com.company.runcoach.identity.repo.AppUserRepository;
 import com.company.runcoach.insights.api.TodayInsightResponse;
+import com.company.runcoach.planning.domain.PlanStatus;
+import com.company.runcoach.planning.repo.TrainingPlanRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,17 +34,23 @@ public class TodayInsightService {
     private final InjuryFeedbackRepository injuryFeedbackRepository;
     private final AppUserRepository appUserRepository;
     private final ReadinessService readinessService;
+    private final TrainingPlanRepository trainingPlanRepository;
+    private final AdaptationDecisionRepository adaptationDecisionRepository;
 
     public TodayInsightService(
         FatigueSignalRepository fatigueSignalRepository,
         InjuryFeedbackRepository injuryFeedbackRepository,
         AppUserRepository appUserRepository,
-        ReadinessService readinessService
+        ReadinessService readinessService,
+        TrainingPlanRepository trainingPlanRepository,
+        AdaptationDecisionRepository adaptationDecisionRepository
     ) {
         this.fatigueSignalRepository = fatigueSignalRepository;
         this.injuryFeedbackRepository = injuryFeedbackRepository;
         this.appUserRepository = appUserRepository;
         this.readinessService = readinessService;
+        this.trainingPlanRepository = trainingPlanRepository;
+        this.adaptationDecisionRepository = adaptationDecisionRepository;
     }
 
     @Transactional(readOnly = true)
@@ -66,6 +76,12 @@ public class TodayInsightService {
             ? readinessService.evaluate(fatigueSignal, injuryFeedback)
             : ReadinessState.READY;
 
+        TodayInsightResponse.LatestAdaptationSummary latestAdaptation = trainingPlanRepository
+            .findFirstByUser_IdAndStatusInOrderByCreatedAtDesc(userId, List.of(PlanStatus.ACTIVE, PlanStatus.GENERATED))
+            .flatMap(plan -> adaptationDecisionRepository.findFirstByTrainingPlan_IdOrderByCreatedAtDesc(plan.getId()))
+            .map(this::toLatestAdaptationSummary)
+            .orElse(null);
+
         return new TodayInsightResponse(
             today,
             readinessState,
@@ -74,7 +90,8 @@ public class TodayInsightService {
             toFatigueSummary(fatigueSignal),
             toInjurySummary(injuryFeedback),
             hasCheckInToday,
-            tone(readinessState)
+            tone(readinessState),
+            latestAdaptation
         );
     }
 
@@ -134,5 +151,15 @@ public class TodayInsightService {
             case CAUTION -> "supportive";
             case HIGH_RISK -> "protective";
         };
+    }
+
+    private TodayInsightResponse.LatestAdaptationSummary toLatestAdaptationSummary(AdaptationDecision decision) {
+        return new TodayInsightResponse.LatestAdaptationSummary(
+            decision.getId().toString(),
+            decision.getDecisionSummary(),
+            decision.getAffectedFromDate(),
+            decision.getAffectedToDate(),
+            decision.getChangedWorkoutIds()
+        );
     }
 }

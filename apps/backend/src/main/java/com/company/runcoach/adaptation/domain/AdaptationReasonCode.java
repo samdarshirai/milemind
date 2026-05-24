@@ -1,0 +1,16 @@
+package com.company.runcoach.adaptation.domain;
+
+public enum AdaptationReasonCode {
+    WORKOUT_UNDER_COMPLETED,
+    WORKOUT_OVERDONE,
+    MISSED_EASY_RUN,
+    MISSED_QUALITY_RUN,
+    MISSED_LONG_RUN,
+    HIGH_FATIGUE_SCORE,
+    ILLNESS_FLAG,
+    PAIN_SIGNAL_PRESENT,
+    SHARP_LOCALIZED_PAIN,
+    REDUCE_INTENSITY,
+    INSERT_RECOVERY_WEEK,
+    PROTECT_CONSISTENCY
+}

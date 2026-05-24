@@ -4,10 +4,12 @@ import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.performClick
 import com.company.runcoach.feature.today.ui.model.ReadinessBannerStatus
 import com.company.runcoach.feature.today.ui.model.ReadinessBannerUiModel
 import com.company.runcoach.feature.today.ui.model.TodayWorkoutUiModel
 import com.company.runcoach.feature.today.ui.model.TodayUiState
+import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.junit.Test
 
@@ -33,7 +35,9 @@ class TodayScreenTest {
                 onOpenWorkout = { _, _ -> },
                 onOpenPlan = {},
                 onRetry = {},
-                onRetryWorkout = {}
+                onRetryWorkout = {},
+                onOpenWhatChanged = {},
+                onDismissWhatChanged = {}
             )
         }
 
@@ -58,7 +62,9 @@ class TodayScreenTest {
                 onOpenWorkout = { _, _ -> },
                 onOpenPlan = {},
                 onRetry = {},
-                onRetryWorkout = {}
+                onRetryWorkout = {},
+                onOpenWhatChanged = {},
+                onDismissWhatChanged = {}
             )
         }
 
@@ -90,7 +96,9 @@ class TodayScreenTest {
                 onOpenWorkout = { _, _ -> },
                 onOpenPlan = {},
                 onRetry = {},
-                onRetryWorkout = {}
+                onRetryWorkout = {},
+                onOpenWhatChanged = {},
+                onDismissWhatChanged = {}
             )
         }
 
@@ -117,11 +125,83 @@ class TodayScreenTest {
                 onOpenWorkout = { _, _ -> },
                 onOpenPlan = {},
                 onRetry = {},
-                onRetryWorkout = {}
+                onRetryWorkout = {},
+                onOpenWhatChanged = {},
+                onDismissWhatChanged = {}
             )
         }
 
         composeRule.onNodeWithTag("today_workout_error_message").assertIsDisplayed()
         composeRule.onNodeWithTag("today_workout_retry").assertIsDisplayed()
+    }
+
+    @Test
+    fun todayScreen_rendersAdaptationBanner() {
+        composeRule.setContent {
+            TodayScreen(
+                state = TodayUiState(
+                    isLoading = false,
+                    readinessBanner = ReadinessBannerUiModel(
+                        title = "Ready",
+                        message = "You are set.",
+                        ctaLabel = "Update readiness",
+                        status = ReadinessBannerStatus.READY
+                    ),
+                    latestAdaptation = com.company.runcoach.feature.today.ui.model.LatestAdaptationUiModel(
+                        summary = "Your next 10 days were adjusted.",
+                        affectedFromDate = "2026-06-01",
+                        affectedToDate = "2026-06-10",
+                        changedWorkoutIds = listOf("w1")
+                    )
+                ),
+                onPrimaryAction = {},
+                onOpenWorkout = { _, _ -> },
+                onOpenPlan = {},
+                onRetry = {},
+                onRetryWorkout = {},
+                onOpenWhatChanged = {},
+                onDismissWhatChanged = {}
+            )
+        }
+
+        composeRule.onNodeWithTag("today_adaptation_banner").assertIsDisplayed()
+        composeRule.onNodeWithTag("see_what_changed").assertIsDisplayed()
+    }
+
+    @Test
+    fun todayScreen_rendersWhatChangedSheetAndCloseAction() {
+        var dismissed = false
+        composeRule.setContent {
+            TodayScreen(
+                state = TodayUiState(
+                    isLoading = false,
+                    showWhatChanged = true,
+                    readinessBanner = ReadinessBannerUiModel(
+                        title = "Ready",
+                        message = "You are set.",
+                        ctaLabel = "Update readiness",
+                        status = ReadinessBannerStatus.READY
+                    ),
+                    latestAdaptation = com.company.runcoach.feature.today.ui.model.LatestAdaptationUiModel(
+                        summary = "Your next 10 days were adjusted.",
+                        affectedFromDate = "2026-06-01",
+                        affectedToDate = "2026-06-10",
+                        changedWorkoutIds = listOf("w1")
+                    )
+                ),
+                onPrimaryAction = {},
+                onOpenWorkout = { _, _ -> },
+                onOpenPlan = {},
+                onRetry = {},
+                onRetryWorkout = {},
+                onOpenWhatChanged = {},
+                onDismissWhatChanged = { dismissed = true }
+            )
+        }
+
+        composeRule.onNodeWithText("What changed?").assertIsDisplayed()
+        composeRule.onNodeWithText("Your next 10 days were adjusted.").assertIsDisplayed()
+        composeRule.onNodeWithTag("what_changed_close").performClick()
+        assertTrue(dismissed)
     }
 }

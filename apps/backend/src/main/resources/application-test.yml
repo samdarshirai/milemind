@@ -15,6 +15,7 @@ spring:
     placeholders:
       race_goal_active_unique_columns: "user_id, status"
       race_goal_active_unique_predicate: ""
+      adaptation_reason_codes_backfill_expr: "CONCAT('[\"', reason, '\"]')"
 
 runcoach:
   security:

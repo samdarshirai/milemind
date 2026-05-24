@@ -1,5 +1,7 @@
 package com.company.runcoach.planning.service;
 
+import com.company.runcoach.adaptation.domain.AdaptationDecision;
+import com.company.runcoach.adaptation.repo.AdaptationDecisionRepository;
 import com.company.runcoach.common.api.ApiErrorDetail;
 import com.company.runcoach.common.api.ApiException;
 import com.company.runcoach.goals.domain.RaceDistanceType;
@@ -46,6 +48,7 @@ public class TrainingPlanService {
     private final RaceGoalRepository raceGoalRepository;
     private final AppUserRepository appUserRepository;
     private final PlanGenerationService planGenerationService;
+    private final AdaptationDecisionRepository adaptationDecisionRepository;
 
     public TrainingPlanService(
         TrainingPlanRepository trainingPlanRepository,
@@ -54,7 +57,8 @@ public class TrainingPlanService {
         RunnerProfileRepository runnerProfileRepository,
         RaceGoalRepository raceGoalRepository,
         AppUserRepository appUserRepository,
-        PlanGenerationService planGenerationService
+        PlanGenerationService planGenerationService,
+        AdaptationDecisionRepository adaptationDecisionRepository
     ) {
         this.trainingPlanRepository = trainingPlanRepository;
         this.trainingPlanWeekRepository = trainingPlanWeekRepository;
@@ -63,6 +67,7 @@ public class TrainingPlanService {
         this.raceGoalRepository = raceGoalRepository;
         this.appUserRepository = appUserRepository;
         this.planGenerationService = planGenerationService;
+        this.adaptationDecisionRepository = adaptationDecisionRepository;
     }
 
     @Transactional
@@ -258,9 +263,17 @@ public class TrainingPlanService {
                         workout.getPlannedDistanceKm(),
                         workout.getPlannedDurationMin(),
                         workout.getIntensityZone(),
-                        List.of()
+                        extractChangeReasonCodes(workout),
+                        workout.getAdaptedFromWorkoutId()
                     )).toList()
             )).toList();
+
+        CurrentTrainingPlanResponse.LatestAdaptationSummary latestAdaptation = adaptationDecisionRepository
+            .findFirstByTrainingPlan_IdOrderByCreatedAtDesc(plan.getId())
+            .map(AdaptationDecision::getChangedWorkoutIds)
+            .map(ids -> ids.stream().map(UUID::fromString).toList())
+            .map(CurrentTrainingPlanResponse.LatestAdaptationSummary::new)
+            .orElse(null);
 
         return new CurrentTrainingPlanResponse(
             plan.getId(),
@@ -271,7 +284,8 @@ public class TrainingPlanService {
                 plan.getRaceGoal().getRaceDate()
             ),
             plan.getCurrentWeekIndex(),
-            weekSummaries
+            weekSummaries,
+            latestAdaptation
         );
     }
 
@@ -294,12 +308,14 @@ public class TrainingPlanService {
             plannedWorkout.getScheduledDate(),
             plannedWorkout.getWorkoutType().name(),
             plannedWorkout.getWorkoutSubtype(),
+            plannedWorkout.getStatus().name(),
             plannedWorkout.getPlannedDistanceKm(),
             plannedWorkout.getPlannedDurationMin(),
             plannedWorkout.getIntensityZone(),
             structure,
             String.valueOf(whyValue),
-            reasonCodes
+            reasonCodes,
+            plannedWorkout.getPlanVersion()
         );
     }
 
@@ -325,6 +341,21 @@ public class TrainingPlanService {
             case MODERATE -> "Z3";
             case HARD -> "Z4";
         };
+    }
+
+    @SuppressWarnings("unchecked")
+    private List<String> extractChangeReasonCodes(PlannedWorkout workout) {
+        if (workout.getRationale() == null) {
+            return List.of();
+        }
+        Object raw = workout.getRationale().get("changeReasonCodes");
+        if (!(raw instanceof List<?> list)) {
+            return List.of();
+        }
+        return list.stream()
+            .filter(String.class::isInstance)
+            .map(String.class::cast)
+            .toList();
     }
 
     private ApiException validation(String field, String issue, String message) {

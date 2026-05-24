@@ -12,7 +12,8 @@ public record TodayInsightResponse(
     FatigueSignalSummary latestFatigueSignal,
     InjuryFeedbackSummary latestInjuryFeedback,
     boolean hasCheckInToday,
-    String recommendedTone
+    String recommendedTone,
+    LatestAdaptationSummary latestAdaptation
 ) {
     public record FatigueSignalSummary(
         LocalDate signalDate,
@@ -37,6 +38,15 @@ public record TodayInsightResponse(
         Boolean canRun,
         boolean redFlag,
         String freeText
+    ) {
+    }
+
+    public record LatestAdaptationSummary(
+        String id,
+        String summary,
+        LocalDate affectedFromDate,
+        LocalDate affectedToDate,
+        java.util.List<String> changedWorkoutIds
     ) {
     }
 }

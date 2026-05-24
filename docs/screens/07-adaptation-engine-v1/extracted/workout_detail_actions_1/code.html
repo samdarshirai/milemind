@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        @font-face {
+            font-family: 'hankenGrotesk';
+            src: url('https://fonts.gstatic.com/s/hankengrotesk/v5/ieVl2pt_9_yWv_H7nO83_G9X_3l_vD9W_fD9_fD9_fD9.woff2') format('woff2');
+        }
+        @font-face {
+            font-family: 'jetbrainsMono';
+            src: url('https://fonts.gstatic.com/s/jetbrainsmono/v13/t6X_w3V5Z9nZ1o1o1o1o1o1o1o1o1o1o1o1o1o.woff2') format('woff2');
+        }
+        body {
+            font-family: 'The Future', 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#e2e2e2",
+                        "hairline": "rgba(0, 0, 0, 0.08)",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#002022",
+                        "secondary-fixed": "#bdebee",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "inverse-primary": "#c6c6c6",
+                        "on-primary-container": "#848484",
+                        "tertiary": "#000000",
+                        "on-error-container": "#93000a",
+                        "on-surface": "#1b1b1b",
+                        "ink": "#000000",
+                        "surface-container-high": "#e8e8e8",
+                        "on-secondary-fixed-variant": "#204d50",
+                        "on-background": "#1b1b1b",
+                        "outline": "#7e7576",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "inverse-surface": "#303030",
+                        "surface": "#f9f9f9",
+                        "surface-tint": "#5e5e5e",
+                        "primary": "#000000",
+                        "surface-variant": "#e2e2e2",
+                        "on-surface-variant": "#4c4546",
+                        "surface-dark-soft": "#313641",
+                        "inverse-on-surface": "#f1f1f1",
+                        "on-secondary-container": "#406b6e",
+                        "on-primary-fixed": "#1b1b1b",
+                        "outline-variant": "#cfc4c5",
+                        "on-tertiary-fixed": "#1b1b1b",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#f9f9f9",
+                        "canvas-dark": "#010120",
+                        "accent-magenta": "#ef2cc1",
+                        "surface-dim": "#dadada",
+                        "surface-container": "#eeeeee",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "secondary": "#3a6568",
+                        "surface-container-low": "#f3f3f3",
+                        "accent-orange": "#fc4c02",
+                        "on-tertiary-container": "#848484",
+                        "error-container": "#ffdad6",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#e2e2e2",
+                        "tertiary-container": "#1b1b1b",
+                        "on-primary-fixed-variant": "#474747",
+                        "primary-container": "#1b1b1b",
+                        "secondary-container": "#bdebee",
+                        "secondary-fixed-dim": "#a2cfd2",
+                        "accent-periwinkle": "#bdbbff",
+                        "body-text": "#959494",
+                        "background": "#f9f9f9",
+                        "tertiary-fixed": "#e2e2e2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "4xl": "44px",
+                        "3xl": "32px",
+                        "xs": "4px",
+                        "lg": "16px",
+                        "sm": "8px",
+                        "xxs": "2px",
+                        "md": "12px",
+                        "xl": "20px",
+                        "6xl": "55.2px",
+                        "5xl": "48px",
+                        "2xl": "24px",
+                        "section": "80px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["hankenGrotesk"],
+                        "body-md": ["The Future", "Inter", "sans-serif"],
+                        "display-md": ["The Future", "Inter", "sans-serif"],
+                        "body-lg": ["The Future", "Inter", "sans-serif"],
+                        "mono-caps-label": ["PP Neue Montreal Mono", "monospace"],
+                        "display-xl": ["The Future", "Inter", "sans-serif"],
+                        "headline-lg": ["hankenGrotesk"],
+                        "headline-xxl": ["hankenGrotesk"],
+                        "mono-eyebrow": ["jetbrainsMono"],
+                        "mono-button": ["jetbrainsMono"],
+                        "display-xxl": ["The Future", "Inter", "sans-serif"],
+                        "mono-caps-button": ["PP Neue Montreal Mono", "monospace"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-canvas-dark border-b border-hairline flex justify-between items-center px-lg h-16 w-full">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-primary text-headline-lg" data-icon="speed">speed</span>
+<span class="font-headline-lg text-headline-lg font-black tracking-tighter text-on-primary">MILEMIND</span>
+</div>
+<div class="flex items-center">
+<button class="material-symbols-outlined text-on-primary hover:opacity-80 transition-opacity active:scale-95" data-icon="settings">settings</button>
+</div>
+</header>
+<main class="pt-24 pb-32 px-lg md:px-0">
+<div class="max-w-2xl mx-auto">
+<!-- Hero Section -->
+<section class="mb-section">
+<div class="relative w-full h-64 rounded-xl overflow-hidden mb-xl">
+<img alt="A focused runner" class="w-full h-full object-cover" data-alt="A high-performance technical photograph of a runner's silhouette against a crisp morning horizon. The lighting is clinical and bright, emphasizing a light-mode aesthetic. The composition is minimal and architectural, reflecting a professional research environment with deep navy accents and a subtle three-color gradient glow of orange, magenta, and periwinkle in the distance. The mood is calm, disciplined, and focused." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBF-z9jEAhUu0U7BV7pzgjG-wBMRhqQ_Gy6u3Mi60pybK7Ex_l2noS1XVv3e8NkMGhHPkGcx-q74KW6K6yUmhowlpR3LAksrpE4mFVKwMfpR4prMZN7OpnplIPkThT1CyGmTdV0OZWWxUc_Lff7DgG8cr1E0fN2_yx8-lT1VC8BceVeCsJq55VGSe6JKvsLebVPuP-9hVrZkz_2SK_4KANemlmUTlPK5ghR5XaHFBGEetLhueR4wmaa5jMT55C_8ZmDuI8axCpJplc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent"></div>
+</div>
+<div class="space-y-sm">
+<span class="font-mono-eyebrow text-mono-eyebrow text-on-surface-variant uppercase tracking-widest bg-surface-container px-sm py-xxs rounded">Zone 2 • Aerobic Base</span>
+<h1 class="font-headline-xxl text-headline-xxl text-primary leading-none">Steady State Run</h1>
+<p class="font-body-lg text-body-lg text-body-text max-w-lg mt-md">
+                        This session focuses on building your metabolic efficiency. Maintain a consistent, conversational pace to optimize fat oxidation and cardiac output without accumulation of excessive fatigue.
+                    </p>
+</div>
+</section>
+<!-- Metrics Bento Grid -->
+<section class="grid grid-cols-2 md:grid-cols-4 gap-md mb-section">
+<div class="bg-surface border border-hairline p-xl rounded-xl">
+<span class="font-mono-caps-label text-mono-caps-label text-on-surface-variant block mb-xs">DURATION</span>
+<span class="font-display-md text-display-md text-primary">45:00</span>
+</div>
+<div class="bg-surface border border-hairline p-xl rounded-xl">
+<span class="font-mono-caps-label text-mono-caps-label text-on-surface-variant block mb-xs">INTENSITY</span>
+<span class="font-display-md text-display-md text-primary">Moderate</span>
+</div>
+<div class="bg-surface border border-hairline p-xl rounded-xl">
+<span class="font-mono-caps-label text-mono-caps-label text-on-surface-variant block mb-xs">TARGET HR</span>
+<span class="font-display-md text-display-md text-primary">138–145</span>
+</div>
+<div class="bg-surface border border-hairline p-xl rounded-xl">
+<span class="font-mono-caps-label text-mono-caps-label text-on-surface-variant block mb-xs">EFFORT</span>
+<span class="font-display-md text-display-md text-primary">RPE 4/10</span>
+</div>
+</section>
+<!-- Coach's Notes -->
+<section class="bg-surface-container-low p-2xl rounded-xl border border-hairline mb-section">
+<div class="flex items-start gap-md">
+<span class="material-symbols-outlined text-primary mt-xxs" data-icon="lightbulb">lightbulb</span>
+<div class="space-y-sm">
+<h3 class="font-body-md-strong text-body-md-strong text-primary">Coach's Guidance</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                            "If you can't speak in full sentences, you're going too fast. Today is about discipline, not speed. Focus on a tall posture and a light footstrike. Imagine a string pulling the crown of your head toward the sky."
+                        </p>
+</div>
+</div>
+</section>
+<!-- Action Buttons -->
+<section class="flex flex-col sm:flex-row gap-md">
+<button class="flex-1 bg-primary text-on-primary font-mono-button text-mono-button py-xl px-2xl rounded-full transition-transform active:scale-95 flex items-center justify-center gap-sm">
+                    SKIP WORKOUT
+                </button>
+<button class="flex-1 border border-primary text-primary font-mono-button text-mono-button py-xl px-2xl rounded-full transition-colors hover:bg-surface-container active:scale-95 flex items-center justify-center gap-sm">
+                    RESCHEDULE
+                </button>
+</section>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-md pb-safe bg-surface border-t border-hairline">
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-mono-caps-label text-mono-caps-label">Today</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary text-on-primary rounded-xl px-4 py-1 active:scale-95 transition-transform cursor-pointer">
+<span class="material-symbols-outlined" data-icon="event_note" style="font-variation-settings: 'FILL' 1;">event_note</span>
+<span class="font-mono-caps-label text-mono-caps-label">Plan</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+<span class="font-mono-caps-label text-mono-caps-label">Progress</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-mono-caps-label text-mono-caps-label">Profile</span>
+</div>
+</nav>
+</body></html>

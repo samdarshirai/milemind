@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    body {
+      background-color: #f9f9f9;
+      color: #1b1b1b;
+      -webkit-font-smoothing: antialiased;
+    }
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-tertiary": "#ffffff",
+            "primary-fixed": "#e2e2e2",
+            "hairline": "rgba(0, 0, 0, 0.08)",
+            "error": "#ba1a1a",
+            "on-secondary-fixed": "#002022",
+            "secondary-fixed": "#bdebee",
+            "on-primary": "#ffffff",
+            "tertiary-fixed-dim": "#c6c6c6",
+            "inverse-primary": "#c6c6c6",
+            "on-primary-container": "#848484",
+            "tertiary": "#000000",
+            "on-error-container": "#93000a",
+            "on-surface": "#1b1b1b",
+            "ink": "#000000",
+            "surface-container-high": "#e8e8e8",
+            "on-secondary-fixed-variant": "#204d50",
+            "on-background": "#1b1b1b",
+            "outline": "#7e7576",
+            "on-tertiary-fixed-variant": "#474747",
+            "inverse-surface": "#303030",
+            "surface": "#f9f9f9",
+            "surface-tint": "#5e5e5e",
+            "primary": "#000000",
+            "surface-variant": "#e2e2e2",
+            "on-surface-variant": "#4c4546",
+            "surface-dark-soft": "#313641",
+            "inverse-on-surface": "#f1f1f1",
+            "on-secondary-container": "#406b6e",
+            "on-primary-fixed": "#1b1b1b",
+            "outline-variant": "#cfc4c5",
+            "on-tertiary-fixed": "#1b1b1b",
+            "on-secondary": "#ffffff",
+            "surface-bright": "#f9f9f9",
+            "canvas-dark": "#010120",
+            "accent-magenta": "#ef2cc1",
+            "surface-dim": "#dadada",
+            "surface-container": "#eeeeee",
+            "surface-container-lowest": "#ffffff",
+            "primary-fixed-dim": "#c6c6c6",
+            "secondary": "#3a6568",
+            "surface-container-low": "#f3f3f3",
+            "accent-orange": "#fc4c02",
+            "on-tertiary-container": "#848484",
+            "error-container": "#ffdad6",
+            "on-error": "#ffffff",
+            "surface-container-highest": "#e2e2e2",
+            "tertiary-container": "#1b1b1b",
+            "on-primary-fixed-variant": "#474747",
+            "primary-container": "#1b1b1b",
+            "secondary-container": "#bdebee",
+            "secondary-fixed-dim": "#a2cfd2",
+            "accent-periwinkle": "#bdbbff",
+            "body-text": "#959494",
+            "background": "#f9f9f9",
+            "tertiary-fixed": "#e2e2e2"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "4xl": "44px",
+            "3xl": "32px",
+            "xs": "4px",
+            "lg": "16px",
+            "sm": "8px",
+            "xxs": "2px",
+            "md": "12px",
+            "xl": "20px",
+            "6xl": "55.2px",
+            "5xl": "48px",
+            "2xl": "24px",
+            "section": "80px"
+          },
+          "fontFamily": {
+            "headline-xl": ["hankenGrotesk"],
+            "body-md": ["The Future, Inter, Helvetica Neue, Arial, sans-serif"],
+            "display-md": ["The Future, Inter, Helvetica Neue, Arial, sans-serif"],
+            "body-lg": ["The Future, Inter, Helvetica Neue, Arial, sans-serif"],
+            "body-md-strong": ["The Future, Inter, Helvetica Neue, Arial, sans-serif"],
+            "body-lg-strong": ["The Future, Inter, Helvetica Neue, Arial, sans-serif"],
+            "mono-caps-label": ["PP Neue Montreal Mono, ui-monospace, SF Mono, Menlo, monospace"],
+            "display-xl": ["The Future, Inter, Helvetica Neue, Arial, sans-serif"],
+            "caption-strong": ["The Future, Inter, Helvetica Neue, Arial, sans-serif"],
+            "headline-lg": ["hankenGrotesk"],
+            "caption": ["The Future, Inter, Helvetica Neue, Arial, sans-serif"],
+            "display-lg": ["The Future, Inter, Helvetica Neue, Arial, sans-serif"],
+            "mono-caption": ["PP Neue Montreal Mono, ui-monospace, SF Mono, Menlo, monospace"],
+            "headline-xxl": ["hankenGrotesk"],
+            "mono-eyebrow": ["jetbrainsMono"],
+            "mono-button": ["jetbrainsMono"],
+            "display-xxl": ["The Future, Inter, Helvetica Neue, Arial, sans-serif"],
+            "mono-caps-eyebrow": ["PP Neue Montreal Mono, ui-monospace, SF Mono, Menlo, monospace"],
+            "mono-caps-button": ["PP Neue Montreal Mono, ui-monospace, SF Mono, Menlo, monospace"]
+          },
+          "fontSize": {
+            "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.8px", "fontWeight": "500"}],
+            "body-md": ["16px", {"lineHeight": "20.8px", "letterSpacing": "-0.16px", "fontWeight": "400"}],
+            "display-md": ["22px", {"lineHeight": "25.3px", "letterSpacing": "-0.22px", "fontWeight": "500"}],
+            "body-lg": ["18px", {"lineHeight": "23.4px", "letterSpacing": "-0.18px", "fontWeight": "400"}],
+            "body-md-strong": ["16px", {"lineHeight": "20.8px", "letterSpacing": "-0.16px", "fontWeight": "500"}],
+            "body-lg-strong": ["18px", {"lineHeight": "23.4px", "letterSpacing": "-0.18px", "fontWeight": "500"}],
+            "mono-caps-label": ["11px", {"lineHeight": "15.4px", "letterSpacing": "0.055px", "fontWeight": "500"}],
+            "display-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.8px", "fontWeight": "500"}],
+            "caption-strong": ["14px", {"lineHeight": "19.6px", "fontWeight": "500"}],
+            "headline-lg": ["28px", {"lineHeight": "32.2px", "letterSpacing": "-0.42px", "fontWeight": "500"}],
+            "caption": ["14px", {"lineHeight": "19.6px", "fontWeight": "400"}],
+            "display-lg": ["28px", {"lineHeight": "32.2px", "letterSpacing": "-0.42px", "fontWeight": "500"}],
+            "mono-caption": ["10px", {"lineHeight": "14px", "letterSpacing": "0.05px", "fontWeight": "400"}],
+            "headline-xxl": ["64px", {"lineHeight": "70.4px", "letterSpacing": "-1.92px", "fontWeight": "500"}],
+            "mono-eyebrow": ["11px", {"lineHeight": "11px", "letterSpacing": "0.55px", "fontWeight": "500"}],
+            "mono-button": ["16px", {"lineHeight": "16px", "letterSpacing": "0.08px", "fontWeight": "500"}],
+            "display-xxl": ["64px", {"lineHeight": "70.4px", "letterSpacing": "-1.92px", "fontWeight": "500"}],
+            "mono-caps-eyebrow": ["11px", {"lineHeight": "11px", "letterSpacing": "0.55px", "fontWeight": "500"}],
+            "mono-caps-button": ["16px", {"lineHeight": "16px", "letterSpacing": "0.08px", "fontWeight": "500"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-canvas-dark border-b border-hairline flex justify-between items-center px-lg h-16">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-primary">speed</span>
+<span class="font-headline-lg text-headline-lg font-black tracking-tighter text-on-primary">MILEMIND</span>
+</div>
+<div class="flex items-center gap-md">
+<button class="text-on-primary-fixed-variant hover:opacity-80 transition-opacity active:scale-95 transition-transform">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</header>
+<main class="pt-16 pb-24 min-h-screen">
+<!-- Week Header -->
+<section class="bg-surface pt-8 pb-4 px-lg border-b border-hairline">
+<div class="max-w-4xl mx-auto flex justify-between items-end">
+<div>
+<span class="font-mono-caps-eyebrow text-mono-caps-eyebrow text-on-surface-variant">CURRENT CYCLE</span>
+<h1 class="font-headline-xl text-headline-xl text-on-surface">May 12 — May 18</h1>
+</div>
+<div class="flex gap-xs">
+<button class="p-sm rounded-lg border border-hairline hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-on-surface">chevron_left</span>
+</button>
+<button class="p-sm rounded-lg border border-hairline hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-on-surface">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Calendar Grid -->
+<section class="px-lg py-xl max-w-4xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-7 gap-sm">
+<!-- Day Column (Repeated for Monday-Sunday) -->
+<!-- Mon -->
+<div class="flex flex-col gap-sm">
+<div class="py-sm border-b border-hairline">
+<span class="font-mono-caps-label text-mono-caps-label text-on-surface-variant">MON</span>
+<div class="font-headline-lg text-headline-lg text-on-surface">12</div>
+</div>
+<div class="flex flex-col gap-sm">
+<!-- Workout Card -->
+<div class="relative p-md bg-surface-container-lowest border border-hairline rounded-lg hover:border-primary transition-all group cursor-pointer">
+<span class="absolute top-sm right-sm bg-surface-container text-on-surface-variant font-mono-caps-label text-mono-caption px-xxs py-0 rounded-xs uppercase">ADAPTED</span>
+<span class="font-mono-caps-eyebrow text-mono-caps-eyebrow text-accent-orange">INTERVAL</span>
+<h3 class="font-body-md-strong text-body-md-strong text-on-surface mt-xs">400m Repeats</h3>
+<div class="mt-xl flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">timer</span>
+<span class="font-mono-caption text-mono-caption text-on-surface-variant">45 MIN</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Tue -->
+<div class="flex flex-col gap-sm">
+<div class="py-sm border-b border-hairline">
+<span class="font-mono-caps-label text-mono-caps-label text-on-surface-variant">TUE</span>
+<div class="font-headline-lg text-headline-lg text-on-surface">13</div>
+</div>
+<div class="flex flex-col gap-sm">
+<div class="p-md bg-surface-container border border-hairline border-dashed rounded-lg flex flex-col items-center justify-center min-h-[120px]">
+<span class="font-mono-caps-label text-mono-caps-label text-on-surface-variant">REST</span>
+</div>
+</div>
+</div>
+<!-- Wed -->
+<div class="flex flex-col gap-sm">
+<div class="py-sm border-b border-hairline">
+<span class="font-mono-caps-label text-mono-caps-label text-on-surface-variant">WED</span>
+<div class="font-headline-lg text-headline-lg text-on-surface">14</div>
+</div>
+<div class="flex flex-col gap-sm">
+<!-- Workout Card -->
+<div class="p-md bg-surface-container-lowest border border-hairline rounded-lg hover:border-primary transition-all cursor-pointer">
+<span class="font-mono-caps-eyebrow text-mono-caps-eyebrow text-secondary">BASE</span>
+<h3 class="font-body-md-strong text-body-md-strong text-on-surface mt-xs">Easy Aerobic</h3>
+<div class="mt-xl flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">distance</span>
+<span class="font-mono-caption text-mono-caption text-on-surface-variant">8.0 KM</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Thu -->
+<div class="flex flex-col gap-sm">
+<div class="py-sm border-b border-hairline">
+<span class="font-mono-caps-label text-mono-caps-label text-on-surface-variant">THU</span>
+<div class="font-headline-lg text-headline-lg text-on-surface text-primary font-bold">15</div>
+</div>
+<div class="flex flex-col gap-sm">
+<!-- Workout Card -->
+<div class="relative p-md bg-surface-container-lowest border border-primary ring-1 ring-primary rounded-lg cursor-pointer">
+<span class="absolute top-sm right-sm bg-surface-container text-on-surface-variant font-mono-caps-label text-mono-caption px-xxs py-0 rounded-xs uppercase">ADAPTED</span>
+<span class="font-mono-caps-eyebrow text-mono-caps-eyebrow text-accent-magenta">THRESHOLD</span>
+<h3 class="font-body-md-strong text-body-md-strong text-on-surface mt-xs">Progression Run</h3>
+<div class="mt-xl flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">timer</span>
+<span class="font-mono-caption text-mono-caption text-on-surface-variant">60 MIN</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Fri -->
+<div class="flex flex-col gap-sm">
+<div class="py-sm border-b border-hairline">
+<span class="font-mono-caps-label text-mono-caps-label text-on-surface-variant">FRI</span>
+<div class="font-headline-lg text-headline-lg text-on-surface">16</div>
+</div>
+<div class="flex flex-col gap-sm">
+<div class="p-md bg-surface-container-lowest border border-hairline rounded-lg hover:border-primary transition-all cursor-pointer">
+<span class="font-mono-caps-eyebrow text-mono-caps-eyebrow text-primary">STRENGTH</span>
+<h3 class="font-body-md-strong text-body-md-strong text-on-surface mt-xs">Lower Mobility</h3>
+<div class="mt-xl flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">fitness_center</span>
+<span class="font-mono-caption text-mono-caption text-on-surface-variant">30 MIN</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Sat -->
+<div class="flex flex-col gap-sm">
+<div class="py-sm border-b border-hairline">
+<span class="font-mono-caps-label text-mono-caps-label text-on-surface-variant">SAT</span>
+<div class="font-headline-lg text-headline-lg text-on-surface">17</div>
+</div>
+<div class="flex flex-col gap-sm">
+<div class="p-md bg-surface-container border border-hairline border-dashed rounded-lg flex flex-col items-center justify-center min-h-[120px]">
+<span class="font-mono-caps-label text-mono-caps-label text-on-surface-variant">REST</span>
+</div>
+</div>
+</div>
+<!-- Sun -->
+<div class="flex flex-col gap-sm">
+<div class="py-sm border-b border-hairline">
+<span class="font-mono-caps-label text-mono-caps-label text-on-surface-variant">SUN</span>
+<div class="font-headline-lg text-headline-lg text-on-surface">18</div>
+</div>
+<div class="flex flex-col gap-sm">
+<!-- Workout Card -->
+<div class="p-md bg-surface-container-lowest border border-hairline rounded-lg hover:border-primary transition-all cursor-pointer">
+<span class="font-mono-caps-eyebrow text-mono-caps-eyebrow text-accent-periwinkle">ENDURANCE</span>
+<h3 class="font-body-md-strong text-body-md-strong text-on-surface mt-xs">Long Run</h3>
+<div class="mt-xl flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">distance</span>
+<span class="font-mono-caption text-mono-caption text-on-surface-variant">18.0 KM</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Specs / Summary Section -->
+<section class="section px-lg max-w-4xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg border-t border-hairline pt-xl">
+<div class="bg-surface-container-low p-xl rounded-xl">
+<span class="font-mono-caps-eyebrow text-mono-caps-eyebrow text-on-surface-variant">WEEKLY VOLUME</span>
+<div class="font-headline-xl text-headline-xl text-on-surface mt-sm">34.0 <span class="text-body-lg text-on-surface-variant">KM</span></div>
+<p class="font-caption text-caption text-on-surface-variant mt-sm">Adaptive plan increase of 4% from previous cycle.</p>
+</div>
+<div class="bg-surface-container-low p-xl rounded-xl">
+<span class="font-mono-caps-eyebrow text-mono-caps-eyebrow text-on-surface-variant">INTENSITY SCORE</span>
+<div class="font-headline-xl text-headline-xl text-on-surface mt-sm">742</div>
+<p class="font-caption text-caption text-on-surface-variant mt-sm">Optimized for Threshold improvement phase.</p>
+</div>
+<div class="bg-canvas-dark p-xl rounded-xl">
+<span class="font-mono-caps-eyebrow text-mono-caps-eyebrow text-primary-fixed-dim">AI ADAPTATIONS</span>
+<div class="font-headline-xl text-headline-xl text-on-primary mt-sm">02</div>
+<p class="font-caption text-caption text-primary-fixed-dim mt-sm opacity-80">Modified Mon/Thu based on sleep recovery data.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-md pb-safe bg-surface border-t border-hairline">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-mono-caps-label text-mono-caps-label mt-xs">Today</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary text-on-primary rounded-xl px-4 py-1 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">event_note</span>
+<span class="font-mono-caps-label text-mono-caps-label mt-xs">Plan</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">insights</span>
+<span class="font-mono-caps-label text-mono-caps-label mt-xs">Progress</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-mono-caps-label text-mono-caps-label mt-xs">Profile</span>
+</a>
+</nav>
+<script>
+    // Micro-interaction for cards
+    document.querySelectorAll('.cursor-pointer').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        // Optional subtle effect
+      });
+    });
+  </script>
+</body></html>
