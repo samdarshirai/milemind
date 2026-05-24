@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MileMind - Training Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;family=Geist:wght@400;600;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0c160a;
+            color: #dae6d2;
+            -webkit-font-smoothing: antialiased;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 16px;
+        }
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: rgba(0, 255, 65, 0.1);
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            animation: scan 4s linear infinite;
+        }
+        @keyframes scan {
+            0% { top: 0%; }
+            100% { top: 100%; }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "terminal-green": "#00FF41",
+                      "on-secondary-fixed-variant": "#004f58",
+                      "surface-container-low": "#141e12",
+                      "outline": "#84967e",
+                      "on-tertiary-container": "#7a5b3c",
+                      "primary-container": "#00ff41",
+                      "tertiary": "#fff8f4",
+                      "inverse-on-surface": "#283326",
+                      "surface-elevated": "#121212",
+                      "on-tertiary-fixed-variant": "#5d4124",
+                      "inverse-primary": "#006e16",
+                      "on-error-container": "#ffdad6",
+                      "on-background": "#dae6d2",
+                      "surface-container-highest": "#2d382a",
+                      "tertiary-container": "#ffd5ae",
+                      "on-secondary": "#00363d",
+                      "outline-variant": "#3b4b37",
+                      "background": "#0c160a",
+                      "on-primary-container": "#007117",
+                      "on-tertiary": "#442b10",
+                      "on-surface-variant": "#b9ccb2",
+                      "secondary-fixed": "#9cf0ff",
+                      "surface": "#0c160a",
+                      "secondary-container": "#00e3fd",
+                      "border-subtle": "#262626",
+                      "surface-container-high": "#222d20",
+                      "surface-container-lowest": "#071106",
+                      "on-tertiary-fixed": "#2c1701",
+                      "surface-bright": "#313c2e",
+                      "on-surface": "#dae6d2",
+                      "on-error": "#690005",
+                      "inverse-surface": "#dae6d2",
+                      "surface-container": "#182216",
+                      "surface-base": "#0A0A0A",
+                      "on-primary": "#003907",
+                      "error": "#ffb4ab",
+                      "surface-dim": "#0c160a",
+                      "tertiary-fixed-dim": "#e7bf99",
+                      "on-primary-fixed-variant": "#00530e",
+                      "primary-fixed": "#72ff70",
+                      "data-cyan": "#00E5FF",
+                      "error-red": "#FF5252",
+                      "primary": "#ebffe2",
+                      "tertiary-fixed": "#ffdcbd",
+                      "secondary": "#bdf4ff",
+                      "error-container": "#93000a",
+                      "surface-tint": "#00e639",
+                      "on-secondary-fixed": "#001f24",
+                      "warning-amber": "#FFB300",
+                      "on-primary-fixed": "#002203",
+                      "on-secondary-container": "#00616d",
+                      "secondary-fixed-dim": "#00daf3",
+                      "primary-fixed-dim": "#00e639",
+                      "surface-variant": "#2d382a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter-md": "16px",
+                      "container-max": "1440px",
+                      "margin-lg": "32px",
+                      "unit": "4px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Geist"],
+                      "headline-md": ["Geist"],
+                      "label-sm": ["JetBrains Mono"],
+                      "body-md": ["Geist"],
+                      "code-md": ["JetBrains Mono"],
+                      "headline-lg": ["Geist"]
+              },
+              "fontSize": {
+                      "body-lg": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "label-sm": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "body-md": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "code-md": ["14px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-background dark:bg-background border-b border-outline-variant dark:border-outline-variant flex justify-between items-center px-gutter-md py-unit z-50">
+<div class="flex items-center gap-2 cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined text-terminal-green">speed</span>
+<h1 class="font-headline-md text-headline-md font-bold text-terminal-green uppercase tracking-tighter">MILEMIND</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:bg-surface-elevated transition-colors p-2">notifications</span>
+</div>
+</header>
+<main class="max-w-[1440px] mx-auto px-4 md:px-gutter-md py-6 space-y-6">
+<!-- Adaptation Banner -->
+<div class="w-full bg-[#E0F2F1] text-black px-4 py-2 flex items-center justify-between border-l-4 border-terminal-green shadow-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">info</span>
+<p class="font-body-md font-medium">Plan updated for recovery.</p>
+</div>
+<button class="font-label-sm text-label-sm underline uppercase tracking-widest hover:opacity-70 transition-opacity">
+                SEE WHAT CHANGED
+            </button>
+</div>
+<section class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Main Workout Card (Bento Style) -->
+<div class="md:col-span-8 group relative overflow-hidden bg-surface-container border border-outline-variant p-6 flex flex-col justify-between min-h-[400px]">
+<div class="scanline opacity-0 group-hover:opacity-100"></div>
+<div class="flex justify-between items-start mb-8">
+<div>
+<span class="font-label-sm text-label-sm text-terminal-green border border-terminal-green px-2 py-0.5 mb-2 inline-block">SESSION 042</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">THRESHOLD LADDER</h2>
+<p class="font-body-lg text-on-surface-variant mt-2 max-w-md">Modified for higher HRV and optimized recovery windows.</p>
+</div>
+<div class="text-right">
+<div class="font-label-sm text-label-sm text-on-surface-variant">DURATION</div>
+<div class="font-code-md text-terminal-green text-2xl">55:00</div>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+<div class="border-l border-outline-variant pl-4">
+<div class="font-label-sm text-label-sm text-on-surface-variant mb-1">WARM UP</div>
+<div class="font-body-md font-bold">15 MIN EASY</div>
+</div>
+<div class="border-l border-outline-variant pl-4">
+<div class="font-label-sm text-label-sm text-on-surface-variant mb-1">WORK</div>
+<div class="font-body-md font-bold">3x8:00 @ Z4</div>
+</div>
+<div class="border-l border-outline-variant pl-4">
+<div class="font-label-sm text-label-sm text-on-surface-variant mb-1">RECOVERY</div>
+<div class="font-body-md font-bold">2:00 LIGHT</div>
+</div>
+<div class="border-l border-outline-variant pl-4">
+<div class="font-label-sm text-label-sm text-on-surface-variant mb-1">STRETCH</div>
+<div class="font-body-md font-bold">5:00 POST</div>
+</div>
+</div>
+<div class="flex flex-col md:flex-row gap-4 items-center">
+<button class="w-full md:w-auto bg-terminal-green text-on-primary px-8 py-3 font-label-sm text-label-sm font-bold uppercase tracking-widest active:scale-95 transition-transform">
+                        START SESSION
+                    </button>
+<button class="w-full md:w-auto border border-terminal-green text-terminal-green px-8 py-3 font-label-sm text-label-sm uppercase tracking-widest hover:bg-terminal-green hover:text-on-primary transition-all">
+                        SEND TO WATCH
+                    </button>
+</div>
+</div>
+<!-- Health Metrics Bento Column -->
+<div class="md:col-span-4 flex flex-col gap-6">
+<!-- HRV Card -->
+<div class="bg-surface-container border border-outline-variant p-5 flex flex-col justify-between flex-1">
+<div class="flex justify-between items-center mb-4">
+<div class="font-label-sm text-label-sm text-on-surface-variant">HRV RECOVERY</div>
+<span class="material-symbols-outlined text-terminal-green">monitoring</span>
+</div>
+<div>
+<div class="font-headline-md text-headline-md text-terminal-green">74ms</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">+8% VS LAST 7D</div>
+</div>
+<div class="h-16 w-full mt-4 bg-surface-container-low relative overflow-hidden">
+<div class="absolute bottom-0 left-0 w-full flex items-end gap-1 h-full px-2">
+<div class="bg-outline-variant w-full h-[40%]"></div>
+<div class="bg-outline-variant w-full h-[55%]"></div>
+<div class="bg-outline-variant w-full h-[50%]"></div>
+<div class="bg-outline-variant w-full h-[65%]"></div>
+<div class="bg-outline-variant w-full h-[70%]"></div>
+<div class="bg-terminal-green w-full h-[85%]"></div>
+</div>
+</div>
+</div>
+<!-- Training Readiness Card -->
+<div class="bg-surface-container-high border border-terminal-green/30 p-5 flex flex-col">
+<div class="font-label-sm text-label-sm text-on-surface-variant mb-2">STATUS</div>
+<div class="font-headline-md text-headline-md text-on-surface mb-4 italic">OPTIMIZED</div>
+<p class="font-body-md text-on-surface-variant">Your engine is ready. Yesterday's rest compensated for high cumulative load.</p>
+</div>
+</div>
+</section>
+<!-- Secondary Content Section -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Training Load -->
+<div class="bg-surface-container border border-outline-variant p-6">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-warning-amber">warning</span>
+<span class="font-label-sm text-label-sm uppercase">Weekly Load</span>
+</div>
+<div class="relative pt-1">
+<div class="flex mb-2 items-center justify-between">
+<div class="font-code-md text-label-sm text-on-surface-variant">842 / 1000 TSS</div>
+</div>
+<div class="overflow-hidden h-2 text-xs flex bg-surface-container-highest">
+<div class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-terminal-green" style="width:84%"></div>
+</div>
+</div>
+</div>
+<!-- Insights Card -->
+<div class="bg-surface-elevated border border-outline-variant p-6 md:col-span-2 flex items-center justify-between gap-6">
+<div class="flex-1">
+<h3 class="font-body-lg font-bold mb-1">COACH INSIGHT</h3>
+<p class="font-body-md text-on-surface-variant">Hydration levels were lower than baseline yesterday. Aim for 500ml extra before today's interval block to maintain blood volume.</p>
+</div>
+<div class="hidden md:block">
+<img alt="Health Data" class="w-24 h-24 object-cover border border-outline-variant grayscale contrast-125" data-alt="A macro close-up of a high-tech smart watch displaying a glowing green heart rate graph in a dark environment. The lighting is moody and technical with sharp green highlights against deep black surfaces. The image captures the essence of data-driven athletics and precision engineering with a minimalist, high-contrast aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZmxxpV92PKtibBwTyFIDhISFF8gk09IZgYyBhHQqkKMoMsSWIKJypV-k-OA9nozkww7pEOt5qtKZKneIi9fIh3sVmttTdP9pD6A_h-rz-BE0UkR9OGu8d4ycKJPxIZwFb1gLuoKaPyqPKd8dVjYO7sMCT0p7ealW7JaHVq2PrVeUH9RHMMJ5Unj0XihyG4B_s2qLsNl2R_HEqBvADAyjZgk96v5kdxXutHgjWgqdgiKTo8Xc3ZGikP6ZzLKv5plCNwYuIxcGc1ng"/>
+</div>
+</div>
+</section>
+<!-- Recovery Map/Route Preview -->
+<section class="w-full h-48 bg-surface-container border border-outline-variant relative overflow-hidden group">
+<img alt="Route" class="w-full h-full object-cover opacity-30 grayscale contrast-150 group-hover:scale-105 transition-transform duration-1000" data-alt="An aerial, desaturated top-down view of a winding road through a dense forest at dawn. The colors are muted, with high contrast between deep shadows and cold morning light. A thin, glowing terminal-green line highlights a specific running path along the road, symbolizing digital precision and route tracking." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBfm6tMDHt2oH42RVGrZ2uzg69bpF7wy9PCjILsJaNGPjwH77L-mQzeyru7NRthf1ADs8D4CWtQQ2kYGr1bJ0Uh5xN9qeRzNYkd6JC6AB0GqEHQta-k3dRSZSqtcuBFU4IlWJWRKTSG2b7ToQBSdPf1hJj2DjvwlXhnpPVGDBppQYtKmctYCXLBnk-OtmtXBxMWxCSJ2ZYj1sI15yFi7SiRhxcHKt7RUlX5V1ToOOe5FOXmN_IX3RL8gfv7stzumQ-teqMV7aehKQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+<div class="absolute bottom-4 left-6">
+<div class="font-label-sm text-label-sm text-terminal-green mb-1">PLANNED ROUTE</div>
+<div class="font-headline-md text-headline-md flex items-center gap-2">
+<span class="material-symbols-outlined">route</span>
+                    RIVER TRAIL LOOP
+                </div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface-container border-t border-outline-variant dark:border-outline-variant flex justify-around items-center h-16">
+<!-- TODAY - Active -->
+<a class="flex flex-col items-center justify-center text-terminal-green border-t-2 border-terminal-green pt-2 pb-1 active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-weight="fill">today</span>
+<span class="font-label-sm text-label-sm uppercase mt-1">TODAY</span>
+</a>
+<!-- PLAN -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 pb-1 hover:text-primary transition-colors active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-label-sm text-label-sm uppercase mt-1">PLAN</span>
+</a>
+<!-- COACH -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 pb-1 hover:text-primary transition-colors active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-label-sm text-label-sm uppercase mt-1">COACH</span>
+</a>
+<!-- PROFILE -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 pb-1 hover:text-primary transition-colors active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm uppercase mt-1">PROFILE</span>
+</a>
+</nav>
+</body></html>

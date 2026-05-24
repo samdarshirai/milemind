@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;900&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<style>
+    @font-face {
+      font-family: 'PP Neue Montreal Mono';
+      src: url('https://fonts.cdnfonts.com/css/pp-neue-montreal-mono');
+    }
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .gradient-accent {
+      background: linear-gradient(90deg, #fc4c02 0%, #ef2cc1 50%, #bdbbff 100%);
+    }
+    .hairline-border {
+      border: 1px solid rgba(0, 0, 0, 0.08);
+    }
+  </style>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary": "#ffffff",
+            "on-error": "#ffffff",
+            "on-secondary-fixed": "#002022",
+            "tertiary": "#000000",
+            "surface-container": "#eeeeee",
+            "surface": "#f9f9f9",
+            "secondary-fixed": "#bdebee",
+            "tertiary-fixed": "#e2e2e2",
+            "primary": "#000000",
+            "on-secondary-container": "#406b6e",
+            "secondary-container": "#bdebee",
+            "on-primary-fixed-variant": "#474747",
+            "secondary": "#3a6568",
+            "surface-bright": "#f9f9f9",
+            "canvas-dark": "#010120",
+            "accent-periwinkle": "#bdbbff",
+            "on-primary-container": "#848484",
+            "primary-fixed": "#e2e2e2",
+            "primary-container": "#1b1b1b",
+            "on-primary-fixed": "#1b1b1b",
+            "on-surface": "#1b1b1b",
+            "outline": "#7e7576",
+            "tertiary-container": "#1b1b1b",
+            "tertiary-fixed-dim": "#c6c6c6",
+            "on-tertiary-fixed": "#1b1b1b",
+            "on-surface-variant": "#4c4546",
+            "secondary-fixed-dim": "#a2cfd2",
+            "surface-container-low": "#f3f3f3",
+            "inverse-primary": "#c6c6c6",
+            "ink": "#000000",
+            "inverse-surface": "#303030",
+            "inverse-on-surface": "#f1f1f1",
+            "surface-dim": "#dadada",
+            "on-tertiary-fixed-variant": "#474747",
+            "on-background": "#1b1b1b",
+            "hairline": "rgba(0, 0, 0, 0.08)",
+            "on-secondary-fixed-variant": "#204d50",
+            "accent-orange": "#fc4c02",
+            "surface-tint": "#5e5e5e",
+            "surface-container-highest": "#e2e2e2",
+            "primary-fixed-dim": "#c6c6c6",
+            "on-error-container": "#93000a",
+            "surface-variant": "#e2e2e2",
+            "surface-container-high": "#e8e8e8",
+            "surface-dark-soft": "#313641",
+            "error": "#ba1a1a",
+            "error-container": "#ffdad6",
+            "surface-container-lowest": "#ffffff",
+            "background": "#f9f9f9",
+            "body-text": "#959494",
+            "on-tertiary-container": "#848484",
+            "accent-magenta": "#ef2cc1",
+            "on-tertiary": "#ffffff",
+            "on-primary": "#ffffff",
+            "outline-variant": "#cfc4c5"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "5xl": "48px",
+            "xs": "4px",
+            "4xl": "44px",
+            "3xl": "32px",
+            "section": "80px",
+            "md": "12px",
+            "sm": "8px",
+            "lg": "16px",
+            "xxs": "2px",
+            "2xl": "24px",
+            "6xl": "55.2px",
+            "xl": "20px"
+          },
+          "fontFamily": {
+            "body-lg": ["Inter", "Helvetica Neue", "Arial", "sans-serif"],
+            "display-md": ["Inter", "Helvetica Neue", "Arial", "sans-serif"],
+            "mono-eyebrow": ["jetbrainsMono", "monospace"],
+            "mono-caps-label": ["PP Neue Montreal Mono", "ui-monospace", "SF Mono", "Menlo", "monospace"],
+            "headline-lg": ["hankenGrotesk", "sans-serif"],
+            "body-md-strong": ["Inter", "Helvetica Neue", "Arial", "sans-serif"],
+            "mono-caps-eyebrow": ["PP Neue Montreal Mono", "ui-monospace", "SF Mono", "Menlo", "monospace"],
+            "display-xl": ["Inter", "Helvetica Neue", "Arial", "sans-serif"],
+            "caption-strong": ["Inter", "Helvetica Neue", "Arial", "sans-serif"],
+            "mono-caps-button": ["PP Neue Montreal Mono", "ui-monospace", "SF Mono", "Menlo", "monospace"],
+            "body-lg-strong": ["Inter", "Helvetica Neue", "Arial", "sans-serif"],
+            "mono-button": ["jetbrainsMono", "monospace"],
+            "headline-xxl": ["hankenGrotesk", "sans-serif"],
+            "display-lg": ["Inter", "Helvetica Neue", "Arial", "sans-serif"],
+            "display-xxl": ["Inter", "Helvetica Neue", "Arial", "sans-serif"],
+            "mono-caption": ["PP Neue Montreal Mono", "ui-monospace", "SF Mono", "Menlo", "monospace"],
+            "headline-xl": ["hankenGrotesk", "sans-serif"],
+            "body-md": ["Inter", "Helvetica Neue", "Arial", "sans-serif"],
+            "caption": ["Inter", "Helvetica Neue", "Arial", "sans-serif"]
+          },
+          "fontSize": {
+            "body-lg": ["18px", {"lineHeight": "23.4px", "letterSpacing": "-0.18px", "fontWeight": "400"}],
+            "display-md": ["22px", {"lineHeight": "25.3px", "letterSpacing": "-0.22px", "fontWeight": "500"}],
+            "mono-eyebrow": ["11px", {"lineHeight": "11px", "letterSpacing": "0.55px", "fontWeight": "500"}],
+            "mono-caps-label": ["11px", {"lineHeight": "15.4px", "letterSpacing": "0.055px", "fontWeight": "500"}],
+            "headline-lg": ["28px", {"lineHeight": "32.2px", "letterSpacing": "-0.42px", "fontWeight": "500"}],
+            "body-md-strong": ["16px", {"lineHeight": "20.8px", "letterSpacing": "-0.16px", "fontWeight": "500"}],
+            "mono-caps-eyebrow": ["11px", {"lineHeight": "11px", "letterSpacing": "0.55px", "fontWeight": "500"}],
+            "display-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.8px", "fontWeight": "500"}],
+            "caption-strong": ["14px", {"lineHeight": "19.6px", "fontWeight": "500"}],
+            "mono-caps-button": ["16px", {"lineHeight": "16px", "letterSpacing": "0.08px", "fontWeight": "500"}],
+            "body-lg-strong": ["18px", {"lineHeight": "23.4px", "letterSpacing": "-0.18px", "fontWeight": "500"}],
+            "mono-button": ["16px", {"lineHeight": "16px", "letterSpacing": "0.08px", "fontWeight": "500"}],
+            "headline-xxl": ["64px", {"lineHeight": "70.4px", "letterSpacing": "-1.92px", "fontWeight": "500"}],
+            "display-lg": ["28px", {"lineHeight": "32.2px", "letterSpacing": "-0.42px", "fontWeight": "500"}],
+            "display-xxl": ["64px", {"lineHeight": "70.4px", "letterSpacing": "-1.92px", "fontWeight": "500"}],
+            "mono-caption": ["10px", {"lineHeight": "14px", "letterSpacing": "0.05px", "fontWeight": "400"}],
+            "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.8px", "fontWeight": "500"}],
+            "body-md": ["16px", {"lineHeight": "20.8px", "letterSpacing": "-0.16px", "fontWeight": "400"}],
+            "caption": ["14px", {"lineHeight": "19.6px", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-accent-periwinkle selection:text-canvas-dark">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-canvas-dark flex flex-col w-full">
+<div class="h-1.5 w-full gradient-accent"></div>
+<div class="flex justify-between items-center px-lg h-16 w-full">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-primary">speed</span>
+<h1 class="font-headline-lg text-headline-lg font-black tracking-tighter text-on-primary">MILEMIND</h1>
+</div>
+<div class="flex items-center gap-md">
+<span class="font-mono-caps-button text-mono-caps-button text-on-primary-fixed-variant hover:opacity-80 transition-opacity cursor-pointer active:scale-95">PLANNER</span>
+<span class="material-symbols-outlined text-on-primary hover:opacity-80 cursor-pointer">settings</span>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="pt-20 pb-12 min-h-screen flex flex-col items-center bg-surface-container-low px-lg relative overflow-hidden">
+<!-- Full-page Modal Card -->
+<div class="w-full max-w-2xl bg-white rounded-xl shadow-sm hairline-border overflow-hidden animate-in fade-in slide-in-from-bottom-8 duration-700 z-10">
+<!-- Modal Header -->
+<div class="p-xl md:p-3xl bg-white relative">
+<div class="flex flex-col gap-xs mb-sm">
+<span class="font-mono-caps-eyebrow text-mono-caps-eyebrow text-primary uppercase tracking-widest opacity-60">SYSTEM UPDATE</span>
+<h2 class="font-display-xl text-display-xl text-primary">Latest Adaptation</h2>
+</div>
+<p class="font-body-lg text-on-surface-variant max-w-lg">
+        We’ve adjusted your training plan based on your recent activity and biometric data. Let's stay on track, safely.
+      </p>
+</div>
+<!-- Adaptation Content -->
+<div class="p-xl md:p-3xl space-y-xl bg-white">
+<!-- Why We Adapted -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-xl items-start">
+<div class="md:col-span-4">
+<span class="font-mono-caps-eyebrow text-mono-caps-eyebrow text-primary uppercase tracking-widest">WHY WE ADAPTED</span>
+</div>
+<div class="md:col-span-8">
+<div class="flex gap-md items-start">
+<span class="material-symbols-outlined text-accent-orange mt-1">event_busy</span>
+<p class="font-display-md text-display-md text-primary">
+              A missed session on Tuesday triggered a recalibration of your weekly load.
+            </p>
+</div>
+</div>
+</div>
+<div class="h-px bg-hairline"></div>
+<!-- What Changed -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-xl items-start">
+<div class="md:col-span-4">
+<span class="font-mono-caps-eyebrow text-mono-caps-eyebrow text-primary uppercase tracking-widest">WHAT CHANGED</span>
+</div>
+<div class="md:col-span-8">
+<div class="flex gap-md items-start">
+<span class="material-symbols-outlined text-accent-magenta mt-1">tune</span>
+<div class="w-full">
+<p class="font-display-md text-display-md text-primary mb-md">
+                Intensity adjusted for the next 4 days.
+              </p>
+<div class="bg-surface-container rounded-lg p-lg border border-hairline">
+<div class="flex justify-between items-center mb-sm">
+<span class="font-mono-caps-label text-mono-caps-label uppercase opacity-60">NEXT ACTIVITY</span>
+<span class="font-mono-caps-label text-mono-caps-label uppercase text-accent-magenta font-bold">NEW TARGET</span>
+</div>
+<div class="flex justify-between items-end">
+<span class="font-body-md-strong text-primary">Base Run (Zone 2)</span>
+<span class="font-headline-lg text-headline-lg text-primary">45<span class="text-display-md">min</span></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="h-px bg-hairline"></div>
+<!-- Safety Note -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-xl items-start pb-lg">
+<div class="md:col-span-4">
+<span class="font-mono-caps-eyebrow text-mono-caps-eyebrow text-primary uppercase tracking-widest">SAFETY NOTE</span>
+</div>
+<div class="md:col-span-8">
+<div class="flex gap-md items-start bg-secondary-container/30 p-lg rounded-xl border border-secondary-fixed-dim/30">
+<span class="material-symbols-outlined text-secondary mt-1" data-weight="fill">shield</span>
+<p class="font-display-md text-display-md text-secondary">
+              We avoided stacking hard runs to prevent overtraining and injury risks.
+            </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="p-xl md:p-3xl bg-white border-t border-hairline flex flex-col md:flex-row justify-between items-center gap-xl">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full border-2 border-white bg-canvas-dark flex items-center justify-center text-on-primary overflow-hidden">
+<img alt="Coach Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfZme1Sc1cWZltnGrcBAdE6saV1t94xr_8dAZ_SXZN81YjbXTvd2rEYOISzYp8DyQcOCc7cJfeRVV7qhYV0hqDu9DRc_7A9lX9JQT9KQM5D3WBDPPy4NdduUbdUNnOP9rFPcvlTbHzPRIO8AaD8lisN4dCKWYsSsL_KfJXJiPmLyInrtt9dXSIhvXQ6UCx7zwpA0HEM31KhC4iY-V58Tz-oclj0Mn6sHUflY9ZZjkpNGuGwaIgOEEFTHengarbMK_6btX0mSjKOd0"/>
+</div>
+<p class="font-caption-strong text-caption-strong text-on-surface">Plan verified by MileMind AI</p>
+</div>
+<button class="w-full md:w-auto px-10 py-4 bg-primary text-on-primary font-mono-button text-mono-button rounded-full active:scale-95 transition-all hover:opacity-90 shadow-lg shadow-primary/10">
+        GOT IT
+      </button>
+</div>
+</div>
+<!-- Large Wordmark Banner / Footer Pattern -->
+<div class="mt-section w-full max-w-2xl flex flex-col items-center opacity-10 select-none pointer-events-none">
+<span class="font-headline-xxl text-headline-xxl text-primary tracking-tighter uppercase">milemind</span>
+<div class="flex gap-4 mt-xs">
+<span class="font-mono-caps-label text-mono-caps-label">ADAPTIVE</span>
+<span class="font-mono-caps-label text-mono-caps-label">PERFORMANCE</span>
+<span class="font-mono-caps-label text-mono-caps-label">PROTOCOL</span>
+</div>
+</div>
+</main>
+<script>
+  // Micro-interaction for the button
+  document.querySelector('button').addEventListener('click', () => {
+    const modal = document.querySelector('.max-w-2xl');
+    modal.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+    modal.style.opacity = '0';
+    modal.style.transform = 'translateY(20px) scale(0.98)';
+    setTimeout(() => {
+      alert('Your adapted plan is now active.');
+      modal.style.opacity = '1';
+      modal.style.transform = 'translateY(0) scale(1)';
+    }, 600);
+  });
+</script>
+</body></html>

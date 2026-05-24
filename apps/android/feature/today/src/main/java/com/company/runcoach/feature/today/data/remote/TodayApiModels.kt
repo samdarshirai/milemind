@@ -8,7 +8,17 @@ data class TodayInsightsResponse(
     val readinessState: String? = null,
     val readinessLabel: String? = null,
     val readinessMessage: String? = null,
-    val hasCheckInToday: Boolean = false
+    val hasCheckInToday: Boolean = false,
+    val latestAdaptation: LatestAdaptationResponse? = null
+)
+
+@Serializable
+data class LatestAdaptationResponse(
+    val id: String,
+    val summary: String,
+    val affectedFromDate: String,
+    val affectedToDate: String,
+    val changedWorkoutIds: List<String> = emptyList()
 )
 
 @Serializable

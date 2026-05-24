@@ -11,6 +11,8 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -55,10 +57,13 @@ fun TodayRoute(
         onOpenWorkout = onOpenWorkout,
         onOpenPlan = onOpenPlan,
         onRetry = viewModel::load,
-        onRetryWorkout = viewModel::retryWorkoutLoad
+        onRetryWorkout = viewModel::retryWorkoutLoad,
+        onOpenWhatChanged = viewModel::openWhatChanged,
+        onDismissWhatChanged = viewModel::dismissWhatChanged
     )
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TodayScreen(
     state: TodayUiState,
@@ -66,7 +71,9 @@ fun TodayScreen(
     onOpenWorkout: (String, String) -> Unit,
     onOpenPlan: () -> Unit,
     onRetry: () -> Unit,
-    onRetryWorkout: () -> Unit
+    onRetryWorkout: () -> Unit,
+    onOpenWhatChanged: () -> Unit,
+    onDismissWhatChanged: () -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -99,6 +106,22 @@ fun TodayScreen(
                 if (state.readinessBanner.ctaLabel.isNotBlank()) {
                     Button(onClick = onPrimaryAction, modifier = Modifier.testTag("today_readiness_cta")) {
                         Text(state.readinessBanner.ctaLabel)
+                    }
+                }
+            }
+        }
+
+        state.latestAdaptation?.let { adaptation ->
+            Card(
+                colors = CardDefaults.cardColors(containerColor = RunCoachColors.SurfaceHighlight),
+                modifier = Modifier.fillMaxWidth().testTag("today_adaptation_banner")
+            ) {
+                Column(modifier = Modifier.fillMaxWidth().padding(14.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                    Text("Latest adaptation", style = MaterialTheme.typography.titleSmall, color = RunCoachColors.TextStrong)
+                    Text(adaptation.summary, color = RunCoachColors.TextSecondary)
+                    Text("${adaptation.affectedFromDate} to ${adaptation.affectedToDate}", color = RunCoachColors.TextMuted)
+                    OutlinedButton(onClick = onOpenWhatChanged, modifier = Modifier.testTag("see_what_changed")) {
+                        Text("See what changed")
                     }
                 }
             }
@@ -142,6 +165,18 @@ fun TodayScreen(
                         Text("Open Plan")
                     }
                 }
+            }
+        }
+    }
+
+    if (state.showWhatChanged && state.latestAdaptation != null) {
+        ModalBottomSheet(onDismissRequest = onDismissWhatChanged) {
+            Column(modifier = Modifier.fillMaxWidth().padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                Text("What changed?", style = MaterialTheme.typography.titleLarge)
+                Text(state.latestAdaptation.summary)
+                Text("Affected range: ${state.latestAdaptation.affectedFromDate} to ${state.latestAdaptation.affectedToDate}")
+                Text("We avoided stacking hard runs and kept your long-run progression safe.")
+                Button(onClick = onDismissWhatChanged, modifier = Modifier.testTag("what_changed_close")) { Text("Close") }
             }
         }
     }

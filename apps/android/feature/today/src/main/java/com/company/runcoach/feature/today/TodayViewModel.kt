@@ -2,9 +2,11 @@ package com.company.runcoach.feature.today
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.company.runcoach.core.common.AdaptationEvents
 import com.company.runcoach.feature.today.data.TodayInsightsData
 import com.company.runcoach.feature.today.data.TodayRepository
 import com.company.runcoach.feature.today.data.TodayWorkoutData
+import com.company.runcoach.feature.today.ui.model.LatestAdaptationUiModel
 import com.company.runcoach.feature.today.ui.model.ReadinessBannerStatus
 import com.company.runcoach.feature.today.ui.model.ReadinessBannerUiModel
 import com.company.runcoach.feature.today.ui.model.TodayWorkoutUiModel
@@ -27,6 +29,9 @@ class TodayViewModel @Inject constructor(
     val uiState: StateFlow<TodayUiState> = _uiState.asStateFlow()
 
     init {
+        viewModelScope.launch {
+            AdaptationEvents.events.collect { load() }
+        }
         load()
     }
 
@@ -54,7 +59,15 @@ class TodayViewModel @Inject constructor(
                             },
                             workoutLoadFailed = insights.workoutLoadFailed,
                             readinessBanner = mapReadinessBanner(insights),
-                            todayWorkout = mapWorkout(insights.todayWorkout)
+                            todayWorkout = mapWorkout(insights.todayWorkout),
+                            latestAdaptation = insights.latestAdaptation?.let {
+                                LatestAdaptationUiModel(
+                                    summary = it.summary,
+                                    affectedFromDate = it.affectedFromDate,
+                                    affectedToDate = it.affectedToDate,
+                                    changedWorkoutIds = it.changedWorkoutIds
+                                )
+                            }
                         )
                     }
                 }
@@ -92,7 +105,15 @@ class TodayViewModel @Inject constructor(
                             },
                             workoutLoadFailed = insights.workoutLoadFailed,
                             readinessBanner = mapReadinessBanner(insights),
-                            todayWorkout = mapWorkout(insights.todayWorkout)
+                            todayWorkout = mapWorkout(insights.todayWorkout),
+                            latestAdaptation = insights.latestAdaptation?.let {
+                                LatestAdaptationUiModel(
+                                    summary = it.summary,
+                                    affectedFromDate = it.affectedFromDate,
+                                    affectedToDate = it.affectedToDate,
+                                    changedWorkoutIds = it.changedWorkoutIds
+                                )
+                            }
                         )
                     }
                 }
@@ -130,6 +151,14 @@ class TodayViewModel @Inject constructor(
                     }
                 }
         }
+    }
+
+    fun openWhatChanged() {
+        _uiState.update { it.copy(showWhatChanged = true) }
+    }
+
+    fun dismissWhatChanged() {
+        _uiState.update { it.copy(showWhatChanged = false) }
     }
 }
 

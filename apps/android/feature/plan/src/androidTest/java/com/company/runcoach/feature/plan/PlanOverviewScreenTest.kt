@@ -80,6 +80,7 @@ class PlanOverviewScreenTest {
         composeRule.onNodeWithTag("phase_label").assertIsDisplayed()
         composeRule.onNodeWithTag("recovery_chip").assertIsDisplayed()
         composeRule.onNodeWithTag("status_w1").assertIsDisplayed()
+        composeRule.onNodeWithTag("changed_w1").assertIsDisplayed()
         composeRule.onNodeWithTag("status_w2").assertIsDisplayed()
         composeRule.onNodeWithTag("status_w3").assertIsDisplayed()
         composeRule.onNodeWithTag("status_w4").assertIsDisplayed()
@@ -143,7 +144,7 @@ private fun successState(): PlanOverviewUiState {
         recoveryWeek = true,
         targetDistanceKm = 35.0,
         workouts = listOf(
-            WorkoutCardUiModel("w1", "Mon", "May 20", "Easy Run", "6.0 km", "easy", "COMPLETED", false),
+            WorkoutCardUiModel("w1", "Mon", "May 20", "Easy Run", "6.0 km", "easy", "COMPLETED", false, isChanged = true),
             WorkoutCardUiModel("w2", "Tue", "May 21", "Tempo Run", "45 min", "moderate", "PLANNED", true),
             WorkoutCardUiModel("w3", "Wed", "May 22", "Easy Run", "5.0 km", "easy", "MISSED", false),
             WorkoutCardUiModel("w4", "Thu", "May 23", "Rest", "Planned", "rest", "SKIPPED", false)

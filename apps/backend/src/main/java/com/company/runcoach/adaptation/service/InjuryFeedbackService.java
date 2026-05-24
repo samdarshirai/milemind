@@ -39,17 +39,20 @@ public class InjuryFeedbackService {
     private final FatigueSignalRepository fatigueSignalRepository;
     private final AppUserRepository appUserRepository;
     private final ReadinessService readinessService;
+    private final AdaptationDecisionService adaptationDecisionService;
 
     public InjuryFeedbackService(
         InjuryFeedbackRepository injuryFeedbackRepository,
         FatigueSignalRepository fatigueSignalRepository,
         AppUserRepository appUserRepository,
-        ReadinessService readinessService
+        ReadinessService readinessService,
+        AdaptationDecisionService adaptationDecisionService
     ) {
         this.injuryFeedbackRepository = injuryFeedbackRepository;
         this.fatigueSignalRepository = fatigueSignalRepository;
         this.appUserRepository = appUserRepository;
         this.readinessService = readinessService;
+        this.adaptationDecisionService = adaptationDecisionService;
     }
 
     @Transactional
@@ -84,6 +87,7 @@ public class InjuryFeedbackService {
             .orElse(null);
 
         ReadinessState readinessState = readinessService.evaluate(fatigueSignal, saved);
+        adaptationDecisionService.adaptFromInjuryFeedback(userId, saved, readinessState);
         return new CreateInjuryFeedbackResponse(saved.getId(), readinessState);
     }
 

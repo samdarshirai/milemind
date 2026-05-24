@@ -18,6 +18,15 @@ class TodayRepository @Inject constructor(
             readinessLabel = insights.readinessLabel,
             readinessMessage = insights.readinessMessage,
             hasCheckInToday = insights.hasCheckInToday,
+            latestAdaptation = insights.latestAdaptation?.let {
+                LatestAdaptationData(
+                    id = it.id,
+                    summary = it.summary,
+                    affectedFromDate = it.affectedFromDate,
+                    affectedToDate = it.affectedToDate,
+                    changedWorkoutIds = it.changedWorkoutIds
+                )
+            },
             todayWorkout = workoutResult.getOrNull(),
             workoutLoadFailed = workoutResult.isFailure
         )
@@ -49,8 +58,17 @@ data class TodayInsightsData(
     val readinessLabel: String?,
     val readinessMessage: String?,
     val hasCheckInToday: Boolean,
+    val latestAdaptation: LatestAdaptationData? = null,
     val todayWorkout: TodayWorkoutData?,
     val workoutLoadFailed: Boolean = false
+)
+
+data class LatestAdaptationData(
+    val id: String,
+    val summary: String,
+    val affectedFromDate: String,
+    val affectedToDate: String,
+    val changedWorkoutIds: List<String>
 )
 
 data class TodayWorkoutData(

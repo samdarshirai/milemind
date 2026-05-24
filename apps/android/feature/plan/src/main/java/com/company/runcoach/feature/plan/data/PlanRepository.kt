@@ -17,6 +17,7 @@ class PlanRepository @Inject constructor(
             raceDistanceType = response.raceGoal.raceDistanceType,
             raceDate = response.raceGoal.raceDate,
             currentWeekIndex = response.currentWeekIndex,
+            latestChangedWorkoutIds = response.latestAdaptation?.changedWorkoutIds.orEmpty(),
             weeks = response.weeks.map { week ->
                 WeekData(
                     weekIndex = week.weekIndex,
@@ -31,7 +32,9 @@ class PlanRepository @Inject constructor(
                             status = workout.status,
                             plannedDistanceKm = workout.plannedDistanceKm,
                             plannedDurationMin = workout.plannedDurationMin,
-                            intensityZone = workout.intensityZone
+                            intensityZone = workout.intensityZone,
+                            changeReasonCodes = workout.changeReasonCodes,
+                            adaptedFromWorkoutId = workout.adaptedFromWorkoutId
                         )
                     }
                 )
@@ -51,6 +54,7 @@ data class PlanOverviewData(
     val raceDistanceType: String,
     val raceDate: String,
     val currentWeekIndex: Int,
+    val latestChangedWorkoutIds: List<String>,
     val weeks: List<WeekData>
 )
 
@@ -69,5 +73,7 @@ data class WorkoutSummaryData(
     val status: String,
     val plannedDistanceKm: Double?,
     val plannedDurationMin: Int?,
-    val intensityZone: String?
+    val intensityZone: String?,
+    val changeReasonCodes: List<String>,
+    val adaptedFromWorkoutId: String?
 )

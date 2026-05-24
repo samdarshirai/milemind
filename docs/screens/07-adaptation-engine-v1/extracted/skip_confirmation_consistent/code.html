@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        @font-face {
+            font-family: 'hankenGrotesk';
+            src: url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;900&display=swap');
+        }
+        @font-face {
+            font-family: 'jetbrainsMono';
+            src: url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
+        }
+        @font-face {
+            font-family: 'PP Neue Montreal Mono';
+            src: url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .bottom-sheet-transition {
+            transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+        }
+
+        .scrim-fade {
+            transition: opacity 0.3s ease-out;
+        }
+
+        input[type="radio"]:checked {
+            background-color: #000000;
+            border-color: #000000;
+            background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e");
+        }
+
+        .gradient-ribbon {
+            height: 1px;
+            width: 100%;
+            background: linear-gradient(90deg, #fc4c02 0%, #ef2cc1 50%, #bdbbff 100%);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#e2e2e2",
+                        "hairline": "rgba(0, 0, 0, 0.08)",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#002022",
+                        "secondary-fixed": "#bdebee",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "inverse-primary": "#c6c6c6",
+                        "on-primary-container": "#848484",
+                        "tertiary": "#000000",
+                        "on-error-container": "#93000a",
+                        "on-surface": "#1b1b1b",
+                        "ink": "#000000",
+                        "surface-container-high": "#e8e8e8",
+                        "on-secondary-fixed-variant": "#204d50",
+                        "on-background": "#1b1b1b",
+                        "outline": "#7e7576",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "inverse-surface": "#303030",
+                        "surface": "#f9f9f9",
+                        "surface-tint": "#5e5e5e",
+                        "primary": "#000000",
+                        "surface-variant": "#e2e2e2",
+                        "on-surface-variant": "#4c4546",
+                        "surface-dark-soft": "#313641",
+                        "inverse-on-surface": "#f1f1f1",
+                        "on-secondary-container": "#406b6e",
+                        "on-primary-fixed": "#1b1b1b",
+                        "outline-variant": "#cfc4c5",
+                        "on-tertiary-fixed": "#1b1b1b",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#f9f9f9",
+                        "canvas-dark": "#010120",
+                        "accent-magenta": "#ef2cc1",
+                        "surface-dim": "#dadada",
+                        "surface-container": "#eeeeee",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "secondary": "#3a6568",
+                        "surface-container-low": "#f3f3f3",
+                        "accent-orange": "#fc4c02",
+                        "on-tertiary-container": "#848484",
+                        "error-container": "#ffdad6",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#e2e2e2",
+                        "tertiary-container": "#1b1b1b",
+                        "on-primary-fixed-variant": "#474747",
+                        "primary-container": "#1b1b1b",
+                        "secondary-container": "#bdebee",
+                        "secondary-fixed-dim": "#a2cfd2",
+                        "accent-periwinkle": "#bdbbff",
+                        "body-text": "#959494",
+                        "background": "#f9f9f9",
+                        "tertiary-fixed": "#e2e2e2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "4xl": "44px",
+                        "3xl": "32px",
+                        "xs": "4px",
+                        "lg": "16px",
+                        "sm": "8px",
+                        "xxs": "2px",
+                        "md": "12px",
+                        "xl": "20px",
+                        "6xl": "55.2px",
+                        "5xl": "48px",
+                        "2xl": "24px",
+                        "section": "80px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["hankenGrotesk"],
+                        "body-md": ["The Future, Inter, Helvetica Neue, Arial, sans-serif"],
+                        "display-md": ["The Future, Inter, Helvetica Neue, Arial, sans-serif"],
+                        "body-lg": ["The Future, Inter, Helvetica Neue, Arial, sans-serif"],
+                        "body-md-strong": ["The Future, Inter, Helvetica Neue, Arial, sans-serif"],
+                        "body-lg-strong": ["The Future, Inter, Helvetica Neue, Arial, sans-serif"],
+                        "mono-caps-label": ["PP Neue Montreal Mono, ui-monospace, SF Mono, Menlo, monospace"],
+                        "display-xl": ["The Future, Inter, Helvetica Neue, Arial, sans-serif"],
+                        "caption-strong": ["The Future, Inter, Helvetica Neue, Arial, sans-serif"],
+                        "headline-lg": ["hankenGrotesk"],
+                        "caption": ["The Future, Inter, Helvetica Neue, Arial, sans-serif"],
+                        "display-lg": ["The Future, Inter, Helvetica Neue, Arial, sans-serif"],
+                        "mono-caption": ["PP Neue Montreal Mono, ui-monospace, SF Mono, Menlo, monospace"],
+                        "headline-xxl": ["hankenGrotesk"],
+                        "mono-eyebrow": ["jetbrainsMono"],
+                        "mono-button": ["jetbrainsMono"],
+                        "display-xxl": ["The Future, Inter, Helvetica Neue, Arial, sans-serif"],
+                        "mono-caps-eyebrow": ["PP Neue Montreal Mono, ui-monospace, SF Mono, Menlo, monospace"],
+                        "mono-caps-button": ["PP Neue Montreal Mono, ui-monospace, SF Mono, Menlo, monospace"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.8px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "20.8px", "letterSpacing": "-0.16px", "fontWeight": "400"}],
+                        "display-md": ["22px", {"lineHeight": "25.3px", "letterSpacing": "-0.22px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "23.4px", "letterSpacing": "-0.18px", "fontWeight": "400"}],
+                        "body-md-strong": ["16px", {"lineHeight": "20.8px", "letterSpacing": "-0.16px", "fontWeight": "500"}],
+                        "body-lg-strong": ["18px", {"lineHeight": "23.4px", "letterSpacing": "-0.18px", "fontWeight": "500"}],
+                        "mono-caps-label": ["11px", {"lineHeight": "15.4px", "letterSpacing": "0.055px", "fontWeight": "500"}],
+                        "display-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.8px", "fontWeight": "500"}],
+                        "caption-strong": ["14px", {"lineHeight": "19.6px", "fontWeight": "500"}],
+                        "headline-lg": ["28px", {"lineHeight": "32.2px", "letterSpacing": "-0.42px", "fontWeight": "500"}],
+                        "caption": ["14px", {"lineHeight": "19.6px", "fontWeight": "400"}],
+                        "display-lg": ["28px", {"lineHeight": "32.2px", "letterSpacing": "-0.42px", "fontWeight": "500"}],
+                        "mono-caption": ["10px", {"lineHeight": "14px", "letterSpacing": "0.05px", "fontWeight": "400"}],
+                        "headline-xxl": ["64px", {"lineHeight": "70.4px", "letterSpacing": "-1.92px", "fontWeight": "500"}],
+                        "mono-eyebrow": ["11px", {"lineHeight": "11px", "letterSpacing": "0.55px", "fontWeight": "500"}],
+                        "mono-button": ["16px", {"lineHeight": "16px", "letterSpacing": "0.08px", "fontWeight": "500"}],
+                        "display-xxl": ["64px", {"lineHeight": "70.4px", "letterSpacing": "-1.92px", "fontWeight": "500"}],
+                        "mono-caps-eyebrow": ["11px", {"lineHeight": "11px", "letterSpacing": "0.55px", "fontWeight": "500"}],
+                        "mono-caps-button": ["16px", {"lineHeight": "16px", "letterSpacing": "0.08px", "fontWeight": "500"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- Background Content (Simulated Dashboard) -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-lg h-16 bg-canvas-dark border-b border-hairline">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-primary">speed</span>
+<span class="font-headline-lg text-headline-lg font-black tracking-tighter text-on-primary">MILEMIND</span>
+</div>
+<div class="flex items-center gap-md">
+<span class="font-mono-caps-label text-mono-caps-label text-on-primary/60">together.ai</span>
+<button class="material-symbols-outlined text-on-primary hover:opacity-80 transition-opacity">settings</button>
+</div>
+<div class="gradient-ribbon"></div>
+</header>
+<main class="pt-24 px-lg pb-section space-y-xl">
+<div class="space-y-sm">
+<p class="font-mono-eyebrow text-mono-eyebrow text-secondary uppercase">Active Session</p>
+<h1 class="font-headline-xl text-headline-xl">Threshold Power Sprints</h1>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<div class="p-lg bg-surface border border-hairline rounded-lg">
+<p class="font-mono-caption text-mono-caption text-on-surface-variant uppercase mb-xs">Time Elapsed</p>
+<p class="font-headline-lg text-headline-lg">14:22</p>
+</div>
+<div class="p-lg bg-surface border border-hairline rounded-lg">
+<p class="font-mono-caption text-mono-caption text-on-surface-variant uppercase mb-xs">Target Watts</p>
+<p class="font-headline-lg text-headline-lg">340w</p>
+</div>
+</div>
+<div class="aspect-video bg-canvas-dark rounded-xl flex items-center justify-center relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-tr from-accent-orange via-accent-magenta to-accent-periwinkle opacity-20"></div>
+<img alt="Performance Graph" class="w-full h-full object-cover opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJBDpS2opXiuBqrm0Uob2Bh2VVefDFuQuh4mTZuEuiHEfYp91sizfqHDsp9q5X_WcRpIFBxu49q0NdR-4H-ZA57M4YhvCBXUB-bbWVW10BJLYm48pHOOnELEO4vAgGhJlI5-Jlq7xDc94M0mg9xSqhL6t5bGbrQXKlkrdPvSxmvcOKvHu3TjTxBWRIfnZ-dLNCZaapSYAzaOk3YFBBmd4ZqtgbiTS2ndueT1T4zpYC-yNK6IKK2VnDfoQbxju-Q3qW-4nxjwg4xUA"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-6xl text-on-primary" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+</div>
+</div>
+<div class="flex flex-col gap-md pt-lg">
+<button class="w-full py-md bg-primary text-on-primary font-mono-button text-mono-button rounded-full uppercase tracking-wider">Pause Workout</button>
+<button class="w-full py-md border border-hairline text-on-surface font-mono-button text-mono-button rounded-full uppercase tracking-wider hover:bg-surface-container transition-colors" onclick="openBottomSheet()">Skip Today</button>
+</div>
+</main>
+<!-- Bottom Nav Shell -->
+<nav class="fixed bottom-0 left-0 w-full z-40 flex justify-around items-center h-20 px-md pb-safe bg-surface border-t border-hairline">
+<div class="flex flex-col items-center justify-center bg-primary text-on-primary rounded-xl px-4 py-1">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-mono-caps-label text-mono-caps-label mt-1">Today</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">event_note</span>
+<span class="font-mono-caps-label text-mono-caps-label mt-1">Plan</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">insights</span>
+<span class="font-mono-caps-label text-mono-caps-label mt-1">Progress</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">person</span>
+<span class="font-mono-caps-label text-mono-caps-label mt-1">Profile</span>
+</div>
+</nav>
+<!-- CONFIRMATION BOTTOM SHEET COMPONENT -->
+<div class="fixed inset-0 z-[100] bg-black/60 opacity-0 pointer-events-none scrim-fade" id="modalScrim" onclick="closeBottomSheet()"></div>
+<div class="fixed bottom-0 left-0 right-0 z-[101] translate-y-full bottom-sheet-transition flex justify-center" id="bottomSheet">
+<div class="w-full max-w-2xl bg-surface-container-lowest rounded-t-xl shadow-2xl p-lg md:p-2xl">
+<!-- Handle -->
+<div class="w-12 h-1 bg-surface-variant rounded-full mx-auto mb-2xl"></div>
+<div class="space-y-xl">
+<!-- Header -->
+<div class="space-y-sm">
+<h2 class="font-display-xl text-display-xl tracking-tight text-ink">Skip workout?</h2>
+<p class="font-caption text-caption text-on-surface-variant">Your plan may adapt after skipping to keep you on track.</p>
+</div>
+<!-- Reason List -->
+<form class="space-y-sm">
+<label class="flex items-center justify-between p-lg bg-surface border border-hairline rounded-sm cursor-pointer hover:bg-surface-container transition-all active:scale-[0.99]">
+<span class="font-body-md text-on-surface">Too tired</span>
+<input checked="" class="w-5 h-5 border-hairline text-primary focus:ring-0" name="skip-reason" type="radio"/>
+</label>
+<label class="flex items-center justify-between p-lg bg-surface border border-hairline rounded-sm cursor-pointer hover:bg-surface-container transition-all active:scale-[0.99]">
+<span class="font-body-md text-on-surface">Pain/discomfort</span>
+<input class="w-5 h-5 border-hairline text-primary focus:ring-0" name="skip-reason" type="radio"/>
+</label>
+<label class="flex items-center justify-between p-lg bg-surface border border-hairline rounded-sm cursor-pointer hover:bg-surface-container transition-all active:scale-[0.99]">
+<span class="font-body-md text-on-surface">No time</span>
+<input class="w-5 h-5 border-hairline text-primary focus:ring-0" name="skip-reason" type="radio"/>
+</label>
+<label class="flex items-center justify-between p-lg bg-surface border border-hairline rounded-sm cursor-pointer hover:bg-surface-container transition-all active:scale-[0.99]">
+<span class="font-body-md text-on-surface">Other</span>
+<input class="w-5 h-5 border-hairline text-primary focus:ring-0" name="skip-reason" type="radio"/>
+</label>
+</form>
+<!-- Actions -->
+<div class="flex flex-col gap-sm pt-md">
+<button class="w-full py-md bg-primary text-on-primary font-mono-button text-mono-button rounded-full uppercase tracking-wider active:scale-95 transition-transform" onclick="confirmAction()">
+                        CONFIRM SKIP
+                    </button>
+<button class="w-full py-md bg-transparent text-on-surface font-mono-button text-mono-button rounded-full uppercase tracking-wider border border-hairline hover:bg-surface-container active:scale-95 transition-all" onclick="closeBottomSheet()">
+                        CANCEL
+                    </button>
+</div>
+</div>
+<!-- Safe Area Spacer for Mobile -->
+<div class="h-6"></div>
+</div>
+</div>
+<script>
+        function openBottomSheet() {
+            const scrim = document.getElementById('modalScrim');
+            const sheet = document.getElementById('bottomSheet');
+            scrim.classList.remove('opacity-0', 'pointer-events-none');
+            scrim.classList.add('opacity-100', 'pointer-events-auto');
+            sheet.classList.remove('translate-y-full');
+            sheet.classList.add('translate-y-0');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBottomSheet() {
+            const scrim = document.getElementById('modalScrim');
+            const sheet = document.getElementById('bottomSheet');
+            scrim.classList.add('opacity-0', 'pointer-events-none');
+            scrim.classList.remove('opacity-100', 'pointer-events-auto');
+            sheet.classList.add('translate-y-full');
+            sheet.classList.remove('translate-y-0');
+            document.body.style.overflow = '';
+        }
+
+        function confirmAction() {
+            alert("Workout skipped. Plan recalibrating...");
+            closeBottomSheet();
+        }
+    </script>
+</body></html>

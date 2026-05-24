@@ -8,5 +8,10 @@ import java.util.UUID;
 
 public interface PlannedWorkoutRepository extends JpaRepository<PlannedWorkout, UUID> {
     List<PlannedWorkout> findByTrainingPlan_IdOrderByScheduledDateAsc(UUID trainingPlanId);
+    List<PlannedWorkout> findByTrainingPlan_IdAndScheduledDateBetweenOrderByScheduledDateAsc(
+        UUID trainingPlanId,
+        java.time.LocalDate startDate,
+        java.time.LocalDate endDate
+    );
     java.util.Optional<PlannedWorkout> findByIdAndUser_Id(UUID id, UUID userId);
 }

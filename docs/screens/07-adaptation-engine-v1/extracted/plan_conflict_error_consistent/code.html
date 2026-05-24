@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        @font-face {
+            font-family: 'hankenGrotesk';
+            src: url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;900&display=swap');
+        }
+        @font-face {
+            font-family: 'jetbrainsMono';
+            src: url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&display=swap');
+        }
+        @font-face {
+            font-family: 'PP Neue Montreal Mono';
+            src: url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+        }
+        body {
+            font-family: 'The Future', 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 48;
+        }
+        .brand-ribbon {
+            height: 2px;
+            background: linear-gradient(90deg, #fc4c02 0%, #ef2cc1 50%, #bdbbff 100%);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#e2e2e2",
+                        "hairline": "rgba(0, 0, 0, 0.08)",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#002022",
+                        "secondary-fixed": "#bdebee",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "inverse-primary": "#c6c6c6",
+                        "on-primary-container": "#848484",
+                        "tertiary": "#000000",
+                        "on-error-container": "#93000a",
+                        "on-surface": "#1b1b1b",
+                        "ink": "#000000",
+                        "surface-container-high": "#e8e8e8",
+                        "on-secondary-fixed-variant": "#204d50",
+                        "on-background": "#1b1b1b",
+                        "outline": "#7e7576",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "inverse-surface": "#303030",
+                        "surface": "#f9f9f9",
+                        "surface-tint": "#5e5e5e",
+                        "primary": "#000000",
+                        "surface-variant": "#e2e2e2",
+                        "on-surface-variant": "#4c4546",
+                        "surface-dark-soft": "#313641",
+                        "inverse-on-surface": "#f1f1f1",
+                        "on-secondary-container": "#406b6e",
+                        "on-primary-fixed": "#1b1b1b",
+                        "outline-variant": "#cfc4c5",
+                        "on-tertiary-fixed": "#1b1b1b",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#f9f9f9",
+                        "canvas-dark": "#010120",
+                        "accent-magenta": "#ef2cc1",
+                        "surface-dim": "#dadada",
+                        "surface-container": "#eeeeee",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "secondary": "#3a6568",
+                        "surface-container-low": "#f3f3f3",
+                        "accent-orange": "#fc4c02",
+                        "on-tertiary-container": "#848484",
+                        "error-container": "#ffdad6",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#e2e2e2",
+                        "tertiary-container": "#1b1b1b",
+                        "on-primary-fixed-variant": "#474747",
+                        "primary-container": "#1b1b1b",
+                        "secondary-container": "#bdebee",
+                        "secondary-fixed-dim": "#a2cfd2",
+                        "accent-periwinkle": "#bdbbff",
+                        "body-text": "#959494",
+                        "background": "#f9f9f9",
+                        "tertiary-fixed": "#e2e2e2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "4xl": "44px",
+                        "3xl": "32px",
+                        "xs": "4px",
+                        "lg": "16px",
+                        "sm": "8px",
+                        "xxs": "2px",
+                        "md": "12px",
+                        "xl": "20px",
+                        "6xl": "55.2px",
+                        "5xl": "48px",
+                        "2xl": "24px",
+                        "section": "80px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["hankenGrotesk"],
+                        "body-md": ["The Future", "Inter", "Helvetica Neue", "Arial", "sans-serif"],
+                        "display-md": ["The Future", "Inter", "Helvetica Neue", "Arial", "sans-serif"],
+                        "body-lg": ["The Future", "Inter", "Helvetica Neue", "Arial", "sans-serif"],
+                        "body-md-strong": ["The Future", "Inter", "Helvetica Neue", "Arial", "sans-serif"],
+                        "body-lg-strong": ["The Future", "Inter", "Helvetica Neue", "Arial", "sans-serif"],
+                        "mono-caps-label": ["PP Neue Montreal Mono", "ui-monospace", "SF Mono", "Menlo", "monospace"],
+                        "display-xl": ["The Future", "Inter", "Helvetica Neue", "Arial", "sans-serif"],
+                        "caption-strong": ["The Future", "Inter", "Helvetica Neue", "Arial", "sans-serif"],
+                        "headline-lg": ["hankenGrotesk"],
+                        "caption": ["The Future", "Inter", "Helvetica Neue", "Arial", "sans-serif"],
+                        "display-lg": ["The Future", "Inter", "Helvetica Neue", "Arial", "sans-serif"],
+                        "mono-caption": ["PP Neue Montreal Mono", "ui-monospace", "SF Mono", "Menlo", "monospace"],
+                        "headline-xxl": ["hankenGrotesk"],
+                        "mono-eyebrow": ["jetbrainsMono"],
+                        "mono-button": ["jetbrainsMono"],
+                        "display-xxl": ["The Future", "Inter", "Helvetica Neue", "Arial", "sans-serif"],
+                        "mono-caps-eyebrow": ["PP Neue Montreal Mono", "ui-monospace", "SF Mono", "Menlo", "monospace"],
+                        "mono-caps-button": ["PP Neue Montreal Mono", "ui-monospace", "SF Mono", "Menlo", "monospace"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-canvas-dark fixed top-0 w-full z-50">
+<div class="brand-ribbon w-full"></div>
+<div class="flex justify-between items-center px-lg h-16 w-full border-b border-white/5">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-primary text-headline-lg">speed</span>
+<span class="font-headline-lg text-headline-lg font-black tracking-tighter text-on-primary">MILEMIND</span>
+</div>
+<div class="flex items-center gap-xl">
+<nav class="hidden md:flex gap-xl">
+<span class="font-mono-caps-button text-mono-caps-button uppercase text-on-primary hover:opacity-80 transition-opacity cursor-pointer">Today</span>
+<span class="font-mono-caps-button text-mono-caps-button uppercase text-white/60 hover:opacity-80 transition-opacity cursor-pointer">Plan</span>
+<span class="font-mono-caps-button text-mono-caps-button uppercase text-white/60 hover:opacity-80 transition-opacity cursor-pointer">Progress</span>
+</nav>
+<span class="material-symbols-outlined text-on-primary hover:opacity-80 transition-opacity cursor-pointer active:scale-95 transition-transform">settings</span>
+</div>
+</div>
+</header>
+<!-- Hero / Header Section -->
+<div class="bg-canvas-dark pt-24 pb-xl px-lg text-center border-b border-white/5">
+<div class="max-w-xl mx-auto space-y-xl">
+<div class="inline-flex items-center justify-center p-xl rounded-lg bg-white/5 border border-white/10 shadow-sm">
+<span class="material-symbols-outlined text-[64px] text-on-primary" style="font-variation-settings: 'wght' 200;">sync_problem</span>
+</div>
+<div class="space-y-sm">
+<span class="font-mono-caps-eyebrow text-mono-caps-eyebrow uppercase text-accent-periwinkle tracking-widest">System conflict detected</span>
+<h1 class="font-display-xl text-display-xl text-on-primary tracking-tight">Plan out of date</h1>
+</div>
+</div>
+</div>
+<!-- Main Content Area -->
+<main class="flex-grow flex flex-col items-center px-lg py-3xl">
+<div class="max-w-xl w-full text-center space-y-3xl">
+<p class="font-body-lg text-body-lg text-body-text max-w-md mx-auto">
+                Your plan changed recently on another device. Refresh to continue.
+            </p>
+<!-- Action Area -->
+<div class="flex flex-col items-center gap-lg">
+<button class="bg-primary text-on-primary font-mono-caps-button text-mono-caps-button uppercase px-4xl py-xl rounded-full hover:opacity-90 active:scale-95 transition-all shadow-sm tracking-tight">
+                    Refresh plan
+                </button>
+<div class="flex gap-md">
+<button class="font-mono-caps-button text-mono-caps-button uppercase text-on-surface-variant hover:text-ink transition-colors px-lg py-sm">
+                        View local version
+                    </button>
+<button class="font-mono-caps-button text-mono-caps-button uppercase text-on-surface-variant hover:text-ink transition-colors px-lg py-sm">
+                        Cancel
+                    </button>
+</div>
+</div>
+<!-- Technical Detail Card (Bento Style) -->
+<div class="mt-6xl grid grid-cols-1 md:grid-cols-2 gap-md text-left">
+<div class="p-xl bg-surface border border-hairline rounded-lg space-y-sm">
+<span class="font-mono-caps-label text-mono-caps-label text-on-surface-variant uppercase">Last sync time</span>
+<p class="font-body-md-strong text-body-md-strong text-ink">Today, 14:32:01 UTC</p>
+</div>
+<div class="p-xl bg-surface border border-hairline rounded-lg space-y-sm">
+<span class="font-mono-caps-label text-mono-caps-label text-on-surface-variant uppercase">Device source</span>
+<p class="font-body-md-strong text-body-md-strong text-ink">MacBook Pro (M3)</p>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile only) -->
+<nav class="md:hidden bg-surface border-t border-hairline fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-md pb-safe">
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-95 transition-transform">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-mono-caps-label text-mono-caps-label uppercase mt-xxs">Today</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-primary text-on-primary rounded-lg px-4 py-1 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">event_note</span>
+<span class="font-mono-caps-label text-mono-caps-label uppercase mt-xxs">Plan</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-95 transition-transform">
+<span class="material-symbols-outlined">insights</span>
+<span class="font-mono-caps-label text-mono-caps-label uppercase mt-xxs">Progress</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-95 transition-transform">
+<span class="material-symbols-outlined">person</span>
+<span class="font-mono-caps-label text-mono-caps-label uppercase mt-xxs">Profile</span>
+</button>
+</nav>
+<script>
+        // Micro-interaction for the refresh button
+        document.querySelector('button.bg-primary').addEventListener('click', function() {
+            const btn = this;
+            const originalText = btn.innerText;
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin text-lg">sync</span>';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                window.location.reload();
+            }, 1200);
+        });
+    </script>
+</body></html>

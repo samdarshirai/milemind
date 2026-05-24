@@ -191,6 +191,14 @@ private fun WorkoutCard(workout: WorkoutCardUiModel, onClick: () -> Unit) {
         Column(modifier = Modifier.fillMaxWidth().padding(14.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
             Text("${workout.dayLabel}, ${workout.dateLabel}", color = RunCoachColors.TextSecondary)
             Text(workout.workoutType, color = RunCoachColors.TextPrimary, fontWeight = FontWeight.SemiBold)
+            if (workout.isChanged) {
+                Text(
+                    "Changed",
+                    color = RunCoachColors.ProgressAccent,
+                    style = MaterialTheme.typography.labelSmall,
+                    modifier = Modifier.testTag("changed_${workout.plannedWorkoutId}")
+                )
+            }
             Text(workout.distanceOrDurationLabel, color = RunCoachColors.TextStrong)
             Text(workout.summaryLabel, color = RunCoachColors.TextMuted, style = MaterialTheme.typography.bodySmall)
             Text(statusDisplayLabel(workout.status), color = statusColor, modifier = Modifier.testTag("status_${workout.plannedWorkoutId}"))

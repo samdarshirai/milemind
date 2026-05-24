@@ -19,6 +19,7 @@ spring:
     placeholders:
       race_goal_active_unique_columns: "user_id"
       race_goal_active_unique_predicate: "WHERE status = 'ACTIVE'"
+      adaptation_reason_codes_backfill_expr: "to_jsonb(ARRAY[reason])"
 
 management:
   endpoints:

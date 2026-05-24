@@ -38,5 +38,6 @@ data class WorkoutCardUiModel(
     val distanceOrDurationLabel: String,
     val summaryLabel: String,
     val status: String,
-    val isToday: Boolean
+    val isToday: Boolean,
+    val isChanged: Boolean = false
 )

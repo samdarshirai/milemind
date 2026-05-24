@@ -2,6 +2,7 @@ package com.company.runcoach.feature.plan.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.company.runcoach.core.common.AdaptationEvents
 import com.company.runcoach.feature.plan.data.PlanOverviewData
 import com.company.runcoach.feature.plan.data.PlanRepository
 import com.company.runcoach.feature.plan.ui.model.CalendarViewMode
@@ -33,6 +34,9 @@ class PlanOverviewViewModel @Inject constructor(
     val uiState: StateFlow<PlanOverviewUiState> = _uiState.asStateFlow()
 
     init {
+        viewModelScope.launch {
+            AdaptationEvents.events.collect { load() }
+        }
         load()
     }
 
@@ -147,6 +151,9 @@ class PlanOverviewViewModel @Inject constructor(
                 targetDistanceKm = week.targetDistanceKm,
                 workouts = week.workouts.map { workout ->
                     val date = workout.scheduledDate
+                    val isChanged = workout.changeReasonCodes.isNotEmpty() ||
+                        workout.adaptedFromWorkoutId != null ||
+                        plan.latestChangedWorkoutIds.contains(workout.plannedWorkoutId)
                     WorkoutCardUiModel(
                         plannedWorkoutId = workout.plannedWorkoutId,
                         dayLabel = date.dayOfWeek.getDisplayName(TextStyle.SHORT, Locale.getDefault()),
@@ -159,7 +166,8 @@ class PlanOverviewViewModel @Inject constructor(
                         },
                         summaryLabel = workout.intensityZone ?: "Follow easy controlled effort",
                         status = workout.status,
-                        isToday = date == today
+                        isToday = date == today,
+                        isChanged = isChanged
                     )
                 }
             )

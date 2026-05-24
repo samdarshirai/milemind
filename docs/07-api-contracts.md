@@ -359,12 +359,17 @@ Response:
 
 ### `POST /v1/planned-workouts/{plannedWorkoutId}/skip`
 
+Validation:
+- `expectedPlanVersion` is required.
+- Return `409 CONFLICT` with `error.code = "STALE_PLAN_VERSION"` when `expectedPlanVersion` is stale.
+- Reject when workout status is not mutable for skip.
+
 Request:
 
 ```json
 {
-  "reason": "TOO_BUSY",
-  "notes": "Work trip"
+  "reason": "NO_TIME",
+  "expectedPlanVersion": 2
 }
 ```
 
@@ -372,10 +377,16 @@ Response:
 
 ```json
 {
-  "plannedWorkoutId": "5c5a3b24-d8f2-448d-a6de-a3c0f6a825dd",
-  "status": "SKIPPED",
-  "adaptationTriggered": true,
-  "decisionId": "1f8b89eb-926e-48ef-89d0-c0cbec3678b3"
+  "planVersion": 3,
+  "adaptation": {
+    "id": "1f8b89eb-926e-48ef-89d0-c0cbec3678b3",
+    "summary": "Your next 14 days were adjusted after skipping a workout.",
+    "affectedFromDate": "2026-06-15",
+    "affectedToDate": "2026-06-29",
+    "changedWorkoutIds": [
+      "5c5a3b24-d8f2-448d-a6de-a3c0f6a825dd"
+    ]
+  }
 }
 ```
 
@@ -385,14 +396,19 @@ Request:
 
 ```json
 {
-  "newDate": "2026-06-16",
-  "planVersion": 2
+  "targetDate": "2026-06-16",
+  "expectedPlanVersion": 2
 }
 ```
 
 Validation:
-- Only one-day forward or backward move in MVP.
+- `expectedPlanVersion` is required.
+- `targetDate` is required.
+- Only one-day forward or backward move in MVP (`move_window_exceeded` when violated).
 - Reject if spacing would place two quality sessions adjacently.
+- Reject long-run moves when target day is not free or long-run spacing is unsafe.
+- Reject when workout status is not mutable for reschedule.
+- Return `409 CONFLICT` with `error.code = "STALE_PLAN_VERSION"` when `expectedPlanVersion` is stale.
 
 ### `GET /v1/planned-workouts/{plannedWorkoutId}`
 
@@ -435,15 +451,8 @@ Request:
 ```json
 {
   "plannedWorkoutId": "5c5a3b24-d8f2-448d-a6de-a3c0f6a825dd",
-  "source": "MANUAL",
-  "completedAt": "2026-06-15T06:40:00Z",
   "actualDistanceKm": 14.2,
-  "actualDurationMin": 82,
-  "avgPaceSecPerKm": 346,
-  "avgHr": 154,
-  "rpe": 7,
-  "feltVsTarget": "HARDER",
-  "notes": "Felt controlled until last rep, left calf slightly tight."
+  "actualDurationMin": 82
 }
 ```
 
@@ -453,9 +462,17 @@ Response:
 {
   "completionId": "7d6f0d3e-4f3c-43ee-a98e-3d1b9b9fd6b1",
   "plannedWorkoutId": "5c5a3b24-d8f2-448d-a6de-a3c0f6a825dd",
-  "completionScore": 0.86,
-  "qualityScore": 0.73,
-  "adaptationTriggered": false
+  "planVersion": 3,
+  "adaptationTriggered": true,
+  "adaptation": {
+    "id": "1f8b89eb-926e-48ef-89d0-c0cbec3678b3",
+    "summary": "Your near-term plan was softened after an under-completed workout.",
+    "affectedFromDate": "2026-06-15",
+    "affectedToDate": "2026-06-22",
+    "changedWorkoutIds": [
+      "5c5a3b24-d8f2-448d-a6de-a3c0f6a825dd"
+    ]
+  }
 }
 ```
 
