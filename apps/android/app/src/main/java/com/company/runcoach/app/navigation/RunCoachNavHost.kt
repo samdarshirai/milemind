@@ -5,8 +5,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.company.runcoach.feature.auth.ui.navigation.AuthRoutes
 import com.company.runcoach.feature.auth.ui.navigation.authGraph
+import com.company.runcoach.feature.checkin.ui.navigation.CheckInRoutes
+import com.company.runcoach.feature.checkin.ui.navigation.checkInGraph
 import com.company.runcoach.feature.onboarding.ui.navigation.OnboardingRoutes
 import com.company.runcoach.feature.onboarding.ui.navigation.onboardingGraph
+import com.company.runcoach.feature.plan.ui.navigation.PlanRoutes
 import com.company.runcoach.feature.plan.ui.navigation.planGraph
 import com.company.runcoach.feature.profile.ui.navigation.profileGraph
 import com.company.runcoach.feature.racegoal.ui.navigation.RaceGoalRoutes
@@ -24,7 +27,7 @@ fun RunCoachNavHost() {
         authGraph(
             navController = navController,
             onboardingRoute = OnboardingRoutes.Intro,
-            mainRoute = TodayRoutes.Home
+            mainRoute = TodayRoutes.homeRoute()
         )
 
         onboardingGraph(
@@ -37,13 +40,30 @@ fun RunCoachNavHost() {
 
         raceGoalGraph(
             onComplete = {
-                navController.navigate(TodayRoutes.Home) {
+                navController.navigate(TodayRoutes.homeRoute()) {
                     popUpTo(RaceGoalRoutes.Setup) { inclusive = true }
                 }
             }
         )
 
-        todayGraph()
+        todayGraph(
+            onOpenCheckIn = { navController.navigate(CheckInRoutes.Fatigue) },
+            onOpenWorkout = { plannedWorkoutId, status ->
+                navController.navigate(WorkoutRoutes.detailRoute(plannedWorkoutId, status))
+            },
+            onOpenPlan = { navController.navigate(PlanRoutes.Overview) }
+        )
+        checkInGraph(
+            openPainCheckIn = { navController.navigate(CheckInRoutes.Pain) },
+            openSummary = { readiness -> navController.navigate(CheckInRoutes.summaryRoute(readiness)) },
+            onCancel = { navController.popBackStack(TodayRoutes.homeRoute(), inclusive = false) },
+            onDone = {
+                navController.navigate(TodayRoutes.homeRoute(refresh = "refresh")) {
+                    popUpTo(CheckInRoutes.Fatigue) { inclusive = true }
+                }
+            },
+            onBack = { navController.popBackStack() }
+        )
         planGraph(onOpenWorkout = { plannedWorkoutId, status ->
             navController.navigate(WorkoutRoutes.detailRoute(plannedWorkoutId, status))
         })

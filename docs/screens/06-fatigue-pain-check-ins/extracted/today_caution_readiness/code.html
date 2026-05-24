@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MileMind - Today</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary": "#aec6ff",
+                      "secondary": "#dbb8ff",
+                      "surface-container-lowest": "#0b0e15",
+                      "on-error": "#690005",
+                      "success-green": "#00DFD8",
+                      "tertiary-container": "#ca4e00",
+                      "surface-variant": "#32353d",
+                      "on-secondary-container": "#d0a6ff",
+                      "on-secondary-fixed": "#2b0052",
+                      "on-tertiary-container": "#fffeff",
+                      "on-primary-container": "#ffffff",
+                      "primary-fixed": "#d8e2ff",
+                      "on-secondary-fixed-variant": "#6600b7",
+                      "secondary-fixed": "#efdbff",
+                      "surface-overlay": "#1A1A1A",
+                      "tertiary-fixed-dim": "#ffb596",
+                      "surface-container-low": "#181b23",
+                      "tertiary": "#ffb596",
+                      "on-background": "#e0e2ed",
+                      "on-error-container": "#ffdad6",
+                      "on-surface": "#e0e2ed",
+                      "surface-base": "#000000",
+                      "on-primary": "#002e6b",
+                      "outline": "#8b90a0",
+                      "text-primary": "#EDEDED",
+                      "on-primary-fixed": "#001a43",
+                      "surface-raised": "#111111",
+                      "inverse-surface": "#e0e2ed",
+                      "background": "#10131b",
+                      "inverse-on-surface": "#2d3039",
+                      "on-tertiary-fixed": "#360f00",
+                      "surface-dim": "#10131b",
+                      "surface-bright": "#363942",
+                      "surface-container-highest": "#32353d",
+                      "surface": "#10131b",
+                      "inverse-primary": "#0059c5",
+                      "primary-container": "#0070f3",
+                      "secondary-container": "#6807ba",
+                      "outline-variant": "#414754",
+                      "secondary-fixed-dim": "#dbb8ff",
+                      "surface-tint": "#aec6ff",
+                      "on-tertiary": "#581e00",
+                      "primary-fixed-dim": "#aec6ff",
+                      "on-secondary": "#470083",
+                      "error": "#ffb4ab",
+                      "surface-container": "#1c1f27",
+                      "tertiary-fixed": "#ffdbcd",
+                      "surface-container-high": "#272a32",
+                      "on-primary-fixed-variant": "#004397",
+                      "border-subtle": "#333333",
+                      "on-surface-variant": "#c1c6d7",
+                      "text-secondary": "#A1A1A1",
+                      "on-tertiary-fixed-variant": "#7d2d00",
+                      "error-container": "#93000a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "base-unit": "4px",
+                      "column-gap": "24px",
+                      "margin-mobile": "16px",
+                      "gutter": "16px",
+                      "section-padding": "64px",
+                      "margin-desktop": "32px"
+              },
+              "fontFamily": {
+                      "body-sm": ["Geist"],
+                      "label-mono": ["JetBrains Mono"],
+                      "headline-lg-mobile": ["Geist"],
+                      "label-caps": ["Geist"],
+                      "headline-lg": ["Geist"],
+                      "display-lg": ["Geist"],
+                      "body-md": ["Geist"]
+              },
+              "fontSize": {
+                      "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "label-mono": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "label-caps": ["11px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body {
+            background-color: #10131b;
+            color: #e0e2ed;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(28, 31, 39, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid #333333;
+        }
+        .caution-gradient {
+            background: linear-gradient(135deg, rgba(219, 184, 255, 0.1) 0%, rgba(174, 198, 255, 0.05) 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-body-md selection:bg-primary/30">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface dark:bg-surface border-b border-border-subtle flex justify-between items-center px-margin-mobile py-2">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="directions_run">directions_run</span>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold tracking-tight text-primary">MileMind</h1>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container-high border border-border-subtle flex items-center justify-center overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A professional close-up portrait of a fit individual with a determined expression, lit by high-contrast side lighting that emphasizes texture. The background is a dark, moody gym environment with subtle blue and purple atmospheric glows. The image style is sharp, modern, and high-technical fidelity, matching a premium fitness brand aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD31cGvMOIjEvg_1-7IsweHSITY5h2cZ73UoCLotW53OrRschwQpVVPYcEb8VnccNlA1X6e_6zTZLgrviperRL533FQiW7BTgGF1-RHDp-BKJTAXu4KRlCdAijrWZ-QL6tabFNSV3kewhx5wSYmKzEdAW7uz1y58uFOGcQTBBwbUDcJ99CYh6oMspiiqJtVCFYwY_aec8KSBV3uwx1h__npk85s4VmshjL37FAHYE9DsIMcTNGd7Gbd67pvRLw7i6DcxSgCqUDWTihP"/>
+</div>
+</header>
+<main class="pt-20 pb-32 px-margin-mobile max-w-5xl mx-auto">
+<!-- Readiness Bento Section -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-4 mb-8">
+<!-- Main Readiness Card -->
+<div class="md:col-span-8 glass-card caution-gradient p-6 rounded-xl flex flex-col justify-between relative overflow-hidden">
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-6">
+<div>
+<span class="font-label-caps text-label-caps text-secondary mb-1 block uppercase">Readiness Score</span>
+<div class="text-display-lg font-display-lg text-text-primary">64<span class="text-body-sm font-body-sm text-outline ml-1">/100</span></div>
+</div>
+<div class="px-3 py-1 bg-secondary/10 border border-secondary/30 rounded-full">
+<span class="font-label-caps text-label-caps text-secondary">CAUTION</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mb-8">
+                        Consider keeping today easy. Your fatigue signals are slightly elevated.
+                    </p>
+<button class="bg-primary text-on-primary px-6 py-3 rounded font-label-caps text-label-caps tracking-widest hover:brightness-110 active:scale-95 transition-all w-full sm:w-auto">
+                        UPDATE READINESS
+                    </button>
+</div>
+<!-- Subtle graphic background element -->
+<div class="absolute right-[-20px] bottom-[-20px] opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-[180px]" data-icon="monitoring">monitoring</span>
+</div>
+</div>
+<!-- Side Metrics (Desktop) / Quick Stats -->
+<div class="md:col-span-4 grid grid-cols-2 md:grid-cols-1 gap-4">
+<div class="bg-surface-raised border border-border-subtle p-4 rounded-lg">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-outline text-sm" data-icon="favorite">favorite</span>
+<span class="font-label-caps text-label-caps text-outline">HRV</span>
+</div>
+<div class="font-headline-lg-mobile text-headline-lg-mobile text-text-primary">48 ms</div>
+<div class="text-[10px] font-label-mono text-error mt-1">▼ 12% vs avg</div>
+</div>
+<div class="bg-surface-raised border border-border-subtle p-4 rounded-lg">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-outline text-sm" data-icon="bedtime">bedtime</span>
+<span class="font-label-caps text-label-caps text-outline">SLEEP</span>
+</div>
+<div class="font-headline-lg-mobile text-headline-lg-mobile text-text-primary">6h 12m</div>
+<div class="text-[10px] font-label-mono text-outline mt-1">Uninterrupted</div>
+</div>
+</div>
+</section>
+<!-- Active Workout Section -->
+<section class="mb-12">
+<div class="flex justify-between items-end mb-4">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-text-primary">Today's Session</h2>
+<a class="font-label-mono text-label-mono text-primary hover:underline" href="#">VIEW PLAN</a>
+</div>
+<div class="group relative bg-surface-raised border border-border-subtle hover:border-primary/50 transition-all rounded-xl p-0 overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary"></div>
+<div class="flex flex-col md:flex-row">
+<div class="w-full md:w-1/3 h-48 md:h-auto overflow-hidden">
+<img alt="Base Run" class="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" data-alt="A cinematic long-exposure shot of a runner on a paved path during the blue hour. The lighting is cool-toned with periwinkle and deep navy shadows, highlighting the kinetic movement. The atmosphere is quiet, technical, and focused, emphasizing the discipline of a base run in a modern urban park setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5W4q5l8OpPPxPxrgjRBSwglLnpum-ufCuYmoP5BtcEjRjJUwM6_U4SbSTMgkgQeDoyXr2-VavtNM7Orkdioc0I-HcFVmA5bJ_L3Ig2GGgZAyqBXYlcV1ChLZ6Ij5u8t2qPMLJhkJB3xNXwJtTlxSlXSbu2RP5Sty8cX7_StEsp9qcEV5fTVtMio2kgxvrOmqptWWciPMWnKynE05FXUyQcICXDq8EjLYMwsaZQ48p3JJ5dzWkKrRlHLZLgnaIlSLQpVcJkmeGgK-f"/>
+</div>
+<div class="p-6 flex-1">
+<div class="flex flex-wrap items-center gap-2 mb-4">
+<span class="bg-primary/10 text-primary border border-primary/20 px-2 py-0.5 rounded font-label-mono text-[10px]">AEROBIC</span>
+<div class="flex items-center gap-1 bg-secondary/10 border border-secondary/30 px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px] text-secondary" data-icon="warning">warning</span>
+<span class="font-label-caps text-label-caps text-secondary">Caution</span>
+</div>
+</div>
+<h3 class="font-headline-lg text-headline-lg text-text-primary mb-2">45-minute Base Run</h3>
+<p class="text-on-surface-variant font-body-sm text-body-sm mb-6 max-w-xl">
+                            Low intensity aerobic development. Focus on nose-breathing and maintaining a steady heart rate in Zone 2. Adjusted intensity based on your current fatigue levels.
+                        </p>
+<div class="grid grid-cols-3 gap-4 border-t border-border-subtle pt-6">
+<div>
+<div class="font-label-caps text-label-caps text-outline mb-1">TARGET PACE</div>
+<div class="font-label-mono text-body-md text-text-primary">5:45 - 6:10 /km</div>
+</div>
+<div>
+<div class="font-label-caps text-label-caps text-outline mb-1">INTENSITY</div>
+<div class="font-label-mono text-body-md text-text-primary">Moderate</div>
+</div>
+<div class="flex justify-end items-center">
+<button class="w-12 h-12 rounded-full border border-primary text-primary flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all">
+<span class="material-symbols-outlined" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Insights / Asymmetric Row -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-4">
+<h4 class="font-label-caps text-label-caps text-outline">Fatigue Analysis</h4>
+<div class="space-y-3">
+<div class="flex items-center justify-between p-3 bg-surface-container-low border-l-2 border-primary">
+<span class="text-body-sm font-body-sm">Neural Recovery</span>
+<span class="text-primary font-label-mono text-body-sm">Optimal</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container-low border-l-2 border-secondary">
+<span class="text-body-sm font-body-sm">Metabolic Stress</span>
+<span class="text-secondary font-label-mono text-body-sm">Elevated</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container-low border-l-2 border-outline">
+<span class="text-body-sm font-body-sm">Circadian Alignment</span>
+<span class="text-outline font-label-mono text-body-sm">Fair</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-high/30 p-6 rounded-lg border border-border-subtle border-dashed flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-outline text-4xl mb-3" data-icon="psychology">psychology</span>
+<p class="text-on-surface-variant text-body-sm font-body-sm italic">
+                    "Recovery is where the performance happens. Your data suggests a 15% reduction in volume today will yield better adaptations long-term."
+                </p>
+<span class="mt-4 font-label-mono text-[10px] text-primary">COACH INSIGHT</span>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface-container-low dark:bg-surface-container-low border-t border-border-subtle flex justify-around items-center px-4 py-2">
+<a class="flex flex-col items-center justify-center text-primary font-bold active:scale-95 duration-150 group" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today" style="font-variation-settings: 'FILL' 1;">calendar_today</span>
+<span class="font-label-caps text-label-caps mt-1">Today</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline hover:bg-surface-variant/50 transition-all px-4 py-1 rounded active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="event_note">event_note</span>
+<span class="font-label-caps text-label-caps mt-1">Plan</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline hover:bg-surface-variant/50 transition-all px-4 py-1 rounded active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span class="font-label-caps text-label-caps mt-1">Progress</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline hover:bg-surface-variant/50 transition-all px-4 py-1 rounded active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+<span class="font-label-caps text-label-caps mt-1">Coach</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline hover:bg-surface-variant/50 transition-all px-4 py-1 rounded active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-caps text-label-caps mt-1">Profile</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions for buttons and cards
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('mousedown', () => el.style.transform = 'scale(0.98)');
+            el.addEventListener('mouseup', () => el.style.transform = 'scale(1)');
+            el.addEventListener('mouseleave', () => el.style.transform = 'scale(1)');
+        });
+
+        // Simple parallax effect on main readiness card
+        const card = document.querySelector('.glass-card');
+        if (card) {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 25;
+                const rotateY = (centerX - x) / 25;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
+            });
+        }
+    </script>
+</body></html>

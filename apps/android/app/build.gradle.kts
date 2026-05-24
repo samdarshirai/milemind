@@ -58,6 +58,7 @@ dependencies {
     implementation(project(":feature:auth"))
     implementation(project(":feature:onboarding"))
     implementation(project(":feature:today"))
+    implementation(project(":feature:checkin"))
     implementation(project(":feature:profile"))
     implementation(project(":feature:racegoal"))
     implementation(project(":feature:plan"))
