@@ -48,6 +48,8 @@ Compatibility note:
    - `mvn spring-boot:run`
 3. Verify health:
    - `curl http://localhost:8080/v1/health`
+4. Full backend + DB runbook:
+   - `docs/18-local-development-runbook.md`
 
 ## Android Run
 
@@ -66,6 +68,7 @@ Compatibility note:
 
 Notes:
 - Android emulator reaches local backend using `http://10.0.2.2:8080/`.
+- End-to-end local setup/run instructions are documented in `docs/18-local-development-runbook.md`.
 
 ## Tests
 

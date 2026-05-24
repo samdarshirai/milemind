@@ -1,6 +1,6 @@
 package com.company.runcoach.platform.api;
 
-import com.company.runcoach.app.RunCoachApplication;
+import com.company.runcoach.RunCoachApplication;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;

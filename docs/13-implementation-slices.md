@@ -128,30 +128,31 @@ Acceptance criteria:
 Dependencies:
 - Slice 3.
 
-## Slice 5: Workout Detail And Manual Completion
+## Slice 5: Plan Calendar + Workout Detail (Read-Only)
 
 Goal:
-- Let users inspect and complete workouts manually.
+- Let users inspect planned workouts clearly from calendar and detail screens.
 
 Backend tasks:
-- Implement workout detail query.
-- Implement completion scoring and completion persistence.
+- Reuse existing workout detail read endpoint from Slice 4.
 
 Android tasks:
-- Build workout detail and complete workout flow.
+- Build plan calendar interactions and workout detail read flow.
+- Keep completion and skip actions visible but disabled until mutation endpoints are integrated.
 
 DB changes:
-- `workout_completion`
+- None in this branch.
 
 APIs:
-- `POST /v1/workout-completions`
+- `GET /v1/plans/current`
+- `GET /v1/planned-workouts/{plannedWorkoutId}`
 
 Tests:
-- Duplicate completion handling.
-- Completion scoring.
+- Plan and workout detail UI state coverage.
+- Workout detail navigation handoff coverage.
 
 Acceptance criteria:
-- Completed workout appears as completed and updates plan state.
+- User can view current week plan, switch day/week, and open workout detail with clear status rendering.
 
 Dependencies:
 - Slice 4.

@@ -217,6 +217,7 @@ States:
 
 Purpose:
 - Make the next action obvious.
+- Current implementation may use a temporary shell landing screen while full Today content is completed in a later slice.
 
 Required backend data:
 - Current planned workout for today.
@@ -272,9 +273,9 @@ Required backend data:
 - Reschedule and skip permissions.
 
 Actions:
-- Mark complete.
-- Mark skipped.
-- Reschedule once.
+- Mark complete (disabled in current Slice 5 implementation).
+- Mark skipped (disabled in current Slice 5 implementation).
+- Reschedule once (deferred).
 - Ask coach for explanation.
 
 States:
@@ -286,6 +287,9 @@ States:
 
 Purpose:
 - Capture completion data in under 20 seconds.
+
+Current branch status:
+- Deferred after Slice 5 follow-up remediation. Workout detail remains read-only in this branch.
 
 Required inputs:
 - Distance.

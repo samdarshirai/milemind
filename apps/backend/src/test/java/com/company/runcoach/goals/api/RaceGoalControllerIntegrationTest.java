@@ -1,6 +1,6 @@
 package com.company.runcoach.goals.api;
 
-import com.company.runcoach.app.RunCoachApplication;
+import com.company.runcoach.RunCoachApplication;
 import com.company.runcoach.goals.domain.RaceGoalStatus;
 import com.company.runcoach.goals.repo.RaceGoalRepository;
 import com.company.runcoach.identity.repo.AppUserRepository;

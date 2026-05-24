@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#c6c6c6",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#41407b",
+                        "on-surface-variant": "#4c4546",
+                        "on-secondary-fixed": "#171838",
+                        "on-primary-fixed": "#1b1b1b",
+                        "accent-magenta": "#ef2cc1",
+                        "accent-periwinkle": "#bdbbff",
+                        "inverse-primary": "#c6c6c6",
+                        "secondary-container": "#d4d4fe",
+                        "hairline-on-dark": "rgba(255, 255, 255, 0.12)",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#f2f0f0",
+                        "surface-variant": "#e4e2e2",
+                        "on-tertiary-container": "#7f7dbd",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#5e5e5e",
+                        "tertiary-container": "#15124d",
+                        "ink": "#000000",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f5f3f3",
+                        "hairline": "rgba(0, 0, 0, 0.08)",
+                        "surface-bright": "#fbf9f8",
+                        "on-surface": "#1b1c1c",
+                        "on-error": "#ffffff",
+                        "on-primary-container": "#848484",
+                        "accent-orange": "#fc4c02",
+                        "tertiary": "#000000",
+                        "on-tertiary-fixed": "#15124d",
+                        "primary": "#000000",
+                        "background": "#fbf9f8",
+                        "surface": "#fbf9f8",
+                        "on-secondary-fixed-variant": "#424466",
+                        "outline-variant": "#cfc4c5",
+                        "surface-dim": "#dbd9d9",
+                        "on-background": "#1b1c1c",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#e1e0ff",
+                        "surface-container-highest": "#e4e2e2",
+                        "on-secondary-container": "#595a7e",
+                        "secondary": "#5a5b7f",
+                        "primary-container": "#1b1b1b",
+                        "mint-surface": "#c8f6f9",
+                        "primary-fixed": "#e2e2e2",
+                        "inverse-surface": "#303031",
+                        "tertiary-fixed-dim": "#c3c0ff",
+                        "secondary-fixed-dim": "#c3c3ec",
+                        "surface-container-high": "#eae8e7",
+                        "tertiary-fixed": "#e2dfff",
+                        "canvas-dark": "#010120",
+                        "surface-container": "#f0eded",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#474747",
+                        "on-tertiary": "#ffffff",
+                        "outline": "#7e7576"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "base": "4px",
+                        "section": "48px",
+                        "2xl": "32px",
+                        "lg": "16px",
+                        "md": "12px",
+                        "xs": "4px",
+                        "xl": "24px"
+                    },
+                    "fontFamily": {
+                        "mono-eyebrow": ["JetBrains Mono"],
+                        "mono-metric": ["JetBrains Mono"],
+                        "display-xl": ["Inter"],
+                        "mono-button": ["JetBrains Mono"],
+                        "display-lg": ["Inter"],
+                        "display-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "mono-eyebrow": ["11px", {"lineHeight": "11px", "letterSpacing": "0.55px", "fontWeight": "500"}],
+                        "mono-metric": ["10px", {"lineHeight": "14px", "letterSpacing": "0.05px", "fontWeight": "400"}],
+                        "display-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.8px", "fontWeight": "500"}],
+                        "mono-button": ["16px", {"lineHeight": "16px", "letterSpacing": "0.08px", "fontWeight": "500"}],
+                        "display-lg": ["28px", {"lineHeight": "32px", "letterSpacing": "-0.42px", "fontWeight": "500"}],
+                        "display-md": ["22px", {"lineHeight": "25px", "letterSpacing": "-0.22px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "23px", "letterSpacing": "-0.18px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "21px", "letterSpacing": "-0.16px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .gradient-momentum {
+            background: linear-gradient(90deg, #fc4c02 0%, #ef2cc1 50%, #bdbbff 100%);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+        body {
+            background-color: #fbf9f8;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased text-on-surface">
+<!-- TopAppBar -->
+<header class="bg-canvas-dark dark:bg-canvas-dark fixed top-0 w-full z-50 border-b border-hairline-on-dark flex justify-between items-center h-16 px-xl w-full">
+<div class="flex items-center gap-md">
+<button class="text-on-primary active:scale-95 transition-transform hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<span class="font-display-md text-display-md uppercase text-on-primary leading-none">Interval Run</span>
+<span class="font-mono-metric text-mono-metric text-on-primary-fixed-variant uppercase">Tuesday, Oct 14</span>
+</div>
+</div>
+<button class="text-on-primary active:scale-95 transition-transform hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</header>
+<main class="pt-24 pb-32 px-xl">
+<!-- Status & Type Header -->
+<div class="flex justify-between items-end mb-xl">
+<div class="flex flex-col gap-xs">
+<span class="font-mono-eyebrow text-mono-eyebrow uppercase text-on-surface-variant">Workout Status</span>
+<div class="flex items-center gap-xs">
+<div class="w-2 h-2 rounded-full bg-accent-periwinkle animate-pulse"></div>
+<span class="font-mono-button text-mono-button uppercase tracking-tight">Planned</span>
+</div>
+</div>
+<div class="bg-surface-container-high px-md py-xs rounded-lg border border-hairline">
+<span class="font-mono-eyebrow text-mono-eyebrow uppercase">Interval</span>
+</div>
+</div>
+<!-- Metric Grid -->
+<div class="grid grid-cols-2 gap-md mb-xl">
+<div class="p-xl border border-hairline rounded-lg bg-surface flex flex-col gap-xs">
+<span class="font-mono-eyebrow text-mono-eyebrow uppercase text-on-surface-variant">Distance</span>
+<div class="flex items-baseline gap-xs">
+<span class="font-display-xl text-display-xl">8</span>
+<span class="font-mono-button text-mono-button text-on-surface-variant">KM</span>
+</div>
+</div>
+<div class="p-xl border border-hairline rounded-lg bg-surface flex flex-col gap-xs">
+<span class="font-mono-eyebrow text-mono-eyebrow uppercase text-on-surface-variant">Target Pace</span>
+<div class="flex items-baseline gap-xs">
+<span class="font-display-xl text-display-xl">4:15</span>
+<span class="font-mono-button text-mono-button text-on-surface-variant">MIN/KM</span>
+</div>
+</div>
+</div>
+<!-- Visual Map/Graph Area Placeholder -->
+<div class="w-full h-48 mb-xl rounded-lg overflow-hidden relative border border-hairline">
+<img class="w-full h-full object-cover grayscale opacity-40" data-alt="A cinematic, high-contrast aerial view of a professional running track at twilight. The scene is captured in a minimalist style with deep navy shadows and clinical white markings. The lighting is cold and atmospheric, emphasizing the technical and performance-driven nature of the MileMind training ecosystem. The mood is focused and elite." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvQo_pW6PyVkKezL1NxsOp-ylkDQOeG6E3cZCex5ZwCpl8xMGZjYaidHv6EFrme6KEZj5EePSjAf92jQrX7AZMsdDxPQF4TsDzjHHs7iHhayKabPCPEeVORW2vGHKxOndh2bXuE6GvTL0mUC-OC8y7LkMfUYQe0IDLmemzcdKnD23uSFZ2nzzo9dDqig04A1ZEVw8MQwFqplo8J7u7WQsqrGR1gzB7LKRB9Ip_Iet15Wke6JzUFGqBC77APqHSKHFFetpDT2p5XOmG"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+<div class="absolute bottom-md left-md">
+<span class="font-mono-eyebrow text-mono-eyebrow uppercase bg-canvas-dark text-on-primary px-sm py-xs">Session Intensity Projection</span>
+</div>
+</div>
+<!-- Workout Structure -->
+<section class="mb-xl">
+<h3 class="font-mono-eyebrow text-mono-eyebrow uppercase text-on-surface-variant mb-md px-xs">Structure</h3>
+<div class="space-y-base">
+<div class="p-lg border border-hairline bg-surface-container-low flex justify-between items-center">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-accent-periwinkle">hot_tub</span>
+<span class="font-body-md text-body-md">2km Warm-up</span>
+</div>
+<span class="font-mono-metric text-mono-metric uppercase text-on-surface-variant">Z2 Easy</span>
+</div>
+<div class="relative p-lg border border-hairline bg-canvas-dark text-on-primary overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 gradient-momentum"></div>
+<div class="flex flex-col gap-sm">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-accent-magenta">repeat</span>
+<span class="font-body-md text-body-md font-bold">5 x 800m at target pace</span>
+</div>
+</div>
+<div class="flex items-center gap-xl pl-12">
+<div class="flex flex-col">
+<span class="font-mono-eyebrow text-mono-eyebrow text-hairline-on-dark uppercase">Pace</span>
+<span class="font-mono-button text-mono-button">4:15/km</span>
+</div>
+<div class="flex flex-col">
+<span class="font-mono-eyebrow text-mono-eyebrow text-hairline-on-dark uppercase">Rest</span>
+<span class="font-mono-button text-mono-button">90s</span>
+</div>
+</div>
+</div>
+</div>
+<div class="p-lg border border-hairline bg-surface-container-low flex justify-between items-center">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-accent-periwinkle">ac_unit</span>
+<span class="font-body-md text-body-md">2km Cool-down</span>
+</div>
+<span class="font-mono-metric text-mono-metric uppercase text-on-surface-variant">Z1 Recovery</span>
+</div>
+</div>
+</section>
+<!-- Coaching Instructions -->
+<section class="mb-xl p-xl bg-mint-surface rounded-lg border border-hairline">
+<div class="flex items-center gap-sm mb-md text-on-tertiary-container">
+<span class="material-symbols-outlined">psychology</span>
+<h3 class="font-mono-eyebrow text-mono-eyebrow uppercase">Coaching Instructions</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+                Focus on maintaining a consistent stride during the intervals. Don't push too hard on the recovery jogs.
+            </p>
+</section>
+<!-- Action Area -->
+<div class="flex flex-col gap-md">
+<button class="w-full bg-ink text-on-primary py-xl rounded-full font-mono-button text-mono-button uppercase tracking-widest active:scale-95 transition-transform hover:opacity-90">
+                Mark as Completed
+            </button>
+<button class="w-full bg-transparent border border-hairline text-on-surface py-xl rounded-lg font-mono-button text-mono-button uppercase tracking-widest active:scale-95 transition-transform hover:bg-surface-container-low">
+                Mark as Skipped
+            </button>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-20 bg-surface px-xl pb-safe border-t border-hairline z-50">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-mono-eyebrow text-mono-eyebrow uppercase mt-1">Today</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined active-icon" data-icon="event_note">event_note</span>
+<span class="font-mono-eyebrow text-mono-eyebrow uppercase mt-1">Plan</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="query_stats">query_stats</span>
+<span class="font-mono-eyebrow text-mono-eyebrow uppercase mt-1">Progress</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-mono-eyebrow text-mono-eyebrow uppercase mt-1">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for button press
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.classList.add('scale-95');
+            });
+            button.addEventListener('mouseup', () => {
+                button.classList.remove('scale-95');
+            });
+            button.addEventListener('mouseleave', () => {
+                button.classList.remove('scale-95');
+            });
+        });
+    </script>
+</body></html>

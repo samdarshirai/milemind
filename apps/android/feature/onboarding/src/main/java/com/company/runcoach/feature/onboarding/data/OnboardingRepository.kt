@@ -65,11 +65,11 @@ class OnboardingRepository @Inject constructor(
             }?.error
             OnboardingSubmissionException(
                 httpCode = throwable.code(),
-                message = envelope?.message ?: throwable.message(),
+                message = envelope?.message ?: throwable.message ?: "Unknown error",
                 fieldErrors = envelope?.details?.mapNotNull { detail ->
                     val key = detail.field ?: return@mapNotNull null
                     key to mapFieldErrorMessage(key, detail.issue, envelope.message)
-                }?.toMap().orEmpty()
+                }?.toMap() ?: emptyMap()
             )
         } else throwable
     }

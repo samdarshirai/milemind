@@ -1,6 +1,6 @@
 package com.company.runcoach.identity.api;
 
-import com.company.runcoach.app.RunCoachApplication;
+import com.company.runcoach.RunCoachApplication;
 import com.company.runcoach.identity.domain.AppUser;
 import com.company.runcoach.identity.domain.RefreshToken;
 import com.company.runcoach.identity.repo.AppUserRepository;

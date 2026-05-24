@@ -6,14 +6,20 @@ import com.company.runcoach.core.network.ApiClient
 import com.company.runcoach.feature.auth.data.AuthErrorMapper
 import com.company.runcoach.feature.auth.data.remote.AuthApiService
 import com.company.runcoach.feature.onboarding.data.remote.OnboardingApiService
+import com.company.runcoach.feature.plan.data.remote.PlanApiService
 import com.company.runcoach.feature.profile.data.remote.ProfileApiService
 import com.company.runcoach.feature.racegoal.data.remote.RaceGoalApiService
+import com.company.runcoach.feature.workout.data.remote.WorkoutApiService
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
+import kotlinx.serialization.json.Json
 import retrofit2.Retrofit
+import java.time.Clock
 import javax.inject.Singleton
 
 @Module
@@ -45,7 +51,32 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideAuthErrorMapper(): AuthErrorMapper = AuthErrorMapper()
+    fun providePlanApiService(retrofit: Retrofit): PlanApiService =
+        retrofit.create(PlanApiService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideWorkoutApiService(retrofit: Retrofit): WorkoutApiService =
+        retrofit.create(WorkoutApiService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideAuthErrorMapper(json: Json): AuthErrorMapper = AuthErrorMapper(json)
+
+    @Provides
+    @Singleton
+    fun provideJson(): Json = Json {
+        ignoreUnknownKeys = true
+        coerceInputValues = true
+    }
+
+    @Provides
+    @Singleton
+    fun provideIoDispatcher(): CoroutineDispatcher = Dispatchers.IO
+
+    @Provides
+    @Singleton
+    fun provideClock(): Clock = Clock.systemDefaultZone()
 }
 
 @Module
