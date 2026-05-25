@@ -11,5 +11,10 @@ public interface FatigueSignalRepository extends JpaRepository<FatigueSignal, UU
     Optional<FatigueSignal> findByUser_IdAndSignalDateAndSource(UUID userId, LocalDate signalDate, String source);
     Optional<FatigueSignal> findFirstByUser_IdAndSignalDateOrderByCreatedAtDesc(UUID userId, LocalDate signalDate);
     Optional<FatigueSignal> findFirstByUser_IdAndSignalDateLessThanEqualOrderBySignalDateDescCreatedAtDesc(UUID userId, LocalDate signalDate);
+    java.util.List<FatigueSignal> findByUser_IdAndSignalDateBetweenOrderBySignalDateAscCreatedAtAsc(
+        UUID userId,
+        LocalDate startDate,
+        LocalDate endDate
+    );
     boolean existsByUser_IdAndSignalDate(UUID userId, LocalDate signalDate);
 }

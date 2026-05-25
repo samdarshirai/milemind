@@ -6,6 +6,9 @@ import java.time.LocalDate;
 
 public record TodayInsightResponse(
     LocalDate date,
+    String planId,
+    Integer planVersion,
+    PlannedWorkoutSummary todaysPlannedWorkout,
     ReadinessState readinessState,
     String readinessLabel,
     String readinessMessage,
@@ -13,8 +16,20 @@ public record TodayInsightResponse(
     InjuryFeedbackSummary latestInjuryFeedback,
     boolean hasCheckInToday,
     String recommendedTone,
-    LatestAdaptationSummary latestAdaptation
+    LatestAdaptationSummary latestAdaptation,
+    java.util.List<String> insightMessages,
+    java.util.List<String> warnings
 ) {
+    public record PlannedWorkoutSummary(
+        String plannedWorkoutId,
+        String workoutType,
+        String status,
+        java.math.BigDecimal plannedDistanceKm,
+        Integer plannedDurationMin,
+        String intensityZone
+    ) {
+    }
+
     public record FatigueSignalSummary(
         LocalDate signalDate,
         Integer sleepScore,
@@ -36,13 +51,12 @@ public record TodayInsightResponse(
         Integer severity,
         String onsetContext,
         Boolean canRun,
-        boolean redFlag,
-        String freeText
+        boolean redFlag
     ) {
     }
 
     public record LatestAdaptationSummary(
-        String id,
+        String adaptationDecisionId,
         String summary,
         LocalDate affectedFromDate,
         LocalDate affectedToDate,

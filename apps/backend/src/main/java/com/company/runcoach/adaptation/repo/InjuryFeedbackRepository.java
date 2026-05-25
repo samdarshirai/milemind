@@ -14,5 +14,10 @@ public interface InjuryFeedbackRepository extends JpaRepository<InjuryFeedback, 
         OffsetDateTime end
     );
     Optional<InjuryFeedback> findFirstByUser_IdAndReportedAtLessThanEqualOrderByReportedAtDescCreatedAtDesc(UUID userId, OffsetDateTime reportedAt);
+    java.util.List<InjuryFeedback> findByUser_IdAndReportedAtBetweenOrderByReportedAtAscCreatedAtAsc(
+        UUID userId,
+        OffsetDateTime start,
+        OffsetDateTime end
+    );
     boolean existsByUser_IdAndReportedAtBetween(UUID userId, OffsetDateTime start, OffsetDateTime end);
 }

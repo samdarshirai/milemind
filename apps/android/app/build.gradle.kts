@@ -63,6 +63,7 @@ dependencies {
     implementation(project(":feature:racegoal"))
     implementation(project(":feature:plan"))
     implementation(project(":feature:workout"))
+    implementation(project(":feature:progress"))
 
     implementation("androidx.core:core-ktx:1.15.0")
     implementation("androidx.appcompat:appcompat:1.7.0")

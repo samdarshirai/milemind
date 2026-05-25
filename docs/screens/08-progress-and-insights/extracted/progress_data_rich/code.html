@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        /* Custom scrollbar for a cleaner technical look */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #e2e2e2; border-radius: 10px; }
+        
+        .progress-ring-circle {
+            transition: stroke-dashoffset 0.35s;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+
+        .chart-bar {
+            transition: height 1s ease-out;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed": "#bdebee",
+                      "primary-container": "#1b1b1b",
+                      "on-primary-fixed": "#1b1b1b",
+                      "on-primary": "#ffffff",
+                      "on-secondary-fixed-variant": "#204d50",
+                      "inverse-primary": "#c6c6c6",
+                      "accent-orange": "#fc4c02",
+                      "on-surface": "#1b1b1b",
+                      "surface-bright": "#f9f9f9",
+                      "accent-magenta": "#ef2cc1",
+                      "on-error": "#ffffff",
+                      "primary": "#000000",
+                      "on-tertiary-fixed": "#1b1b1b",
+                      "on-tertiary-container": "#848484",
+                      "canvas-dark": "#010120",
+                      "surface-variant": "#e2e2e2",
+                      "on-secondary-fixed": "#002022",
+                      "surface": "#f9f9f9",
+                      "surface-container-low": "#f3f3f3",
+                      "on-primary-container": "#848484",
+                      "surface-container-high": "#e8e8e8",
+                      "on-tertiary": "#ffffff",
+                      "tertiary": "#000000",
+                      "secondary": "#3a6568",
+                      "surface-dim": "#dadada",
+                      "tertiary-container": "#1b1b1b",
+                      "on-primary-fixed-variant": "#474747",
+                      "tertiary-fixed-dim": "#c6c6c6",
+                      "on-surface-variant": "#4c4546",
+                      "accent-periwinkle": "#bdbbff",
+                      "secondary-container": "#bdebee",
+                      "on-secondary": "#ffffff",
+                      "primary-fixed-dim": "#c6c6c6",
+                      "surface-tint": "#5e5e5e",
+                      "surface-container-highest": "#e2e2e2",
+                      "secondary-fixed-dim": "#a2cfd2",
+                      "background": "#f9f9f9",
+                      "inverse-surface": "#303030",
+                      "surface-container": "#eeeeee",
+                      "surface-dark-soft": "#313641",
+                      "outline-variant": "#cfc4c5",
+                      "outline": "#7e7576",
+                      "error-container": "#ffdad6",
+                      "body-grey": "#959494",
+                      "inverse-on-surface": "#f1f1f1",
+                      "on-background": "#1b1b1b",
+                      "primary-fixed": "#e2e2e2",
+                      "on-secondary-container": "#406b6e",
+                      "on-error-container": "#93000a",
+                      "error": "#ba1a1a",
+                      "on-tertiary-fixed-variant": "#474747",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-fixed": "#e2e2e2",
+                      "accent-mint": "#98ff98"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "5xl": "48px",
+                      "xl": "20px",
+                      "md": "12px",
+                      "6xl": "55.2px",
+                      "xs": "4px",
+                      "4xl": "44px",
+                      "2xl": "24px",
+                      "xxs": "2px",
+                      "sm": "8px",
+                      "lg": "16px",
+                      "section": "80px",
+                      "3xl": "32px"
+              },
+              "fontFamily": {
+                      "body-lg-strong": ["The Future, Inter, Helvetica Neue, Arial, sans-serif"],
+                      "display-md": ["The Future, Inter, Helvetica Neue, Arial, sans-serif"],
+                      "mono-caps-button": ["PP Neue Montreal Mono, ui-monospace, SF Mono, Menlo, monospace"],
+                      "mono-caps-eyebrow": ["PP Neue Montreal Mono, ui-monospace, SF Mono, Menlo, monospace"],
+                      "body-md-strong": ["The Future, Inter, Helvetica Neue, Arial, sans-serif"],
+                      "display-xxl": ["The Future, Inter, Helvetica Neue, Arial, sans-serif"],
+                      "display-xl": ["The Future, Inter, Helvetica Neue, Arial, sans-serif"],
+                      "body-lg": ["The Future, Inter, Helvetica Neue, Arial, sans-serif"],
+                      "mono-caption": ["PP Neue Montreal Mono, ui-monospace, SF Mono, Menlo, monospace"],
+                      "display-lg": ["The Future, Inter, Helvetica Neue, Arial, sans-serif"],
+                      "caption": ["The Future, Inter, Helvetica Neue, Arial, sans-serif"],
+                      "mono-caps-label": ["PP Neue Montreal Mono, ui-monospace, SF Mono, Menlo, monospace"],
+                      "body-md": ["The Future, Inter, Helvetica Neue, Arial, sans-serif"],
+                      "caption-strong": ["The Future, Inter, Helvetica Neue, Arial, sans-serif"]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col">
+<!-- Top AppBar (Brand Anchor) -->
+<header class="bg-canvas-dark text-on-primary flex flex-col justify-end px-2xl pb-md pt-12 w-full fixed top-0 z-50">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-accent-orange" style="font-variation-settings: 'FILL' 1;">speed</span>
+<span class="font-mono-caps-button text-mono-caps-button text-accent-orange tracking-widest">MILEMIND</span>
+</div>
+<button class="hover:text-accent-periwinkle transition-colors scale-95 transition-transform">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<div class="mt-xl">
+<p class="font-mono-caps-eyebrow text-mono-caps-eyebrow tracking-widest opacity-60 uppercase">PROGRESS</p>
+<h1 class="font-display-lg text-display-lg mt-xxs">Your Performance</h1>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 mt-[180px] pb-32 px-lg md:px-2xl max-w-4xl mx-auto w-full">
+<!-- Weekly Adherence Bento Section -->
+<section class="mb-section">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<!-- Adherence Card (Research Card Style) -->
+<div class="bg-surface-container-lowest border border-outline-variant p-2xl rounded-lg flex flex-col items-center justify-center text-center relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-md">
+<span class="font-mono-caps-eyebrow text-body-grey">ADHERENCE</span>
+</div>
+<div class="relative w-48 h-48 mb-lg">
+<svg class="w-full h-full" viewbox="0 0 100 100">
+<circle class="text-surface-container stroke-current" cx="50" cy="50" fill="transparent" r="42" stroke-width="6"></circle>
+<circle class="text-primary stroke-current progress-ring-circle" cx="50" cy="50" fill="transparent" r="42" stroke-dasharray="264" stroke-dashoffset="39.6" stroke-linecap="round" stroke-width="6"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-display-xl text-display-xl">85%</span>
+<span class="font-mono-caps-label text-mono-caps-label text-body-grey">WEEKLY</span>
+</div>
+</div>
+<p class="font-body-lg-strong text-body-lg-strong">5 of 6 workouts done</p>
+<p class="font-caption text-body-grey mt-xs">Keep pushing towards the Sunday long run.</p>
+</div>
+<!-- Insight Card (Stats Card Tinted - Mint) -->
+<div class="bg-secondary-fixed border border-secondary-fixed-dim p-2xl rounded-lg flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-on-secondary-fixed-variant" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="font-mono-caps-eyebrow text-on-secondary-fixed-variant">AI INSIGHT</span>
+</div>
+<p class="font-body-lg-strong text-on-secondary-fixed text-lg">Consistency is your superpower. Your readiness is <span class="text-primary font-bold">12% higher</span> than last month.</p>
+</div>
+<div class="mt-xl flex items-center justify-between">
+<span class="font-mono-caption text-mono-caption text-on-secondary-fixed-variant opacity-70">TRENDING UPWARDS</span>
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-secondary-fixed bg-canvas-dark flex items-center justify-center text-[10px] text-white font-bold">MM</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Long Run Progression Chart (Line) -->
+<section class="mb-section">
+<div class="flex items-end justify-between mb-lg">
+<div>
+<span class="font-mono-caps-eyebrow text-body-grey uppercase">TRACKING</span>
+<h2 class="font-display-md text-display-md">Long Run Progression</h2>
+</div>
+<div class="flex gap-sm">
+<span class="font-mono-caption text-mono-caption px-sm py-xxs bg-surface-variant border border-outline-variant">8 WEEKS</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-2xl rounded-lg h-64 flex flex-col">
+<div class="flex-1 flex items-end justify-between gap-md relative">
+<!-- Vertical Grid Lines -->
+<div class="absolute inset-0 flex flex-col justify-between opacity-5">
+<div class="border-t border-black w-full"></div>
+<div class="border-t border-black w-full"></div>
+<div class="border-t border-black w-full"></div>
+</div>
+<!-- Line Chart Visual (Using Path & Dots) -->
+<div class="absolute inset-0 flex items-end px-lg">
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 700 200">
+<polyline fill="none" points="0,180 100,165 200,155 300,130 400,110 500,80 600,50 700,20" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></polyline>
+<circle cx="0" cy="180" fill="black" r="4"></circle>
+<circle cx="100" cy="165" fill="black" r="4"></circle>
+<circle cx="200" cy="155" fill="black" r="4"></circle>
+<circle cx="300" cy="130" fill="black" r="4"></circle>
+<circle cx="400" cy="110" fill="black" r="4"></circle>
+<circle cx="500" cy="80" fill="black" r="4"></circle>
+<circle cx="600" cy="50" fill="black" r="4"></circle>
+<circle cx="700" cy="20" fill="#fc4c02" r="5"></circle>
+</svg>
+</div>
+</div>
+<div class="flex justify-between mt-md px-lg">
+<span class="font-mono-caption text-body-grey">WK 1 (10mi)</span>
+<span class="font-mono-caption text-primary font-bold">WK 8 (18mi)</span>
+</div>
+</div>
+</section>
+<!-- Readiness Trend (Bar Chart) -->
+<section class="mb-section grid grid-cols-1 md:grid-cols-3 gap-lg">
+<div class="md:col-span-2">
+<div class="mb-lg">
+<span class="font-mono-caps-eyebrow text-body-grey uppercase">PHYSIOLOGY</span>
+<h2 class="font-display-md text-display-md">Readiness Trend</h2>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-2xl rounded-lg h-56 flex items-end justify-between gap-sm">
+<!-- Bars -->
+<div class="flex-1 flex flex-col items-center group">
+<div class="w-full bg-accent-orange/20 rounded-t-xs h-16 group-hover:bg-accent-orange transition-colors"></div>
+<span class="font-mono-caption mt-sm text-body-grey">M</span>
+</div>
+<div class="flex-1 flex flex-col items-center group">
+<div class="w-full bg-accent-orange/40 rounded-t-xs h-24 group-hover:bg-accent-orange transition-colors"></div>
+<span class="font-mono-caption mt-sm text-body-grey">T</span>
+</div>
+<div class="flex-1 flex flex-col items-center group">
+<div class="w-full bg-primary rounded-t-xs h-40"></div>
+<span class="font-mono-caption mt-sm text-primary font-bold">W</span>
+</div>
+<div class="flex-1 flex flex-col items-center group">
+<div class="w-full bg-accent-orange/40 rounded-t-xs h-28 group-hover:bg-accent-orange transition-colors"></div>
+<span class="font-mono-caption mt-sm text-body-grey">T</span>
+</div>
+<div class="flex-1 flex flex-col items-center group">
+<div class="w-full bg-accent-orange/60 rounded-t-xs h-32 group-hover:bg-accent-orange transition-colors"></div>
+<span class="font-mono-caption mt-sm text-body-grey">F</span>
+</div>
+<div class="flex-1 flex flex-col items-center group">
+<div class="w-full bg-accent-orange/20 rounded-t-xs h-12 group-hover:bg-accent-orange transition-colors"></div>
+<span class="font-mono-caption mt-sm text-body-grey">S</span>
+</div>
+<div class="flex-1 flex flex-col items-center group">
+<div class="w-full bg-accent-orange/10 rounded-t-xs h-8 group-hover:bg-accent-orange transition-colors"></div>
+<span class="font-mono-caption mt-sm text-body-grey">S</span>
+</div>
+</div>
+</div>
+<!-- Recent Missed (Small List) -->
+<div>
+<div class="mb-lg">
+<span class="font-mono-caps-eyebrow text-body-grey uppercase">DEVIATIONS</span>
+<h2 class="font-display-md text-display-md">Recent Missed</h2>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-2xl rounded-lg">
+<div class="flex items-start gap-md pb-md border-b border-outline-variant/30">
+<div class="p-sm bg-error-container text-on-error-container rounded-sm">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</div>
+<div>
+<p class="font-body-md-strong text-body-md-strong">Skipped</p>
+<p class="font-mono-caption text-body-grey">Intervals - Tuesday</p>
+</div>
+</div>
+<div class="mt-md">
+<p class="font-caption text-body-grey italic">"Muscle fatigue detected. Rest was the right choice."</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Decorative Action -->
+<div class="flex justify-center mt-xl">
+<button class="bg-primary text-on-primary font-mono-caps-button text-mono-caps-button px-2xl py-sm hover:bg-accent-orange transition-all duration-300">
+                EXPORT QUARTERLY REPORT
+            </button>
+</div>
+</main>
+<!-- Bottom NavBar (Shared Component) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center bg-surface dark:bg-canvas-dark px-lg py-md border-t border-outline-variant dark:border-white/10">
+<a class="flex flex-col items-center justify-center text-body-grey opacity-60 hover:text-accent-magenta transition-all" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-mono-caps-label text-mono-caps-label mt-xxs">Today</span>
+</a>
+<a class="flex flex-col items-center justify-center text-body-grey opacity-60 hover:text-accent-magenta transition-all" href="#">
+<span class="material-symbols-outlined">event_note</span>
+<span class="font-mono-caps-label text-mono-caps-label mt-xxs">Plan</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-on-primary font-bold scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">insights</span>
+<span class="font-mono-caps-label text-mono-caps-label mt-xxs">Progress</span>
+</a>
+<a class="flex flex-col items-center justify-center text-body-grey opacity-60 hover:text-accent-magenta transition-all" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-mono-caps-label text-mono-caps-label mt-xxs">Profile</span>
+</a>
+</nav>
+<!-- FAB Suppression Logic: Not rendering FAB on a data-rich progress screen -->
+<script>
+        // Simple Micro-interaction: Update progress ring on load
+        window.addEventListener('load', () => {
+            const circle = document.querySelector('.progress-ring-circle');
+            const radius = circle.r.baseVal.value;
+            const circumference = radius * 2 * Math.PI;
+            circle.style.strokeDasharray = `${circumference} ${circumference}`;
+            
+            // 85% = 0.85
+            const offset = circumference - (0.85 * circumference);
+            circle.style.strokeDashoffset = offset;
+        });
+
+        // Toggle Dark/Light demo (Optional helper)
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+        }
+    </script>
+</body></html>
