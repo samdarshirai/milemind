@@ -27,6 +27,7 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.POST, "/v1/auth/register").permitAll()
                 .requestMatchers(HttpMethod.POST, "/v1/auth/login").permitAll()
                 .requestMatchers(HttpMethod.POST, "/v1/auth/refresh").permitAll()
+                .requestMatchers(HttpMethod.GET, "/v1/integrations/strava/callback").permitAll()
                 .requestMatchers(HttpMethod.GET, "/v1/health").permitAll()
                 .anyRequest().authenticated())
             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)

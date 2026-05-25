@@ -36,7 +36,10 @@ private val strengthOptions = listOf(0, 1, 2)
 private val unitsOptions = listOf("KM", "MILES")
 
 @Composable
-fun ProfileEditRoute(viewModel: ProfileEditViewModel = hiltViewModel()) {
+fun ProfileEditRoute(
+    onOpenStrava: () -> Unit,
+    viewModel: ProfileEditViewModel = hiltViewModel()
+) {
     val state = viewModel.uiState.collectAsStateWithLifecycle().value
 
     if (state.isLoading) {
@@ -49,7 +52,8 @@ fun ProfileEditRoute(viewModel: ProfileEditViewModel = hiltViewModel()) {
     ProfileEditScreen(
         state = state,
         onProfileChange = viewModel::updateProfile,
-        onSave = viewModel::save
+        onSave = viewModel::save,
+        onOpenStrava = onOpenStrava
     )
 }
 
@@ -57,7 +61,8 @@ fun ProfileEditRoute(viewModel: ProfileEditViewModel = hiltViewModel()) {
 fun ProfileEditScreen(
     state: ProfileEditUiState,
     onProfileChange: (EditableProfile) -> Unit,
-    onSave: () -> Unit
+    onSave: () -> Unit,
+    onOpenStrava: () -> Unit = {}
 ) {
     val profile = state.profile
     Column(
@@ -180,6 +185,18 @@ fun ProfileEditScreen(
                 Text(it, color = MaterialTheme.colorScheme.error)
             }
             state.fieldErrors["injuryHistory.summary"]?.let { Text(it, color = MaterialTheme.colorScheme.error) }
+        }
+
+        ProfileSectionCard(title = "Integrations", tag = "profile_integrations_card") {
+            Text("Strava connection status and account controls")
+            Button(
+                onClick = onOpenStrava,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .testTag("profile_open_strava_button")
+            ) {
+                Text("Open Strava integration")
+            }
         }
 
         state.errorMessage?.let { Text(it, color = MaterialTheme.colorScheme.error) }

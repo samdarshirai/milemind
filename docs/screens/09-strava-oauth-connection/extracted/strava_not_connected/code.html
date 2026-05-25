@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Milemind - Strava Integration</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed": "#171838",
+                    "accent-mint": "#c8f6f9",
+                    "surface-container-highest": "#e2e2e2",
+                    "surface-variant": "#e2e2e2",
+                    "inverse-primary": "#c6c6c6",
+                    "primary": "#000000",
+                    "hairline": "#959494",
+                    "surface-container-low": "#f3f3f3",
+                    "on-tertiary-fixed-variant": "#474747",
+                    "secondary-fixed": "#e1e0ff",
+                    "surface-dark-soft": "#313641",
+                    "tertiary-fixed": "#e2e2e2",
+                    "on-primary-container": "#848484",
+                    "accent-orange": "#fc4c02",
+                    "on-error-container": "#93000a",
+                    "primary-fixed": "#e2e2e2",
+                    "surface-bright": "#f9f9f9",
+                    "secondary-container": "#d4d4fe",
+                    "on-primary-fixed": "#1b1b1b",
+                    "body-gray": "#959494",
+                    "on-surface": "#1b1b1b",
+                    "background": "#f9f9f9",
+                    "outline-variant": "#cfc4c5",
+                    "tertiary-container": "#1b1b1b",
+                    "secondary": "#5a5b7f",
+                    "error-container": "#ffdad6",
+                    "primary-container": "#1b1b1b",
+                    "surface-tint": "#5e5e5e",
+                    "surface-dim": "#dadada",
+                    "accent-magenta": "#ef2cc1",
+                    "surface-container-high": "#e8e8e8",
+                    "on-primary": "#ffffff",
+                    "outline": "#7e7576",
+                    "inverse-on-surface": "#f1f1f1",
+                    "on-error": "#ffffff",
+                    "on-primary-fixed-variant": "#474747",
+                    "error": "#ba1a1a",
+                    "primary-fixed-dim": "#c6c6c6",
+                    "surface-container": "#eeeeee",
+                    "canvas-dark": "#010120",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-container": "#848484",
+                    "on-surface-variant": "#4c4546",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed-dim": "#c6c6c6",
+                    "accent-periwinkle": "#bdbbff",
+                    "ink": "#000000",
+                    "on-background": "#1b1b1b",
+                    "on-secondary-container": "#595a7e",
+                    "surface": "#f9f9f9",
+                    "inverse-surface": "#303030",
+                    "secondary-fixed-dim": "#c3c3ec",
+                    "on-tertiary-fixed": "#1b1b1b",
+                    "tertiary": "#000000",
+                    "on-secondary-fixed-variant": "#424466"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "sm": "8px",
+                    "3xl": "32px",
+                    "md": "12px",
+                    "section": "80px",
+                    "xl": "20px",
+                    "xxs": "2px",
+                    "xs": "4px",
+                    "4xl": "44px",
+                    "2xl": "24px",
+                    "lg": "16px",
+                    "5xl": "48px",
+                    "6xl": "55.2px"
+            },
+            "fontFamily": {
+                    "body-lg-strong": ["Inter", "sans-serif"],
+                    "display-xl": ["Inter", "sans-serif"],
+                    "mono-label": ["JetBrains Mono", "monospace"],
+                    "mono-caps-button": ["PP Neue Montreal Mono", "monospace"],
+                    "mono-caption": ["PP Neue Montreal Mono", "monospace"],
+                    "display-xxl": ["Inter", "sans-serif"],
+                    "mono-caps-label": ["PP Neue Montreal Mono", "monospace"],
+                    "body-md-strong": ["Inter", "sans-serif"],
+                    "body-lg": ["Inter", "sans-serif"],
+                    "display-md": ["Inter", "sans-serif"],
+                    "display-lg": ["Inter", "sans-serif"],
+                    "caption": ["Inter", "sans-serif"],
+                    "caption-strong": ["Inter", "sans-serif"],
+                    "body-md": ["Inter", "sans-serif"],
+                    "mono-caps-eyebrow": ["PP Neue Montreal Mono", "monospace"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center px-4 h-14 bg-canvas-dark border-b border-white/10">
+<div class="flex items-center gap-4 w-full">
+<button class="material-symbols-outlined text-on-primary active:scale-95 transition-transform" data-icon="arrow_back">arrow_back</button>
+<h1 class="font-mono-caps-label text-mono-caps-label text-on-primary uppercase tracking-widest">INTEGRATIONS</h1>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-14 pb-20 px-4 max-w-md mx-auto">
+<!-- Hero Decorative Element -->
+<div class="py-section flex justify-center">
+<div class="relative w-32 h-32 flex items-center justify-center">
+<div class="absolute inset-0 bg-gradient-to-tr from-accent-orange via-accent-magenta to-accent-periwinkle blur-2xl opacity-20 animate-pulse"></div>
+<div class="w-20 h-20 bg-canvas-dark rounded-xl flex items-center justify-center relative z-10 border border-white/10">
+<span class="material-symbols-outlined text-accent-orange text-4xl" data-icon="Directions_run" style="font-variation-settings: 'FILL' 1;">directions_run</span>
+</div>
+</div>
+</div>
+<!-- Integration Card -->
+<div class="bg-white border border-hairline rounded-lg p-lg space-y-xl mb-xl">
+<!-- Card Header Area -->
+<div class="flex justify-between items-start">
+<div>
+<p class="font-mono-caps-eyebrow text-mono-caps-eyebrow text-body-gray tracking-widest uppercase mb-xs">STRAVA</p>
+<h2 class="font-display-lg text-display-lg-mobile text-ink leading-tight">Connect Strava</h2>
+</div>
+<!-- Status Badge -->
+<span class="bg-surface-container-low text-on-surface text-mono-label px-2 py-xxs border border-hairline rounded-sm">Not connected</span>
+</div>
+<!-- Card Body -->
+<p class="font-body-md text-body-md text-on-surface-variant">
+                Connecting Strava lets Milemind sync your future runs and analyze your training load automatically.
+            </p>
+<!-- Card Visual (Illustration Placeholder) -->
+<div class="w-full h-40 bg-surface-container-low rounded relative overflow-hidden flex items-center justify-center">
+<div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(circle, #000 1px, transparent 1px); background-size: 16px 16px;"></div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-white border border-hairline rounded-full flex items-center justify-center shadow-sm">
+<img alt="Strava Logo" class="w-6 h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQiP_qtsrwbXeXjSc3XF1e5XWLH9lii5-0ygaabnqSBjPnHFvpJzIahDb1tjUPQGkT_GWKuhdZVuiySSMvQa1fIBgbZukJfMhXF0MQ5M-Q_gkO9IdDlgnerEq2KtZbxuo5KFNSzQJ3fKFuXzhY_0e7psKfzc_QFhT7M0w2JTL5kfH1yN7TiZIJZ4fVj2z-2NQg5EFjbrK4HzbK-cRe_FQLYSPdV-TKvCrdwB8dp9WeR07IL0udGQZfWpKNPYYqeMIljB20Xnez3Wk"/>
+</div>
+<div class="flex gap-1">
+<div class="w-1 h-1 bg-hairline rounded-full"></div>
+<div class="w-1 h-1 bg-hairline rounded-full"></div>
+<div class="w-1 h-1 bg-hairline rounded-full"></div>
+</div>
+<div class="w-12 h-12 bg-white border border-hairline rounded-full flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-ink" data-icon="psychology">psychology</span>
+</div>
+</div>
+</div>
+<!-- Action Area -->
+<div class="space-y-md">
+<button class="w-full bg-primary text-on-primary py-4 rounded-full font-mono-caps-button text-mono-caps-button uppercase tracking-wide active:scale-[0.98] transition-transform">
+                    CONNECT STRAVA
+                </button>
+<div class="text-center">
+<p class="font-body-md text-body-md text-body-gray">You can disconnect anytime.</p>
+</div>
+</div>
+</div>
+<!-- Privacy Footer Section -->
+<div class="flex items-center justify-center gap-2 px-4 py-md">
+<span class="material-symbols-outlined text-body-gray text-base" data-icon="lock">lock</span>
+<p class="font-caption-strong text-caption-strong text-body-gray">Your data is encrypted and secure.</p>
+</div>
+<!-- Feature List (Additional Context) -->
+<div class="mt-section border-t border-hairline pt-lg space-y-lg">
+<div class="flex gap-4">
+<div class="mt-1">
+<span class="material-symbols-outlined text-accent-magenta text-xl" data-icon="sync">sync</span>
+</div>
+<div>
+<h3 class="font-body-md-strong text-body-md-strong text-ink">Automatic Syncing</h3>
+<p class="font-caption text-caption text-body-gray">Every activity you record on Strava flows into Milemind without manual entry.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="mt-1">
+<span class="material-symbols-outlined text-accent-periwinkle text-xl" data-icon="query_stats">query_stats</span>
+</div>
+<div>
+<h3 class="font-body-md-strong text-body-md-strong text-ink">Advanced Biometrics</h3>
+<p class="font-caption text-caption text-body-gray">Get deeper insights into heart rate zones and recovery metrics from your wearable data.</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Hidden on Transactions, but kept here for structure context) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-3 bg-canvas-dark border-t border-white/10 md:hidden">
+<a class="flex flex-col items-center justify-center text-body-gray hover:text-on-primary transition-colors active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="rss_feed">rss_feed</span>
+<span class="font-mono-caption text-mono-caption mt-1">Feed</span>
+</a>
+<a class="flex flex-col items-center justify-center text-body-gray hover:text-on-primary transition-colors active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-mono-caption text-mono-caption mt-1">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-accent-orange bg-surface-dark-soft/50 rounded-lg px-3 py-1 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="Directions_run" style="font-variation-settings: 'FILL' 1;">directions_run</span>
+<span class="font-mono-caption text-mono-caption mt-1">Strava</span>
+</a>
+<a class="flex flex-col items-center justify-center text-body-gray hover:text-on-primary transition-colors active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-mono-caption text-mono-caption mt-1">Profile</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for the button
+        const connectBtn = document.querySelector('button.bg-primary');
+        if (connectBtn) {
+            connectBtn.addEventListener('click', () => {
+                connectBtn.innerHTML = 'OPENING STRAVA...';
+                connectBtn.style.opacity = '0.7';
+                setTimeout(() => {
+                    connectBtn.innerHTML = 'CONNECT STRAVA';
+                    connectBtn.style.opacity = '1';
+                }, 2000);
+            });
+        }
+
+        // Tonal pulse effect on the icon background
+        const accentGlow = document.querySelector('.animate-pulse');
+        if (accentGlow) {
+            let hue = 0;
+            setInterval(() => {
+                hue = (hue + 1) % 360;
+                accentGlow.style.filter = `hue-rotate(${hue}deg)`;
+            }, 50);
+        }
+    </script>
+</body></html>

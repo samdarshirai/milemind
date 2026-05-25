@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed": "#171838",
+                    "accent-mint": "#c8f6f9",
+                    "surface-container-highest": "#e2e2e2",
+                    "surface-variant": "#e2e2e2",
+                    "inverse-primary": "#c6c6c6",
+                    "primary": "#000000",
+                    "hairline": "#959494",
+                    "surface-container-low": "#f3f3f3",
+                    "on-tertiary-fixed-variant": "#474747",
+                    "secondary-fixed": "#e1e0ff",
+                    "surface-dark-soft": "#313641",
+                    "tertiary-fixed": "#e2e2e2",
+                    "on-primary-container": "#848484",
+                    "accent-orange": "#fc4c02",
+                    "on-error-container": "#93000a",
+                    "primary-fixed": "#e2e2e2",
+                    "surface-bright": "#f9f9f9",
+                    "secondary-container": "#d4d4fe",
+                    "on-primary-fixed": "#1b1b1b",
+                    "body-gray": "#959494",
+                    "on-surface": "#1b1b1b",
+                    "background": "#f9f9f9",
+                    "outline-variant": "#cfc4c5",
+                    "tertiary-container": "#1b1b1b",
+                    "secondary": "#5a5b7f",
+                    "error-container": "#ffdad6",
+                    "primary-container": "#1b1b1b",
+                    "surface-tint": "#5e5e5e",
+                    "surface-dim": "#dadada",
+                    "accent-magenta": "#ef2cc1",
+                    "surface-container-high": "#e8e8e8",
+                    "on-primary": "#ffffff",
+                    "outline": "#7e7576",
+                    "inverse-on-surface": "#f1f1f1",
+                    "on-error": "#ffffff",
+                    "on-primary-fixed-variant": "#474747",
+                    "error": "#ba1a1a",
+                    "primary-fixed-dim": "#c6c6c6",
+                    "surface-container": "#eeeeee",
+                    "canvas-dark": "#010120",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-container": "#848484",
+                    "on-surface-variant": "#4c4546",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed-dim": "#c6c6c6",
+                    "accent-periwinkle": "#bdbbff",
+                    "ink": "#000000",
+                    "on-background": "#1b1b1b",
+                    "on-secondary-container": "#595a7e",
+                    "surface": "#f9f9f9",
+                    "inverse-surface": "#303030",
+                    "secondary-fixed-dim": "#c3c3ec",
+                    "on-tertiary-fixed": "#1b1b1b",
+                    "tertiary": "#000000",
+                    "on-secondary-fixed-variant": "#424466"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "sm": "8px",
+                    "3xl": "32px",
+                    "md": "12px",
+                    "section": "80px",
+                    "xl": "20px",
+                    "xxs": "2px",
+                    "xs": "4px",
+                    "4xl": "44px",
+                    "2xl": "24px",
+                    "lg": "16px",
+                    "5xl": "48px",
+                    "6xl": "55.2px"
+            },
+            "fontFamily": {
+                    "body-lg-strong": ["Inter", "sans-serif"],
+                    "display-xl": ["Inter", "sans-serif"],
+                    "mono-label": ["JetBrains Mono", "monospace"],
+                    "mono-caps-button": ["PP Neue Montreal Mono", "monospace"],
+                    "mono-caption": ["PP Neue Montreal Mono", "monospace"],
+                    "display-xxl": ["Inter", "sans-serif"],
+                    "mono-caps-label": ["PP Neue Montreal Mono", "monospace"],
+                    "body-md-strong": ["Inter", "sans-serif"],
+                    "body-lg": ["Inter", "sans-serif"],
+                    "display-md": ["Inter", "sans-serif"],
+                    "display-lg": ["Inter", "sans-serif"],
+                    "caption": ["Inter", "sans-serif"],
+                    "caption-strong": ["Inter", "sans-serif"],
+                    "body-md": ["Inter", "sans-serif"],
+                    "mono-caps-eyebrow": ["PP Neue Montreal Mono", "monospace"]
+            },
+            "fontSize": {
+                    "body-lg-strong": ["18px", {"lineHeight": "23.4px", "letterSpacing": "-0.18px", "fontWeight": "500"}],
+                    "display-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.8px", "fontWeight": "500"}],
+                    "mono-label": ["11px", {"lineHeight": "15.4px", "letterSpacing": "0.055px", "fontWeight": "500"}],
+                    "mono-caps-button": ["16px", {"lineHeight": "16px", "letterSpacing": "0.08px", "fontWeight": "500"}],
+                    "mono-caption": ["10px", {"lineHeight": "14px", "letterSpacing": "0.05px", "fontWeight": "400"}],
+                    "display-xxl": ["64px", {"lineHeight": "70.4px", "letterSpacing": "-1.92px", "fontWeight": "500"}],
+                    "mono-caps-label": ["11px", {"lineHeight": "15.4px", "letterSpacing": "0.055px", "fontWeight": "500"}],
+                    "body-md-strong": ["16px", {"lineHeight": "20.8px", "letterSpacing": "-0.16px", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "23.4px", "letterSpacing": "-0.18px", "fontWeight": "400"}],
+                    "display-md": ["22px", {"lineHeight": "25.3px", "letterSpacing": "-0.22px", "fontWeight": "500"}],
+                    "display-lg": ["28px", {"lineHeight": "32.2px", "letterSpacing": "-0.42px", "fontWeight": "500"}],
+                    "caption": ["14px", {"lineHeight": "19.6px", "fontWeight": "400"}],
+                    "caption-strong": ["14px", {"lineHeight": "19.6px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "20.8px", "letterSpacing": "-0.16px", "fontWeight": "400"}],
+                    "mono-caps-eyebrow": ["11px", {"lineHeight": "11px", "letterSpacing": "0.55px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        body {
+            background-color: #ffffff;
+            color: #1b1b1b;
+        }
+        .canvas-bg {
+            background-color: #ffffff;
+        }
+        .brand-gradient-line {
+            height: 2px;
+            background: linear-gradient(90deg, #fc4c02, #ef2cc1, #bdbbff);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-body-md antialiased overflow-x-hidden min-h-screen">
+<!-- Top Navigation Shell -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center px-4 h-14 bg-canvas-dark dark:bg-canvas-dark border-b border-white/10" id="top-bar">
+<div class="flex items-center w-full max-w-screen-xl mx-auto">
+<button class="active:scale-95 transition-transform hover:opacity-80 p-2 -ml-2">
+<span class="material-symbols-outlined text-on-primary">arrow_back</span>
+</button>
+<h1 class="ml-4 font-mono-caps-label text-mono-caps-label text-on-primary uppercase tracking-widest">INTEGRATIONS</h1>
+</div>
+</header>
+<main class="pt-24 pb-32 px-4 max-w-screen-md mx-auto">
+<!-- Status Indicator / Visual Polish -->
+<div class="mb-8 opacity-40">
+<div class="brand-gradient-line w-12 mb-2"></div>
+<p class="font-mono-caps-eyebrow text-mono-caps-eyebrow uppercase tracking-widest text-ink">Active State System</p>
+</div>
+<!-- Main Integration Card -->
+<div class="bg-white border border-hairline/20 rounded-lg p-6 shadow-sm relative overflow-hidden group">
+<!-- Subtle background branding element -->
+<div class="absolute -top-12 -right-12 opacity-5 pointer-events-none group-hover:scale-110 transition-transform duration-700">
+<span class="material-symbols-outlined text-[120px]">directions_run</span>
+</div>
+<div class="flex flex-col gap-6">
+<!-- Card Header -->
+<div class="flex justify-between items-start">
+<div class="space-y-1">
+<span class="font-mono-caps-eyebrow text-mono-caps-eyebrow text-body-gray uppercase tracking-widest">STRAVA</span>
+<h2 class="font-display-lg text-display-lg text-ink">Strava Connected</h2>
+</div>
+<!-- Status Badge -->
+<div class="flex items-center px-3 py-1 bg-accent-mint/30 rounded-full border border-accent-mint/50">
+<span class="w-1.5 h-1.5 rounded-full bg-accent-orange mr-2 animate-pulse"></span>
+<span class="font-mono-caps-label text-mono-caps-label text-ink tracking-wider">CONNECTED</span>
+</div>
+</div>
+<!-- Main Content -->
+<div class="space-y-2 py-4 border-y border-hairline/10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-surface-container-low rounded-full flex items-center justify-center border border-hairline/20">
+<span class="material-symbols-outlined text-ink">person</span>
+</div>
+<div>
+<p class="font-body-md-strong text-body-md-strong text-ink">Athlete: Alex Rivers</p>
+<p class="font-caption text-caption text-body-gray">Connected since Oct 24, 2023</p>
+</div>
+</div>
+</div>
+<!-- Footer Note -->
+<div class="flex items-start gap-2 bg-surface-container-low/50 p-3 rounded border border-hairline/10">
+<span class="material-symbols-outlined text-sm text-body-gray mt-0.5">info</span>
+<p class="font-caption text-caption text-body-gray leading-relaxed">
+                        Activity import will be available in the next update.
+                    </p>
+</div>
+<!-- Action Button -->
+<div class="pt-2">
+<button class="w-full md:w-auto px-8 py-3 border border-primary font-mono-caps-button text-mono-caps-button text-primary hover:bg-primary hover:text-on-primary transition-all active:scale-[0.98]">
+                        DISCONNECT
+                    </button>
+</div>
+</div>
+</div>
+<!-- Secondary Info Section (Bento style hint) -->
+<div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="border border-hairline/10 p-5 rounded-lg hover:border-hairline/30 transition-colors">
+<span class="material-symbols-outlined text-ink mb-3">sync</span>
+<p class="font-body-md-strong text-body-md-strong mb-1">Auto-Sync</p>
+<p class="font-caption text-caption text-body-gray">Automatically fetch your latest runs from Strava every 6 hours.</p>
+</div>
+<div class="border border-hairline/10 p-5 rounded-lg hover:border-hairline/30 transition-colors">
+<span class="material-symbols-outlined text-ink mb-3">security</span>
+<p class="font-body-md-strong text-body-md-strong mb-1">Permissions</p>
+<p class="font-caption text-caption text-body-gray">Milemind only accesses public activity data and basic profile info.</p>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-3 bg-canvas-dark dark:bg-canvas-dark border-t border-white/10" id="bottom-nav">
+<button class="flex flex-col items-center justify-center text-body-gray active:scale-90 transition-transform hover:text-on-primary">
+<span class="material-symbols-outlined" data-icon="rss_feed">rss_feed</span>
+<span class="font-mono-caption text-mono-caption mt-1">Feed</span>
+</button>
+<button class="flex flex-col items-center justify-center text-body-gray active:scale-90 transition-transform hover:text-on-primary">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-mono-caption text-mono-caption mt-1">Explore</span>
+</button>
+<button class="flex flex-col items-center justify-center text-body-gray active:scale-90 transition-transform hover:text-on-primary">
+<span class="material-symbols-outlined" data-icon="Directions_run">directions_run</span>
+<span class="font-mono-caption text-mono-caption mt-1">Strava</span>
+</button>
+<button class="flex flex-col items-center justify-center text-accent-orange bg-surface-dark-soft/50 rounded-lg px-3 py-1 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-mono-caption text-mono-caption mt-1">Profile</span>
+</button>
+</nav>
+<script>
+        // Simple micro-interaction for the disconnect button
+        document.querySelector('button.border-primary').addEventListener('click', function() {
+            if(confirm('Are you sure you want to disconnect Strava?')) {
+                this.innerHTML = 'DISCONNECTING...';
+                this.classList.add('opacity-50');
+                setTimeout(() => {
+                    alert('Integration disconnected.');
+                    location.reload();
+                }, 1000);
+            }
+        });
+
+        // Add a subtle scroll effect to the header
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('top-bar');
+            if (window.scrollY > 10) {
+                header.classList.add('backdrop-blur-md', 'bg-opacity-95');
+            } else {
+                header.classList.remove('backdrop-blur-md', 'bg-opacity-95');
+            }
+        });
+    </script>
+</body></html>

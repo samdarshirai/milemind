@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.cdnfonts.com/css/pp-neue-montreal" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        /* Custom Font Fallbacks and Branding */
+        body {
+            font-family: 'PP Neue Montreal', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Brand Chrome Gradient Animation */
+        .brand-gradient {
+            background: linear-gradient(90deg, #fc4c02, #ef2cc1, #bdbbff);
+            background-size: 200% 200%;
+            animation: gradient-shift 3s ease infinite;
+        }
+
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Loading Spinner Animation */
+        .spinner-ring {
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-top: 2px solid transparent;
+            border-image: linear-gradient(to right, #fc4c02, #ef2cc1, #bdbbff) 1;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Atmosphere Blur */
+        .glow-sphere {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 100%;
+            background: radial-gradient(circle, rgba(239, 44, 193, 0.08) 0%, rgba(1, 1, 32, 0) 70%);
+            filter: blur(60px);
+            z-index: -1;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed": "#171838",
+                    "accent-mint": "#c8f6f9",
+                    "surface-container-highest": "#e2e2e2",
+                    "surface-variant": "#e2e2e2",
+                    "inverse-primary": "#c6c6c6",
+                    "primary": "#000000",
+                    "hairline": "#959494",
+                    "surface-container-low": "#f3f3f3",
+                    "on-tertiary-fixed-variant": "#474747",
+                    "secondary-fixed": "#e1e0ff",
+                    "surface-dark-soft": "#313641",
+                    "tertiary-fixed": "#e2e2e2",
+                    "on-primary-container": "#848484",
+                    "accent-orange": "#fc4c02",
+                    "on-error-container": "#93000a",
+                    "primary-fixed": "#e2e2e2",
+                    "surface-bright": "#f9f9f9",
+                    "secondary-container": "#d4d4fe",
+                    "on-primary-fixed": "#1b1b1b",
+                    "body-gray": "#959494",
+                    "on-surface": "#1b1b1b",
+                    "background": "#f9f9f9",
+                    "outline-variant": "#cfc4c5",
+                    "tertiary-container": "#1b1b1b",
+                    "secondary": "#5a5b7f",
+                    "error-container": "#ffdad6",
+                    "primary-container": "#1b1b1b",
+                    "surface-tint": "#5e5e5e",
+                    "surface-dim": "#dadada",
+                    "accent-magenta": "#ef2cc1",
+                    "surface-container-high": "#e8e8e8",
+                    "on-primary": "#ffffff",
+                    "outline": "#7e7576",
+                    "inverse-on-surface": "#f1f1f1",
+                    "on-error": "#ffffff",
+                    "on-primary-fixed-variant": "#474747",
+                    "error": "#ba1a1a",
+                    "primary-fixed-dim": "#c6c6c6",
+                    "surface-container": "#eeeeee",
+                    "canvas-dark": "#010120",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-container": "#848484",
+                    "on-surface-variant": "#4c4546",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed-dim": "#c6c6c6",
+                    "accent-periwinkle": "#bdbbff",
+                    "ink": "#000000",
+                    "on-background": "#1b1b1b",
+                    "on-secondary-container": "#595a7e",
+                    "surface": "#f9f9f9",
+                    "inverse-surface": "#303030",
+                    "secondary-fixed-dim": "#c3c3ec",
+                    "on-tertiary-fixed": "#1b1b1b",
+                    "tertiary": "#000000",
+                    "on-secondary-fixed-variant": "#424466"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "sm": "8px",
+                    "3xl": "32px",
+                    "md": "12px",
+                    "section": "80px",
+                    "xl": "20px",
+                    "xxs": "2px",
+                    "xs": "4px",
+                    "4xl": "44px",
+                    "2xl": "24px",
+                    "lg": "16px",
+                    "5xl": "48px",
+                    "6xl": "55.2px"
+            },
+            "fontFamily": {
+                    "body-lg-strong": ["Inter", "Helvetica Neue", "Arial", "sans-serif"],
+                    "display-xl": ["Inter", "Helvetica Neue", "Arial", "sans-serif"],
+                    "mono-label": ["JetBrains Mono"],
+                    "mono-caps-button": ["PP Neue Montreal Mono", "ui-monospace", "SF Mono", "monospace"],
+                    "mono-caption": ["PP Neue Montreal Mono", "ui-monospace", "SF Mono", "monospace"],
+                    "display-xxl": ["Inter", "Helvetica Neue", "Arial", "sans-serif"],
+                    "mono-caps-label": ["PP Neue Montreal Mono", "ui-monospace", "SF Mono", "monospace"],
+                    "body-md-strong": ["Inter", "Helvetica Neue", "Arial", "sans-serif"],
+                    "body-lg": ["Inter", "Helvetica Neue", "Arial", "sans-serif"],
+                    "display-md": ["Inter", "Helvetica Neue", "Arial", "sans-serif"],
+                    "display-lg": ["Inter", "Helvetica Neue", "Arial", "sans-serif"],
+                    "caption": ["Inter", "Helvetica Neue", "Arial", "sans-serif"],
+                    "caption-strong": ["Inter", "Helvetica Neue", "Arial", "sans-serif"],
+                    "body-md": ["Inter", "Helvetica Neue", "Arial", "sans-serif"],
+                    "mono-caps-eyebrow": ["PP Neue Montreal Mono", "ui-monospace", "SF Mono", "monospace"]
+            },
+            "fontSize": {
+                    "body-lg-strong": ["18px", {"lineHeight": "23.4px", "letterSpacing": "-0.18px", "fontWeight": "500"}],
+                    "display-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.8px", "fontWeight": "500"}],
+                    "mono-label": ["11px", {"lineHeight": "15.4px", "letterSpacing": "0.055px", "fontWeight": "500"}],
+                    "mono-caps-button": ["16px", {"lineHeight": "16px", "letterSpacing": "0.08px", "fontWeight": "500"}],
+                    "mono-caption": ["10px", {"lineHeight": "14px", "letterSpacing": "0.05px", "fontWeight": "400"}],
+                    "display-xxl": ["64px", {"lineHeight": "70.4px", "letterSpacing": "-1.92px", "fontWeight": "500"}],
+                    "mono-caps-label": ["11px", {"lineHeight": "15.4px", "letterSpacing": "0.055px", "fontWeight": "500"}],
+                    "body-md-strong": ["16px", {"lineHeight": "20.8px", "letterSpacing": "-0.16px", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "23.4px", "letterSpacing": "-0.18px", "fontWeight": "400"}],
+                    "display-md": ["22px", {"lineHeight": "25.3px", "letterSpacing": "-0.22px", "fontWeight": "500"}],
+                    "display-lg": ["28px", {"lineHeight": "32.2px", "letterSpacing": "-0.42px", "fontWeight": "500"}],
+                    "caption": ["14px", {"lineHeight": "19.6px", "fontWeight": "400"}],
+                    "caption-strong": ["14px", {"lineHeight": "19.6px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "20.8px", "letterSpacing": "-0.16px", "fontWeight": "400"}],
+                    "mono-caps-eyebrow": ["11px", {"lineHeight": "11px", "letterSpacing": "0.55px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-canvas-dark text-on-primary min-h-screen overflow-hidden flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center px-4 h-14 bg-canvas-dark border-b border-white/10">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-primary" data-icon="arrow_back">arrow_back</span>
+<h1 class="font-mono-caps-label text-mono-caps-label text-on-primary uppercase tracking-widest">INTEGRATIONS</h1>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col items-center justify-center relative px-6 text-center">
+<!-- Atmospheric Background Elements -->
+<div class="glow-sphere top-1/4 -left-20"></div>
+<div class="glow-sphere bottom-1/4 -right-20"></div>
+<div class="flex flex-col items-center max-w-sm w-full space-y-8">
+<!-- Loader Section -->
+<div class="relative w-24 h-24 flex items-center justify-center">
+<!-- Custom Gradient Loader Animation -->
+<div class="absolute inset-0 rounded-full border-2 border-white/5"></div>
+<div class="absolute inset-0 rounded-full spinner-ring"></div>
+<!-- Center Icon -->
+<div class="bg-surface-dark-soft/40 backdrop-blur-md rounded-full p-4 border border-white/10 shadow-xl">
+<span class="material-symbols-outlined text-accent-orange text-3xl" data-icon="sync">sync</span>
+</div>
+</div>
+<!-- Message Cluster -->
+<div class="space-y-3">
+<p class="font-mono-caps-eyebrow text-mono-caps-eyebrow text-body-gray tracking-[0.2em] uppercase">Returning to Milemind</p>
+<h2 class="font-display-md text-display-md text-on-primary leading-tight">Finishing Strava connection...</h2>
+</div>
+<!-- Status Badge -->
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-surface-dark-soft rounded-sm border border-white/10">
+<span class="w-1.5 h-1.5 rounded-full brand-gradient"></span>
+<span class="font-mono-caps-label text-mono-caps-label text-on-primary uppercase">Connecting</span>
+</div>
+<!-- Progress Bar Utility -->
+<div class="w-full h-px bg-white/10 relative overflow-hidden mt-8">
+<div class="absolute inset-0 brand-gradient w-1/3 animate-[pulse_2s_infinite]"></div>
+</div>
+</div>
+</main>
+<!-- Contextual Information Card (Minimalist Research Card Style) -->
+<section class="px-6 pb-24 md:pb-12 max-w-lg mx-auto w-full">
+<div class="border border-white/12 p-6 rounded bg-surface-dark-soft/20 backdrop-blur-sm">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-accent-periwinkle" data-icon="verified_user">verified_user</span>
+<div class="text-left">
+<p class="font-body-md-strong text-body-md-strong text-on-primary mb-1">Secure OAuth Handshake</p>
+<p class="font-caption text-caption text-body-gray">We are securely verifying your credentials with Strava's API. This should only take a moment.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Navigation Bar (Filtered for Transactional State) -->
+<!-- Suppressed based on "Transactional" rule in Prompt -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-3 bg-canvas-dark border-t border-white/10 md:hidden">
+<div class="flex flex-col items-center justify-center text-body-gray">
+<span class="material-symbols-outlined mb-1" data-icon="rss_feed">rss_feed</span>
+<span class="font-mono-caption text-mono-caption">Feed</span>
+</div>
+<div class="flex flex-col items-center justify-center text-body-gray">
+<span class="material-symbols-outlined mb-1" data-icon="explore">explore</span>
+<span class="font-mono-caption text-mono-caption">Explore</span>
+</div>
+<div class="flex flex-col items-center justify-center text-accent-orange bg-surface-dark-soft/50 rounded-lg px-3 py-1">
+<span class="material-symbols-outlined mb-1" data-icon="Directions_run">directions_run</span>
+<span class="font-mono-caption text-mono-caption">Strava</span>
+</div>
+<div class="flex flex-col items-center justify-center text-body-gray">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-mono-caption text-mono-caption">Profile</span>
+</div>
+</nav>
+<script>
+        // Micro-interaction: Simulate redirection after a delay
+        window.addEventListener('load', () => {
+            console.log('Handshake in progress...');
+            
+            // Randomize the progress bar pulse slightly for organic feel
+            const pulse = document.querySelector('.animate-pulse');
+            if(pulse) {
+                setTimeout(() => {
+                    pulse.style.width = '100%';
+                    pulse.style.transition = 'width 2s ease-in-out';
+                }, 1000);
+            }
+        });
+    </script>
+</body></html>
