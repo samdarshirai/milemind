@@ -9,6 +9,7 @@ import com.company.runcoach.feature.checkin.data.remote.CheckInApiService
 import com.company.runcoach.feature.onboarding.data.remote.OnboardingApiService
 import com.company.runcoach.feature.plan.data.remote.PlanApiService
 import com.company.runcoach.feature.profile.data.remote.ProfileApiService
+import com.company.runcoach.feature.progress.data.remote.ProgressApiService
 import com.company.runcoach.feature.racegoal.data.remote.RaceGoalApiService
 import com.company.runcoach.feature.today.data.remote.TodayApiService
 import com.company.runcoach.feature.workout.data.remote.WorkoutApiService
@@ -70,6 +71,11 @@ object NetworkModule {
     @Singleton
     fun provideTodayApiService(retrofit: Retrofit): TodayApiService =
         retrofit.create(TodayApiService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideProgressApiService(retrofit: Retrofit): ProgressApiService =
+        retrofit.create(ProgressApiService::class.java)
 
     @Provides
     @Singleton

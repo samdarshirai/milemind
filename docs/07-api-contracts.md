@@ -555,12 +555,25 @@ Behavior:
 - `date` and `hasCheckInToday` are evaluated using the runner's profile timezone calendar-day boundaries.
 - `readinessState` is computed from check-ins submitted within that same local calendar day only.
 - If no check-in exists for the runner's local day, readiness defaults to `READY`.
+- `latestAdaptation` is only returned when it is relevant to today's context:
+  - affected date range includes today, or
+  - changed workout IDs include today's planned workout.
 
 Response:
 
 ```json
 {
   "date": "2026-06-15",
+  "planId": "06cfb0f4-2f0e-4f22-b6c0-60ab7ea1b0cb",
+  "planVersion": 2,
+  "todaysPlannedWorkout": {
+    "plannedWorkoutId": "5c5a3b24-d8f2-448d-a6de-a3c0f6a825dd",
+    "workoutType": "EASY_RUN",
+    "status": "PLANNED",
+    "plannedDistanceKm": 8.0,
+    "plannedDurationMin": 45,
+    "intensityZone": "EASY"
+  },
   "readinessState": "CAUTION",
   "readinessLabel": "Caution",
   "readinessMessage": "Some readiness signals suggest a conservative effort today.",
@@ -577,7 +590,23 @@ Response:
   },
   "latestInjuryFeedback": null,
   "hasCheckInToday": true,
-  "recommendedTone": "supportive"
+  "recommendedTone": "supportive",
+  "latestAdaptation": {
+    "adaptationDecisionId": "9df7fb80-2b70-4bcd-b6e7-58b6f58427bd",
+    "summary": "Shifted quality session to recovery day.",
+    "affectedFromDate": "2026-06-15",
+    "affectedToDate": "2026-06-21",
+    "changedWorkoutIds": [
+      "5c5a3b24-d8f2-448d-a6de-a3c0f6a825dd"
+    ]
+  },
+  "insightMessages": [
+    "Today's planned workout is EASY_RUN.",
+    "Some readiness signals suggest a conservative effort today."
+  ],
+  "warnings": [
+    "Readiness signals indicate reduced training tolerance today."
+  ]
 }
 ```
 
@@ -592,29 +621,61 @@ Response:
 
 ```json
 {
-  "weeklyCompletionRate": 0.82,
-  "weeklyDistanceKm": 41.5,
-  "longRunTrend": [
+  "planId": "06cfb0f4-2f0e-4f22-b6c0-60ab7ea1b0cb",
+  "planVersion": 2,
+  "currentTrainingWeek": 5,
+  "summary": {
+    "plannedWorkouts": 32,
+    "completedWorkouts": 20,
+    "skippedWorkouts": 3,
+    "rescheduledWorkouts": 2,
+    "adherencePercentage": 63
+  },
+  "weeklyCompletion": [
     {
-      "weekIndex": 3,
-      "distanceKm": 22.0
+      "weekNumber": 5,
+      "planned": 5,
+      "completed": 4,
+      "skipped": 1,
+      "completionPercentage": 80
+    }
+  ],
+  "longRunProgression": [
+    {
+      "weekNumber": 3,
+      "plannedDistanceKm": 22.0,
+      "actualDistanceKm": 21.5,
+      "status": "COMPLETED"
     },
     {
-      "weekIndex": 4,
-      "distanceKm": 24.0
+      "weekNumber": 4,
+      "plannedDistanceKm": 24.0,
+      "actualDistanceKm": null,
+      "status": "PLANNED"
     }
   ],
   "readinessTrend": [
     {
       "date": "2026-06-13",
-      "state": "GREEN"
+      "readinessState": "READY",
+      "fatigueLevel": 2,
+      "painSeverity": null
     },
     {
       "date": "2026-06-14",
-      "state": "YELLOW"
+      "readinessState": "CAUTION",
+      "fatigueLevel": 3,
+      "painSeverity": 4
     }
   ],
-  "recentAdaptationCount": 1
+  "recentStatusDistribution": {
+    "planned": 2,
+    "completed": 3,
+    "skipped": 1,
+    "rescheduled": 1
+  },
+  "emptyState": false,
+  "message": "You completed 63% of your planned workouts so far."
 }
 ```
 

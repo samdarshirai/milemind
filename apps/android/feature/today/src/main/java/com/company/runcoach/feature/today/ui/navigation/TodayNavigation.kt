@@ -18,7 +18,8 @@ object TodayRoutes {
 fun NavGraphBuilder.todayGraph(
     onOpenCheckIn: () -> Unit,
     onOpenWorkout: (String, String) -> Unit,
-    onOpenPlan: () -> Unit
+    onOpenPlan: () -> Unit,
+    onOpenProgress: () -> Unit
 ) {
     composable(
         route = TodayRoutes.Home,
@@ -34,6 +35,7 @@ fun NavGraphBuilder.todayGraph(
             onOpenCheckIn = onOpenCheckIn,
             onOpenWorkout = onOpenWorkout,
             onOpenPlan = onOpenPlan,
+            onOpenProgress = onOpenProgress,
             refreshToken = backStackEntry.arguments?.getString("refresh")
         )
     }

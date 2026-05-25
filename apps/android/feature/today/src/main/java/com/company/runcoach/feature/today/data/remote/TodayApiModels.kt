@@ -9,16 +9,53 @@ data class TodayInsightsResponse(
     val readinessLabel: String? = null,
     val readinessMessage: String? = null,
     val hasCheckInToday: Boolean = false,
-    val latestAdaptation: LatestAdaptationResponse? = null
+    val latestAdaptation: LatestAdaptationResponse? = null,
+    val todaysPlannedWorkout: TodaysPlannedWorkoutResponse? = null,
+    val latestFatigueSignal: FatigueSignalSummaryResponse? = null,
+    val latestInjuryFeedback: InjuryFeedbackSummaryResponse? = null,
+    val recommendedTone: String? = null,
+    val insightMessages: List<String> = emptyList(),
+    val warnings: List<String> = emptyList()
 )
 
 @Serializable
 data class LatestAdaptationResponse(
-    val id: String,
+    val adaptationDecisionId: String,
     val summary: String,
     val affectedFromDate: String,
     val affectedToDate: String,
     val changedWorkoutIds: List<String> = emptyList()
+)
+
+@Serializable
+data class TodaysPlannedWorkoutResponse(
+    val plannedWorkoutId: String,
+    val workoutType: String,
+    val status: String,
+    val plannedDistanceKm: Double? = null,
+    val plannedDurationMin: Int? = null,
+    val intensityZone: String? = null
+)
+
+@Serializable
+data class FatigueSignalSummaryResponse(
+    val signalDate: String,
+    val sleepScore: Int? = null,
+    val stressScore: Int? = null,
+    val sorenessScore: Int? = null,
+    val motivationScore: Int? = null,
+    val illnessFlag: Boolean = false,
+    val tooBusyFlag: Boolean = false,
+    val travellingFlag: Boolean = false,
+    val notes: String? = null
+)
+
+@Serializable
+data class InjuryFeedbackSummaryResponse(
+    val reportedAt: String,
+    val hasPain: Boolean,
+    val severity: Int? = null,
+    val bodyRegion: String? = null
 )
 
 @Serializable

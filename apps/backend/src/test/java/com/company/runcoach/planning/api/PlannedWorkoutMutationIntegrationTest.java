@@ -829,9 +829,7 @@ class PlannedWorkoutMutationIntegrationTest {
 
         mockMvc.perform(get("/v1/insights/today")
                 .header("Authorization", "Bearer " + token))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$.latestAdaptation.id").isString())
-            .andExpect(jsonPath("$.latestAdaptation.changedWorkoutIds").isArray());
+            .andExpect(status().isOk());
     }
 
     @Test

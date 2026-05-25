@@ -12,6 +12,8 @@ import com.company.runcoach.feature.onboarding.ui.navigation.onboardingGraph
 import com.company.runcoach.feature.plan.ui.navigation.PlanRoutes
 import com.company.runcoach.feature.plan.ui.navigation.planGraph
 import com.company.runcoach.feature.profile.ui.navigation.profileGraph
+import com.company.runcoach.feature.progress.ui.navigation.ProgressRoutes
+import com.company.runcoach.feature.progress.ui.navigation.progressGraph
 import com.company.runcoach.feature.racegoal.ui.navigation.RaceGoalRoutes
 import com.company.runcoach.feature.racegoal.ui.navigation.raceGoalGraph
 import com.company.runcoach.feature.today.ui.navigation.TodayRoutes
@@ -51,7 +53,8 @@ fun RunCoachNavHost() {
             onOpenWorkout = { plannedWorkoutId, status ->
                 navController.navigate(WorkoutRoutes.detailRoute(plannedWorkoutId, status))
             },
-            onOpenPlan = { navController.navigate(PlanRoutes.Overview) }
+            onOpenPlan = { navController.navigate(PlanRoutes.Overview) },
+            onOpenProgress = { navController.navigate(ProgressRoutes.Overview) }
         )
         checkInGraph(
             openPainCheckIn = { navController.navigate(CheckInRoutes.Pain) },
@@ -68,6 +71,7 @@ fun RunCoachNavHost() {
             navController.navigate(WorkoutRoutes.detailRoute(plannedWorkoutId, status))
         })
         workoutGraph()
+        progressGraph()
 
         profileGraph()
     }

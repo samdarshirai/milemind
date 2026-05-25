@@ -60,6 +60,11 @@ class TodayViewModel @Inject constructor(
                             workoutLoadFailed = insights.workoutLoadFailed,
                             readinessBanner = mapReadinessBanner(insights),
                             todayWorkout = mapWorkout(insights.todayWorkout),
+                            insightMessage = insights.insightMessage,
+                            warnings = insights.warnings,
+                            recommendedTone = insights.recommendedTone,
+                            fatigueSummary = mapFatigueSummary(insights),
+                            painSummary = mapPainSummary(insights),
                             latestAdaptation = insights.latestAdaptation?.let {
                                 LatestAdaptationUiModel(
                                     summary = it.summary,
@@ -106,6 +111,11 @@ class TodayViewModel @Inject constructor(
                             workoutLoadFailed = insights.workoutLoadFailed,
                             readinessBanner = mapReadinessBanner(insights),
                             todayWorkout = mapWorkout(insights.todayWorkout),
+                            insightMessage = insights.insightMessage,
+                            warnings = insights.warnings,
+                            recommendedTone = insights.recommendedTone,
+                            fatigueSummary = mapFatigueSummary(insights),
+                            painSummary = mapPainSummary(insights),
                             latestAdaptation = insights.latestAdaptation?.let {
                                 LatestAdaptationUiModel(
                                     summary = it.summary,
@@ -159,6 +169,29 @@ class TodayViewModel @Inject constructor(
 
     fun dismissWhatChanged() {
         _uiState.update { it.copy(showWhatChanged = false) }
+    }
+}
+
+internal fun mapFatigueSummary(insights: TodayInsightsData): String? {
+    val fatigue = insights.fatigueSummary ?: return null
+    return buildList {
+        fatigue.sleepScore?.let { add("Sleep $it") }
+        fatigue.stressScore?.let { add("Stress $it") }
+        fatigue.sorenessScore?.let { add("Soreness $it") }
+        fatigue.motivationScore?.let { add("Motivation $it") }
+        if (fatigue.illnessFlag) add("Illness")
+        if (fatigue.tooBusyFlag) add("Too busy")
+        if (fatigue.travellingFlag) add("Travel")
+        fatigue.notes?.trim()?.takeIf { it.isNotEmpty() }?.let { add("Note: $it") }
+    }.takeIf { it.isNotEmpty() }?.joinToString(" · ")
+}
+
+private fun mapPainSummary(insights: TodayInsightsData): String? {
+    val pain = insights.painSummary ?: return null
+    return if (!pain.hasPain) {
+        "No pain reported"
+    } else {
+        "Pain ${pain.severity ?: "-"}/10${pain.bodyRegion?.let { " · $it" } ?: ""}"
     }
 }
 

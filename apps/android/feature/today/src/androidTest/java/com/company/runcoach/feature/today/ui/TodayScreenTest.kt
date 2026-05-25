@@ -34,6 +34,7 @@ class TodayScreenTest {
                 onPrimaryAction = {},
                 onOpenWorkout = { _, _ -> },
                 onOpenPlan = {},
+                onOpenProgress = {},
                 onRetry = {},
                 onRetryWorkout = {},
                 onOpenWhatChanged = {},
@@ -61,6 +62,7 @@ class TodayScreenTest {
                 onPrimaryAction = {},
                 onOpenWorkout = { _, _ -> },
                 onOpenPlan = {},
+                onOpenProgress = {},
                 onRetry = {},
                 onRetryWorkout = {},
                 onOpenWhatChanged = {},
@@ -95,6 +97,7 @@ class TodayScreenTest {
                 onPrimaryAction = {},
                 onOpenWorkout = { _, _ -> },
                 onOpenPlan = {},
+                onOpenProgress = {},
                 onRetry = {},
                 onRetryWorkout = {},
                 onOpenWhatChanged = {},
@@ -124,6 +127,7 @@ class TodayScreenTest {
                 onPrimaryAction = {},
                 onOpenWorkout = { _, _ -> },
                 onOpenPlan = {},
+                onOpenProgress = {},
                 onRetry = {},
                 onRetryWorkout = {},
                 onOpenWhatChanged = {},
@@ -157,6 +161,7 @@ class TodayScreenTest {
                 onPrimaryAction = {},
                 onOpenWorkout = { _, _ -> },
                 onOpenPlan = {},
+                onOpenProgress = {},
                 onRetry = {},
                 onRetryWorkout = {},
                 onOpenWhatChanged = {},
@@ -192,6 +197,7 @@ class TodayScreenTest {
                 onPrimaryAction = {},
                 onOpenWorkout = { _, _ -> },
                 onOpenPlan = {},
+                onOpenProgress = {},
                 onRetry = {},
                 onRetryWorkout = {},
                 onOpenWhatChanged = {},
@@ -203,5 +209,130 @@ class TodayScreenTest {
         composeRule.onNodeWithText("Your next 10 days were adjusted.").assertIsDisplayed()
         composeRule.onNodeWithTag("what_changed_close").performClick()
         assertTrue(dismissed)
+    }
+
+    @Test
+    fun todayScreen_rendersReadinessAndAdaptationInsights() {
+        composeRule.setContent {
+            TodayScreen(
+                state = TodayUiState(
+                    isLoading = false,
+                    readinessBanner = ReadinessBannerUiModel(
+                        title = "Take it easy",
+                        message = "Lower readiness today.",
+                        ctaLabel = "Update readiness",
+                        status = ReadinessBannerStatus.HIGH_RISK
+                    ),
+                    insightMessage = "Plan adjusted for recovery.",
+                    fatigueSummary = "Sleep 2 · Stress 4",
+                    painSummary = "Pain 4/10 · Knee"
+                ),
+                onPrimaryAction = {},
+                onOpenWorkout = { _, _ -> },
+                onOpenPlan = {},
+                onOpenProgress = {},
+                onRetry = {},
+                onRetryWorkout = {},
+                onOpenWhatChanged = {},
+                onDismissWhatChanged = {}
+            )
+        }
+
+        composeRule.onNodeWithText("Plan adjusted for recovery.").assertIsDisplayed()
+        composeRule.onNodeWithTag("today_fatigue_summary").assertIsDisplayed()
+        composeRule.onNodeWithTag("today_pain_summary").assertIsDisplayed()
+    }
+
+    @Test
+    fun todayScreen_rendersPostAdaptationState() {
+        composeRule.setContent {
+            TodayScreen(
+                state = TodayUiState(
+                    isLoading = false,
+                    readinessBanner = ReadinessBannerUiModel(
+                        title = "Caution",
+                        message = "Adaptation applied",
+                        ctaLabel = "Update readiness",
+                        status = ReadinessBannerStatus.CAUTION
+                    ),
+                    latestAdaptation = com.company.runcoach.feature.today.ui.model.LatestAdaptationUiModel(
+                        summary = "Converted intensity run to recovery session.",
+                        affectedFromDate = "2026-06-15",
+                        affectedToDate = "2026-06-21",
+                        changedWorkoutIds = listOf("w1")
+                    )
+                ),
+                onPrimaryAction = {},
+                onOpenWorkout = { _, _ -> },
+                onOpenPlan = {},
+                onOpenProgress = {},
+                onRetry = {},
+                onRetryWorkout = {},
+                onOpenWhatChanged = {},
+                onDismissWhatChanged = {}
+            )
+        }
+
+        composeRule.onNodeWithTag("today_adaptation_banner").assertIsDisplayed()
+        composeRule.onNodeWithText("Converted intensity run to recovery session.").assertIsDisplayed()
+    }
+
+    @Test
+    fun todayScreen_openProgressTriggersCallback() {
+        var opened = false
+        composeRule.setContent {
+            TodayScreen(
+                state = TodayUiState(
+                    isLoading = false,
+                    readinessBanner = ReadinessBannerUiModel(
+                        title = "Ready",
+                        message = "You are set.",
+                        ctaLabel = "Update readiness",
+                        status = ReadinessBannerStatus.READY
+                    )
+                ),
+                onPrimaryAction = {},
+                onOpenWorkout = { _, _ -> },
+                onOpenPlan = {},
+                onOpenProgress = { opened = true },
+                onRetry = {},
+                onRetryWorkout = {},
+                onOpenWhatChanged = {},
+                onDismissWhatChanged = {}
+            )
+        }
+
+        composeRule.onNodeWithTag("today_open_progress").performClick()
+        assertTrue(opened)
+    }
+
+    @Test
+    fun todayScreen_rendersRecommendedToneAndWarnings() {
+        composeRule.setContent {
+            TodayScreen(
+                state = TodayUiState(
+                    isLoading = false,
+                    readinessBanner = ReadinessBannerUiModel(
+                        title = "Caution",
+                        message = "Adapt effort today.",
+                        ctaLabel = "Update readiness",
+                        status = ReadinessBannerStatus.CAUTION
+                    ),
+                    recommendedTone = "supportive",
+                    warnings = listOf("Readiness signals indicate reduced training tolerance today.")
+                ),
+                onPrimaryAction = {},
+                onOpenWorkout = { _, _ -> },
+                onOpenPlan = {},
+                onOpenProgress = {},
+                onRetry = {},
+                onRetryWorkout = {},
+                onOpenWhatChanged = {},
+                onDismissWhatChanged = {}
+            )
+        }
+
+        composeRule.onNodeWithTag("today_recommended_tone").assertIsDisplayed()
+        composeRule.onNodeWithTag("today_warning_0").assertIsDisplayed()
     }
 }

@@ -5,6 +5,7 @@ import com.company.runcoach.feature.today.data.TodayRepository
 import com.company.runcoach.feature.today.data.remote.CurrentPlanResponse
 import com.company.runcoach.feature.today.data.remote.TodayApiService
 import com.company.runcoach.feature.today.data.remote.TodayInsightsResponse
+import com.company.runcoach.feature.today.data.remote.TodaysPlannedWorkoutResponse
 import com.company.runcoach.feature.today.data.remote.WeekSummary
 import com.company.runcoach.feature.today.ui.model.ReadinessBannerStatus
 import kotlinx.coroutines.Dispatchers
@@ -106,6 +107,32 @@ class TodayViewModelTest {
     }
 
     @Test
+    fun fatigueSummaryIncludesFlagsAndNotes() {
+        val summary = mapFatigueSummary(
+            TodayInsightsData(
+                date = "2026-06-15",
+                readinessState = "CAUTION",
+                readinessLabel = "Caution",
+                readinessMessage = "Keep effort conservative.",
+                hasCheckInToday = true,
+                todayWorkout = null,
+                fatigueSummary = com.company.runcoach.feature.today.data.FatigueSummaryData(
+                    sleepScore = 2,
+                    stressScore = 4,
+                    sorenessScore = 3,
+                    motivationScore = 2,
+                    illnessFlag = true,
+                    tooBusyFlag = false,
+                    travellingFlag = true,
+                    notes = "Hard week"
+                )
+            )
+        )
+
+        assertEquals("Sleep 2 · Stress 4 · Soreness 3 · Motivation 2 · Illness · Travel · Note: Hard week", summary)
+    }
+
+    @Test
     fun apiErrorHandling_setsErrorBanner() = runTest {
         val vm = TodayViewModel(TodayRepository(FailingTodayApi()))
         advanceUntilIdle()
@@ -154,28 +181,32 @@ class TodayViewModelTest {
     }
 
     @Test
-    fun planFetchFailureStillShowsReadinessBanner() = runTest {
-        val vm = TodayViewModel(TodayRepository(InsightsSuccessPlanFailureApi()))
+    fun todayInsightsShowsWorkoutFromInsightsEndpoint() = runTest {
+        val vm = TodayViewModel(TodayRepository(InsightsWithWorkoutApi()))
         advanceUntilIdle()
 
         assertEquals(ReadinessBannerStatus.CAUTION, vm.uiState.value.readinessBanner.status)
-        assertEquals(null, vm.uiState.value.todayWorkout)
-        assertTrue(vm.uiState.value.workoutLoadFailed)
-        assertEquals("Today's workout could not be loaded. You can retry.", vm.uiState.value.workoutErrorMessage)
+        assertEquals("45 min planned", vm.uiState.value.todayWorkout?.detail)
     }
 
     @Test
-    fun retryWorkoutLoad_successClearsWorkoutError() = runTest {
+    fun retryWorkoutLoad_populatesWorkoutWhenAvailable() = runTest {
         val vm = TodayViewModel(TodayRepository(PlanRetrySuccessApi()))
         advanceUntilIdle()
 
-        assertTrue(vm.uiState.value.workoutLoadFailed)
+        assertEquals(null, vm.uiState.value.todayWorkout)
         vm.retryWorkoutLoad()
         advanceUntilIdle()
 
-        assertEquals(false, vm.uiState.value.workoutLoadFailed)
-        assertEquals(null, vm.uiState.value.workoutErrorMessage)
         assertTrue(vm.uiState.value.todayWorkout != null)
+    }
+
+    @Test
+    fun insightPriority_prefersAdaptationRecoveryMessage() = runTest {
+        val vm = TodayViewModel(TodayRepository(InsightsPriorityApi()))
+        advanceUntilIdle()
+
+        assertEquals("Recent adaptation: Keep this week recovery focused.", vm.uiState.value.insightMessage)
     }
 
     private class FailingTodayApi : TodayApiService {
@@ -265,46 +296,58 @@ class TodayViewModelTest {
         }
     }
 
-    private class PlanRetrySuccessApi : TodayApiService {
-        private var planCallCount: Int = 0
+    private class InsightsWithWorkoutApi : TodayApiService {
         override suspend fun getTodayInsights(): TodayInsightsResponse {
             return TodayInsightsResponse(
                 date = "2026-06-15",
                 readinessState = "CAUTION",
                 readinessLabel = "Caution",
                 readinessMessage = "Keep effort conservative.",
-                hasCheckInToday = true
+                hasCheckInToday = true,
+                todaysPlannedWorkout = TodaysPlannedWorkoutResponse(
+                    plannedWorkoutId = "w-9",
+                    workoutType = "EASY_RUN",
+                    status = "PLANNED",
+                    plannedDurationMin = 45
+                )
             )
         }
 
         override suspend fun getCurrentPlan(): CurrentPlanResponse {
-            planCallCount += 1
-            if (planCallCount == 1) {
-                throw HttpException(
-                    Response.error<CurrentPlanResponse>(
-                        500,
-                        "{}".toResponseBody("application/json".toMediaType())
-                    )
+            return emptyPlan()
+        }
+    }
+
+    private class PlanRetrySuccessApi : TodayApiService {
+        private var insightCallCount: Int = 0
+        override suspend fun getTodayInsights(): TodayInsightsResponse {
+            insightCallCount += 1
+            if (insightCallCount == 1) {
+                return TodayInsightsResponse(
+                    date = "2026-06-15",
+                    readinessState = "CAUTION",
+                    readinessLabel = "Caution",
+                    readinessMessage = "Keep effort conservative.",
+                    hasCheckInToday = true
                 )
             }
-            return CurrentPlanResponse(
-                trainingPlanId = "plan-1",
-                currentWeekIndex = 1,
-                weeks = listOf(
-                    WeekSummary(
-                        weekIndex = 1,
-                        workouts = listOf(
-                            com.company.runcoach.feature.today.data.remote.WorkoutSummary(
-                                plannedWorkoutId = "w-1",
-                                scheduledDate = "2026-06-15",
-                                workoutType = "EASY_RUN",
-                                status = "PLANNED",
-                                plannedDurationMin = 45
-                            )
-                        )
-                    )
+            return TodayInsightsResponse(
+                date = "2026-06-15",
+                readinessState = "CAUTION",
+                readinessLabel = "Caution",
+                readinessMessage = "Keep effort conservative.",
+                hasCheckInToday = true,
+                todaysPlannedWorkout = TodaysPlannedWorkoutResponse(
+                    plannedWorkoutId = "w-1",
+                    workoutType = "EASY_RUN",
+                    status = "PLANNED",
+                    plannedDurationMin = 45
                 )
             )
+        }
+
+        override suspend fun getCurrentPlan(): CurrentPlanResponse {
+            return emptyPlan()
         }
     }
 
@@ -323,6 +366,26 @@ class TodayViewModelTest {
                 )
             }
             error("refresh failed")
+        }
+
+        override suspend fun getCurrentPlan(): CurrentPlanResponse {
+            return emptyPlan()
+        }
+    }
+
+    private class InsightsPriorityApi : TodayApiService {
+        override suspend fun getTodayInsights(): TodayInsightsResponse {
+            return TodayInsightsResponse(
+                date = "2026-06-15",
+                readinessState = "CAUTION",
+                readinessLabel = "Caution",
+                readinessMessage = "Some readiness signals suggest a conservative effort today.",
+                hasCheckInToday = true,
+                insightMessages = listOf(
+                    "Today's planned workout is EASY_RUN.",
+                    "Recent adaptation: Keep this week recovery focused."
+                )
+            )
         }
 
         override suspend fun getCurrentPlan(): CurrentPlanResponse {

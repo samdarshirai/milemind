@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        @font-face {
+            font-family: 'PP Neue Montreal Mono';
+            src: url('https://fonts.cdnfonts.com/css/pp-neue-montreal-mono');
+        }
+        @font-face {
+            font-family: 'The Future';
+            src: url('https://fonts.cdnfonts.com/css/the-future');
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed": "#bdebee",
+                      "primary-container": "#1b1b1b",
+                      "on-primary-fixed": "#1b1b1b",
+                      "on-primary": "#ffffff",
+                      "on-secondary-fixed-variant": "#204d50",
+                      "inverse-primary": "#c6c6c6",
+                      "accent-orange": "#fc4c02",
+                      "on-surface": "#1b1b1b",
+                      "surface-bright": "#f9f9f9",
+                      "accent-magenta": "#ef2cc1",
+                      "on-error": "#ffffff",
+                      "primary": "#000000",
+                      "on-tertiary-fixed": "#1b1b1b",
+                      "on-tertiary-container": "#848484",
+                      "canvas-dark": "#010120",
+                      "surface-variant": "#e2e2e2",
+                      "on-secondary-fixed": "#002022",
+                      "surface": "#f9f9f9",
+                      "surface-container-low": "#f3f3f3",
+                      "on-primary-container": "#848484",
+                      "surface-container-high": "#e8e8e8",
+                      "on-tertiary": "#ffffff",
+                      "tertiary": "#000000",
+                      "secondary": "#3a6568",
+                      "surface-dim": "#dadada",
+                      "tertiary-container": "#1b1b1b",
+                      "on-primary-fixed-variant": "#474747",
+                      "tertiary-fixed-dim": "#c6c6c6",
+                      "on-surface-variant": "#4c4546",
+                      "accent-periwinkle": "#bdbbff",
+                      "secondary-container": "#bdebee",
+                      "on-secondary": "#ffffff",
+                      "primary-fixed-dim": "#c6c6c6",
+                      "surface-tint": "#5e5e5e",
+                      "surface-container-highest": "#e2e2e2",
+                      "secondary-fixed-dim": "#a2cfd2",
+                      "background": "#f9f9f9",
+                      "inverse-surface": "#303030",
+                      "surface-container": "#eeeeee",
+                      "surface-dark-soft": "#313641",
+                      "outline-variant": "#cfc4c5",
+                      "outline": "#7e7576",
+                      "error-container": "#ffdad6",
+                      "body-grey": "#959494",
+                      "inverse-on-surface": "#f1f1f1",
+                      "on-background": "#1b1b1b",
+                      "primary-fixed": "#e2e2e2",
+                      "on-secondary-container": "#406b6e",
+                      "on-error-container": "#93000a",
+                      "error": "#ba1a1a",
+                      "on-tertiary-fixed-variant": "#474747",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-fixed": "#e2e2e2"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "5xl": "48px",
+                      "xl": "20px",
+                      "md": "12px",
+                      "6xl": "55.2px",
+                      "xs": "4px",
+                      "4xl": "44px",
+                      "2xl": "24px",
+                      "xxs": "2px",
+                      "sm": "8px",
+                      "lg": "16px",
+                      "section": "80px",
+                      "3xl": "32px"
+              },
+              "fontFamily": {
+                      "body-lg-strong": ["The Future", "Inter", "sans-serif"],
+                      "display-md": ["The Future", "Inter", "sans-serif"],
+                      "mono-caps-button": ["PP Neue Montreal Mono", "monospace"],
+                      "mono-caps-eyebrow": ["PP Neue Montreal Mono", "monospace"],
+                      "body-md-strong": ["The Future", "Inter", "sans-serif"],
+                      "display-xxl": ["The Future", "Inter", "sans-serif"],
+                      "display-xl": ["The Future", "Inter", "sans-serif"],
+                      "body-lg": ["The Future", "Inter", "sans-serif"],
+                      "mono-caption": ["PP Neue Montreal Mono", "monospace"],
+                      "display-lg": ["The Future", "Inter", "sans-serif"],
+                      "caption": ["The Future", "Inter", "sans-serif"],
+                      "mono-caps-label": ["PP Neue Montreal Mono", "monospace"],
+                      "body-md": ["The Future", "Inter", "sans-serif"],
+                      "caption-strong": ["The Future", "Inter", "sans-serif"]
+              },
+              "fontSize": {
+                      "body-lg-strong": ["18px", {"lineHeight": "23.4px", "letterSpacing": "-0.18px", "fontWeight": "500"}],
+                      "display-md": ["22px", {"lineHeight": "25.3px", "letterSpacing": "-0.22px", "fontWeight": "500"}],
+                      "mono-caps-button": ["16px", {"lineHeight": "16px", "letterSpacing": "0.08px", "fontWeight": "500"}],
+                      "mono-caps-eyebrow": ["11px", {"lineHeight": "11px", "letterSpacing": "0.55px", "fontWeight": "500"}],
+                      "body-md-strong": ["16px", {"lineHeight": "20.8px", "letterSpacing": "-0.16px", "fontWeight": "500"}],
+                      "display-xxl": ["64px", {"lineHeight": "70.4px", "letterSpacing": "-1.92px", "fontWeight": "500"}],
+                      "display-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.8px", "fontWeight": "500"}],
+                      "body-lg": ["18px", {"lineHeight": "23.4px", "letterSpacing": "-0.18px", "fontWeight": "400"}],
+                      "mono-caption": ["10px", {"lineHeight": "14px", "letterSpacing": "0.05px", "fontWeight": "400"}],
+                      "display-lg": ["28px", {"lineHeight": "32.2px", "letterSpacing": "-0.42px", "fontWeight": "500"}],
+                      "caption": ["14px", {"lineHeight": "19.6px", "fontWeight": "400"}],
+                      "mono-caps-label": ["11px", {"lineHeight": "15.4px", "letterSpacing": "0.055px", "fontWeight": "500"}],
+                      "body-md": ["16px", {"lineHeight": "20.8px", "letterSpacing": "-0.16px", "fontWeight": "400"}],
+                      "caption-strong": ["14px", {"lineHeight": "19.6px", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface">
+<!-- TopAppBar -->
+<header class="bg-canvas-dark flex flex-col justify-end px-2xl pb-md pt-section w-full docked full-width top-0 z-40">
+<div class="flex items-center justify-between w-full">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-accent-orange" style="font-variation-settings: 'FILL' 1;">speed</span>
+<h1 class="font-mono-caps-button text-mono-caps-button text-accent-orange">MileMind</h1>
+</div>
+<button class="material-symbols-outlined text-on-primary hover:text-accent-periwinkle transition-colors scale-95 transition-transform" data-icon="settings">settings</button>
+</div>
+<div class="mt-xl">
+<p class="font-mono-caps-eyebrow text-mono-caps-eyebrow tracking-widest text-body-grey opacity-60">WEEK 12 · MARATHON PREP</p>
+<h2 class="font-display-lg text-display-lg text-on-primary mt-xs">Take it easy today.</h2>
+</div>
+</header>
+<main class="pb-32">
+<!-- Readiness Hero Band (Dark) -->
+<section class="bg-canvas-dark px-2xl py-section">
+<div class="relative overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent p-3xl">
+<div class="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-xl">
+<div class="flex flex-col gap-sm">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-accent-orange" style="font-variation-settings: 'FILL' 1;">warning</span>
+<span class="font-mono-caps-eyebrow text-accent-orange">READINESS WARNING</span>
+</div>
+<div class="mt-md">
+<div class="flex items-end gap-xs">
+<span class="font-display-xxl text-display-xxl text-on-primary">34</span>
+<span class="font-body-lg text-body-lg text-body-grey pb-sm">/ 100</span>
+</div>
+<p class="font-body-md text-body-md text-body-grey max-w-md mt-sm">Redness is low. Recent fatigue spike and low HRV detected. Your system requires immediate recovery attention.</p>
+</div>
+</div>
+<div class="hidden md:block w-48 h-48 relative">
+<!-- Atmospheric Graphic -->
+<div class="absolute inset-0 rounded-full border-2 border-accent-orange/20 animate-pulse"></div>
+<div class="absolute inset-4 rounded-full border border-accent-magenta/20"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-accent-orange text-5xl" style="font-variation-settings: 'wght' 200;">error</span>
+</div>
+</div>
+</div>
+<!-- Background Atmospheric Flare -->
+<div class="absolute -right-20 -bottom-20 w-64 h-64 bg-accent-orange/10 blur-[100px] rounded-full"></div>
+</div>
+</section>
+<!-- Insights & Details (Light) -->
+<section class="px-2xl -mt-md">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-xl">
+<!-- Adaptation Card -->
+<div class="bg-surface-container-lowest border border-outline-variant p-2xl rounded-lg flex flex-col justify-between">
+<div>
+<span class="font-mono-caps-eyebrow text-body-grey block mb-md">DYNAMIC ADAPTATION</span>
+<div class="flex items-start gap-lg">
+<div class="flex flex-col items-center gap-xxs pt-xs">
+<span class="material-symbols-outlined text-body-grey opacity-30">do_not_step</span>
+<div class="w-px h-8 bg-outline-variant"></div>
+<span class="material-symbols-outlined text-accent-magenta" style="font-variation-settings: 'FILL' 1;">directions_walk</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-body-grey line-through decoration-primary/40">8-mile interval run</p>
+<p class="font-body-lg-strong text-body-lg-strong text-primary mt-xs">30-min recovery walk</p>
+<p class="font-caption text-caption text-body-grey mt-md">Systemic stress levels are 24% above your 7-day baseline. High-intensity loads today increase injury risk by 3.2x.</p>
+</div>
+</div>
+</div>
+<div class="mt-3xl">
+<button class="w-full bg-primary text-on-primary py-md px-2xl font-mono-caps-button text-mono-caps-button flex items-center justify-center gap-md hover:opacity-90 transition-opacity uppercase">
+                            Accept Adjustment
+                            <span class="material-symbols-outlined">check_circle</span>
+</button>
+</div>
+</div>
+<!-- Secondary Metric Bento -->
+<div class="grid grid-cols-1 gap-xl">
+<div class="bg-surface-container-lowest border border-outline-variant p-xl rounded-lg flex justify-between items-center">
+<div>
+<span class="font-mono-caps-eyebrow text-body-grey">HRV VARIANCE</span>
+<p class="font-display-md text-display-md text-primary">-14ms <span class="text-error text-caption">Drop</span></p>
+</div>
+<div class="w-24 h-8 flex items-end gap-1">
+<div class="flex-1 bg-outline-variant h-1/2"></div>
+<div class="flex-1 bg-outline-variant h-3/4"></div>
+<div class="flex-1 bg-outline-variant h-full"></div>
+<div class="flex-1 bg-accent-orange h-1/4"></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-xl rounded-lg flex justify-between items-center">
+<div>
+<span class="font-mono-caps-eyebrow text-body-grey">SLEEP QUALITY</span>
+<p class="font-display-md text-display-md text-primary">62% <span class="text-body-grey text-caption">Fair</span></p>
+</div>
+<span class="material-symbols-outlined text-body-grey">bedtime</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-xl rounded-lg">
+<span class="font-mono-caps-eyebrow text-body-grey block mb-sm">RECOVERY TIPS</span>
+<div class="flex gap-md overflow-x-auto pb-xs">
+<div class="min-w-[120px] bg-surface-container-high p-sm rounded-lg flex flex-col gap-xs">
+<span class="material-symbols-outlined text-accent-periwinkle">water_drop</span>
+<span class="font-caption-strong text-caption-strong">Hydrate+</span>
+</div>
+<div class="min-w-[120px] bg-surface-container-high p-sm rounded-lg flex flex-col gap-xs">
+<span class="material-symbols-outlined text-accent-magenta">self_improvement</span>
+<span class="font-caption-strong text-caption-strong">10m Breath</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Visualization Band -->
+<section class="px-2xl py-section">
+<div class="w-full h-48 rounded-lg border border-outline-variant relative bg-surface-container-low flex items-center justify-center overflow-hidden">
+<img class="absolute inset-0 w-full h-full object-cover opacity-10 mix-blend-multiply" data-alt="A macro scientific visualization of biological data streams showing complex interconnecting neural pathways and data nodes. The lighting is clinical and high-key, reflecting a sophisticated light-mode interface. The palette is dominated by neutral greys and whites with subtle glowing points of orange and magenta indicating stress points. The overall mood is precise, technical, and analytical, fitting for a high-performance athlete recovery dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcZV3BdzZz7pve0I0tu1N4YjopYES4KFZVTRweoVGHf4nfeMS2MXTAI_fLo_uIhWysIVRR9ZRkUtaIK9RbS6Lb1ccigvLTwepsV9NWMtSvSLfZczZHiVqackh8JFrtEthoZhHBx_SQALlbhp9NtdA8Ap_ui0VNfyXt9_r4YS9NHG6zGzvtOOrxK7OZY-7S-rXXk2xUKNs-K0KU3-tpwnjIsc7mVmUXkffjiybHYvXhvR1Hd0GyiYPFgYGauDQt3YPEDw3A_3F9Lx7g"/>
+<div class="relative z-10 text-center">
+<p class="font-mono-caps-eyebrow text-body-grey mb-xs">CORTISOL TREND ESTIMATE</p>
+<p class="font-body-md text-body-md text-primary italic">"Biological rhythm indicates peak recovery at 21:00 tonight."</p>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center bg-surface dark:bg-canvas-dark px-lg py-md border-t border-outline-variant">
+<a class="flex flex-col items-center justify-center text-primary dark:text-on-primary font-bold Active: scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">calendar_today</span>
+<span class="font-mono-caps-label text-mono-caps-label uppercase mt-1">Today</span>
+</a>
+<a class="flex flex-col items-center justify-center text-body-grey opacity-60 hover:text-accent-magenta transition-all" href="#">
+<span class="material-symbols-outlined">event_note</span>
+<span class="font-mono-caps-label text-mono-caps-label uppercase mt-1">Plan</span>
+</a>
+<a class="flex flex-col items-center justify-center text-body-grey opacity-60 hover:text-accent-magenta transition-all" href="#">
+<span class="material-symbols-outlined">insights</span>
+<span class="font-mono-caps-label text-mono-caps-label uppercase mt-1">Progress</span>
+</a>
+<a class="flex flex-col items-center justify-center text-body-grey opacity-60 hover:text-accent-magenta transition-all" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-mono-caps-label text-mono-caps-label uppercase mt-1">Profile</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for the Accept button
+        const cta = document.querySelector('button.bg-primary');
+        if(cta) {
+            cta.addEventListener('click', () => {
+                cta.innerHTML = 'Adjustment Applied <span class="material-symbols-outlined">done_all</span>';
+                cta.classList.replace('bg-primary', 'bg-accent-periwinkle');
+                cta.classList.replace('text-on-primary', 'text-primary');
+                
+                // Trigger a small haptic-like effect or visual feedback
+                cta.style.transform = 'scale(0.98)';
+                setTimeout(() => { cta.style.transform = 'scale(1)'; }, 100);
+            });
+        }
+
+        // Simple scroll parallax for hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('header');
+            if(hero) {
+                hero.style.opacity = 1 - (scrolled / 400);
+                hero.style.transform = `translateY(${scrolled * 0.2}px)`;
+            }
+        });
+    </script>
+</body></html>
