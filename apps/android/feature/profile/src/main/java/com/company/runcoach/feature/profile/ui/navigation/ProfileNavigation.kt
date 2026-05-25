@@ -8,8 +8,10 @@ object ProfileRoutes {
     const val Edit = "profile_edit"
 }
 
-fun NavGraphBuilder.profileGraph() {
+fun NavGraphBuilder.profileGraph(
+    onOpenStrava: () -> Unit
+) {
     composable(ProfileRoutes.Edit) {
-        ProfileEditRoute()
+        ProfileEditRoute(onOpenStrava = onOpenStrava)
     }
 }

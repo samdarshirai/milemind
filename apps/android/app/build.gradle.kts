@@ -61,6 +61,7 @@ dependencies {
     implementation(project(":feature:checkin"))
     implementation(project(":feature:profile"))
     implementation(project(":feature:racegoal"))
+    implementation(project(":feature:strava"))
     implementation(project(":feature:plan"))
     implementation(project(":feature:workout"))
     implementation(project(":feature:progress"))

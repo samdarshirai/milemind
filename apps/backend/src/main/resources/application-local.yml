@@ -8,3 +8,13 @@ logging:
   level:
     root: INFO
     com.company.runcoach: DEBUG
+
+runcoach:
+  integrations:
+    strava:
+      client-id: local-client
+      client-secret: local-dev-strava-client-secret
+      token-encryption-secret: local-dev-token-encryption-secret
+  security:
+    jwt:
+      secret: local-dev-jwt-secret-local-dev-jwt-secret

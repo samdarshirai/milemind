@@ -11,6 +11,7 @@ import com.company.runcoach.feature.plan.data.remote.PlanApiService
 import com.company.runcoach.feature.profile.data.remote.ProfileApiService
 import com.company.runcoach.feature.progress.data.remote.ProgressApiService
 import com.company.runcoach.feature.racegoal.data.remote.RaceGoalApiService
+import com.company.runcoach.feature.strava.data.remote.StravaApiService
 import com.company.runcoach.feature.today.data.remote.TodayApiService
 import com.company.runcoach.feature.workout.data.remote.WorkoutApiService
 import dagger.Binds
@@ -76,6 +77,11 @@ object NetworkModule {
     @Singleton
     fun provideProgressApiService(retrofit: Retrofit): ProgressApiService =
         retrofit.create(ProgressApiService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideStravaApiService(retrofit: Retrofit): StravaApiService =
+        retrofit.create(StravaApiService::class.java)
 
     @Provides
     @Singleton

@@ -16,6 +16,8 @@ import com.company.runcoach.feature.progress.ui.navigation.ProgressRoutes
 import com.company.runcoach.feature.progress.ui.navigation.progressGraph
 import com.company.runcoach.feature.racegoal.ui.navigation.RaceGoalRoutes
 import com.company.runcoach.feature.racegoal.ui.navigation.raceGoalGraph
+import com.company.runcoach.feature.strava.ui.navigation.StravaRoutes
+import com.company.runcoach.feature.strava.ui.navigation.stravaGraph
 import com.company.runcoach.feature.today.ui.navigation.TodayRoutes
 import com.company.runcoach.feature.today.ui.navigation.todayGraph
 import com.company.runcoach.feature.workout.ui.navigation.WorkoutRoutes
@@ -73,6 +75,7 @@ fun RunCoachNavHost() {
         workoutGraph()
         progressGraph()
 
-        profileGraph()
+        profileGraph(onOpenStrava = { navController.navigate(StravaRoutes.ConnectionBase) })
+        stravaGraph()
     }
 }

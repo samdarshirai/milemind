@@ -28,7 +28,9 @@ class FlywayMigrationRegressionTest {
             .placeholders(Map.of(
                 "race_goal_active_unique_columns", "user_id, status",
                 "race_goal_active_unique_predicate", "",
-                "adaptation_reason_codes_backfill_expr", "CONCAT('[\"', reason, '\"]')"
+                "adaptation_reason_codes_backfill_expr", "CONCAT('[\"', reason, '\"]')",
+                "strava_connection_active_unique_columns", "user_id, disconnected_at",
+                "strava_connection_active_unique_predicate", ""
             ))
             .load();
 
@@ -55,6 +57,6 @@ class FlywayMigrationRegressionTest {
 
         MigrationInfo current = flyway.info().current();
         Assertions.assertNotNull(current);
-        Assertions.assertEquals("13", current.getVersion().getVersion());
+        Assertions.assertEquals("15", current.getVersion().getVersion());
     }
 }

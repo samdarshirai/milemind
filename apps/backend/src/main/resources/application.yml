@@ -20,6 +20,8 @@ spring:
       race_goal_active_unique_columns: "user_id"
       race_goal_active_unique_predicate: "WHERE status = 'ACTIVE'"
       adaptation_reason_codes_backfill_expr: "to_jsonb(ARRAY[reason])"
+      strava_connection_active_unique_columns: "user_id"
+      strava_connection_active_unique_predicate: "WHERE disconnected_at IS NULL"
 
 management:
   endpoints:
@@ -28,9 +30,24 @@ management:
         include: health,info
 
 runcoach:
+  integrations:
+    strava:
+      client-id: ${STRAVA_CLIENT_ID}
+      client-secret: ${STRAVA_CLIENT_SECRET}
+      redirect-uri: ${STRAVA_REDIRECT_URI:http://localhost:8080/v1/integrations/strava/callback}
+      authorization-url: ${STRAVA_AUTHORIZATION_URL:https://www.strava.com/oauth/authorize}
+      token-url: ${STRAVA_TOKEN_URL:https://www.strava.com/oauth/token}
+      deauthorize-url: ${STRAVA_DEAUTHORIZE_URL:https://www.strava.com/oauth/deauthorize}
+      oauth-state-ttl: PT10M
+      approval-prompt: ${STRAVA_APPROVAL_PROMPT:auto}
+      scope: ${STRAVA_SCOPE:read,activity:read}
+      token-refresh-skew: PT2M
+      token-encryption-secret: ${STRAVA_TOKEN_ENCRYPTION_SECRET}
+  app:
+    android-strava-return-deeplink: ${ANDROID_STRAVA_RETURN_DEEPLINK:https://app.example.com/strava/connected}
   security:
     jwt:
       issuer: runcoach-backend
       access-token-ttl-minutes: 15
       refresh-token-ttl-days: 30
-      secret: change-me-in-real-env-change-me-in-real-env-1234567890
+      secret: ${RUNCOACH_JWT_SECRET}

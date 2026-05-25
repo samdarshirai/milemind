@@ -16,8 +16,25 @@ spring:
       race_goal_active_unique_columns: "user_id, status"
       race_goal_active_unique_predicate: ""
       adaptation_reason_codes_backfill_expr: "CONCAT('[\"', reason, '\"]')"
+      strava_connection_active_unique_columns: "user_id, disconnected_at"
+      strava_connection_active_unique_predicate: ""
 
 runcoach:
+  integrations:
+    strava:
+      client-id: test-client
+      client-secret: test-secret
+      redirect-uri: http://localhost:8080/v1/integrations/strava/callback
+      authorization-url: https://www.strava.com/oauth/authorize
+      token-url: https://www.strava.com/oauth/token
+      deauthorize-url: https://www.strava.com/oauth/deauthorize
+      oauth-state-ttl: PT10M
+      approval-prompt: auto
+      scope: read,activity:read
+      token-refresh-skew: PT2M
+      token-encryption-secret: test-encryption-secret-test-encryption
+  app:
+    android-strava-return-deeplink: https://app.example.com/strava/connected
   security:
     jwt:
       issuer: runcoach-backend-test

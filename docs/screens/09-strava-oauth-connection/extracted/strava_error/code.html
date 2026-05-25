@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&amp;family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #e2e2e2; border-radius: 10px; }
+        
+        .brand-chrome-line {
+            height: 2px;
+            background: linear-gradient(90deg, #fc4c02 0%, #ef2cc1 50%, #bdbbff 100%);
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed": "#171838",
+                    "accent-mint": "#c8f6f9",
+                    "surface-container-highest": "#e2e2e2",
+                    "surface-variant": "#e2e2e2",
+                    "inverse-primary": "#c6c6c6",
+                    "primary": "#000000",
+                    "hairline": "#959494",
+                    "surface-container-low": "#f3f3f3",
+                    "on-tertiary-fixed-variant": "#474747",
+                    "secondary-fixed": "#e1e0ff",
+                    "surface-dark-soft": "#313641",
+                    "tertiary-fixed": "#e2e2e2",
+                    "on-primary-container": "#848484",
+                    "accent-orange": "#fc4c02",
+                    "on-error-container": "#93000a",
+                    "primary-fixed": "#e2e2e2",
+                    "surface-bright": "#f9f9f9",
+                    "secondary-container": "#d4d4fe",
+                    "on-primary-fixed": "#1b1b1b",
+                    "body-gray": "#959494",
+                    "on-surface": "#1b1b1b",
+                    "background": "#f9f9f9",
+                    "outline-variant": "#cfc4c5",
+                    "tertiary-container": "#1b1b1b",
+                    "secondary": "#5a5b7f",
+                    "error-container": "#ffdad6",
+                    "primary-container": "#1b1b1b",
+                    "surface-tint": "#5e5e5e",
+                    "surface-dim": "#dadada",
+                    "accent-magenta": "#ef2cc1",
+                    "surface-container-high": "#e8e8e8",
+                    "on-primary": "#ffffff",
+                    "outline": "#7e7576",
+                    "inverse-on-surface": "#f1f1f1",
+                    "on-error": "#ffffff",
+                    "on-primary-fixed-variant": "#474747",
+                    "error": "#ba1a1a",
+                    "primary-fixed-dim": "#c6c6c6",
+                    "surface-container": "#eeeeee",
+                    "canvas-dark": "#010120",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-container": "#848484",
+                    "on-surface-variant": "#4c4546",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed-dim": "#c6c6c6",
+                    "accent-periwinkle": "#bdbbff",
+                    "ink": "#000000",
+                    "on-background": "#1b1b1b",
+                    "on-secondary-container": "#595a7e",
+                    "surface": "#f9f9f9",
+                    "inverse-surface": "#303030",
+                    "secondary-fixed-dim": "#c3c3ec",
+                    "on-tertiary-fixed": "#1b1b1b",
+                    "tertiary": "#000000",
+                    "on-secondary-fixed-variant": "#424466"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "sm": "8px",
+                    "3xl": "32px",
+                    "md": "12px",
+                    "section": "80px",
+                    "xl": "20px",
+                    "xxs": "2px",
+                    "xs": "4px",
+                    "4xl": "44px",
+                    "2xl": "24px",
+                    "lg": "16px",
+                    "5xl": "48px",
+                    "6xl": "55.2px"
+            },
+            "fontFamily": {
+                    "body-lg-strong": ["Inter", "sans-serif"],
+                    "display-xl": ["Inter", "sans-serif"],
+                    "mono-label": ["JetBrains Mono", "monospace"],
+                    "mono-caps-button": ["PP Neue Montreal Mono", "monospace"],
+                    "mono-caption": ["PP Neue Montreal Mono", "monospace"],
+                    "display-xxl": ["Inter", "sans-serif"],
+                    "mono-caps-label": ["PP Neue Montreal Mono", "monospace"],
+                    "body-md-strong": ["Inter", "sans-serif"],
+                    "body-lg": ["Inter", "sans-serif"],
+                    "display-md": ["Inter", "sans-serif"],
+                    "display-lg": ["Inter", "sans-serif"],
+                    "caption": ["Inter", "sans-serif"],
+                    "caption-strong": ["Inter", "sans-serif"],
+                    "body-md": ["Inter", "sans-serif"],
+                    "mono-caps-eyebrow": ["PP Neue Montreal Mono", "monospace"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md">
+<!-- Top Navigation Bar -->
+<!-- Derived from Shared Components: TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center px-4 h-14 bg-canvas-dark border-b border-white/10">
+<div class="flex items-center w-full justify-between">
+<div class="flex items-center gap-4">
+<button class="text-on-primary hover:opacity-80 transition-opacity active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-mono-caps-label text-mono-caps-label text-on-primary uppercase tracking-widest">INTEGRATIONS</h1>
+</div>
+<div class="h-1 w-12 brand-chrome-line rounded-full opacity-50"></div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-24 pb-32 px-lg flex flex-col items-center justify-center">
+<!-- Error State Card -->
+<div class="w-full max-w-[400px] bg-white border border-hairline/20 rounded-xl overflow-hidden shadow-sm">
+<!-- Visual Hero for Card -->
+<div class="h-48 bg-surface-container-low flex items-center justify-center relative overflow-hidden">
+<!-- Background Pattern -->
+<div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: radial-gradient(circle, #000 1px, transparent 1px); background-size: 20px 20px;"></div>
+<!-- Central Iconography -->
+<div class="relative flex items-center gap-4">
+<div class="w-16 h-16 rounded-full bg-white border border-hairline/20 flex items-center justify-center text-accent-orange">
+<span class="material-symbols-outlined text-4xl" data-icon="Directions_run">directions_run</span>
+</div>
+<div class="w-8 h-[1px] bg-error"></div>
+<div class="w-16 h-16 rounded-full bg-white border border-hairline/20 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-4xl" data-icon="link_off">link_off</span>
+</div>
+</div>
+</div>
+<div class="p-2xl flex flex-col items-start gap-md">
+<!-- Status Badge -->
+<div class="px-sm py-xxs bg-error-container text-on-error-container rounded-sm border border-error/20 flex items-center gap-xs">
+<span class="material-symbols-outlined text-[12px]" data-icon="error" data-weight="fill" style="font-variation-settings: 'FILL' 1;">error</span>
+<span class="font-mono-caps-eyebrow text-mono-caps-eyebrow">ERROR</span>
+</div>
+<!-- Content -->
+<div class="space-y-sm">
+<h2 class="font-display-lg text-display-lg text-ink">Connection Failed</h2>
+<p class="font-body-md text-body-md text-body-gray leading-relaxed">
+                        We couldn’t connect to Strava. This could be due to a network error or a cancelled authorization.
+                    </p>
+</div>
+<!-- Actions -->
+<div class="w-full pt-lg space-y-sm">
+<button class="w-full bg-primary text-on-primary font-mono-caps-button text-mono-caps-button py-md rounded-full hover:opacity-90 active:scale-[0.98] transition-all">
+                        TRY AGAIN
+                    </button>
+<button class="w-full bg-transparent text-body-gray font-mono-caps-button text-mono-caps-button py-md hover:text-ink transition-colors">
+                        NOT NOW
+                    </button>
+</div>
+</div>
+</div>
+<!-- Technical Metadata (Subtle) -->
+<div class="mt-xl text-center px-lg">
+<p class="font-mono-caption text-mono-caption text-body-gray uppercase tracking-widest opacity-60">
+                Error Code: 403_AUTH_CANCELLED • Timestamp: 12:44:02 UTC
+            </p>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<!-- Derived from Shared Components: BottomNavBar -->
+<!-- Active State Logic: Mapping "Profile" or "Home" is secondary here, but typically "Strava" might be the intent for integrations -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-3 bg-canvas-dark border-t border-white/10">
+<a class="flex flex-col items-center justify-center text-body-gray hover:text-on-primary transition-colors active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="rss_feed">rss_feed</span>
+<span class="font-mono-caption text-mono-caption mt-1">Feed</span>
+</a>
+<a class="flex flex-col items-center justify-center text-body-gray hover:text-on-primary transition-colors active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-mono-caption text-mono-caption mt-1">Explore</span>
+</a>
+<!-- Active Integration Context -->
+<a class="flex flex-col items-center justify-center text-accent-orange bg-surface-dark-soft/50 rounded-lg px-3 py-1 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="Directions_run">directions_run</span>
+<span class="font-mono-caption text-mono-caption mt-1">Strava</span>
+</a>
+<a class="flex flex-col items-center justify-center text-body-gray hover:text-on-primary transition-colors active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-mono-caption text-mono-caption mt-1">Profile</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for the "Try Again" button
+        document.querySelector('button.bg-primary').addEventListener('click', function() {
+            const btn = this;
+            const originalText = btn.innerText;
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin text-sm">sync</span>';
+            btn.disabled = true;
+            btn.style.opacity = '0.7';
+            
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                btn.style.opacity = '1';
+                // Trigger a subtle haptic-like shake if failed again (mock)
+                const card = btn.closest('.bg-white');
+                card.classList.add('animate-shake');
+                setTimeout(() => card.classList.remove('animate-shake'), 400);
+            }, 1500);
+        });
+
+        // Add shake animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                25% { transform: translateX(-4px); }
+                75% { transform: translateX(4px); }
+            }
+            .animate-shake {
+                animation: shake 0.2s cubic-bezier(.36,.07,.19,.97) both 2;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body></html>
